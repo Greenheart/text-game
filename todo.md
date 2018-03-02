@@ -1,7 +1,6 @@
 # Todo
 - Story
     - Mystery, the player don't know a lot from the start.
-    - (Amnesia, Myst)
     - Notes left behind by a person and some clues.
     - Unknown what has happened to the person
         - Go out and explore.
@@ -10,17 +9,58 @@
         - Eventually they find the person. But only if they make the right choices...
         - Use a time limit - every action counts and takes time.
             - Time is precious... Only X actions to make. This includes both moves between rooms, as well as actions in each room.
-        - If the player made the right choices - and did the right things, they may find the person.
+            - Depending on what the game time is when a player comes to a room, or triggers an event, the game plays differently. This adds to replayability and adds value to trying different strategies and choices.
+            - Show time in game UI
+                - X days/hours left
+                - 05:20 left
+                - Display time as a date, where time progresses.
+                    - This is probably most suitable for the setting of the game.
+                    - Add different amounts of time when moving between different areas - add minutes when going between rooms, hours or days when going between environments.
+        - The player visits different environments throughout the game.
+            - Each environment has multiple rooms that tie together.
+            - Environments explain different parts or perspectives of the story but add together when seen as a whole.
+        - If the player made the right choices - and did the right things in time, they may find the person.
         - If they made the right choices, but took too much time doing so, they find the person when it's too late.
         - If they make the wrong choices, it doesn't matter - the person is already gone.
+
+    - Ending idea
+        - The player is searching for their friend
+        - But as the player explores, they find something disturbing.
+            - Their friend might be involved in something bigger, darker - they are in trouble and need help
+                - The player feels that they are getting dragged into it as well. Maybe make a crucial choice at this point - which determines the ending?
+                - The choice: The friend is getting dragged into their friends problem
+
+- The friends apartment
+    - A phone rings
+        - Whether the player chooses to answer the phone in their friends apartment - affects the gameplay and future story events (keypoints).
+        - If phone answered
+            - Unclear, distorted voice (the player don't get to know that this is the friend - but the friend knows that the player answered the phone, which is important for the story or the ending.)
+
+- Text messages (or contact through a third person)
+    - Introduced a good part into the story
+    - Communicate with the person - different outcomes based on previous choices
+    - Maybe get the player to hesitate if they really made the right choices. By making the player feeling guilty because the friend is turning against the player.
+
+- "Thought bubble"
+    - Appear when interesting
+    - The character tells interesting details and thoughts that add to the backstory and depth of the game.
 
 - Tasks
     - Add UI component to show tasks
     - A room shows a thought bubble (representing the player's own thoughts) "This chest is locked. I wonder if there's a key somewhere..."
     - This could give the player clues to help them progress.
+    - Timed tasks (complete X before a certain in game date/time)
 
+- Change the pace of the game
+    - Start with a slow pace and unfold the mystery slightly while teaching the player the basics of gameplay.
+    - Eventually, increase the pace - e.g. let the player complete a task before a certain in game date/time.
+        - Increased pace => intensity, make the player feel more engaged after slow periods.
+        - Decreased pace => emotional, heavy setting, focus on details rather than fast decisions.
+    - Why not incorporate literate timed events?
+        - Unprepared 10 s countdown timer where the player have to make a choice or else they miss out on something / lose?
+        - Surprising the player could also help keep them engaged by the story since they would feel that they get closer to an intense situation than if they have all the time in the world to think about their next move.
 
-- Bugs
+# Bugs
     - Make the player enter his name before giving instructions or else the UI will be messy.
 
     - Fix positioning for the input field.
@@ -46,10 +86,11 @@
 # Ideas
 - Gameplay idea:
     - "Eat/do something that doesn't make sense" => get a unexpected secret/ progression in the game/story.
-    - Ex a door opens and a person comes out "Wait! You can't eat that" - instead of an error message.
+    - E.g. doing something weird opens a door and a person comes out saying "Wait! You can't do that"
 
 - Make decisions in other ways than writing
-    - Clicking on buttons or graphics
+    - (Clicking on buttons or graphics)
+        - The text based is engaging in its own way, it will be special for players who aren't used to the style of game - but hopefully the story is engaging enough to keep them going.
     - Select from predefined responses when conversing with NPCs.
 
 - The player will meet different characters
@@ -62,6 +103,7 @@
         - Some future events might require that the player is friend with a certain character, or has a specific item.
 
 - Save progress using localStorage
+    - Perhaps tied to the player name - allows multiple saves.
 
 - Add autocomplete of available commands.
     - Use tab to quickly autocomplete input.
@@ -97,6 +139,19 @@
     - The player gathers items, to craft tools, to solve puzzles/tasks.
     - The player is encouraged to explore and experiment.
 
+
+# Inspiration
+- (Amnesia, Myst)
+- AQW
+    - > Worldmap> Throne Of Darkness> Scarletta, Tower of mirrors.
+        - This world area is a great example of how the different rooms can contain different tasks or secrets that will unveil later on in the game. The player will progress and understand that certain items that wasn't relevant for them at the time will become relevant in the future. In this way you can create great story elements and simple tasks that can seem like an endless puzzle for the player but in reality it's quite simple to pump out tons of different tasks and things the player can interact with.
+        TLDR; each room may contain several things to interact with, but only a handful are useful for the player at the moment, but later on in some rooms later a task may require the player to combine items from previous rooms.
+- Simon Stålenhag - Flodskörden
+    - Different environements.
+    - Jumps in Time.
+    - Seemingly irrelevant details that add to the story.
+- Zork
+    - Command parsing, how bad commands are handled - comical error messages instead of "You can't do that."
 ---
 
 
