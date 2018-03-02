@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Interactive Story</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main>
+            <section id="welcome">
+                <h1>Your story</h1>
+                <p>This is an open game where your actions matter.</p>
+                <p>To learn about available actions, type <b>help</b> at any time.</p>
+            </section>
+            <h1 id="title-text"></h1>
+            <section id="help" class="hidden">
+                <p>
+                    Play this game by thinking about the current state of the game and choosing how you want to react.
+                    Then type your action into the text input.
+                </p>
+                <p>
+                    Below is a list of available actions, and descriptions how to use them:
+                </p>
+                <dl>
+                    <dt>[direction]</dt><dd>Move in a given direction.</dd>
+                    <dt>take [object]</dt><dd>Pick up an object.</dd>
+                    <dt>drop [object]</dt><dd>Drop an object.</dd>
+                    <dt>read [object]</dt><dd>Read a book or a note.</dd>
+                </dl>
+            </section>
+            <section id="game-text" class="hidden"></section>
+            <footer>
+                <p id="status-text" class="bounce"></p>
+                <input type="text" id="user-input" placeholder="Enter your name to start" autocomplete="off">
+            </footer>
+        </main>
+        <script src="helpers.js"></script>
+        <script src="player.js"></script>
+        <script src="room.js"></script>
+        <script src="rooms.js"></script>
+        <script src="game.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
