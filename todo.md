@@ -1,20 +1,4 @@
 # Todo
-- Parse commands
-    - Parse command
-        - Action
-        - (Pick up / drop items)
-            - Show item description when initially picked up.
-        - (Use items)
-
-- Moving between rooms
-    - parse direction commands
-        - east, west, north, south, up, down, left, right
-
-- Set up version control.
-    - Install git for windows.
-    - Add project, organize.
-    - Upload to GitHub as a backup.
-
 - Story
     - Mystery, the player don't know a lot from the start.
     - (Amnesia, Myst)
@@ -30,14 +14,10 @@
         - If they made the right choices, but took too much time doing so, they find the person when it's too late.
         - If they make the wrong choices, it doesn't matter - the person is already gone.
 
-- Instructions
-    - Add simple in-game help which prints out commands and their syntax to the main text area. Examples:
-        -  `take [object]`: Pick up an object.
-        -  `[direction]`: Move in a given direction.
-        - `read [object]`: Read a `book` or a `note`.
-        - To see these commands at any time, just type `help`.
-
-
+# In progress
+- Backpack (Inventory)
+    - Pick up items to use later
+    - List them on the side of the main screen
 
 
 
@@ -55,10 +35,7 @@
 # Ideas
 - Make decisions in other ways than writing
     - Clicking on buttons or graphics
-
-- Backpack (Inventory)
-    - Pick up items to use later
-    - List them on the side of the main screen
+    - Select from predefined responses when conversing with NPCs.
 
 - The player will meet different characters
     - In short, the relationships with other characters matter.
@@ -69,15 +46,15 @@
     - How the player responds to characters affects how the continuing gameplay will work out.
         - Some future events might require that the player is friend with a certain character, or has a specific item.
 
-- The player gets some kind of score by doing things?
-    - Getting items, helping people
-
 - Save progress using localStorage
 
 - Add autocomplete of available commands.
     - Use tab to quickly autocomplete input.
 
-- Add fun responses to the status message:
+- The player gets some kind of score by doing things?
+    - Getting items, helping people
+
+- Add fun responses as status messages:
     - "You think that's a good idea? Hah!"
     - "Good luck with that!"
 
@@ -96,3 +73,26 @@
 - Parse commands
     - Get user input when "enter" is pressed
     - clear user input box
+
+- Parse commands
+    - Parse command
+        - Action
+        - (Pick up / drop items)
+            - Show item description when initially picked up.
+        - (Use items)
+
+- Moving between rooms
+    - parse direction commands
+        - east, west, north, south, up, down, left, right
+
+- Set up version control.
+    - Install git for windows.
+    - Add project, organize.
+    - Upload to GitHub as a backup.
+
+- Instructions
+    - Add simple in-game help which prints out commands and their syntax to the main text area. Examples:
+        -  `take [object]`: Pick up an object.
+        -  `[direction]`: Move in a given direction.
+        - `read [object]`: Read a `book` or a `note`.
+        - To see these commands at any time, just type `help`.
