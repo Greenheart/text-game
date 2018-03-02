@@ -66,6 +66,30 @@ section {
     text-align: left;
 }
 
+#inventory {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 14vw;
+    border: 2px solid darkgrey;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#inventory hr {
+    box-shadow: 1px 1px rgba(70, 70, 70, 0.1);
+}
+
+#inventory h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+}
+
+#inventory ul {
+    list-style-type: square;
+}
+
 footer {
     display: flex;
     flex-direction: column;

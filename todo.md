@@ -19,9 +19,6 @@
     - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
 
 # In progress
-- Backpack (Inventory)
-    - Pick up items to use later
-    - List them on the side of the main screen
 
 
 
@@ -74,6 +71,10 @@
 - Background images related to each room
     - If well selected from unsplash and similar, it will improve immersion and help tell the story.
 
+- Give items id
+    - prevent strange bugs
+    - also remove items by id, rather than name string.
+    - id related to room ex: kitchen, chef's note.
 
 ---
 
@@ -108,3 +109,7 @@
         -  `[direction]`: Move in a given direction.
         - `read [object]`: Read a `book` or a `note`.
         - To see these commands at any time, just type `help`.
+
+- Backpack (Inventory)
+    - Pick up items to use later
+    - List them on the side of the main screen

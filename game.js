@@ -160,7 +160,8 @@ class Game {
             statusText: document.querySelector('#status-text'),
             titleText: document.querySelector('#title-text'),
             help: document.querySelector('#help'),
-            welcome: document.querySelector('#welcome')
+            welcome: document.querySelector('#welcome'),
+            inventory: document.querySelector('#inventory')
         }
     }
 }

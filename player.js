@@ -44,9 +44,7 @@ class Player {
             this.game.status(`There's no ${object} to pick up.`)
         }
 
-        // TODO: display inventory in UI
-        // TODO: Enable item actions in any room. If not allowed at a given time,
-        // the item's action itself must specify that with code.
+        this.displayInventory()
     }
 
     drop (input, split) {
@@ -65,6 +63,7 @@ class Player {
             this.game.status(`You don't have any ${object} to drop.`)
         }
 
+        this.displayInventory()
         this.currentRoom.show()
     }
 
@@ -96,5 +95,23 @@ class Player {
 
     hasItem (object) {
         return this.inventory.some(item => item.name === object)
+    }
+
+    displayInventory () {
+        const hasItems = this.inventory.length
+
+        if (hasItems) {
+            const items = this.game.ui.inventory.querySelector('.items')
+            items.innerHTML = ''
+
+            for (const item of this.inventory) {
+                const li = document.createElement('li')
+                li.innerText = item.name
+
+                items.appendChild(li)
+            }
+        }
+
+        Helpers[hasItems ? 'show' : 'hide'](this.game.ui.inventory)
     }
 }
