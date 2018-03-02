@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', event => {
 
 const dictionary = {
     special: [
-        'done',
         'help'
     ],
     actions: [
