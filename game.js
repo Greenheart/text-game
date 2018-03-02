@@ -41,12 +41,16 @@ class Game {
             this.parseCommand(input)
 
         // Special commands for in game menus.
+        } else if (!this.player.name && this.visibleSection === this.ui.welcome) {
+            if (this.isCommand(input)) {
+                this.status(`You can't use a command as your username.`)
+            } else {
+                this.setPlayerName(input)
+            }
         } else if (input === 'help') {
             this.visibleSection = this.ui.help
             Helpers.hide(this.ui.welcome)
             this.help()
-        } else if (!this.player.name && this.visibleSection === this.ui.welcome) {
-            this.setPlayerName(input)
         } else {
             console.warn(`Unable to understand command: ${input}`)
         }
@@ -64,6 +68,14 @@ class Game {
         } else {
             this.status(`I didn't understand that.`)
         }
+    }
+
+    isCommand (input) {
+        return (
+            dictionary.directions.includes(input) ||
+            dictionary.actions.includes(input) ||
+            dictionary.special.includes(input)
+        )
     }
 
     performAction (input, split) {
