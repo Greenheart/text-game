@@ -45,7 +45,7 @@ class Game {
             if (this.isCommand(input)) {
                 this.status(`You can't use a command as your username.`)
             } else {
-                this.setPlayerName(input)
+                this.setPlayerName(rawInput)
             }
         } else if (input === 'help') {
             this.visibleSection = this.ui.help
