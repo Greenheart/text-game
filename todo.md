@@ -14,6 +14,10 @@
         - If they made the right choices, but took too much time doing so, they find the person when it's too late.
         - If they make the wrong choices, it doesn't matter - the person is already gone.
 
+- Bugs
+    - Make the player enter his name before giving instructions or else the UI will be messy.
+    - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
+
 # In progress
 - Backpack (Inventory)
     - Pick up items to use later
@@ -26,6 +30,8 @@
 - Should the dictionary define common actions?
     - These actions would be usable only if items (targets of the action) meet certain requirements.
 - or should all items define their own actions, allowing for customization?
+
+- The player shouldn't be able to have a username that is a command in the game, or other keywords (maybe?).
 
 
 
@@ -61,6 +67,12 @@
 - Animate the status message
     - Make it bounce from side to side when a status message is shown.
 
+- Make the text pop out a bit when appearing
+    - Otherwise it will look pretty stale and people might not get that there is new text on the screen than from the previous text message
+    - Background color on status message and room title
+
+- Background images related to each room
+    - If well selected from unsplash and similar, it will improve immersion and help tell the story.
 
 
 ---
