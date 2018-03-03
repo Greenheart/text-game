@@ -20,12 +20,15 @@ class Game {
             }
         }
         this.player = new Player(this)
-        this.visibleSection = this.ui.welcome
+        this.visibleSection = this.ui.mainMenu
+        this.status('Enter your name')
+        this.gameStarted = false
     }
 
     start () {
-        this.ui.userInput.placeholder = 'What do you want to do?'
-        Helpers.hide(this.ui.welcome)
+        this.gameStarted = true
+        this.useNormalPlaceholder()
+        Helpers.hide(this.ui.mainMenu)
         Helpers.show(this.ui.gameText)
         this.visibleSection = this.ui.gameText
         this.player.currentRoom.show()
@@ -38,21 +41,18 @@ class Game {
         const input = rawInput.trimLeft().trimRight().toLowerCase()
 
         if (this.player.name) {
-            this.parseCommand(input)
-
-        // Special commands for in game menus.
-        } else if (!this.player.name && this.visibleSection === this.ui.welcome) {
+            if (input === 'help') {
+                this.help()
+            } else {
+                this.parseCommand(input)
+            }
+        } else {
             if (this.isCommand(input)) {
                 this.status(`You can't use a command as your username.`)
             } else {
-                this.setPlayerName(rawInput)
+                this.player.name = rawInput
+                this.showMainMenu()
             }
-        } else if (input === 'help') {
-            this.visibleSection = this.ui.help
-            Helpers.hide(this.ui.welcome)
-            this.help()
-        } else {
-            console.warn(`Unable to understand command: ${input}`)
         }
     }
 
@@ -94,12 +94,16 @@ class Game {
     done () {
         if (this.visibleSection === this.ui.help) {
             Helpers.hide(this.ui.help)
-            this.visibleSection = this.player.name ? this.ui.gameText : this.ui.welcome
-            Helpers.show(this.visibleSection)
             this.title('')
+            if (this.gameStarted) {
+                this.visibleSection = this.ui.gameText
+                Helpers.show(this.visibleSection)
+            } else {
+                this.showMainMenu()
+            }
         }
 
-        if (this.player.name) {
+        if (this.gameStarted) {
             if (this.player.activeItem) {
                 this.player.activeItem = null
             }
@@ -111,11 +115,17 @@ class Game {
         }
     }
 
+    showMainMenu () {
+        this.visibleSection = this.ui.mainMenu
+        Helpers.show(this.visibleSection)
+        this.useStartPlaceholder()
+    }
+
     help () {
+        Helpers.hide(this.visibleSection)
         this.visibleSection = this.ui.help
         this.title('Help')
         this.useContinuePlaceholder()
-        Helpers.hide(this.ui.gameText)
         Helpers.show(this.ui.help)
     }
 
@@ -123,14 +133,12 @@ class Game {
         this.ui.userInput.placeholder = 'Press enter to continue...'
     }
 
+    useStartPlaceholder () {
+        this.ui.userInput.placeholder = 'Press enter to start the game'
+    }
+
     useNormalPlaceholder () {
         this.ui.userInput.placeholder = 'What do you want to do?'
-    }
-    setPlayerName (input) {
-        this.player.name = input
-        // NOTE: self-XSS vulnerability right here.
-        this.title(`Welcome, ${this.player.name}!`)
-        this.start()
     }
 
     // Show main game text. Used for story and main gameplay.
@@ -153,7 +161,9 @@ class Game {
             if (event.keyCode === 13) {
                 // Press enter to get out of menus quickly.
                 if (event.target.value === '') {
-                    if (this.visibleSection === this.ui.help || this.player.activeItem !== null) {
+                    if (this.visibleSection === this.ui.mainMenu) {
+                        this.start()
+                    } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
                         this.done()
                     }
                 } else {
@@ -172,8 +182,8 @@ class Game {
             statusText: document.querySelector('#status-text'),
             titleText: document.querySelector('#title-text'),
             help: document.querySelector('#help'),
-            welcome: document.querySelector('#welcome'),
-            inventory: document.querySelector('#inventory')
+            inventory: document.querySelector('#inventory'),
+            mainMenu: document.querySelector('#main-menu')
         }
     }
 }

@@ -7,19 +7,19 @@
     </head>
     <body>
         <main>
-            <section id="welcome">
-                <h1>Your story</h1>
+            <h1 id="title-text"></h1>
+            <section id="main-menu" class="hidden">
+                <h1>Your Story</h1>
                 <p>This is an open game where your actions matter.</p>
                 <p>To learn about available actions, type <b>help</b> at any time.</p>
             </section>
-            <h1 id="title-text"></h1>
             <section id="help" class="hidden">
                 <p>
                     Play this game by thinking about the current state of the game and choosing how you want to react.
                     Then type your action into the text input.
                 </p>
                 <p>
-                    Below is a list of available actions, and descriptions how to use them:
+                    Below is a list of available actions, and examples of how to use them.
                 </p>
                 <dl>
                     <dt>[direction]</dt><dd>Move in a given direction.</dd>
@@ -35,8 +35,8 @@
             </section>
             <section id="game-text" class="hidden"></section>
             <footer>
-                <p id="status-text" class="bounce"></p>
-                <input type="text" id="user-input" placeholder="Enter your name to start" autocomplete="off">
+                <p id="status-text"></p>
+                <input type="text" id="user-input" autocomplete="off">
             </footer>
         </main>
         <script src="helpers.js"></script>

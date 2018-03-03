@@ -12,9 +12,7 @@ class Room {
     }
 
     show () {
-        if (this.game.player.moves > 0) {
-            this.game.title(this.title)
-        }
+        this.game.title(this.title)
         this.game.text(this.description + this.showItems())
     }
 
