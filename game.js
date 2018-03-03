@@ -60,22 +60,34 @@ class Game {
     parseCommand (input) {
         const split = input.split(/\s+/)
 
-        if (this.dictionary.directions.includes(input)) {
+        if (this.isDirection(input)) {
             this.player.move(input)
-        } else if (split.length && this.dictionary.actions.includes(split[0])) {
+        } else if (split.length && this.isAction(split[0])) {
             this.performAction(input, split)
-        } else if (this.dictionary.special.includes(input)) {
+        } else if (this.isSpecialCommand(input)) {
             this.specialCommand(input)
         } else {
             this.status(`I didn't understand that.`)
         }
     }
 
+    isDirection (input) {
+        return this.dictionary.directions.includes(input)
+    }
+
+    isAction (input) {
+        return this.dictionary.actions.includes(input)
+    }
+
+    isSpecialCommand (input) {
+        return this.dictionary.special.includes(input)
+    }
+
     isCommand (input) {
         return (
-            this.dictionary.directions.includes(input) ||
-            this.dictionary.actions.includes(input) ||
-            this.dictionary.special.includes(input)
+            this.isDirection(input) ||
+            this.isAction(input) ||
+            this.isSpecialCommand(input)
         )
     }
 
