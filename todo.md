@@ -82,12 +82,8 @@
 
 
 
-
+---
 # Ideas
-- Gameplay idea:
-    - "Eat/do something that doesn't make sense" => get a unexpected secret/ progression in the game/story.
-    - E.g. doing something weird opens a door and a person comes out saying "Wait! You can't do that"
-
 - Make decisions in other ways than writing
     - (Clicking on buttons or graphics)
         - The text based is engaging in its own way, it will be special for players who aren't used to the style of game - but hopefully the story is engaging enough to keep them going.
@@ -105,25 +101,11 @@
 - Save progress using localStorage
     - Perhaps tied to the player name - allows multiple saves.
 
-- Add autocomplete of available commands.
-    - Use tab to quickly autocomplete input.
-
-- The player gets some kind of score by doing things?
-    - Getting items, helping people
-
-- Add fun responses as status messages:
-    - "You think that's a good idea? Hah!"
-    - "Good luck with that!"
-
-- Animate the status message
-    - Make it bounce from side to side when a status message is shown.
-
 - Make the text pop out a bit when appearing
     - Otherwise it will look pretty stale and people might not get that there is new text on the screen than from the previous text message
     - Background color on status message and room title
 
-- Background images related to each room
-    - If well selected from unsplash and similar, it will improve immersion and help tell the story.
+
 
 - Give items id
     - prevent strange bugs
@@ -140,6 +122,31 @@
     - The player is encouraged to explore and experiment.
 
 
+---
+# Low prio ideas
+- Background images related to each room
+    - If well selected from unsplash and similar, it will improve immersion and help tell the story.
+
+- Gameplay idea:
+    - "Eat/do something that doesn't make sense" => get a unexpected secret/ progression in the game/story.
+    - E.g. doing something weird opens a door and a person comes out saying "Wait! You can't do that"
+
+- Add autocomplete of available commands.
+    - Use tab to quickly autocomplete input.
+
+- The player gets some kind of score by doing things?
+    - Getting items, helping people
+
+- Add fun responses as status messages:
+    - "You think that's a good idea? Hah!"
+    - "Good luck with that!"
+
+- Animate the status message
+    - Make it bounce from side to side when a status message is shown.
+
+
+
+---
 # Inspiration
 - (Amnesia, Myst)
 - AQW
