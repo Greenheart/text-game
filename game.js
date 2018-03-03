@@ -57,7 +57,7 @@ class Game {
     }
 
     parseCommand (input) {
-        const split = input.split(' ')
+        const split = input.split(/\s+/)
 
         if (dictionary.directions.includes(input)) {
             this.player.move(input)
