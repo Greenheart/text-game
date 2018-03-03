@@ -60,7 +60,7 @@
         - Unprepared 10 s countdown timer where the player have to make a choice or else they miss out on something / lose?
         - Surprising the player could also help keep them engaged by the story since they would feel that they get closer to an intense situation than if they have all the time in the world to think about their next move.
 
-- Make the dictionary private by adding it inside the game closure rather than using a global reference.
+
 
 # Bugs
 - Fix positioning for the input field.
@@ -157,6 +157,8 @@
 
 
 # Done
+- Make the dictionary private by adding it inside the game closure rather than using a global reference.
+
 - Make the player enter his name before giving instructions or else the UI will be messy.
 
 - Replace `done` command with "Press enter to continue..." where possible.

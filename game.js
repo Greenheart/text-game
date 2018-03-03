@@ -1,5 +1,6 @@
 class Game {
-    constructor (rooms) {
+    constructor (rooms, dictionary) {
+        this.dictionary = dictionary
         this.ui = Game.getDOMReferences()
         this.bindUI()
 
@@ -59,11 +60,11 @@ class Game {
     parseCommand (input) {
         const split = input.split(/\s+/)
 
-        if (dictionary.directions.includes(input)) {
+        if (this.dictionary.directions.includes(input)) {
             this.player.move(input)
-        } else if (split.length && dictionary.actions.includes(split[0])) {
+        } else if (split.length && this.dictionary.actions.includes(split[0])) {
             this.performAction(input, split)
-        } else if (dictionary.special.includes(input)) {
+        } else if (this.dictionary.special.includes(input)) {
             this.specialCommand(input)
         } else {
             this.status(`I didn't understand that.`)
@@ -72,9 +73,9 @@ class Game {
 
     isCommand (input) {
         return (
-            dictionary.directions.includes(input) ||
-            dictionary.actions.includes(input) ||
-            dictionary.special.includes(input)
+            this.dictionary.directions.includes(input) ||
+            this.dictionary.actions.includes(input) ||
+            this.dictionary.special.includes(input)
         )
     }
 
