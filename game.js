@@ -159,6 +159,10 @@ class Game {
         this.ui.gameText.innerHTML = text
     }
 
+    addText (text) {
+        this.ui.gameText.innerHTML += text
+    }
+
     // Show a title at the top of the page.
     title (text) {
         this.ui.titleText.innerHTML = text
