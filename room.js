@@ -3,11 +3,10 @@ class Room {
         this.game = game
         this.name = room.name
         this.title = room.title
-        // IDEA: Maybe use an array to store items to increase easy of use?
-        this.items = room.items
+        this.items = room.items || []
         this.visited = !!room.visited
         // Initially, connections are just a map of directions and corresponding room names.
-        this.connections = room.connections
+        this.connections = room.connections || {}
         this.description = room.description
     }
 
