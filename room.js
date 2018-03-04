@@ -8,6 +8,8 @@ class Room {
         // Initially, connections are just a map of directions and corresponding room names.
         this.connections = room.connections || {}
         this.description = room.description
+        this.state = room.state
+        this.playerCanLeave = room.playerCanLeave
     }
 
     show () {

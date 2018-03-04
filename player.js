@@ -11,9 +11,16 @@ class Player {
     move (direction) {
         // Move in chosen direction if there's a room there.
         if (this.currentRoom.connections[direction]) {
-            this.currentRoom = this.currentRoom.connections[direction]
-            ++this.moves
-            this.currentRoom.show()
+            // Room.playerCanLeave should return true if a player can leave, otherwise a string with the reason.
+            const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(this.currentRoom, direction) : true
+            if (playerCanLeave === true) {
+                this.currentRoom = this.currentRoom.connections[direction]
+                ++this.moves
+                this.currentRoom.show()
+            } else {
+                // Show the reason why player can't leave.
+                this.game.status(playerCanLeave)
+            }
         } else {
             this.game.status(`You can't go there.`)
         }
@@ -88,6 +95,29 @@ class Player {
 
     useItem (item) {
         item.actions.use(this.currentRoom, item)
+    }
+
+    check (input, split) {
+        if (split.length < 2) {
+            this.game.status('What do you want to check?')
+            return
+        }
+
+        const object = split[1]
+        const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
+        if (item) {
+            if (item.actions.check) {
+                this.checkItem(item)
+            } else {
+                this.game.status(`The ${object} can't be checked.`)
+            }
+        } else {
+            this.game.status(`There is no ${object} to check.`)
+        }
+    }
+
+    checkItem (item) {
+        item.actions.check(this.currentRoom)
     }
 
     read (input, split) {

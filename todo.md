@@ -60,6 +60,17 @@
         - Unprepared 10 s countdown timer where the player have to make a choice or else they miss out on something / lose?
         - Surprising the player could also help keep them engaged by the story since they would feel that they get closer to an intense situation than if they have all the time in the world to think about their next move.
 
+- Show the player basic commands rather than telling them to read the `help` section the first they do.
+    - "Generally speaking, commands follow the structure `[verb] [object]`."
+- Make them learn basic commands through the early game.
+    - "If you want to learn more, see `help`" instead of an indirect "read the help before you start."
+
+- Update `help` with new commands.
+
+- Investigate how to avoid duplicate actions for items. Maybe add some way to specify which actions that can result in the same function being executed?
+    - An array of acceptable action verbs for a given function
+    - Or an object with the two properties: 1) the function to execute, and 2) the verbs to execute it for.
+
 
 
 # Bugs
@@ -67,6 +78,8 @@
     - This is caused by the positioning of the input field + status message. It needs to get a better positioning.
     - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
     - Use different positioning on start screen.
+
+- Prevent game from starting if name is empty.
 
 
 # In progress
@@ -79,11 +92,26 @@
     - These actions would be usable only if items (targets of the action) meet certain requirements.
 - or should all items define their own actions, allowing for customization?
 
+- How should room state be handled?
+    - Some rooms may need to print different information at the first visit than when they are re-visited.
+        - For this, maybe use `room.visited` to alter description and other things.
+            - One solution could be that, if the room needs dynamic description, set description to a function rather than a string
+            - This way, the description can be altered based on state, with minimal changes to the game engine.
+    - Others need to have special behaviors.
+    - Adding on custom methods to every room might work, but could be messy.
+
+- Maybe replace `Player.use()`, `Player.check()` and similar verb-actions with a generic method, that branches out to the specific logic for each action?
+    - Ex. call the specific `useItem()` from the generic method based on the verb.
+
 
 
 
 ---
 # Ideas
+- Maybe add a slight delay - or a typing effect, adding character by character to the screen as new information is available.
+    - This would reduce instant reactions and make the game feel more relaxed
+    - Maybe this could also be achieved by adding slight delays (200-400 ms)
+
 - Make decisions in other ways than writing
     - (Clicking on buttons or graphics)
         - The text based is engaging in its own way, it will be special for players who aren't used to the style of game - but hopefully the story is engaging enough to keep them going.

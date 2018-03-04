@@ -16,8 +16,6 @@
 - The player realizes something is wrong as they approach the apartment
 - The player walks inside, the apartment is unlocked. They think "Hmm... I wonder what's happened here." and starts investigating.
 
-- Give the player basic commands.
-
 ---
 
 ### The Apartment
