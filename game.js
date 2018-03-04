@@ -21,7 +21,7 @@ class Game {
             }
         }
         this.player = new Player(this)
-        this.visibleSection = this.ui.mainMenu
+        this.visibleSection = null
         this.status('Enter your name')
         this.gameStarted = false
     }

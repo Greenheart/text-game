@@ -79,7 +79,6 @@
     - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
     - Use different positioning on start screen.
 
-- Prevent game from starting if name is empty.
 
 
 # In progress
@@ -192,6 +191,8 @@
 
 
 # Done
+- Prevent game from starting if name is empty.
+
 - Make the dictionary private by adding it inside the game closure rather than using a global reference.
 
 - Make the player enter his name before giving instructions or else the UI will be messy.
