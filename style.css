@@ -66,6 +66,10 @@ section {
     text-align: left;
 }
 
+#game-text {
+    width: 100%;
+}
+
 #inventory {
     position: absolute;
     left: 10px;
