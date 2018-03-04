@@ -67,6 +67,29 @@ class Player {
         this.currentRoom.show()
     }
 
+    use (input, split) {
+        if (split.length < 2) {
+            this.game.status('What do you want to use?')
+            return
+        }
+
+        const object = split[1]
+        const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
+        if (item) {
+            if (item.actions.use) {
+                this.useItem(item)
+            } else {
+                this.game.status(`The ${object} can't be used.`)
+            }
+        } else {
+            this.game.status(`There is no ${object} to use.`)
+        }
+    }
+
+    useItem (item) {
+        item.actions.use(this.currentRoom, item)
+    }
+
     read (input, split) {
         if (split.length < 2) {
             this.game.status('What do you want to read?')
