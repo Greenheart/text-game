@@ -19,7 +19,12 @@ class Room {
 
     showItems () {
         // NOTE: Maaaaaaybe fix the correct form of "a/an". Maybe not!
-        if (this.items.length > 1) {
+        // Also think about singular/plural.
+        if (this.items.length) {
+            if (this.items.length === 1) {
+                return `There is a ${this.items[0].name} here.`
+            }
+
             return this.items.reduce((items, item, i) => {
                 if (i === 0) {
                     items += `a ${item.name}`
@@ -31,7 +36,8 @@ class Room {
                 return items
             }, 'There is ')
         }
-        return `There is a ${i.name} here.`
+
+        return ''
     }
 
     hasItem (object) {
