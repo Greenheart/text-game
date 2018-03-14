@@ -27,6 +27,7 @@ class Game {
     }
 
     start () {
+        this.status('')
         this.gameStarted = true
         this.useNormalPlaceholder()
         Helpers.hide(this.ui.mainMenu)

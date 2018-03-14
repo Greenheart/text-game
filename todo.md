@@ -197,6 +197,9 @@
 
 
 # Done
+- "I didn't understand that" doesn't get cleared when game starts.
+    - Make sure to clear game.status('') when game starts.
+
 - Prevent game from starting if name is empty.
 
 - Make the dictionary private by adding it inside the game closure rather than using a global reference.
