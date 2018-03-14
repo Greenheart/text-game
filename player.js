@@ -26,6 +26,12 @@ class Player {
         }
     }
 
+    go (input, split) {
+        // This command allows players who prefer to type `go [direction]` instead of just `[direction]`
+        // The thought is to give players options, without breaking the gameplay.
+        this.move(split[1])
+    }
+
     take (input, split) {
         if (split.length < 2) {
             // TODO: possibly allow multiple inputs in the same action.

@@ -82,6 +82,9 @@
     - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
     - Use different positioning on start screen.
 
+- When reading a note, items for the room should not be displayed.
+    - Perhaps hide or clear itemText as soon as an item is active - or do it manually.
+
 
 # In progress
 
@@ -103,8 +106,6 @@
 
 - Maybe replace `Player.use()`, `Player.check()` and similar verb-actions with a generic method, that branches out to the specific logic for each action?
     - Ex. call the specific `useItem()` from the generic method based on the verb.
-
-- Potentially add `go [direction]` command as a direction for those who want to type it out. Or perhaps not. Users get to adapt a bit.
 
 
 
@@ -194,6 +195,8 @@
 
 
 # Done
+- Add `go [direction]` command although it's preferred to just use `[direction]`
+
 - Prevent "use doorbell" from overflowing the game text area. Only show the two messages once.
 
 - Consider displaying items in a separate content area from the main gameText. This allows items to be updated without having to update the gameText (and in some cases reprocess to get the same state).

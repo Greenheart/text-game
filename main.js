@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', event => {
             'destroy',
             'read',
             'use',
-            'check'
+            'check',
+            'go'
         ],
         directions: [
             'north',
