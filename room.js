@@ -3,7 +3,11 @@ class Room {
         this.game = game
         this.name = room.name
         this.title = room.title
-        this.items = room.items || []
+        this.items = (room.items || []).map(i => {
+            // Default: all items are movable. Only those that explicitly say `false` can't be moved.
+            if (i.movable === undefined) i.movable = true
+            return i
+        })
         this.visited = !!room.visited
         // Initially, connections are just a map of directions and corresponding room names.
         this.connections = room.connections || {}

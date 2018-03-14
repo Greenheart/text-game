@@ -197,6 +197,8 @@
 
 
 # Done
+- Add the property `movable` to items to know if an item can be picked up or not.
+
 - "I didn't understand that" doesn't get cleared when game starts.
     - Make sure to clear game.status('') when game starts.
 

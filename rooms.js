@@ -21,6 +21,7 @@
             title: 'Outside your friend\'s apartment',
             items: [{
                 name: 'doorbell',
+                movable: false,
                 actions: {
                     use: (room, item) => {
                         // TODO: Implement `use doorhandle` or `open door`
@@ -37,6 +38,7 @@
                 }
             }, {
                 name: 'doorhandle',
+                movable: false,
                 actions: {
                     // NOTE: Not ideal to duplicate actions, but until a better solution is found, this allows for fast content creation :D
                     check: room => {

@@ -38,14 +38,19 @@ class Player {
         const objectIsInRoom = this.currentRoom.hasItem(object)
         if (objectIsInRoom) {
             const item = this.currentRoom.items.find(i => i.name === object)
-            this.inventory.push(item)
-            this.currentRoom.removeItem(object)
-            this.game.status(`Picked up ${item.name}.`)
 
-            if (item.actions) {
-                if (item.actions.read) {
-                    this.readItem(item)
+            if (item.movable) {
+                this.inventory.push(item)
+                this.currentRoom.removeItem(object)
+                this.game.status(`Picked up ${item.name}.`)
+
+                if (item.actions) {
+                    if (item.actions.read) {
+                        this.readItem(item)
+                    }
                 }
+            } else {
+                this.game.status(`You can't take that.`)
             }
         } else if (!objectIsInRoom && this.hasItem(object)) {
             this.game.status(`The ${object} is already in your inventory.`)
