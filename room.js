@@ -18,30 +18,34 @@ class Room {
 
     show () {
         this.game.title(this.title)
-        this.game.text(this.description + this.showItems())
+        this.game.text(this.description)
+        this.showItems()
     }
 
     showItems () {
         // NOTE: Maaaaaaybe fix the correct form of "a/an". Maybe not!
         // Also think about singular/plural.
+        let itemText = ''
+
         if (this.items.length) {
+            itemText += 'There is '
+
             if (this.items.length === 1) {
-                return `There is a ${this.items[0].name} here.`
+                itemText += `a ${this.items[0].name} here.`
+            } else {
+                itemText = this.items.reduce((items, item, i) => {
+                    if (i === 0) {
+                        items += `a ${item.name}`
+                    } else if (i < this.items.length - 1) {
+                        items += `, a ${item.name}`
+                    } else {
+                        items += ` and a ${item.name} here.`
+                    }
+                    return items
+                }, itemText)
             }
-
-            return this.items.reduce((items, item, i) => {
-                if (i === 0) {
-                    items += `a ${item.name}`
-                } else if (i < this.items.length - 1) {
-                    items += `, a ${item.name}`
-                } else {
-                    items += ` and a ${item.name} here.`
-                }
-                return items
-            }, 'There is ')
         }
-
-        return ''
+        this.game.itemText(itemText)
     }
 
     hasItem (object) {

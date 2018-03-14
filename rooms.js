@@ -26,7 +26,7 @@
                     use: (room, item) => {
                         // TODO: Implement `use doorhandle` or `open door`
                         if (item.state.used) {
-                            room.game.addText('<p>Still no reaction.</p>Maybe <b>check</b> the doorhandle?')
+                            room.game.addText('<p>Still no reaction.</p><p>Maybe <b>check</b> the doorhandle?</p>')
                         } else {
                             room.game.addText('<p>The doorbell rings but nothing happens.</p>')
                         }
@@ -45,11 +45,13 @@
                         room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                         <p>Go <b>north</b> to enter.</p>`)
                         room.state.doorhandleChecked = true
+                        room.game.itemText('')
                     },
                     use: room => {
                         room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                         <p>Go <b>north</b> to enter.</p>`)
                         room.state.doorhandleChecked = true
+                        room.game.itemText('')
                     }
                 }
             }],

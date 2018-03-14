@@ -49,6 +49,8 @@ class Player {
                         this.readItem(item)
                     }
                 }
+
+                this.currentRoom.showItems()
             } else {
                 this.game.status(`You can't take that.`)
             }

@@ -31,8 +31,8 @@ class Game {
         this.gameStarted = true
         this.useNormalPlaceholder()
         Helpers.hide(this.ui.mainMenu)
-        Helpers.show(this.ui.gameText)
-        this.visibleSection = this.ui.gameText
+        Helpers.show(this.ui.gameContent)
+        this.visibleSection = this.ui.gameContent
         this.player.currentRoom.show()
     }
 
@@ -110,7 +110,7 @@ class Game {
             Helpers.hide(this.ui.help)
             this.title('')
             if (this.gameStarted) {
-                this.visibleSection = this.ui.gameText
+                this.visibleSection = this.ui.gameContent
                 Helpers.show(this.visibleSection)
             } else {
                 this.showMainMenu()
@@ -164,6 +164,10 @@ class Game {
         this.ui.gameText.innerHTML += text
     }
 
+    itemText (text) {
+        this.ui.itemText.innerHTML = text
+    }
+
     // Show a title at the top of the page.
     title (text) {
         this.ui.titleText.innerHTML = text
@@ -196,7 +200,9 @@ class Game {
     static getDOMReferences () {
         return {
             userInput: document.querySelector('#user-input'),
+            gameContent: document.querySelector('.game-content'),
             gameText: document.querySelector('#game-text'),
+            itemText: document.querySelector('#item-text'),
             statusText: document.querySelector('#status-text'),
             titleText: document.querySelector('#title-text'),
             help: document.querySelector('#help'),

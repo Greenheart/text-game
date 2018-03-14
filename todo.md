@@ -75,8 +75,6 @@
   - Useful to help the player when they are stuck.
 
 
-- Should "check" be bold in "apartment.outside"?
-
 
 # Bugs
 - Fix positioning for the input field.
@@ -108,6 +106,7 @@
 - Maybe replace `Player.use()`, `Player.check()` and similar verb-actions with a generic method, that branches out to the specific logic for each action?
     - Ex. call the specific `useItem()` from the generic method based on the verb.
 
+- Potentially add `go [direction]` command as a direction for those who want to type it out. Or perhaps not. Users get to adapt a bit.
 
 
 
@@ -197,6 +196,10 @@
 
 
 # Done
+- Consider displaying items in a separate content area from the main gameText. This allows items to be updated without having to update the gameText (and in some cases reprocess to get the same state).
+
+- Ensure the item section of a description is updated when something happens to them. E.g. `take` or `drop`.
+
 - Add the property `movable` to items to know if an item can be picked up or not.
 
 - "I didn't understand that" doesn't get cleared when game starts.
