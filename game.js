@@ -48,7 +48,7 @@ class Game {
             if (this.isCommand(input)) {
                 this.status(`You can't use a command as your username.`)
             } else {
-                this.player.name = rawInput
+                this.player.name = rawInput.trimLeft().trimRight()
                 this.showMainMenu()
             }
         }
