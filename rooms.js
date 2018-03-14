@@ -24,12 +24,15 @@
                 movable: false,
                 actions: {
                     use: (room, item) => {
-                        // TODO: Implement `use doorhandle` or `open door`
-                        if (item.state.used) {
-                            room.game.addText('<p>Still no reaction.</p><p>Maybe <b>check</b> the doorhandle?</p>')
-                        } else {
-                            room.game.addText('<p>The doorbell rings but nothing happens.</p>')
+                        switch (item.state.used) {
+                            case 0:
+                                room.game.addText('<p>The doorbell rings but nothing happens.</p>')
+                                break
+                            case 1:
+                                room.game.addText('<p>Still no reaction.</p><p>Maybe <b>check</b> the doorhandle?</p>')
+                                break
                         }
+
                         item.state.used++
                     }
                 },

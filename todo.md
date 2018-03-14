@@ -82,8 +82,6 @@
     - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
     - Use different positioning on start screen.
 
-- Prevent "use doorbell" from overflowing the game text area. Only show the two messages once.
-
 
 # In progress
 
@@ -196,6 +194,8 @@
 
 
 # Done
+- Prevent "use doorbell" from overflowing the game text area. Only show the two messages once.
+
 - Consider displaying items in a separate content area from the main gameText. This allows items to be updated without having to update the gameText (and in some cases reprocess to get the same state).
 
 - Ensure the item section of a description is updated when something happens to them. E.g. `take` or `drop`.
