@@ -78,6 +78,7 @@ section {
     border: 2px solid darkgrey;
     padding: 10px 20px;
     font-size: 16px;
+    background: white;
 }
 
 #inventory hr {
