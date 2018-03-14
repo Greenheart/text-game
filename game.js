@@ -43,11 +43,7 @@ class Game {
         const input = rawInput.trimLeft().trimRight().toLowerCase()
 
         if (this.player.name) {
-            if (input === 'help') {
-                this.help()
-            } else {
-                this.parseCommand(input)
-            }
+            this.parseCommand(input)
         } else {
             if (this.isCommand(input)) {
                 this.status(`You can't use a command as your username.`)
