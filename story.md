@@ -130,4 +130,5 @@
         - The user's brains are used as servers. Users become like mindless drones, controlled by the company through their system.
 
 - Message of this whole game
-    - Be critical of new technology - It's okay to be excited - but don't just accept things because you're a diehard fan boy with extreme brand loyalty.
+    - Be critical of new technology - It's okay to be excited - but don't just accept things (because you're a diehard fan boy with extreme brand loyalty).
+    - We need open discussions if we want a healthy relationship with technology.

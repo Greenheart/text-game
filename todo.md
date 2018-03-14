@@ -71,6 +71,11 @@
     - An array of acceptable action verbs for a given function
     - Or an object with the two properties: 1) the function to execute, and 2) the verbs to execute it for.
 
+- Add `inspect [object]` command - "Take a moment to determine what you can do with an object."
+  - Useful to help the player when they are stuck.
+
+
+- Should "check" be bold in "apartment.outside"?
 
 
 # Bugs
@@ -79,6 +84,7 @@
     - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
     - Use different positioning on start screen.
 
+- Prevent "use doorbell" from overflowing the game text area. Only show the two messages once.
 
 
 # In progress

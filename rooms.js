@@ -18,7 +18,7 @@
             connections: {
                 'north': 'apartment.hallway'
             },
-            title: 'Outside your friends apartment',
+            title: 'Outside your friend\'s apartment',
             items: [{
                 name: 'doorbell',
                 actions: {
@@ -40,11 +40,13 @@
                 actions: {
                     // NOTE: Not ideal to duplicate actions, but until a better solution is found, this allows for fast content creation :D
                     check: room => {
-                        room.game.text(`<p>The door is unlocked. Go <b>north</b> to enter.</p>`)
+                        room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
+                        <p>Go <b>north</b> to enter.</p>`)
                         room.state.doorhandleChecked = true
                     },
                     use: room => {
-                        room.game.text(`<p>The door is unlocked. Go <b>north</b> to enter.</p>`)
+                        room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
+                        <p>Go <b>north</b> to enter.</p>`)
                         room.state.doorhandleChecked = true
                     }
                 }
@@ -61,7 +63,8 @@
                     }
                 }
             },
-            description: `<p>Your friend lives on the third floor in a pretty new house. He moved in a couple of months back, just as he started his new job.</p>`
+            description: `<p>You're standing outside your friend's door. He lives on the fifth floor in a pretty new house.</p>
+            <p>Gosh, it's already been three months since he moved in, even though it feels like yesterday. It was also somewhere around that time that he started his new job.</p>`
         },
         hallway: {
             name: 'apartment.hallway',
@@ -79,7 +82,7 @@
             }],
             title: 'Hallway',
             description: `<p>Your friend's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
-            One leads to the <b>north</b> and another to the door to the <b>east</b>.</p>`
+            There are two doorways: One leading to the <b>north</b> and another to the <b>east</b>.</p>`
         },
         kitchen: {
             name: 'apartment.kitchen',
