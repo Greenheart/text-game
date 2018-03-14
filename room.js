@@ -18,7 +18,20 @@ class Room {
     }
 
     showItems () {
-        return this.items.map(i => `There is a ${i.name} here.`).join('\n')
+        // NOTE: Maaaaaaybe fix the correct form of "a/an". Maybe not!
+        if (this.items.length > 1) {
+            return this.items.reduce((items, item, i) => {
+                if (i === 0) {
+                    items += `a ${item.name}`
+                } else if (i < this.items.length - 1) {
+                    items += `, a ${item.name}`
+                } else {
+                    items += ` and a ${item.name} here.`
+                }
+                return items
+            }, 'There is ')
+        }
+        return `There is a ${i.name} here.`
     }
 
     hasItem (object) {
