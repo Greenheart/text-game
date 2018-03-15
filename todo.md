@@ -86,7 +86,17 @@
 
 
 # In progress
-
+- Add new rooms according to the updated apartment structure.
+    - update kitchen
+        - move to east of livingRoom
+        - add section fridge
+        - add section table
+    - add bedroom
+    - update livingRoom
+        - This is now the open area of the living room that connects to sections of the room, and the kitchen.
+        - add section sofa
+    - add bathroom
+    - update hallway to show the bathroom
 
 
 
