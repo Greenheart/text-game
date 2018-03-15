@@ -100,6 +100,11 @@
     - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
     - Use different positioning on start screen.
 
+- Prevent movement and actions when user is in the help menu, when game.gameStarted === true.
+
+- Make sure to clear the status message when new commands are entered in the help menu - they should not stick around until the help menu is closed and the player returns to the main menu.
+    - Maybe clear the status once the done() method is executed?
+    - Or always when a new command is entered?
 
 
 # In progress
