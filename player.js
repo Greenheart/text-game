@@ -40,7 +40,7 @@ class Player {
             return
         }
 
-        const object = split[1]
+        const object = this.getItemName(split)
         const objectIsInRoom = this.currentRoom.hasItem(object)
         if (objectIsInRoom) {
             const item = this.currentRoom.items.find(i => i.name === object)
@@ -75,7 +75,7 @@ class Player {
             return
         }
 
-        const object = split[1]
+        const object = this.getItemName(split)
         const item = this.inventory.find(item => item.name === object)
         if (item) {
             this.currentRoom.items.push(item)
@@ -95,7 +95,7 @@ class Player {
             return
         }
 
-        const object = split[1]
+        const object = this.getItemName(split)
         const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
         if (item) {
             if (item.actions.use) {
@@ -109,6 +109,7 @@ class Player {
     }
 
     useItem (item) {
+        this.currentRoom.game.itemText('')
         item.actions.use(this.currentRoom, item)
     }
 
@@ -118,7 +119,7 @@ class Player {
             return
         }
 
-        const object = split[1]
+        const object = this.getItemName(split)
         const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
         if (item) {
             if (item.actions.check) {
@@ -132,6 +133,7 @@ class Player {
     }
 
     checkItem (item) {
+        this.currentRoom.game.itemText('')
         item.actions.check(this.currentRoom)
     }
 
@@ -141,7 +143,7 @@ class Player {
             return
         }
 
-        const object = split[1]
+        const object = this.getItemName(split)
         const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
         if (item) {
             if (item.actions.read) {
@@ -160,6 +162,15 @@ class Player {
         this.game.itemText('')
         item.actions.read(this.currentRoom)
         this.game.useContinuePlaceholder()
+    }
+
+    getItemName (split) {
+        // Allow objects to have multiple word names.
+        // NOTE: This assumes that commands take the form `[verb] [object]`
+        // and always use one word to describe the action.
+        // If this becomes a problem,
+        // the index where to start looking for the name could be a parameter.
+        return split.slice(1).join(' ')
     }
 
     hasItem (object) {

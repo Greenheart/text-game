@@ -81,10 +81,11 @@
 - update kitchen
     - add section fridge
     - add section table
-
+- update desk
+- add apartment.livingRoom.computer
 - add bedroom
-- add section sofa
-    - in the sofa, it's possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
+
+
 
 
 # Bugs
@@ -170,6 +171,8 @@
 
 ---
 # Low prio ideas
+- in the sofa, it could be possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
+
 - Background images related to each room
     - If well selected from unsplash and similar, it will improve immersion and help tell the story.
 
@@ -214,6 +217,12 @@
 
 
 # Done
+- add section sofa
+
+- Improve how items are shown while objects are active. Add default to `Press enter to continue...` when items are used. If this isn't suitable in some situations, I'll look at it then. But it works for now.
+
+- Issue: Handle `[object]`s with multiple word names, e.g. `"photo frame"`
+
 - update livingRoom
     - This is now the open area of the apartment connecting to multiple sections of the living room, and the kitchen.
 
