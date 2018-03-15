@@ -60,6 +60,9 @@
         - Unprepared 10 s countdown timer where the player have to make a choice or else they miss out on something / lose?
         - Surprising the player could also help keep them engaged by the story since they would feel that they get closer to an intense situation than if they have all the time in the world to think about their next move.
 
+- Weather changes through the story
+    - Starts out with late afternoon sun. Continues with clouds as the evening comes closer. Wind starts blowing, light rain is coming. In the end the weather depends on the player's actions? If good ending: "Hey, the sun shines. It's a new day.". If bad: do something else.
+
 - Show the player basic commands rather than telling them to read the `help` section the first they do.
     - "Generally speaking, commands follow the structure `[verb] [object]`."
 - Make them learn basic commands through the early game.
@@ -72,17 +75,16 @@
     - Or an object with the two properties: 1) the function to execute, and 2) the verbs to execute it for.
 
 - Add `inspect [object]` command - "Take a moment to determine what you can do with an object."
-  - Useful to help the player when they are stuck.
+    - Useful to help the player when they are stuck.
 
 
-  - update kitchen
-      - add section fridge
-      - add section table
-  - add bedroom
-  - update livingRoom
-      - This is now the open area of the living room that connects to sections of the room, and the kitchen.
-      - add section sofa
-        - in the sofa, it's possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
+- update kitchen
+    - add section fridge
+    - add section table
+
+- add bedroom
+- add section sofa
+    - in the sofa, it's possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
 
 
 # Bugs
@@ -143,6 +145,7 @@
 - Make the text pop out a bit when appearing
     - Otherwise it will look pretty stale and people might not get that there is new text on the screen than from the previous text message
     - Background color on status message and room title
+    - Maybe add a slight gray background that fades out over time.
 
 
 
@@ -160,6 +163,10 @@
     - The player gathers items, to craft tools, to solve puzzles/tasks.
     - The player is encouraged to explore and experiment.
 
+
+- Add window.DEBUG options:
+    - Quickly start at a specific room, with a specific state.
+    - automatically set username and start the selected room.
 
 ---
 # Low prio ideas
@@ -207,6 +214,9 @@
 
 
 # Done
+- update livingRoom
+    - This is now the open area of the apartment connecting to multiple sections of the living room, and the kitchen.
+
 - It should not be possible to move if the game hasn't started yet.
 
 - add bathroom

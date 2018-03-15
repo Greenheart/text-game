@@ -130,7 +130,9 @@
                 'east': 'apartment.kitchen'
             },
             title: 'Living Room',
-            description: `<p>A cozy sofa, a TV and a small desk in the corner to the <b>west</b>.</p>`
+            description: `<p>Big and open, this room is the centre of the apartment. The late afternoon sun shines through the windows, warming your feet.</p>
+            <p>Right in front of you, to the <b>north</b>, is a sofa and TV with all kinds of game consoles.
+            You can also go <b>west</b> to the workspace, <b>east</b> to the kitchen, or <b>south</b> to the hallway.</p>`
         },
         desk: {
             name: 'apartment.livingRoom.desk',
