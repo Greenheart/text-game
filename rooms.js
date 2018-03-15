@@ -76,7 +76,7 @@
         hallway: {
             name: 'apartment.hallway',
             connections: {
-                'east': 'apartment.kitchen',
+                'east': 'apartment.bathRoom',
                 'north': 'apartment.livingRoom'
             },
             items: [{
@@ -91,23 +91,43 @@
             description: `<p>Your friend's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
             There are two doorways: One leading to the <b>north</b> and another to the <b>east</b>.</p>`
         },
+        bathRoom: {
+            name: 'apartment.bathRoom',
+            connections: {
+                'west': 'apartment.hallway',
+                'east': 'apartment.bathRoom.shower'
+            },
+            title: 'Bathroom',
+            description: `<p>In contrast to the hallway, the bathroom is quite large and open. The mix of light colors give a easing feeling. However, there's just something that's off.</p>
+            <p>There seems to be something stained on the glass surface of the shower cabinet.</p>
+            <p>Go <b>east</b> to check the shower more closely. The hallway is to the <b>west</b></p>`
+        },
+        shower: {
+            name: 'apartment.bathRoom.shower',
+            connections: {
+                'west': 'apartment.bathRoom'
+            },
+            title: 'Shower',
+            description: `<p>There is blood stained on the glass doors.</p>
+            <p>After a closer look, you even notice there's a blood trail on the floor, leading all the way back to the hallway door in the <b>west</b>.</p>
+            <p>Wonder if this is what your friend wanted to talk about.</p>`
+        },
         kitchen: {
             name: 'apartment.kitchen',
             connections: {
-                'west': 'apartment.hallway'
+                'west': 'apartment.livingRoom'
             },
             items: [],
             title: 'Kitchen',
-            description: `<p>
-                This room has a strange smell. Probably coming from mountains of unwashed dishes.<br>
-                You have a door leading <b>west</b>.
-            </p>`
+            description: `<p>This room has a strange smell. Probably coming from the mountains of unwashed dishes.</p>
+                <p>The living room is to your <b>west</b>.</p>`
         },
         livingRoom: {
             name: 'apartment.livingRoom',
             connections: {
                 'south': 'apartment.hallway',
-                'west': 'apartment.livingRoom.desk'
+                'west': 'apartment.livingRoom.desk',
+                'east': 'apartment.kitchen'
             },
             title: 'Living Room',
             description: `<p>A cozy sofa, a TV and a small desk in the corner to the <b>west</b>.</p>`

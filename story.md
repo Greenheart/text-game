@@ -76,7 +76,10 @@
 ### Backstory, expand on news reports, background thoughts etc.
 - This takes place in the player's apartment.
     - Living room - interact with the TV to watch the news
+        - The player thinks "maybe my friend comes soon, it's close to dinner time. I'll watch some TV meanwhile."
+        - The news come on, and they talk about a new report. "Wonder what that's about. I don't think my friend minds if I borrow his computer."
     - Desktop - Use the computer to search for more information about the study.
+        - "Login screen" - The friend is so careful with security, yet he don't have any password for his home computer. "Imagine what a burglar, just walking into his open apartment could do. Hehe..."
 - A group of researchers report that they've made a huge breakthrough in how the human mind works.
 - They hope to cure some disease thanks to this research and experts praise the research.
 

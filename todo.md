@@ -75,6 +75,15 @@
   - Useful to help the player when they are stuck.
 
 
+  - update kitchen
+      - add section fridge
+      - add section table
+  - add bedroom
+  - update livingRoom
+      - This is now the open area of the living room that connects to sections of the room, and the kitchen.
+      - add section sofa
+        - in the sofa, it's possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
+
 
 # Bugs
 - Fix positioning for the input field.
@@ -87,16 +96,7 @@
 
 # In progress
 - Add new rooms according to the updated apartment structure.
-    - update kitchen
-        - move to east of livingRoom
-        - add section fridge
-        - add section table
-    - add bedroom
-    - update livingRoom
-        - This is now the open area of the living room that connects to sections of the room, and the kitchen.
-        - add section sofa
-    - add bathroom
-    - update hallway to show the bathroom
+
 
 
 
@@ -208,6 +208,12 @@
 
 
 # Done
+- add bathroom
+    - add shower
+        - possible to investigate the shower and find a clue.
+- update hallway to show the bathroom
+- move kitchen and fix connections.
+
 - When reading a note, items for the room should not be displayed.
     - Perhaps hide or clear itemText as soon as an item is active - or do it manually.
     - Either use generic solution with `player.activeItem`
