@@ -17,7 +17,13 @@ document.addEventListener('DOMContentLoaded', event => {
             'south',
             'east',
             'west'
-        ]
+        ],
+        directionAliases: {
+            'n': 'north',
+            's': 'south',
+            'e': 'east',
+            'w': 'west'
+        }
     }
 
     const game = new Game(window.rooms, dictionary)

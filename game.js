@@ -60,6 +60,8 @@ class Game {
         if (this.gameStarted) {
             if (this.isDirection(input)) {
                 this.player.move(input)
+            } else if (this.isDirectionAlias(input)) {
+                this.player.move(this.dictionary.directionAliases[input])
             } else if (split.length && this.isAction(split[0])) {
                 this.performAction(input, split)
             } else if (this.isSpecialCommand(input)) {
@@ -79,6 +81,10 @@ class Game {
 
     isDirection (input) {
         return this.dictionary.directions.includes(input)
+    }
+
+    isDirectionAlias (input) {
+        return Boolean(this.dictionary.directionAliases[input])
     }
 
     isAction (input) {
