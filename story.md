@@ -1,5 +1,19 @@
 # Story
 
+### Game Title Ideas
+- The Responsible
+    - This could imply several meanings:
+        - That you are responsible for the actions you've taken
+            - That you are responsible for helping your friend and proved that you took responsibility by helping him
+            - For the same reason, except for helping the world.
+        - This responsibility of yours could also be the solace after any of the bad endings:
+            - You can't be responsible for your friend's life
+            - Or the company's actions either for that matter
+        - Finally, it could imply the responsibility of the company:
+            - For developed and designed the device.
+            - And, for their unethical methods of testing it.
+
+
 // Environment Template
 ### Environment X
 #### Story key points
