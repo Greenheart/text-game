@@ -87,6 +87,9 @@
 - update desk
 - add apartment.livingRoom.computer
 - add bedroom
+- add bedroom.window
+- add bedroom.wardrobe
+    - Standing open, looks like someone searched through it in a hurry.
 
 
 
@@ -217,6 +220,7 @@
 
     This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
 
+- Maybe fix the text highlighting issue caused by the DOM-order where inventory is in between the header and the gameText. Or maybe not worth it. 
 
 ---
 # Inspiration

@@ -18,7 +18,7 @@
             connections: {
                 'north': 'apartment.hallway'
             },
-            title: 'Outside your friend\'s apartment',
+            title: 'The Stairwell',
             items: [{
                 name: 'doorbell',
                 movable: false,
@@ -96,7 +96,7 @@
                 'east': 'apartment.bathRoom.shower'
             },
             title: 'Bathroom',
-            description: `<p>In contrast to the hallway, the bathroom is quite large and open. The mix of light colors give a easing feeling. However, there's just something that's off.</p>
+            description: `<p>In contrast to the hallway, the bathroom is quite large and open. The mix of light colors give you an easing feeling. However, there's just something that's off.</p>
             <p>There seems to be something stained on the glass surface of the shower cabinet.</p>
             <p>Go <b>east</b> to check the shower more closely. The hallway is to the <b>west</b></p>`
         },
@@ -140,10 +140,12 @@
             },
             // TODO: Maybe change description based on if the player has found out that the friend isn't home.
             // Maybe only allow the player to visit the sofa if they have completed the task to find out their friend's whereabouts.
+            // Then add additional description to the livingRoom (or wherever the player currently is)
+                // "Maybe I could check relax in the sofa while I wait." This gives incitement to visit the sofa once it's unlocked.
             description: `<p>All the devices and consoles of different shapes and colors tell about your friend's technology interest.
             Some are even partially disassembeled, or have custom hardware modifications.</p>
-            <p>You notice that one of the newest media devices are connected to the TV. That couldn't have been cheap.<p>
-            <p>Sitting in the comfortable sofa, you wonder when your friend will come home. It's starting to get late. Maybe you can do something while you wait.</p>
+            <p>You notice that one of the newest media devices is connected to the TV. That couldn't have been cheap.<p>
+            <p>Sitting in the comfortable sofa, you wonder when your friend will come home. It's starting to get late. Maybe you can do something while waiting.</p>
             <p>The centre of the living room is to your <b>south</b></p>`,
             title: 'In the sofa in front of the TV',
             items: [{
