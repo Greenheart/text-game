@@ -99,7 +99,8 @@ class Game {
         return (
             this.isDirection(input) ||
             this.isAction(input) ||
-            this.isSpecialCommand(input)
+            this.isSpecialCommand(input) ||
+            this.isDirectionAlias(input)
         )
     }
 
