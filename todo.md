@@ -244,6 +244,8 @@
 
 
 # Done
+- Improve visuals of help menu - display as table - or just align the descriptions properly horizontally.
+
 - Make sure user cant have any aliases as their name - Update isCommand()
 - Add aliases for directions to help menu
 - Add aliases for quick navigation: `n`, `s`, `e`, `w` mapping to directions.

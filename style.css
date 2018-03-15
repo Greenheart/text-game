@@ -15,41 +15,50 @@ main {
     font-size: 18px;
 }
 
-dl {
-    font-family: serif;
-    text-align: left;
+#help h2 {
+    margin: 10px 0 5px 0;
 }
 
-dt {
-    background: #fff;
+.heading  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#help tr:first-child td {
+    padding-top: 10px;
+}
+
+#help tr:last-child td {
+    padding-bottom: 10px;
+}
+
+#help table {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 900px;
+    font-size: 17px;
+}
+
+#help td {
+    padding: 3px 10px;
+}
+
+#help td:first-child {
+    background: white;
+    font-family: monospace;
+    min-width: 190px;
+}
+
+#help td:last-child {
+    font-family: serif;
+}
+
+#help pre,
+span.code {
+    display: inline;
+    background: white;
     padding: 0 3px;
     margin: 0;
-    font-family: monospace;
-    font-size: 18px;
-}
-
-dd::before {
-    content: ': ';
-}
-
-dd {
-    letter-spacing: 1px;
-    font-size: 16px;
-    margin: 0;
-}
-
-dd:last-of-type::after {
-    content: '';
-}
-
-dt, dd {
-    vertical-align: middle;
-    display: inline;
-}
-
-dd::after {
-    content: '\A';
-    white-space: pre-line;
 }
 
 #title-text,
