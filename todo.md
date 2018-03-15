@@ -82,8 +82,7 @@
     - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
     - Use different positioning on start screen.
 
-- When reading a note, items for the room should not be displayed.
-    - Perhaps hide or clear itemText as soon as an item is active - or do it manually.
+
 
 
 # In progress
@@ -175,6 +174,10 @@
 - Animate the status message
     - Make it bounce from side to side when a status message is shown.
 
+- Add about section to either game page itself or on my website:
+    - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
+
+    This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
 
 
 ---
@@ -195,6 +198,12 @@
 
 
 # Done
+- When reading a note, items for the room should not be displayed.
+    - Perhaps hide or clear itemText as soon as an item is active - or do it manually.
+    - Either use generic solution with `player.activeItem`
+    - Or manually use `game.itemText('')` in all "blocking" actions.
+        - Likely the generic will be better long term - but for now, a manual solution should work.
+
 - Add `go [direction]` command although it's preferred to just use `[direction]`
 
 - Prevent "use doorbell" from overflowing the game text area. Only show the two messages once.

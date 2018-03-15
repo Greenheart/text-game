@@ -157,6 +157,7 @@ class Player {
     readItem (item) {
         this.game.title(`A ${item.name}`)
         this.activeItem = item
+        this.game.itemText('')
         item.actions.read(this.currentRoom)
         this.game.useContinuePlaceholder()
     }
