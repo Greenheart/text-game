@@ -182,3 +182,13 @@ This is an exploration of interactive storytelling. Of how to make characters an
 - Message of this whole game
     - Be critical of new technology - It's okay to be excited - but don't just accept things (because you're a diehard fan boy with extreme brand loyalty).
     - We need open discussions if we want a healthy relationship with technology.
+
+- Maybe this would fit like an **after-thought provoking section after the game is completed**?
+
+```In a time of great technological advances, it's increasingly important to be aware of how devices and services that we use influence us. At the same time, it's increasingly harder to get this awareness. Perhaps it's even overwhelming to the point where it's hard to see where to start.
+
+Regardless of which, the best one could do is probably to start with something small. Ask questions when you interact with technology. "Why was this designed the way it is?", "Who created this?", "What are their intentions behind this design?".
+
+In a time of great technological advances, we need to be aware of design. But above all: Who's responsible? Let's discuss the ethics of technology. Let's be responsible for what we create.
+
+Now go ahead and ask questions. Awareness comes from questioning the world around us.```
