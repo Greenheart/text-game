@@ -69,7 +69,7 @@
     - "If you want to learn more, see `help`" instead of an indirect "read the help before you start."
 
 - Update `help` with new commands.
-    - Add aliases for directions
+
 
 - Investigate how to avoid duplicate actions for items. Maybe add some way to specify which actions that can result in the same function being executed?
     - An array of acceptable action verbs for a given function
@@ -244,6 +244,7 @@
 
 
 # Done
+- Add aliases for directions to help menu
 - Add aliases for quick navigation: `n`, `s`, `e`, `w` mapping to directions.
 
 - update kitchen
