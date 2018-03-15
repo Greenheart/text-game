@@ -81,11 +81,10 @@
         - "Find out if your friend is at home. Why is the door open?"
 
 
-- update kitchen
-    - add section fridge
-    - add section table
+
 - update desk
 - add apartment.livingRoom.computer
+    - Maybe add it as an item with special methods
 - add bedroom
 - add bedroom.window
 - add bedroom.wardrobe
@@ -220,7 +219,7 @@
 
     This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
 
-- Maybe fix the text highlighting issue caused by the DOM-order where inventory is in between the header and the gameText. Or maybe not worth it. 
+- Maybe fix the text highlighting issue caused by the DOM-order where inventory is in between the header and the gameText. Or maybe not worth it.
 
 ---
 # Inspiration
@@ -240,6 +239,10 @@
 
 
 # Done
+- update kitchen
+    - add section fridge
+    - add section table
+
 - add section sofa
 
 - Improve how items are shown while objects are active. Add default to `Press enter to continue...` when items are used. If this isn't suitable in some situations, I'll look at it then. But it works for now.

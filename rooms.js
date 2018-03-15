@@ -113,12 +113,32 @@
         kitchen: {
             name: 'apartment.kitchen',
             connections: {
-                'west': 'apartment.livingRoom'
+                'west': 'apartment.livingRoom',
+                'north': 'apartment.kitchen.fridge',
+                'east': 'apartment.kitchen.table'
             },
             items: [],
             title: 'Kitchen',
-            description: `<p>This room has a strange smell. Probably coming from the mountains of unwashed dishes.</p>
-                <p>The living room is to your <b>west</b>.</p>`
+            description: `<p>The first thing that hits you is the smell. It's most definitely coming from the mountains of unwashed dishes.</p>
+            <p>To your <b>north</b>, the fridge's door is full of notes. They seem to be similar to the one from the hallway.</p>
+            <p>Table to your <b>east</b>. The living room is to your <b>west</b>.</p>`
+        },
+        fridge: {
+            name: 'apartment.kitchen.fridge',
+            connections: {
+                'south': 'apartment.kitchen'
+            },
+            title: 'Fridge Door',
+            description: `<p>Some interesting notes. Go <b>south</b> to get to the kitchen entrance.</p>`
+        },
+        table: {
+            name: 'apartment.kitchen.table',
+            connections: {
+                'west': 'apartment.kitchen'
+            },
+            title: 'Kitchen Table',
+            description: `<p>The table has two small piles of paper. The first has letters and magazines and the second has some notes.</p>
+            <p>Go <b>west</b> to get back to the kitchen entrance.</p>`
         },
         livingRoom: {
             name: 'apartment.livingRoom',
