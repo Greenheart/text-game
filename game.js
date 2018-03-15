@@ -57,15 +57,24 @@ class Game {
     parseCommand (input) {
         const split = input.split(/\s+/)
 
-        if (this.isDirection(input)) {
-            this.player.move(input)
-        } else if (split.length && this.isAction(split[0])) {
-            this.performAction(input, split)
-        } else if (this.isSpecialCommand(input)) {
-            this.specialCommand(input)
+        if (this.gameStarted) {
+            if (this.isDirection(input)) {
+                this.player.move(input)
+            } else if (split.length && this.isAction(split[0])) {
+                this.performAction(input, split)
+            } else if (this.isSpecialCommand(input)) {
+                this.specialCommand(input)
+            } else {
+                this.status(`I didn't understand that.`)
+            }
         } else {
-            this.status(`I didn't understand that.`)
+            if (this.isSpecialCommand(input)) {
+                this.specialCommand(input)
+            } else {
+                this.status(`I didn't understand that.`)
+            }
         }
+
     }
 
     isDirection (input) {

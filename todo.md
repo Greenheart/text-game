@@ -93,7 +93,6 @@
 
 
 
-
 # In progress
 - Add new rooms according to the updated apartment structure.
 
@@ -208,6 +207,8 @@
 
 
 # Done
+- It should not be possible to move if the game hasn't started yet.
+
 - add bathroom
     - add shower
         - possible to investigate the shower and find a clue.
