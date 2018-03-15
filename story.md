@@ -176,8 +176,10 @@ This is an exploration of interactive storytelling. Of how to make characters an
 
 - In the end, the player realizes that the company is developing a device that connects to people's brains.
     - It makes them lose their minds gradually, but slow enough for them not to notice it themselves. The device might be planting thoughts into their minds to control them. This way, users think that they gain the benefits of a literally "mind blowing" technology - even though it's ultimately at their own expense.
-    - The "Serverless architecture" used by the system seems to be linked to the fact that the devices are connected all the time.
+    - The "Server less architecture" used by the system seems to be linked to the fact that the devices are connected all the time.
         - The user's brains are used as servers. Users become like mindless drones, controlled by the company through their system.
+    - They used young, enthusiastic people to test the device before release.
+        - Your friend was in kind of a bad spot, and didn't have much of a choice but to accept the offer - or was just really grateful for the "opportunity to test something cutting-edge" and best of all, to get an apartment and other benefits as part of the deal.
 
 - Message of this whole game
     - Be critical of new technology - It's okay to be excited - but don't just accept things (because you're a diehard fan boy with extreme brand loyalty).

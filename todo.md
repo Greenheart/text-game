@@ -77,6 +77,9 @@
 - Add `inspect [object]` command - "Take a moment to determine what you can do with an object."
     - Useful to help the player when they are stuck.
 
+    - Add description / or task to find out if the friend is at home or not.
+        - "Find out if your friend is at home. Why is the door open?"
+
 
 - update kitchen
     - add section fridge
@@ -122,6 +125,10 @@
 
 ---
 # Ideas
+- Display names of items that can be interacted with in *italics* font to make them stand out.
+
+- Add new commands to the help section as the player progress through the world, instead of adding everything at once.
+
 - Maybe add a slight delay - or a typing effect, adding character by character to the screen as new information is available.
     - This would reduce instant reactions and make the game feel more relaxed
     - Maybe this could also be achieved by adding slight delays (200-400 ms)
@@ -169,8 +176,20 @@
     - Quickly start at a specific room, with a specific state.
     - automatically set username and start the selected room.
 
+- Add convenience feature:
+    - Remember latest commands to allow fast re-use.
+    - Press up key to automatically enter the latest entered command into the text field.
+    - Then navigate with up key (the previous command) and down key (the next command) to go back/forward in the history.
+    - This could help power users get a better experience playing.
+    - Also helps when some character is mistyped and you quickly want to fix it.
+
+- Perhaps add aliases for quick navigation: `n`, `s`, `e`, `w` mapping to directions.
+
+
 ---
 # Low prio ideas
+- Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
+
 - in the sofa, it could be possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
 
 - Background images related to each room
