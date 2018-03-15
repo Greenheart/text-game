@@ -11,7 +11,40 @@
 
 ## Environments
 ---
-### Intro
+### Intro (Cinematic-like)
+- Maybe use a interactive section, revealing one part at a time.
+- Make this introduction viewable multiple times from some kind of main menu.
+
+### Intro part 1
+
+In a time of great technological advances, life is less about knowing the answers, but more about asking the right questions.
+
+This is a story to make you think. See beyond the words and look at the meaning of the bigger picture. With some patience, you might be surprised of what you'll find ahead.
+
+- Button: "So how do I play this?"
+
+This game really has two parts:
+1. Exploring the world around you
+2. Choosing how you want to interact
+
+To control what happens, you type your action and press enter.
+For now, everything you need to get started are these basic actions:
+- movement
+- use
+- take / drop
+- read
+
+To make the gameplay more convenient, there are features like a *command history* which help you re-use what you've already typed.
+
+- In instructions, tell players about how information is displayed.
+    - **bold** for directions and some (but not all!) actions. For the other actions, think about what items are around you and how you could interact with them. Or use the `inspect [object]` command to get the answer.
+    - *italics* for items that can be interacted with.
+
+This is an exploration of interactive storytelling. Of how to make characters and environments feel more alive through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination.
+
+---
+
+### Start
 - The player is on their way to their friend's apartment. Calls him but only gets the automatic telephone answer.
 - The player realizes something is wrong as they approach the apartment
 - The player walks inside, the apartment is unlocked. They think "Hmm... I wonder what's happened here." and starts investigating.
