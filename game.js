@@ -217,6 +217,39 @@ class Game {
         this.currentCommand = 0
     }
 
+    autocomplete (input) {
+        const split = input.split(/\s+/)
+        const lastPart = split[split.length - 1]
+        const completions = this.getCommandCompletions(split)
+
+        let match = completions.find(c => c.startsWith(lastPart))
+        if (match) {
+            // Add extra space after the completion if it's a command that need more input.
+            // The space doesn't make sense for other completions.
+            if (match !== 'help' && !this.dictionary.directions.includes(match) && completions === this.dictionary.allCommands) {
+                match += ' '
+            }
+            split[split.length - 1] = match
+            this.ui.userInput.value = split.join(' ')
+        }
+    }
+
+    getCommandCompletions (split) {
+        if (split.length === 1) {
+            // First part of a command => autocomplete against actions
+            return this.dictionary.allCommands
+        } else {
+            // Second part of a command => autocomplete against objects
+            // NOTE: This might not work well for actions that need multiple words,
+            // or items that need multiple words for that part either.
+            const getName = i => i.name
+            return [
+                ...this.player.inventory.map(getName),
+                ...this.player.currentRoom.items.map(getName)
+            ]
+        }
+    }
+
     bindUI () {
         this.ui.userInput.addEventListener('keydown', event => {
             switch (event.keyCode) {
@@ -234,11 +267,12 @@ class Game {
                     }
                     break
 
-                // TODO: Add autocomplete, based on available actions in the dictionary.
-                // case 9:
-                //     event.preventDefault()
-                //     this.completeCommand(event.target.value)
-                //     break
+                case 9:
+                    event.preventDefault()
+                    if (event.target.value && this.visibleSection !== this.ui.help) {
+                        this.autocomplete(event.target.value)
+                    }
+                    break
 
                 case 38:
                     event.preventDefault()

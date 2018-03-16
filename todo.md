@@ -194,8 +194,7 @@
     - Quickly start at a specific room, with a specific state.
     - automatically set username and start the selected room.
 
-- Add convenience feature:
-    - Autocomplete commands
+
 
 
 
@@ -211,9 +210,6 @@
 - Gameplay idea:
     - "Eat/do something that doesn't make sense" => get a unexpected secret/ progression in the game/story.
     - E.g. doing something weird opens a door and a person comes out saying "Wait! You can't do that"
-
-- Add autocomplete of available commands.
-    - Use tab to quickly autocomplete input.
 
 - The player gets some kind of score by doing things?
     - Getting items, helping people
@@ -250,6 +246,9 @@
 
 
 # Done
+- Add autocomplete of available commands.
+    - Use tab to quickly autocomplete input.
+
 - Give items id
     - prevent strange bugs
     - also remove items by id, rather than name string.

@@ -26,5 +26,12 @@ document.addEventListener('DOMContentLoaded', event => {
         }
     }
 
+    // Cache for use in autocomplete.
+    dictionary.allCommands = [
+        ...dictionary.actions,
+        ...dictionary.directions,
+        ...dictionary.special
+    ]
+
     const game = new Game(window.rooms, dictionary)
 })
