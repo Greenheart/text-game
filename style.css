@@ -79,6 +79,12 @@ section {
     width: 100%;
 }
 
+#game-text .note-heading {
+    font-size: 15px;
+    border-bottom: 1px solid black;
+    font-style: italic;
+}
+
 #inventory {
     position: absolute;
     left: 10px;

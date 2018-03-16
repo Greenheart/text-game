@@ -7,7 +7,7 @@
         description: `<p>
             You're on your way to your best friend's place. He tried calling you three times earlier today and eventually left a message.<br>
         </p>
-        <p>"I have something important to tell you. Could you come over?"</p>
+        <p>"I can't believe this is happening... I have something important to tell you. Could you come over?"</p>
         <p>So here you are on the street, leading <b>north</b> to your friend's apartment.</p>`,
         title: 'The Beginning'
     }
@@ -198,10 +198,49 @@
         desk: {
             name: 'apartment.livingRoom.desk',
             connections: {
-                'east': 'apartment.livingRoom'
+                'east': 'apartment.livingRoom',
+                'west': 'apartment.livingRoom.computer'
             },
             title: 'Desk',
-            description: `<p>The desk has a open laptop and is full of sticky notes. The sofa is to the <b>east</b>.</p>`
+            items: [{
+                name: 'note',
+                actions: {
+                    read: room => {
+                        room.game.text(`
+                            <p class="note-heading">Thursday 14th April</p>
+                            <p>My headaches keep getting worse. They keep saying everything will be fine eventually, that this is just a transitioning phase.</p>
+                            <p>I don't know anymore.</p>
+                        `)
+                    }
+                }
+            }],
+            description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway. There's also a computer to your <b>west</b>.</p>
+            <p>You can also continue past the desk and go <b>south</b> to the bedroom. Or go <b>east</b> to get back to the centre of the living room</p>`
+            // IDEA: perhaps 'use computer' should navigate to the computer
+            // For now though, just use normal directions to navigate between the computer and the room itself.
+        },
+        computer: {
+            name: 'apartment.livingRoom.computer',
+            connections: {
+                'east': 'apartment.livingRoom.desk'
+            },
+            items: [{
+                // TODO: Add the same feature here as for the sofa: Only allow to visit this room after the first task is completed.
+                name: 'browser',
+                actions: {
+                    use: room => {
+                        // room.game.text('Very nice browser. Indeed.')
+                    }
+                },
+                movable: false
+            }],
+            title: 'Computer',
+            // `item.useDefaultDisplay` - if item.useDefaultDisplay !== false:
+            // IDEA: Make it possible for items to explicitly tell the room to not use the standard showItems().
+            // This would allow more customizable description of the items - especially useful for the computer items which essentially represent actions.
+            description: `<p>As the computer starts, you realize that your friend has no password. So careful with security in all other ways, yet leaving this detail.</p>
+            <p>Just imagine what a burglar, casually walking into his unlocked apartment could do. Hehe...</p>
+            <p>Go <b>east</b> to get back to the desk.</p>`
         }
     }
 

@@ -83,9 +83,10 @@
 
 
 
-- update desk
+
 - add apartment.livingRoom.computer
     - Maybe add it as an item with special methods
+    - Maybe add it as it's own room, with items that represent different interactions the player can make with the computer. This solution allows reuse of the existing structure while giving pretty good creative freedom.
 - add bedroom
 - add bedroom.window
 - add bedroom.wardrobe
@@ -112,7 +113,6 @@
 
 
 
-
 # To think about
 - Should the dictionary define common actions?
     - These actions would be usable only if items (targets of the action) meet certain requirements.
@@ -133,6 +133,21 @@
 
 ---
 # Ideas
+- The notes left behind by the friend could be diary entries
+    - *TODO*: Add support for multiple notes.
+    - State a date, but no year, to leave that up for interpretation by the player.
+    - Should these be added to some kind of collection that remains with the player through the game?
+        - In that case, don't add them to the inventory.
+        - Also don't allow them to be dropped
+        - Store them in `player.collection.notes` or just `player.notes`
+            - *TODO*: Figure out a convenient way for the player to read them
+                - Maybe through "read notes"
+                    - Once that command is submitted, the player will see a list of all notes.
+                    - To view individual notes, enter the number of the note
+                        - E.g. "1" + [Enter] which shows note number 1.
+                    - Then press enter to get back to the list again.
+                - and enter again to get back to the current room.
+
 - Display names of items that can be interacted with in *italics* font to make them stand out.
 
 - Add new commands to the help section as the player progress through the world, instead of adding everything at once.
@@ -169,6 +184,7 @@
     - prevent strange bugs
     - also remove items by id, rather than name string.
     - id related to room ex: kitchen, chef's note.
+    - itemName + number - "note-1"
 
 - Diary
     - Keep notes created by the player to help them solve the mystery
@@ -240,6 +256,8 @@
 
 
 # Done
+- update desk
+
 - Remember latest commands to allow fast re-use.
 - Press up key to automatically enter the latest entered command into the text field.
 - Then navigate with up key (the previous command) and down key (the next command) to go back/forward in the history.
