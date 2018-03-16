@@ -205,6 +205,18 @@
         }
     }
 
+    /*
+        templateRoom: {
+            name: '',
+            connections: {},
+            items: [],
+            title: '',
+            description: `<p></p>`,
+            state: {},
+            playerCanLeave: () => true
+        }
+    */
+
     window.rooms = [
         start,
         ...Object.values(apartment)
