@@ -113,6 +113,7 @@
 
 
 
+
 # To think about
 - Should the dictionary define common actions?
     - These actions would be usable only if items (targets of the action) meet certain requirements.
@@ -178,13 +179,6 @@
     - Background color on status message and room title
     - Maybe add a slight gray background that fades out over time.
 
-
-
-- Give items id
-    - prevent strange bugs
-    - also remove items by id, rather than name string.
-    - id related to room ex: kitchen, chef's note.
-    - itemName + number - "note-1"
 
 - Diary
     - Keep notes created by the player to help them solve the mystery
@@ -256,6 +250,14 @@
 
 
 # Done
+- Give items id
+    - prevent strange bugs
+    - also remove items by id, rather than name string.
+        - This seems hard to fix. A simpler solution is to always use unique names for items.
+        - Since notes should be tracked in their own collection, not in the inventory, this is no longer a problem.
+    - id related to room ex: kitchen, chef's note.
+    - itemName + number - "note-1"
+
 - update desk
 
 - Remember latest commands to allow fast re-use.

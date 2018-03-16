@@ -21,6 +21,7 @@
             title: 'The Stairwell',
             items: [{
                 name: 'doorbell',
+                id: 'doorbell',
                 movable: false,
                 actions: {
                     use: (room, item) => {
@@ -41,6 +42,7 @@
                 }
             }, {
                 name: 'doorhandle',
+                id: 'doorhandle',
                 movable: false,
                 actions: {
                     // NOTE: Not ideal to duplicate actions, but until a better solution is found, this allows for fast content creation :D
@@ -79,6 +81,7 @@
             },
             items: [{
                 name: 'note',
+                id: 'note-1',
                 actions: {
                     read: room => {
                         room.game.text('This is a note. Most interesting. Indeed.')
@@ -170,6 +173,7 @@
             title: 'In the sofa in front of the TV',
             items: [{
                 name: 'photo frame',
+                id: 'photo-frame',
                 actions: {
                     use: (room, item) => {
                         /* TODO: add support for viewing multiple photos.
@@ -204,6 +208,7 @@
             title: 'Desk',
             items: [{
                 name: 'note',
+                id: 'note-2',
                 actions: {
                     read: room => {
                         room.game.text(`
@@ -227,6 +232,7 @@
             items: [{
                 // TODO: Add the same feature here as for the sofa: Only allow to visit this room after the first task is completed.
                 name: 'browser',
+                id: 'browser',
                 actions: {
                     use: room => {
                         // room.game.text('Very nice browser. Indeed.')
