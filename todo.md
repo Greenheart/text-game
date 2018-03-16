@@ -173,6 +173,10 @@
 
 - Save progress using localStorage
     - Perhaps tied to the player name - allows multiple saves.
+    - Show list of usernames to represent saves.
+    - Click a name to load it
+    - Possibly some feature to delete a save
+    - Add save command - or add autosave to when the browser unloads.
 
 - Make the text pop out a bit when appearing
     - Otherwise it will look pretty stale and people might not get that there is new text on the screen than from the previous text message

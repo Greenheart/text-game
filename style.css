@@ -23,21 +23,18 @@ main {
     font-size: 18px;
 }
 
-#help h2 {
-    margin: 10px 0 5px 0;
+
+#help .heading {
+    margin-top: 25px;
 }
 
-.heading  p {
+#help h2 {
+    margin: 0 0 5px 0;
+}
+
+#help .heading  p {
     font-size: 16px;
     margin-bottom: 10px;
-}
-
-#help tr:first-child td {
-    padding-top: 10px;
-}
-
-#help tr:last-child td {
-    padding-bottom: 10px;
 }
 
 #help table {
@@ -77,10 +74,6 @@ h1 {
 
 section p:first-of-type {
     margin-top: 0;
-}
-
-section {
-    text-align: left;
 }
 
 .game-content {
@@ -139,7 +132,7 @@ footer {
 #user-input {
     width: 60%;
     align-self: center;
-    padding: 5px 8px;
+    padding: 6px 8px;
     letter-spacing: 1.5px;
 }
 
@@ -150,7 +143,7 @@ footer {
 }
 
 b {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .hidden {
