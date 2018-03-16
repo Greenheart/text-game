@@ -185,11 +185,7 @@
     - automatically set username and start the selected room.
 
 - Add convenience feature:
-    - Remember latest commands to allow fast re-use.
-    - Press up key to automatically enter the latest entered command into the text field.
-    - Then navigate with up key (the previous command) and down key (the next command) to go back/forward in the history.
-    - This could help power users get a better experience playing.
-    - Also helps when some character is mistyped and you quickly want to fix it.
+    - Autocomplete commands
 
 
 
@@ -244,6 +240,12 @@
 
 
 # Done
+- Remember latest commands to allow fast re-use.
+- Press up key to automatically enter the latest entered command into the text field.
+- Then navigate with up key (the previous command) and down key (the next command) to go back/forward in the history.
+- This could help power users get a better experience playing.
+- Also helps when some character is mistyped and you quickly want to fix it.
+
 - Improve visuals of help menu - display as table - or just align the descriptions properly horizontally.
 
 - Make sure user cant have any aliases as their name - Update isCommand()

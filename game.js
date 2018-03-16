@@ -24,6 +24,10 @@ class Game {
         this.visibleSection = null
         this.status('Enter your name')
         this.gameStarted = false
+
+        // Store latest commands for quick re-use
+        this.commandHistory = ['']
+        this.currentCommand = 0
     }
 
     start () {
@@ -44,6 +48,7 @@ class Game {
 
         if (this.player.name) {
             this.parseCommand(input)
+            this.updateCommandHistory(input)
         } else {
             if (this.isCommand(input)) {
                 this.status(`You can't use a command as your username.`)
@@ -190,20 +195,60 @@ class Game {
         this.ui.statusText.innerHTML = text
     }
 
+    scrollCommandHistory (direction) {
+        if (direction === 'up' && this.currentCommand + 1 < this.commandHistory.length) {
+            this.currentCommand++
+        }
+
+        if (direction === 'down' && this.currentCommand > 0) {
+            this.currentCommand--
+        }
+
+        this.ui.userInput.value = this.commandHistory[this.currentCommand]
+    }
+
+    updateCommandHistory (input) {
+        // Add command to history, but let the first entry remain `''`.
+        // This allows the user to always go back to a blank state.
+        this.commandHistory.splice(1, 0, input)
+
+        // Only store the most recent commands.
+        if (this.commandHistory.length > 32) this.commandHistory.pop()
+        this.currentCommand = 0
+    }
+
     bindUI () {
-        this.ui.userInput.addEventListener('keypress', event => {
-            if (event.keyCode === 13) {
-                // Press enter to get out of menus quickly.
-                if (event.target.value === '') {
-                    if (this.visibleSection === this.ui.mainMenu) {
-                        this.start()
-                    } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
-                        this.done()
+        this.ui.userInput.addEventListener('keydown', event => {
+            switch (event.keyCode) {
+                case 13:
+                    // Press enter to get out of menus quickly.
+                    if (event.target.value === '') {
+                        if (this.visibleSection === this.ui.mainMenu) {
+                            this.start()
+                        } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
+                            this.done()
+                        }
+                    } else {
+                        this.onInput(event.target.value)
+                        event.target.value = ''
                     }
-                } else {
-                    this.onInput(event.target.value)
-                    event.target.value = ''
-                }
+                    break
+
+                // TODO: Add autocomplete, based on available actions in the dictionary.
+                // case 9:
+                //     event.preventDefault()
+                //     this.completeCommand(event.target.value)
+                //     break
+
+                case 38:
+                    event.preventDefault()
+                    this.scrollCommandHistory('up')
+                    break
+
+                case 40:
+                    event.preventDefault()
+                    this.scrollCommandHistory('down')
+                    break
             }
         })
         this.ui.userInput.focus()
