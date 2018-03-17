@@ -255,21 +255,35 @@ class Game {
         }
     }
 
+    handleEnterKey (event) {
+        // Press enter to get out of menus quickly.
+        if (event.target.value === '') {
+            if (this.visibleSection === this.ui.mainMenu) {
+                this.start()
+            } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
+                this.done()
+            }
+        } else {
+            this.onInput(event.target.value)
+            event.target.value = ''
+        }
+    }
+
     bindUI () {
+        window.addEventListener('keydown', event => {
+            // Type anywhere on the page to type in the text input.
+            const enterOrTabPressed = [13, 9].includes(event.keyCode)
+            if (enterOrTabPressed) event.preventDefault()
+
+            if (document.activeElement !== this.ui.userInput || enterOrTabPressed) {
+                this.ui.userInput.focus()
+            }
+        })
+
         this.ui.userInput.addEventListener('keydown', event => {
             switch (event.keyCode) {
                 case 13:
-                    // Press enter to get out of menus quickly.
-                    if (event.target.value === '') {
-                        if (this.visibleSection === this.ui.mainMenu) {
-                            this.start()
-                        } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
-                            this.done()
-                        }
-                    } else {
-                        this.onInput(event.target.value)
-                        event.target.value = ''
-                    }
+                    this.handleEnterKey(event)
                     break
 
                 case 9:

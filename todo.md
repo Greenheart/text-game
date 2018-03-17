@@ -148,6 +148,9 @@
 ---
 # Ideas
 
+- Improve the error messages for missing data:
+    - Instead of asking a question like "What do you want to pick up?", tell them that "What do you want to take up? Usage: `take [object]`."
+
 - Rooms keep tracked of this.visited status
     - Show different descriptions based on the results
     - Solve by using a `description` function
@@ -171,7 +174,6 @@
 
 - Add "The" in front of rooms to make rooms feel more significant.
 
-- On keydown event - always focus the input field
 - Add note collection and improve how notes work.
     - When taking notes, add them to the collection, instead of inventory
 
@@ -290,6 +292,8 @@
 
 
 # Done
+- On keydown event - always focus the input field
+
 - Add window.DEBUG options:
     - Quickly start at a specific room, with a specific state.
     - automatically set username and start the selected room.
