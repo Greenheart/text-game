@@ -197,6 +197,13 @@ b {
     animation-duration: 2s;
 }
 
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 @keyframes bounce {
     0% {
         transform: translateX(-100%);

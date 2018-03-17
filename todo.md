@@ -128,10 +128,8 @@
 
 
 # Bugs
-- Maybe fix the text highlighting issue caused by the DOM-order where inventory is in between the header and the gameText. *Or maybe not worth it.*
-    - Disable highlighting for
-        - inventory
-        - status message
+
+
 
 
 # In progress
@@ -306,7 +304,16 @@
 
 
 
+
+
+
+
 # Done
+- Maybe fix the text highlighting issue caused by the DOM-order where inventory is in between the header and the gameText. *Or maybe not worth it.*
+    - Disable highlighting for
+        - inventory
+        - status message
+
 - On keydown event - always focus the input field
 
 - Add window.DEBUG options:
