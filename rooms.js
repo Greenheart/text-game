@@ -86,7 +86,8 @@
                     read: room => {
                         room.game.text('This is a note. Most interesting. Indeed.')
                     }
-                }
+                },
+                state: {}
             }],
             title: 'The Hallway',
             description: `<p>Your friend's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
@@ -217,7 +218,8 @@
                             <p>I don't know anymore.</p>
                         `)
                     }
-                }
+                },
+                state: {}
             }],
             description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway. There's also a computer to your <b>west</b>.</p>
             <p>If you continue past the desk and go <b>south</b>, you will get to the bedroom. Or go <b>east</b> to get back to the center of the living room</p>`

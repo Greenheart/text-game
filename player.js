@@ -51,8 +51,9 @@ class Player {
                 this.game.status(`Picked up ${item.name}.`)
 
                 if (item.actions) {
-                    if (item.actions.read) {
+                    if (item.actions.read && !item.state.hasBeenRead) {
                         this.readItem(item)
+                        item.state.hasBeenRead = true
                     }
                 }
 
@@ -158,6 +159,8 @@ class Player {
 
     readItem (item) {
         this.game.title(`A ${item.name}`)
+        // IDEA: Replace title with `Note ${noteId}`
+        if (item.id.startsWith('note') && !item.state.hasBeenRead) item.state.hasBeenRead = true
         this.activeItem = item
         this.game.itemText('')
         item.actions.read(this.currentRoom)

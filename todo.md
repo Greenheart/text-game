@@ -140,6 +140,8 @@
 
 
 
+
+
 # To think about
 - How should room state be handled?
     - Some rooms may need to print different information at the first visit than when they are re-visited.
@@ -164,10 +166,6 @@
 - Rooms keep tracked of this.visited status
     - Show different descriptions based on the results
     - Solve by using a `description` function
-
-- add note.read as a boolean to note.state
-    - Keep track of if the player read the note or not
-    - When taking up the note: Only also force read it if its not already read.
 
 - Basic map in the bottom right corner
     - Show squares to represent rooms.
@@ -305,6 +303,10 @@
 
 
 # Done
+- add note.read as a boolean to note.state
+    - Keep track of if the player read the note or not
+    - When taking up the note: Only also force read it if its not already read.
+
 - Improve the error messages for missing data:
     - Instead of asking a question like "What do you want to pick up?", tell them that "What do you want to take up? Usage: `take [object]`."
 
