@@ -8,7 +8,7 @@ class Room {
             if (i.movable === undefined) i.movable = true
             return i
         })
-        this.visited = !!room.visited
+        this.visited = this.name === 'start' ? true : false
         // Initially, connections are just a map of directions and corresponding room names.
         this.connections = room.connections || {}
         this.description = room.description
@@ -18,7 +18,7 @@ class Room {
 
     show () {
         this.game.title(this.title)
-        this.game.text(this.description)
+        this.game.text(typeof this.description === 'function' ? this.description(this) : this.description)
         this.showItems()
     }
 

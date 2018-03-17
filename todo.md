@@ -163,10 +163,6 @@
 ---
 # Ideas
 
-- Rooms keep tracked of this.visited status
-    - Show different descriptions based on the results
-    - Solve by using a `description` function
-
 - Basic map in the bottom right corner
     - Show squares to represent rooms.
     - Show connections to other rooms
@@ -303,6 +299,10 @@
 
 
 # Done
+- Show different descriptions based on if rooms have been visited.
+    - Rooms keep track of this.visited status
+    - Solve by using a `description` function
+
 - add note.read as a boolean to note.state
     - Keep track of if the player read the note or not
     - When taking up the note: Only also force read it if its not already read.

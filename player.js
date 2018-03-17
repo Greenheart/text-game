@@ -17,6 +17,7 @@ class Player {
                 this.currentRoom = this.currentRoom.connections[direction]
                 ++this.moves
                 this.currentRoom.show()
+                this.currentRoom.visited = true
             } else {
                 // Show the reason why player can't leave.
                 this.game.status(playerCanLeave)
