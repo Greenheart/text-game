@@ -206,10 +206,6 @@
                     - Then press enter to get back to the list again.
                 - and enter again to get back to the current room.
 
-- Display names of items that can be interacted with in *italics* font to make them stand out.
-    - Since they are shown in a separate section, the `#item-text` div, they are already pretty separated.
-    - This feature is however interesting for items that use a custom display - not the `#item-text` div, but custom text in the description.
-        - if used in this case, better be consistent?
 
 - Add new commands to the help section as the player progress through the world, instead of adding everything at once.
 
@@ -309,6 +305,11 @@
 
 
 # Done
+- Display names of items that can be interacted with in *italics* font to make them stand out.
+    - Since they are shown in a separate section, the `#item-text` div, they are already pretty separated.
+    - This feature is however interesting for items that use a custom display - not the `#item-text` div, but custom text in the description.
+        - if used in this case, better be consistent?
+
 - Maybe fix the text highlighting issue caused by the DOM-order where inventory is in between the header and the gameText. *Or maybe not worth it.*
     - Disable highlighting for
         - inventory
