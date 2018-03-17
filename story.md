@@ -31,6 +31,8 @@
 
 ### Intro part 1
 
+- *NOTE*: Make sure the pacing of the intro is sufficient. A too slow game is not engaging enough for most players.
+
 In a time of great technological advances, life is less about knowing the answers, but more about asking the right questions.
 
 This is a story to make you think. See beyond the words and look at the meaning of the bigger picture. With some patience, you might be surprised of what you'll find ahead.

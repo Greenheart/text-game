@@ -45,12 +45,6 @@
     - Appear when interesting
     - The character tells interesting details and thoughts that add to the backstory and depth of the game.
 
-- Tasks
-    - Add UI component to show tasks
-    - A room shows a thought bubble (representing the player's own thoughts) "This chest is locked. I wonder if there's a key somewhere..."
-    - This could give the player clues to help them progress.
-    - Timed tasks (complete X before a certain in game date/time)
-
 - Change the pace of the game
     - Start with a slow pace and unfold the mystery slightly while teaching the player the basics of gameplay.
     - Eventually, increase the pace - e.g. let the player complete a task before a certain in game date/time.
@@ -67,21 +61,25 @@
     - "Generally speaking, commands follow the structure `[verb] [object]`."
 - Make them learn basic commands through the early game.
     - "If you want to learn more, see `help`" instead of an indirect "read the help before you start."
-
-- Make sure fonts are consistent across browsers.
-    - Look into using the Chrome monospace font as default game font.
+    - The very first room, `start`, could for example use a status message that says something like "You can move to a new room by entering the direction you want to go in."
+    - Or perhaps use a custom `.tutorial` section that is shown on key points of the gameplay. This way, messages could stick around without interfering with features used for the gameplay.
 
 - Update `help` with new commands.
 
-
-- Investigate how to avoid duplicate actions for items. Maybe add some way to specify which actions that can result in the same function being executed?
-    - An array of acceptable action verbs for a given function
-    - Or an object with the two properties: 1) the function to execute, and 2) the verbs to execute it for.
-
-- Add `inspect [object]` command - "Take a moment to determine what you can do with an object."
+- Add `inspect [object]` command - "Take a moment to determine how you can interact with an object. Very useful if you don't know what to do."
     - Useful to help the player when they are stuck.
+    - *Though, this situation should hopefully be avoided - by giving the players clear ideas of what to do, through tasks or through the room descriptions.*
 
-    - Add description / or task to find out if the friend is at home or not.
+- Tasks
+    - Add UI component to show tasks
+    - A room shows a thought bubble (representing the player's own thoughts) "This chest is locked. I wonder if there's a key somewhere..."
+    - This could give the player clues to help them progress.
+    - Timed tasks (complete X before a certain in game date/time)
+    - Think about when and how to check for task updates
+        - Probably around the time that the player inventory is displayed.
+
+    - Introduce the first task once the player opens the door.
+        - Add the task to the task UI component.
         - "Find out if your friend is at home. Why is the door open?"
 
 
@@ -96,10 +94,29 @@
     - Standing open, looks like someone searched through it in a hurry.
 
 
+- Kitchen
+    - TV time table on the fridge door
+        - might imply that the friend is not himself.
+        - might also give a clue that the TV is important for the story.
+
+- Add a poster somewhere in the Apartment
+    - about the company and what they do
+        - might imply that the friend is not himself.
+
+
+
+- Add the name of the friend
+    - Kevin
+
+
+
 
 
 # Bugs
-
+- Maybe fix the text highlighting issue caused by the DOM-order where inventory is in between the header and the gameText. *Or maybe not worth it.*
+    - Disable highlighting for
+        - inventory
+        - status message
 
 
 # In progress
@@ -111,10 +128,6 @@
 
 
 # To think about
-- Should the dictionary define common actions?
-    - These actions would be usable only if items (targets of the action) meet certain requirements.
-- or should all items define their own actions, allowing for customization?
-
 - How should room state be handled?
     - Some rooms may need to print different information at the first visit than when they are re-visited.
         - For this, maybe use `room.visited` to alter description and other things.
@@ -122,15 +135,47 @@
             - This way, the description can be altered based on state, with minimal changes to the game engine.
     - Others need to have special behaviors.
     - Adding on custom methods to every room might work, but could be messy.
+        - An example that works is `Room.playerCanLeave()` that lets the game engine know if the current room state allows the player to leave the room in the direction they want.
 
-- Maybe replace `Player.use()`, `Player.check()` and similar verb-actions with a generic method, that branches out to the specific logic for each action?
-    - Ex. call the specific `useItem()` from the generic method based on the verb.
+- *Should players be limited from going back to the start rooms?*
+    - Probably not, as it's hard to know what rooms can be returned to and which that can't.
+    - In some cases, this could be an interesting game mechanic, but then the player needs to be aware that their actions are permanent and that they can't change things afterwards.
+
+
 
 
 
 ---
 # Ideas
-- The notes left behind by the friend could be diary entries
+
+- Rooms keep tracked of this.visited status
+    - Show different descriptions based on the results
+    - Solve by using a `description` function
+
+- add note.read as a boolean to note.state
+    - Keep track of if the player read the note or not
+    - When taking up the note: Only also force read it if its not already read.
+
+- Basic map in the bottom right corner
+    - Show squares to represent rooms.
+    - Show connections to other rooms
+    - Show the player
+    - This way, the basic directions
+    - Mini compass: show directions on each side of the map with an arrow. N, S, E, W
+
+    -Simplified idea (to save dev time):
+        - Could be shaped as a compass (circle)
+        - Show current room short name/title in the center.
+        - Highlight available directions to move in.
+        - Fade out unavailable directions.
+
+- Add "The" in front of rooms to make rooms feel more significant.
+
+- On keydown event - always focus the input field
+- Add note collection and improve how notes work.
+    - When taking notes, add them to the collection, instead of inventory
+
+    - The notes left behind by the friend could be diary entries
     - *TODO*: Add support for multiple notes.
     - State a date, but no year, to leave that up for interpretation by the player.
     - Should these be added to some kind of collection that remains with the player through the game?
@@ -140,23 +185,30 @@
             - *TODO*: Figure out a convenient way for the player to read them
                 - Maybe through "read notes"
                     - Once that command is submitted, the player will see a list of all notes.
+                        - Show note number and its date
                     - To view individual notes, enter the number of the note
                         - E.g. "1" + [Enter] which shows note number 1.
                     - Then press enter to get back to the list again.
                 - and enter again to get back to the current room.
 
 - Display names of items that can be interacted with in *italics* font to make them stand out.
+    - Since they are shown in a separate section, the `#item-text` div, they are already pretty separated.
+    - This feature is however interesting for items that use a custom display - not the `#item-text` div, but custom text in the description.
+        - if used in this case, better be consistent?
 
 - Add new commands to the help section as the player progress through the world, instead of adding everything at once.
 
 - Maybe add a slight delay - or a typing effect, adding character by character to the screen as new information is available.
     - This would reduce instant reactions and make the game feel more relaxed
     - Maybe this could also be achieved by adding slight delays (200-400 ms)
+    - Another idea is to let rooms fade in and out over this transition time.
 
 - Make decisions in other ways than writing
     - (Clicking on buttons or graphics)
         - The text based is engaging in its own way, it will be special for players who aren't used to the style of game - but hopefully the story is engaging enough to keep them going.
-    - Select from predefined responses when conversing with NPCs.
+    - **Select from predefined responses**
+        - when conversing with NPCs
+        - when having to make choices in intense moments where the player only can do one thing.
 
 - The player will meet different characters
     - In short, the relationships with other characters matter.
@@ -169,30 +221,33 @@
 
 - Save progress using localStorage
     - Perhaps tied to the player name - allows multiple saves.
+    - On start screen, users can choose a saved game from the list - or enter a name to start a new game.
+        - If no games yet: only display "Enter your name" and input field.
     - Show list of usernames to represent saves.
-    - Click a name to load it
-    - Possibly some feature to delete a save
-    - Add save command - or add autosave to when the browser unloads.
+        - a table structure would make alignments of names and buttons simple.
+    - Click a name to load it (anchor tag with onclick)
+    - Possibly some feature to delete a save (click a small 'X' button to the right of the name)
+    - Add save command - and/or add autosave to when the browser unloads and possibly every N minutes.
 
 - Make the text pop out a bit when appearing
     - Otherwise it will look pretty stale and people might not get that there is new text on the screen than from the previous text message
-    - Background color on status message and room title
+    - Background color on status message (and any additions to #game-text)
+        - add a span with a transition class to the newly added text.
+        - add the transition class to the status message
+        - remove classes after a timeout
     - Maybe add a slight gray background that fades out over time.
 
-
-- Diary
-    - Keep notes created by the player to help them solve the mystery
-    - Automatically add important information for the puzzles or story.
-        - Add backstory as the player discovers things
+    - Animate the status message
+        - Make it bounce from side to side when a status message is shown.
 
 - Gameplay ideas:
     - The player gathers items, to craft tools, to solve puzzles/tasks.
     - The player is encouraged to explore and experiment.
 
+- Add about section to my samuelplumppu.se:
+    - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
 
-- Add window.DEBUG options:
-    - Quickly start at a specific room, with a specific state.
-    - automatically set username and start the selected room.
+    This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
 
 
 
@@ -200,33 +255,22 @@
 
 ---
 # Low prio ideas
-- Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
+- In the sofa, it could be possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
 
-- in the sofa, it could be possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
+- Make sure fonts are consistent across browsers.
+- Look into using the Chrome monospace font (Consolas) as default game font.
+- Consolas seems to be preinstalled on both macOS and Windows, which will be the main platforms. Look into supplying it as a web font, to support Linux.
+- *Lower prio, as the main platforms macOS and Windows work decently. Focus on gameplay.*
 
 - Background images related to each room
     - If well selected from unsplash and similar, it will improve immersion and help tell the story.
+        - *Interesting idea, but will require some work to implement.*
+        - Easier, to just let the player imagine how the environment look like.
 
-- Gameplay idea:
-    - "Eat/do something that doesn't make sense" => get a unexpected secret/ progression in the game/story.
-    - E.g. doing something weird opens a door and a person comes out saying "Wait! You can't do that"
+- Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
+    - *Or just don't use that many items in the game - Only use those that add value to the gameplay experience.*
 
-- The player gets some kind of score by doing things?
-    - Getting items, helping people
 
-- Add fun responses as status messages:
-    - "You think that's a good idea? Hah!"
-    - "Good luck with that!"
-
-- Animate the status message
-    - Make it bounce from side to side when a status message is shown.
-
-- Add about section to either game page itself or on my website:
-    - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
-
-    This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
-
-- Maybe fix the text highlighting issue caused by the DOM-order where inventory is in between the header and the gameText. Or maybe not worth it.
 
 ---
 # Inspiration
@@ -246,6 +290,10 @@
 
 
 # Done
+- Add window.DEBUG options:
+    - Quickly start at a specific room, with a specific state.
+    - automatically set username and start the selected room.
+
 - Prevent movement and actions when user is in the help menu, when game.gameStarted === true.
 - Maybe even make the input uneditable - only accept enter.
 
@@ -363,3 +411,50 @@
     - List them on the side of the main screen
 
 - The player shouldn't be able to have a username that is a command in the game, or other keywords (maybe?).
+
+
+
+
+
+
+
+
+---
+
+
+# Archived Ideas
+## Either won't fix - or not suitable for the theme of this game
+- Investigate how to avoid duplicate actions for items. Maybe add some way to specify which actions that can result in the same function being executed?
+    - An array of acceptable action verbs for a given function
+    - Or an object with the two properties: 1) the function to execute, and 2) the verbs to execute it for.
+        - *Low prio, until this becomes a significant problem with 10+ instances of items that reuse actions*
+
+- Maybe replace `Player.use()`, `Player.check()` and similar verb-actions with a generic method, that branches out to the specific logic for each action?
+    - Ex. call the specific `useItem()` from the generic method based on the verb.
+    - *This is not needed at this time - currently only a waste of time*
+
+- Player diary
+    - Keep notes created by the player to help them solve the mystery
+        - *There isn't really that much to keep track of. They can do it on their own.*
+    - Automatically add important information for the puzzles or story.
+        - Add backstory as the player discovers things
+        - *This doesn't add to the theme of the game. The player need to discover things themselves.*
+
+- Gameplay idea:
+    - "Eat/do something that doesn't make sense" => get a unexpected secret/ progression in the game/story.
+    - E.g. doing something weird opens a door and a person comes out saying "Wait! You can't do that"
+    - *Might work, but the theme of the game is dark, mystery which doesn't really fit with this idea.*
+
+- The player gets some kind of score by doing things?
+    - Getting items, helping people
+    - *Not suitable for this game at all since it's narrative driven.*
+
+- Add fun responses as status messages:
+    - "You think that's a good idea? Hah!"
+    - "Good luck with that!"
+    - *Don't add to the theme of theme of the game.*
+
+- Should the dictionary define common actions?
+    - These actions would be usable only if items (targets of the action) meet certain requirements.
+- or should all items define their own actions, allowing for customization?
+    - *For now, items with custom actions seems to work fine.*
