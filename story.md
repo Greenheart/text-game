@@ -68,26 +68,48 @@ This is an exploration of interactive storytelling. Of how to make characters an
 ---
 
 ### The Apartment
-- The friend's apartment
-- Notes dropped, revealing the friend's thoughts bit by bit.
+- The best friend Kevin's apartment
 - Walk through different rooms, inspect objects, interact with the environment.
+- Notes providing backstory scattered across the apartment
+- Objects that reveal memories and other details that add to the story.
 
 #### Story key points
-- Phone rings
-- Some important object to see/pick up?
-- Notes providing backstory
-- Objects that reveal memories and other details that add to the story.
+- Try to find Kevin
+- When the player "realizes" he's not there (by completing their first task)
+    - Sofa (TV) room is unlocked
+    - make player go there and watch TV
+
+- Player watches the news, where they discuss something that reveals a clue.
+- TV reveals clues
+    - Make player go to the computer
+        - computer has no password - because the friend has bad memory so he don't want to risk losing his data.
+    - Search for information related to the
+
+- When tasks are completed, the phone rings
+    - Make some kind of decision at this point, which affects the future of the game.
+    - Then, this is a pretty good point to move on to the next environment.
 
 #### Items
 - Notes revealing back story
+- Some important objects to see/pick up?
+    - A company poster/brochure
+    - A TV time table with some TV-shows circled in
+        - "Who even keeps these things these days? There's an app for that. In the TV itself."
+        - This implies that the friend has memory problems, and need to use various things to help him in his everyday life.
+    - Blood stain
+        - Don't tell the player at this point, but it's coming from the friend who's getting negative side effects because of the device he's testing for work.
+    - Digital photo frame
+        - Reveal memories, discuss backstory for those players that are interested.
+        - This also implies that the friend has memory problems. He tries to remember old times through the few photos he actually kept, but still has trouble seeing anything more except the images themselves.
 
 #### Actions
 - Answer the phone in the friend's apartment.
 
 #### Tasks?
-- Maybe not introduce them yet?
-- Or maybe teach the basic concept
-    - "Find out what has happened in the apartment. Where's your friend?"
+- Use tasks in this environment to teach the basics of the game.
+    - Make the player comfortable.
+1. "Find out what has happened in the apartment. Where's your friend?"
+2. Watch TV while waiting for the friend
 
 
 ---
@@ -111,12 +133,16 @@ This is an exploration of interactive storytelling. Of how to make characters an
 
 #### Story key points
 - The friend reveals his new job in a dialogue.
+- Seems excited
+- The player's character asks some questions which makes the player think, but is met by enthusiasm from Kevin.
+    - Make the player feel suspicious of Kevin's job after reading this.
 
 #### Items
 
 #### Actions
 - Talk to the friend.
     - Branched conversation with different replies to choose from.
+    - Could affect the ending.
 
 #### Tasks?
 

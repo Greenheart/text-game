@@ -142,20 +142,12 @@
 
 
 # To think about
-- How should room state be handled?
-    - Some rooms may need to print different information at the first visit than when they are re-visited.
-        - For this, maybe use `room.visited` to alter description and other things.
-            - One solution could be that, if the room needs dynamic description, set description to a function rather than a string
-            - This way, the description can be altered based on state, with minimal changes to the game engine.
-    - Others need to have special behaviors.
-    - Adding on custom methods to every room might work, but could be messy.
-        - An example that works is `Room.playerCanLeave()` that lets the game engine know if the current room state allows the player to leave the room in the direction they want.
-
 - *Should players be limited from going back to the start rooms?*
     - Probably not, as it's hard to know what rooms can be returned to and which that can't.
     - In some cases, this could be an interesting game mechanic, but then the player needs to be aware that their actions are permanent and that they can't change things afterwards.
 
-
+- Maybe the game doesn't need to be that open after all. It might fit better with the theme (and be easier to develop). A game where the story is more linear, but offer small variations that add replayability and time for exploration, is likely a better approach than a massive open world game with separate story lines and player choices.
+    - Maybe it can be a mystery game even though it's linear? Indeed it can!
 
 
 
@@ -254,6 +246,10 @@
 # Low prio ideas
 - In the sofa, it could be possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
 
+- Make sure the game UI is responsive on smaller screen sizes.
+    - Focus down to small laptops
+    - Also check high res viewports too.
+
 - Make sure fonts are consistent across browsers.
 - Look into using the Chrome monospace font (Consolas) as default game font.
 - Consolas seems to be preinstalled on both macOS and Windows, which will be the main platforms. Look into supplying it as a web font, to support Linux.
@@ -302,6 +298,20 @@
 
 
 # Done
+- How should room state be handled?
+    - Some rooms may need to print different information at the first visit than when they are re-visited.
+        - For this, maybe use `room.visited` to alter description and other things.
+            - One solution could be that, if the room needs dynamic description, set description to a function rather than a string
+            - This way, the description can be altered based on state, with minimal changes to the game engine.
+    - Others need to have special behaviors.
+    - Adding on custom methods to every room might work, but could be messy.
+        - An example that works is `room.playerCanLeave()` that lets the game engine know if the current room state allows the player to leave the room in the direction they want.
+    - **Conclusion:**
+        - Use `room.state` for custom state used by the room.
+        - Common state, like `room.visited` will be set by the game engine itself.
+        - Use dynamic descriptions (a function) if the need arises.
+        - Standardize methods as far as possible, e.g. `room.playerCanLeave()`
+
 - Add the name of the friend: Kevin
 
 - Show different descriptions based on if rooms have been visited.
