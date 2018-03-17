@@ -1,4 +1,5 @@
-# text-game
+# The Responsible
+> An interactive story written by Samuel & Joel Plumppu
 
 In a time of great technological advances, life is less about knowing the answers, but more about asking the right questions.
 
