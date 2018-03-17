@@ -136,6 +136,49 @@
 
 
 
+- Add note collection and improve how notes work.
+    - When taking notes, add them to the collection, instead of inventory
+        - Maybe show another message to highlight that this isn't added to the inventory, but another place: "Added a new note to your collection."
+
+    - The notes left behind by the friend could be diary entries
+    - *TODO*: Add support for multiple notes.
+    - State a date, but no year, to leave that up for interpretation by the player.
+    - Should these be added to some kind of collection that remains with the player through the game?
+        - In that case, don't add them to the inventory.
+        - Also don't allow them to be dropped
+        - Store them in `player.collection.notes` or just `player.notes`
+            - *TODO*: Figure out a convenient way for the player to read them
+                - Maybe through "read notes"
+                    - Once that command is submitted, the player will see a list of all notes.
+                        - Show note number and its date
+                    - To view individual notes, enter the number of the note
+                        - E.g. "1" + [Enter] which shows note number 1.
+                    - Then press enter to get back to the list again.
+                - and enter again to get back to the current room.
+
+
+## To implement note collection
+1. When interacting with a note (take, read) for the first time, add it to `player.notes`, instead of inventory. `player.notes` remain the whole session: notes don't need to be dropped.
+
+2. Show message: "You found a new note. Use `read notes` to view your collection."
+
+3. Add command `read notes`. `notes` need to be some kind of keyword
+    - Set the title to `Note Collection`
+    - This command shows a list of notes:
+        - Note #1 - April 12th
+        - Note #6 - May 1st
+
+4.  In this list, enter the number of the note you want to read and press enter to view it.
+    - This requires some kind of flag to trigger another parser than the regular one - this feature could also be useful in other contexts.
+        - This temporary parser could offer greater freedom in game mechanics and allow different rooms to have their unique features.
+        - Maybe `game.temporaryCommandParser` could be set to a function at those times when it's needed. In the regular parser, wrap everything in a conditional. Use the temporary parser if its set.
+        When the section is completed, unset the temporary parser again.
+        - This way, entire custom sections could easily be added onto the core game engine.
+        - Maybe add this code to another file than the main one to organize the project better.
+    - Use regular `note.actions.read()` to show contents
+
+5. Press enter to get back to the `read notes` menu
+6. Press enter again to return to the current room.
 
 
 
@@ -167,27 +210,6 @@
         - Show current room short name/title in the center.
         - Highlight available directions to move in.
         - Fade out unavailable directions.
-
-- Add note collection and improve how notes work.
-    - When taking notes, add them to the collection, instead of inventory
-        - Maybe show another message to highlight that this isn't added to the inventory, but another place: "Added a new note to your collection."
-
-    - The notes left behind by the friend could be diary entries
-    - *TODO*: Add support for multiple notes.
-    - State a date, but no year, to leave that up for interpretation by the player.
-    - Should these be added to some kind of collection that remains with the player through the game?
-        - In that case, don't add them to the inventory.
-        - Also don't allow them to be dropped
-        - Store them in `player.collection.notes` or just `player.notes`
-            - *TODO*: Figure out a convenient way for the player to read them
-                - Maybe through "read notes"
-                    - Once that command is submitted, the player will see a list of all notes.
-                        - Show note number and its date
-                    - To view individual notes, enter the number of the note
-                        - E.g. "1" + [Enter] which shows note number 1.
-                    - Then press enter to get back to the list again.
-                - and enter again to get back to the current room.
-
 
 - Add new commands to the help section as the player progress through the world, instead of adding everything at once.
 
