@@ -36,7 +36,7 @@ class Player {
         if (split.length < 2) {
             // TODO: possibly allow multiple inputs in the same action.
             // To allow infomration to be entered in multiple steps.
-            this.game.status('What do you want to take up?')
+            this.game.status('What do you want to take up? Usage: <span class="code dark-bg">take [object]</span>.')
             return
         }
 
@@ -71,7 +71,7 @@ class Player {
 
     drop (input, split) {
         if (split.length < 2) {
-            this.game.status('What do you want to drop?')
+            this.game.status('What do you want to drop? Usage: <span class="code dark-bg">drop [object]</span>.')
             return
         }
 
@@ -91,7 +91,7 @@ class Player {
 
     use (input, split) {
         if (split.length < 2) {
-            this.game.status('What do you want to use?')
+            this.game.status('What do you want to use? Usage: <span class="code dark-bg">use [object]</span>.')
             return
         }
 
@@ -115,7 +115,7 @@ class Player {
 
     check (input, split) {
         if (split.length < 2) {
-            this.game.status('What do you want to check?')
+            this.game.status('What do you want to check? Usage: <span class="code dark-bg">check [object]</span>.')
             return
         }
 
@@ -139,7 +139,7 @@ class Player {
 
     read (input, split) {
         if (split.length < 2) {
-            this.game.status('What do you want to read?')
+            this.game.status('What do you want to read? Usage: <span class="code dark-bg">read [object]</span>.')
             return
         }
 

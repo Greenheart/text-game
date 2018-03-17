@@ -161,9 +161,6 @@
 ---
 # Ideas
 
-- Improve the error messages for missing data:
-    - Instead of asking a question like "What do you want to pick up?", tell them that "What do you want to take up? Usage: `take [object]`."
-
 - Rooms keep tracked of this.visited status
     - Show different descriptions based on the results
     - Solve by using a `description` function
@@ -187,6 +184,7 @@
 
 - Add note collection and improve how notes work.
     - When taking notes, add them to the collection, instead of inventory
+        - Maybe show another message to highlight that this isn't added to the inventory, but another place: "Added a new note to your collection."
 
     - The notes left behind by the friend could be diary entries
     - *TODO*: Add support for multiple notes.
@@ -271,6 +269,10 @@
 - Consolas seems to be preinstalled on both macOS and Windows, which will be the main platforms. Look into supplying it as a web font, to support Linux.
 - *Lower prio, as the main platforms macOS and Windows work decently. Focus on gameplay.*
 
+- When autocompleting objects without having any search term, cycle through all available objects one by one, one for each consecutive tab press.
+    - *This needs some work, but could be a nice feature* to quickly enter objects in rooms.
+    - At the same time, this takes away from the experience of finding objects that are part of puzzles and similar.
+
 - Background images related to each room
     - If well selected from unsplash and similar, it will improve immersion and help tell the story.
         - *Interesting idea, but will require some work to implement.*
@@ -303,6 +305,9 @@
 
 
 # Done
+- Improve the error messages for missing data:
+    - Instead of asking a question like "What do you want to pick up?", tell them that "What do you want to take up? Usage: `take [object]`."
+
 - Add "The" in front of rooms to make rooms feel more significant.
 
 - Display names of items that can be interacted with in *italics* font to make them stand out.
