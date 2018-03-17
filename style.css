@@ -145,9 +145,14 @@ footer {
     display: flex;
     flex-direction: column;
     position: fixed;
-    bottom: 45vh;
+    bottom: 11vh;
     width: 600px;
     font-size: 16px;
+}
+
+footer.center {
+    position: static;
+    margin-top: 20vh;
 }
 
 #status-text {
@@ -212,8 +217,8 @@ b {
     }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (min-height: 700px) {
     footer {
-        bottom: 75px;
+        bottom: 20vh;
     }
 }

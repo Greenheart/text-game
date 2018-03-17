@@ -99,11 +99,6 @@
 
 
 # Bugs
-- Fix positioning for the input field.
-    - This is caused by the positioning of the input field + status message. It needs to get a better positioning.
-    - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
-    - Use different positioning on start screen.
-
 - Prevent movement and actions when user is in the help menu, when game.gameStarted === true.
 
 - Make sure to clear the status message when new commands are entered in the help menu - they should not stick around until the help menu is closed and the player returns to the main menu.
@@ -253,6 +248,11 @@
 
 
 # Done
+- Fix positioning for the input field.
+    - This is caused by the positioning of the input field + status message. It needs to get a better positioning.
+    - When the player has typed 'help' and then tries to type a command like 'continue' for example, the help 'window' will not disappear and there will be multiple layers of text on top of each other.
+    - Use different positioning on start screen.
+
 - Add autocomplete of available commands.
     - Use tab to quickly autocomplete input.
 

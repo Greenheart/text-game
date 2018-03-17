@@ -34,6 +34,7 @@ class Game {
         this.status('')
         this.gameStarted = true
         this.useNormalPlaceholder()
+        document.querySelector('footer').classList.remove('center')
         Helpers.hide(this.ui.mainMenu)
         Helpers.show(this.ui.gameContent)
         this.visibleSection = this.ui.gameContent
