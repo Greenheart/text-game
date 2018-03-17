@@ -99,11 +99,13 @@
 
 
 # Bugs
-- Prevent movement and actions when user is in the help menu, when game.gameStarted === true.
+
 
 
 # In progress
 - Add new rooms according to the updated apartment structure.
+
+
 
 
 
@@ -244,6 +246,9 @@
 
 
 # Done
+- Prevent movement and actions when user is in the help menu, when game.gameStarted === true.
+- Maybe even make the input uneditable - only accept enter.
+
 - Make sure to clear the status message when new commands are entered in the help menu - they should not stick around until the help menu is closed and the player returns to the main menu.
     - Maybe clear the status once the done() method is executed?
     - Or always when a new command is entered?

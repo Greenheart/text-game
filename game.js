@@ -61,7 +61,7 @@ class Game {
     parseCommand (input) {
         const split = input.split(/\s+/)
 
-        if (this.gameStarted) {
+        if (this.gameStarted && this.visibleSection !== this.ui.help) {
             if (this.isDirection(input)) {
                 this.player.move(input)
             } else if (this.isDirectionAlias(input)) {
