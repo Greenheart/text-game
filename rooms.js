@@ -5,10 +5,10 @@
             'north': 'apartment.outside'
         },
         description: `<p>
-            You're on your way to your best friend's place. He tried calling you three times earlier today and eventually left a message.<br>
+            You're on your way to your best friend Kevin's place. He tried calling you three times earlier today and eventually left a message.<br>
         </p>
         <p><i>"I can't believe this is happening... I have something important to tell you. Could you come over?"</i></p>
-        <p>So here you are on the street, leading <b>north</b> to your friend's apartment.</p>`,
+        <p>So here you are on the street, leading <b>north</b> to your his apartment.</p>`,
         title: 'The Beginning'
     }
 
@@ -70,7 +70,7 @@
                     }
                 }
             },
-            description: `<p>You're standing outside your friend's door. He lives on the fifth floor in a pretty new house.</p>
+            description: `<p>You're standing outside your Kevin's door. He lives on the fifth floor in a pretty new house.</p>
             <p>Gosh, it's already been three months since he moved in, even though it feels like yesterday. It was also somewhere around that time that he started his new job.</p>`
         },
         hallway: {
@@ -90,7 +90,7 @@
                 state: {}
             }],
             title: 'The Hallway',
-            description: `<p>Your friend's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
+            description: `<p>Kevin's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
             There are two doorways: One leading to the <b>north</b> and another to the <b>east</b>.</p>`
         },
         bathRoom: {
@@ -112,7 +112,7 @@
             title: 'The Shower',
             description: `<p>There is blood stained on the glass doors.</p>
             <p>After a closer look, you even notice there's a blood trail on the floor, leading all the way back to the hallway door in the <b>west</b>.</p>
-            <p>Wonder if this is what your friend wanted to talk about.</p>`
+            <p><i>Wonder if this is what Kevin wanted to talk about.</i></p>`
         },
         kitchen: {
             name: 'apartment.kitchen',
@@ -166,10 +166,10 @@
             // Maybe only allow the player to visit the sofa if they have completed the task to find out their friend's whereabouts.
             // Then add additional description to the livingRoom (or wherever the player currently is)
                 // "Maybe I could check relax in the sofa while I wait." This gives incitement to visit the sofa once it's unlocked.
-            description: `<p>All the devices and consoles of different shapes and colors tell about your friend's technology interest.
+            description: `<p>All the devices and consoles of different shapes and colors tell about his technology interest.
             Some are even partially disassembeled, or have custom hardware modifications.</p>
             <p>You notice that one of the newest media devices is connected to the TV. That couldn't have been cheap.<p>
-            <p>Sitting in the comfortable sofa, you wonder when your friend will come home. It's starting to get late. Maybe you can do something while waiting.</p>
+            <p>Sitting in the comfortable sofa, you wonder when Kevin will come home. It's starting to get late. Maybe you can do something while waiting.</p>
             <p>The center of the living room is to your <b>south</b></p>`,
             title: 'In the sofa in front of the TV',
             items: [{
@@ -246,8 +246,8 @@
             // `item.useDefaultDisplay` - if item.useDefaultDisplay !== false:
             // IDEA: Make it possible for items to explicitly tell the room to not use the standard showItems().
             // This would allow more customizable description of the items - especially useful for the computer items which essentially represent actions.
-            description: `<p>As the computer starts, you realize that your friend has no password. So careful with security in all other ways, yet leaving this detail.</p>
-            <p>Just imagine what a burglar, casually walking into his unlocked apartment could do. Hehe...</p>
+            description: `<p>As the computer starts, you realize that Kevin has no password. So careful with security in all other ways, yet leaving this detail.</p>
+            <p><i>Just imagine what a burglar, casually walking into his unlocked apartment could do. Hehe...</i></p>
             <p>Go <b>east</b> to get back to the desk.</p>`
         }
     }

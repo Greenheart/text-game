@@ -120,8 +120,7 @@
 
 
 
-- Add the name of the friend
-    - Kevin
+
 
 
 
@@ -155,6 +154,7 @@
 - *Should players be limited from going back to the start rooms?*
     - Probably not, as it's hard to know what rooms can be returned to and which that can't.
     - In some cases, this could be an interesting game mechanic, but then the player needs to be aware that their actions are permanent and that they can't change things afterwards.
+
 
 
 
@@ -245,10 +245,6 @@
     - The player gathers items, to craft tools, to solve puzzles/tasks.
     - The player is encouraged to explore and experiment.
 
-- Add about section to my samuelplumppu.se:
-    - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
-
-    This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
 
 
 
@@ -275,6 +271,13 @@
 - Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
     - *Or just don't use that many items in the game - Only use those that add value to the gameplay experience.*
 
+- Add about section to my samuelplumppu.se:
+    - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
+
+    This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
+    - *Create the game first*
+
+
 
 
 ---
@@ -299,6 +302,8 @@
 
 
 # Done
+- Add the name of the friend: Kevin
+
 - Show different descriptions based on if rooms have been visited.
     - Rooms keep track of this.visited status
     - Solve by using a `description` function
