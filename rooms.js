@@ -152,7 +152,7 @@
                 'north': 'apartment.livingRoom.sofa'
             },
             title: 'Living Room',
-            description: `<p>Big and open, this room is the centre of the apartment. The late afternoon sun shines through the windows, warming your feet.</p>
+            description: `<p>Big and open, this room is the center of the apartment. The late afternoon sun shines through the windows, warming your feet.</p>
             <p>Right in front of you, to the <b>north</b>, is a sofa and TV with all kinds of game consoles.
             You can also go <b>west</b> to the workspace, <b>east</b> to the kitchen, or <b>south</b> to the hallway.</p>`
         },
@@ -169,7 +169,7 @@
             Some are even partially disassembeled, or have custom hardware modifications.</p>
             <p>You notice that one of the newest media devices is connected to the TV. That couldn't have been cheap.<p>
             <p>Sitting in the comfortable sofa, you wonder when your friend will come home. It's starting to get late. Maybe you can do something while waiting.</p>
-            <p>The centre of the living room is to your <b>south</b></p>`,
+            <p>The center of the living room is to your <b>south</b></p>`,
             title: 'In the sofa in front of the TV',
             items: [{
                 name: 'photo frame',
@@ -220,7 +220,7 @@
                 }
             }],
             description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway. There's also a computer to your <b>west</b>.</p>
-            <p>If you continue past the desk and go <b>south</b>, you will get to the bedroom. Or go <b>east</b> to get back to the centre of the living room</p>`
+            <p>If you continue past the desk and go <b>south</b>, you will get to the bedroom. Or go <b>east</b> to get back to the center of the living room</p>`
             // IDEA: perhaps 'use computer' should navigate to the computer
             // For now though, just use normal directions to navigate between the computer and the room itself.
         },
