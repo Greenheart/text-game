@@ -55,7 +55,7 @@ class Game {
                 this.status(`You can't use a command as your username.`)
             } else {
                 this.player.name = rawInput.trimLeft().trimRight()
-                this.showMainMenu()
+                this.showMainMenu(true)
             }
         }
     }
@@ -147,7 +147,11 @@ class Game {
         }
     }
 
-    showMainMenu () {
+    showMainMenu (replaceDefault) {
+        if (replaceDefault) {
+            Helpers.show(this.ui.mainMenu.querySelector('.content'))
+            Helpers.hide(this.ui.mainMenu.querySelector('.creators'))
+        }
         this.visibleSection = this.ui.mainMenu
         Helpers.show(this.visibleSection)
         this.useStartPlaceholder()

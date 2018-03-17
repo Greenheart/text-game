@@ -89,17 +89,25 @@ span.code.dark-bg {
 }
 
 #title-text,
-h1 {
-    font-size: 27px;
+#main-menu h1 {
     text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 400;
+    border-bottom: 2px dotted rgba(70, 70, 70, .1);
 }
 
 #main-menu h1 {
-    font-family: "Courier New", Courier, monospace;
-    font-weight: 400;
     font-size: 50px;
-    border-bottom: 2px dotted rgba(70, 70, 70, .1);
     margin-bottom: 30px;
+}
+
+#title-text {
+    min-width: 300px;
+    font-size: 27px;
+}
+
+#title-text:empty {
+    display: none;
 }
 
 section p:first-of-type {
@@ -151,8 +159,7 @@ footer {
 }
 
 footer.center {
-    position: static;
-    margin-top: 20vh;
+    bottom: 30vh;
 }
 
 #status-text {
