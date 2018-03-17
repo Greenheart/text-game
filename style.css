@@ -21,6 +21,7 @@ main {
     min-width: 700px;
     max-width: 1100px;
     height: 80vh;
+    min-height: 400px;
     padding: 0 50px;
     font-family: Consolas, monospace;
     font-size: 18px;
@@ -128,6 +129,7 @@ section p:first-of-type {
     left: 10px;
     bottom: 10px;
     width: 14vw;
+    min-width: 200px;
     border: 2px solid darkgray;
     padding: 10px 20px;
     font-size: 16px;
