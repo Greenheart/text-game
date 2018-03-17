@@ -88,7 +88,7 @@
                     }
                 }
             }],
-            title: 'Hallway',
+            title: 'The Hallway',
             description: `<p>Your friend's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
             There are two doorways: One leading to the <b>north</b> and another to the <b>east</b>.</p>`
         },
@@ -98,7 +98,7 @@
                 'west': 'apartment.hallway',
                 'east': 'apartment.bathRoom.shower'
             },
-            title: 'Bathroom',
+            title: 'The Bathroom',
             description: `<p>In contrast to the hallway, the bathroom is quite large and open. The mix of light colors give you an easing feeling. However, there's just something that's off.</p>
             <p>There seems to be something stained on the glass surface of the shower cabinet.</p>
             <p>Go <b>east</b> to check the shower more closely. The hallway is to the <b>west</b>.</p>`
@@ -108,7 +108,7 @@
             connections: {
                 'west': 'apartment.bathRoom'
             },
-            title: 'Shower',
+            title: 'The Shower',
             description: `<p>There is blood stained on the glass doors.</p>
             <p>After a closer look, you even notice there's a blood trail on the floor, leading all the way back to the hallway door in the <b>west</b>.</p>
             <p>Wonder if this is what your friend wanted to talk about.</p>`
@@ -121,10 +121,10 @@
                 'east': 'apartment.kitchen.table'
             },
             items: [],
-            title: 'Kitchen',
+            title: 'The Kitchen',
             description: `<p>The first thing that hits you is the smell. It's most definitely coming from the mountains of unwashed dishes.</p>
             <p>To your <b>north</b>, the fridge's door is full of notes. They seem to be similar to the one from the hallway.</p>
-            <p>Table to your <b>east</b>. The living room is to your <b>west</b>.</p>`
+            <p>There's a kitchen table to the <b>east</b>. The living room is to the <b>west</b>.</p>`
         },
         fridge: {
             name: 'apartment.kitchen.fridge',
@@ -151,7 +151,7 @@
                 'east': 'apartment.kitchen',
                 'north': 'apartment.livingRoom.sofa'
             },
-            title: 'Living Room',
+            title: 'The Living Room',
             description: `<p>Big and open, this room is the center of the apartment. The late afternoon sun shines through the windows, warming your feet.</p>
             <p>Right in front of you, to the <b>north</b>, is a sofa and TV with all kinds of game consoles.
             You can also go <b>west</b> to the workspace, <b>east</b> to the kitchen, or <b>south</b> to the hallway.</p>`
@@ -205,7 +205,7 @@
                 'east': 'apartment.livingRoom',
                 'west': 'apartment.livingRoom.computer'
             },
-            title: 'Desk',
+            title: 'The Desk',
             items: [{
                 name: 'note',
                 id: 'note-2',
@@ -240,7 +240,7 @@
                 },
                 movable: false
             }],
-            title: 'Computer',
+            title: 'On the Computer',
             // `item.useDefaultDisplay` - if item.useDefaultDisplay !== false:
             // IDEA: Make it possible for items to explicitly tell the room to not use the standard showItems().
             // This would allow more customizable description of the items - especially useful for the computer items which essentially represent actions.

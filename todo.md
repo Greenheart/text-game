@@ -185,8 +185,6 @@
         - Highlight available directions to move in.
         - Fade out unavailable directions.
 
-- Add "The" in front of rooms to make rooms feel more significant.
-
 - Add note collection and improve how notes work.
     - When taking notes, add them to the collection, instead of inventory
 
@@ -305,6 +303,8 @@
 
 
 # Done
+- Add "The" in front of rooms to make rooms feel more significant.
+
 - Display names of items that can be interacted with in *italics* font to make them stand out.
     - Since they are shown in a separate section, the `#item-text` div, they are already pretty separated.
     - This feature is however interesting for items that use a custom display - not the `#item-text` div, but custom text in the description.
