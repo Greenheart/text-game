@@ -64,6 +64,21 @@
     - The very first room, `start`, could for example use a status message that says something like "You can move to a new room by entering the direction you want to go in."
     - Or perhaps use a custom `.tutorial` section that is shown on key points of the gameplay. This way, messages could stick around without interfering with features used for the gameplay.
 
+- Also make users aware of the convenience features that are available:
+    1. Press tab to autocomplete a command or an object.
+        - This is surprisingly accurate and saves a lot of typing.
+        - With this, it doesn't have to be as tedious to play a text game - now we can actually focus on one of the genre's great strengths: expressiveness and creative freedom.
+
+    2. Type anywhere on the page - everything will be added to the input field regardless of where the cursor is focused.
+
+    3. Use the arrow keys to navigate the command history
+        - This allows you to reuse your previous commands.
+        - When you've found what you want, just press enter.
+        - Remember that you always come back to a blank state
+            - This can be used to quickly clear the input field by pressing up and then down. And I thought CTRL + A was the best there was...
+
+    - These could be introduced in the beginning, or as tips later during the game. But at the very least, they should be mentioned so those who want to learn more can read about it before they start playing.
+
 - Update `help` with new commands.
 
 - Add `inspect [object]` command - "Take a moment to determine how you can interact with an object. Very useful if you don't know what to do."
