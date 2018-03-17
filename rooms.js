@@ -7,7 +7,7 @@
         description: `<p>
             You're on your way to your best friend's place. He tried calling you three times earlier today and eventually left a message.<br>
         </p>
-        <p>"I can't believe this is happening... I have something important to tell you. Could you come over?"</p>
+        <p><i>"I can't believe this is happening... I have something important to tell you. Could you come over?"</i></p>
         <p>So here you are on the street, leading <b>north</b> to your friend's apartment.</p>`,
         title: 'The Beginning'
     }
@@ -101,7 +101,7 @@
             title: 'Bathroom',
             description: `<p>In contrast to the hallway, the bathroom is quite large and open. The mix of light colors give you an easing feeling. However, there's just something that's off.</p>
             <p>There seems to be something stained on the glass surface of the shower cabinet.</p>
-            <p>Go <b>east</b> to check the shower more closely. The hallway is to the <b>west</b></p>`
+            <p>Go <b>east</b> to check the shower more closely. The hallway is to the <b>west</b>.</p>`
         },
         shower: {
             name: 'apartment.bathRoom.shower',
@@ -212,15 +212,15 @@
                 actions: {
                     read: room => {
                         room.game.text(`
-                            <p class="note-heading">Thursday 14th April</p>
-                            <p>My headaches are still getting worse. Even worse, they just keep saying everything will be fine eventually, that this is just a transitional phase.</p>
+                            <p class="note-heading">Thursday April 14th</p>
+                            <p>My headaches are still getting worse. Even worse, my colleagues just keep saying that everything will be fine eventually, that this is just a transitional phase.</p>
                             <p>I don't know anymore.</p>
                         `)
                     }
                 }
             }],
             description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway. There's also a computer to your <b>west</b>.</p>
-            <p>You can also continue past the desk and go <b>south</b> to the bedroom. Or go <b>east</b> to get back to the centre of the living room</p>`
+            <p>If you continue past the desk and go <b>south</b>, you will get to the bedroom. Or go <b>east</b> to get back to the centre of the living room</p>`
             // IDEA: perhaps 'use computer' should navigate to the computer
             // For now though, just use normal directions to navigate between the computer and the room itself.
         },
