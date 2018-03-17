@@ -6,57 +6,60 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div class="background"></div>
         <main>
-            <h1 id="title-text"></h1>
-            <section id="main-menu" class="hidden">
-                <h1>Your Story</h1>
-                <p>This is an open game where your actions matter.</p>
-                <p>To learn about available actions, type <b>help</b> at any time.</p>
-            </section>
-            <section id="help" class="hidden">
-                <p>
-                    Play this game by thinking about the current state of the game and choosing how you want to react.
-                    Then type your action into the text input.
-                </p>
-                <p>
-                    Below is a list of available actions, and examples of how to use them.
-                </p>
-                <div class="heading">
-                    <h2>Commands:</h2>
-                    <p>Type keywords as shown in the left column below. Replace contents of <span class="code">[]</span> with other values.</p>
-                </div>
-                <table>
-                    <tr>
-                        <td>[direction]</td>
-                        <td>Move in a given direction. Each value also has it's first letter as a shorthand. E.g. <pre>north</pre> is the same as <pre>n</pre>.</td>
-                    </tr>
-                    <tr>
-                        <td>take [object]</td>
-                        <td>Pick up an object.</td>
-                    </tr>
-                    <tr>
-                        <td>drop [object]</td>
-                        <td>Drop an object.</td>
-                    </tr>
-                    <tr>
-                        <td>read [object]</td>
-                        <td>Read a book or a note.</td>
-                    </tr>
-                </table>
-            </section>
-            <section id="inventory" class="hidden">
-                <h2>Inventory</h2>
-                <hr>
-                <ul class="items"></ul>
-            </section>
-            <section class="game-content hidden">
-                <div id="game-text"></div>
-                <div id="item-text"></div>
-            </section>
-            <footer>
-                <p id="status-text"></p>
-                <input type="text" id="user-input" autocomplete="off">
-            </footer>
+            <div class="container">
+                <h1 id="title-text"></h1>
+                <section id="main-menu" class="hidden">
+                    <h1>Your Story</h1>
+                    <p>This is an open game where your actions matter.</p>
+                    <p>To learn about available actions, type <b>help</b> at any time.</p>
+                </section>
+                <section id="help" class="hidden">
+                    <p>
+                        Play this game by thinking about the current state of the game and choosing how you want to react.
+                        Then type your action into the text input.
+                    </p>
+                    <p>
+                        Below is a list of available actions, and examples of how to use them.
+                    </p>
+                    <div class="heading">
+                        <h2>Commands:</h2>
+                        <p>Type keywords as shown in the left column below. Replace contents of <span class="code dark-bg">[]</span> with other values.</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>[direction]</td>
+                            <td>Move in a given direction. Each value also has it's first letter as a shorthand. E.g. <pre>north</pre> is the same as <pre>n</pre>.</td>
+                        </tr>
+                        <tr>
+                            <td>take [object]</td>
+                            <td>Pick up an object.</td>
+                        </tr>
+                        <tr>
+                            <td>drop [object]</td>
+                            <td>Drop an object.</td>
+                        </tr>
+                        <tr>
+                            <td>read [object]</td>
+                            <td>Read a book or a note.</td>
+                        </tr>
+                    </table>
+                </section>
+                <section id="inventory" class="hidden">
+                    <h2>Inventory</h2>
+                    <hr>
+                    <ul class="items"></ul>
+                </section>
+                <section class="game-content hidden">
+                    <div id="game-text"></div>
+                    <div id="item-text"></div>
+                </section>
+                <footer>
+                    <p id="status-text"></p>
+                    <input type="text" id="user-input" autocomplete="off" spellcheck="false">
+                </footer>
+            </div>
         </main>
         <script src="helpers.js"></script>
         <script src="player.js"></script>

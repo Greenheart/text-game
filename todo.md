@@ -68,6 +68,9 @@
 - Make them learn basic commands through the early game.
     - "If you want to learn more, see `help`" instead of an indirect "read the help before you start."
 
+- Make sure fonts are consistent across browsers.
+    - Look into using the Chrome monospace font as default game font.
+
 - Update `help` with new commands.
 
 

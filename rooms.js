@@ -213,7 +213,7 @@
                     read: room => {
                         room.game.text(`
                             <p class="note-heading">Thursday 14th April</p>
-                            <p>My headaches are still getting worse. They just keep saying everything will be fine eventually, that this is just a transitional phase.</p>
+                            <p>My headaches are still getting worse. Even worse, they just keep saying everything will be fine eventually, that this is just a transitional phase.</p>
                             <p>I don't know anymore.</p>
                         `)
                     }
