@@ -31,15 +31,16 @@ class Room {
             itemText += 'There is '
 
             if (this.items.length === 1) {
-                itemText += `a ${this.items[0].name} here.`
+                itemText += `a <i>${this.items[0].name}</i> here.`
             } else {
                 itemText = this.items.reduce((items, item, i) => {
+                    const name = `<i>${item.name}</i>`
                     if (i === 0) {
-                        items += `a ${item.name}`
+                        items += `a ${name}`
                     } else if (i < this.items.length - 1) {
-                        items += `, a ${item.name}`
+                        items += `, a ${name}`
                     } else {
-                        items += ` and a ${item.name} here.`
+                        items += ` and a ${name} here.`
                     }
                     return items
                 }, itemText)
