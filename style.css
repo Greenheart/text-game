@@ -23,7 +23,7 @@ main {
     max-width: 1100px;
     height: 80vh;
     padding: 0 50px;
-    font-family: monospace;
+    font-family: Consolas, monospace;
     font-size: 18px;
     display: flex;
     justify-content: center;
