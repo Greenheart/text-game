@@ -42,9 +42,7 @@ class Game {
     }
 
     onInput (rawInput) {
-        if (this.visibleSection !== this.ui.help) {
-            this.status('')
-        }
+        this.status('')
         const input = rawInput.trimLeft().trimRight().toLowerCase()
 
         if (this.player.name) {
@@ -78,8 +76,6 @@ class Game {
         } else {
             if (this.isSpecialCommand(input)) {
                 this.specialCommand(input)
-            } else {
-                this.status(`I didn't understand that.`)
             }
         }
 
