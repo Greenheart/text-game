@@ -71,8 +71,9 @@ main {
 }
 
 #help td:last-child {
-    font-family: Georgia, serif;
+    font-family: Verdana, Geneva, sans-serif;
     letter-spacing: .2px;
+    font-size: 15px;
 }
 
 #help pre,
