@@ -132,6 +132,7 @@ class Game {
                 Helpers.show(this.visibleSection)
             } else {
                 this.showMainMenu()
+                document.querySelector('footer').classList.add('center')
             }
         }
 
@@ -158,6 +159,9 @@ class Game {
     }
 
     help () {
+        if (!this.gameStarted) {
+            document.querySelector('footer').classList.remove('center')
+        }
         Helpers.hide(this.visibleSection)
         this.visibleSection = this.ui.help
         this.title('Help')
