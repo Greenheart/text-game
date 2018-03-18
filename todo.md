@@ -124,12 +124,7 @@
     - Perhaps something like "2 notes found" in it's own UI component
 
 
-- Split rooms into separate files
-    - Add folder `/js/rooms` for all rooms and items
-    - Add folder for each environment
-        - Add each `room` in a separate file: E.g. `/js/rooms/apartment/outside.js`
-        - The room file holds all content for that room:
-            - Room data + item data
+
 
 
 ---
@@ -279,6 +274,8 @@
     This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
     - *Create the game first*
 
+- Consider using JS modules to separate scripts in a safe way.
+    - *Modules are not commonly supported.*
 
 - Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
     - *Or just don't use that many items in the game - Only use those that add value to the gameplay experience.*
@@ -309,6 +306,13 @@
 
 
 # Done
+- Split rooms into separate files
+    - Add folder `/js/rooms` for all rooms and items
+    - Add folder for each environment
+        - Add each `room` in a separate file: E.g. `/js/rooms/apartment/outside.js`
+        - The room file holds all content for that room:
+            - Room data + item data
+
 - Add note collection and improve how notes work.
     - When taking notes, add them to the collection, instead of inventory
         - Maybe show another message to highlight that this isn't added to the inventory, but another place: "Added a new note to your collection."
