@@ -70,7 +70,7 @@
                     }
                 }
             },
-            description: `<p>You're standing outside your Kevin's door. He lives on the fifth floor in a pretty new house.</p>
+            description: `<p>You're standing outside Kevin's door. He lives on the fifth floor in a pretty new house.</p>
             <p>Gosh, it's already been three months since he moved in, even though it feels like yesterday. It was also somewhere around that time that he started his new job.</p>`
         },
         hallway: {
