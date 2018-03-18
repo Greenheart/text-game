@@ -1,6 +1,7 @@
 class Player {
     constructor (game) {
         this.inventory = []
+        this.notes = []
         this.game = game
         this.currentRoom = this.game.rooms['start']
         this.name = ''
@@ -35,33 +36,16 @@ class Player {
 
     take (input, split) {
         if (split.length < 2) {
-            // TODO: possibly allow multiple inputs in the same action.
-            // To allow infomration to be entered in multiple steps.
             this.game.status('What do you want to take up? Usage: <span class="code dark-bg">take [object]</span>.')
             return
         }
 
         const object = this.getItemName(split)
-        const objectIsInRoom = this.currentRoom.hasItem(object)
+        const objectIsInRoom = this.currentRoom.hasItem({ name: object })
         if (objectIsInRoom) {
-            const item = this.currentRoom.items.find(i => i.name === object)
-
-            if (item.movable) {
-                this.inventory.push(item)
-                this.currentRoom.removeItem(object)
-                this.game.status(`Picked up ${item.name}.`)
-
-                if (item.actions) {
-                    if (item.actions.read && !item.state.hasBeenRead) {
-                        this.readItem(item)
-                        item.state.hasBeenRead = true
-                    }
-                }
-
-                this.currentRoom.showItems()
-            } else {
-                this.game.status(`You can't take that.`)
-            }
+            this.takeItem(
+                this.currentRoom.items.find(i => i.name === object)
+            )
         } else if (!objectIsInRoom && this.hasItem(object)) {
             this.game.status(`The ${object} is already in your inventory.`)
         } else {
@@ -69,6 +53,29 @@ class Player {
         }
 
         this.displayInventory()
+    }
+
+    takeItem (item) {
+        if (item && item.movable) {
+            if (item.id.startsWith('note')) {
+                this.addNewNote(item)
+            } else {
+                this.inventory.push(item)
+                this.game.status(`Picked up ${item.name}.`)
+            }
+            this.currentRoom.removeItem(item.name)
+
+            if (item.actions) {
+                if (item.actions.read && !item.state.hasBeenRead) {
+                    this.readItem(item)
+                    item.state.hasBeenRead = true
+                }
+            }
+
+            this.currentRoom.showItems()
+        } else {
+            this.game.status(`You can't take that.`)
+        }
     }
 
     drop (input, split) {
@@ -84,7 +91,7 @@ class Player {
             this.inventory = this.inventory.filter(item => item.name !== object)
             this.game.status(`${object} dropped.`)
         } else {
-            this.game.status(`You don't have any ${object} to drop.`)
+            this.game.status(`You don't have any ${object} in your inventory.`)
         }
 
         this.displayInventory()
@@ -146,26 +153,68 @@ class Player {
         }
 
         const object = this.getItemName(split)
-        const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
-        if (item) {
-            if (item.actions.read) {
-                this.readItem(item)
-            } else {
-                this.game.status(`The ${object} can't be read.`)
-            }
+        if (object === 'notes') {
+            this.showNotes()
         } else {
-            this.game.status(`There's no ${object} to read.`)
+            const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
+            if (item) {
+                if (item.actions.read) {
+                    this.readItem(item)
+                } else {
+                    this.game.status(`The ${object} can't be read.`)
+                }
+            } else {
+                this.game.status(`There's no ${object} to read.`)
+            }
         }
     }
 
-    readItem (item) {
-        this.game.title(`A ${item.name}`)
-        // IDEA: Replace title with `Note ${noteId}`
-        if (item.id.startsWith('note') && !item.state.hasBeenRead) item.state.hasBeenRead = true
+    readItem (item, returnToNoteCollection = false) {
+        this.game.title(`Note #${item.id.split('-')[1]}`)
+        if (this.currentRoom.hasItem({ id: item.id }) && item.id.startsWith('note')) {
+            if (!item.state.hasBeenRead) item.state.hasBeenRead = true
+            this.takeItem(item)
+        }
         this.activeItem = item
         this.game.itemText('')
-        item.actions.read(this.currentRoom)
-        this.game.useContinuePlaceholder()
+        item.actions.read(this.currentRoom, item)
+
+        if (returnToNoteCollection) {
+            this.game.setPlaceholder('Press enter to see all notes...')
+        } else {
+            this.game.useContinuePlaceholder()
+        }
+    }
+
+    addNewNote (note) {
+        this.notes.push(note)
+        const ascendingById = (a, b) => Number(a.id.split('-')[1]) - Number(b.id.split('-')[1])
+        this.notes.sort(ascendingById)
+        this.game.status('You found a new note. Use <span class="code dark-bg">read notes</span> to see your collection.')
+    }
+
+    showNotes () {
+        const noteList = this.notes.map(n => `Note #${n.id.split('-')[1]} - ${n.state.date}`)
+                            .map(content => `<li>${content}</li>`)
+                            .join('')
+
+        this.game.title('Note Collection')
+        this.game.setPlaceholder(`Enter a note number`)
+        this.game.customParser = CustomParsers.notes
+
+        Helpers.hide(this.game.visibleSection)
+        this.game.visibleSection = this.game.ui.noteCollection
+        this.game.ui.noteCollection.querySelector('ul').innerHTML = noteList
+        Helpers.show(this.game.visibleSection)
+    }
+
+    hideNotes () {
+        this.game.customParser = null
+        Helpers.hide(this.game.visibleSection)
+        this.game.visibleSection = this.game.ui.gameContent
+        Helpers.show(this.game.visibleSection)
+        this.game.useNormalPlaceholder()
+        this.currentRoom.show()
     }
 
     getItemName (split) {

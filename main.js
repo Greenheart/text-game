@@ -23,7 +23,10 @@ document.addEventListener('DOMContentLoaded', event => {
             's': 'south',
             'e': 'east',
             'w': 'west'
-        }
+        },
+        keywords: [
+            'notes'
+        ]
     }
 
     // Cache for use in autocomplete.

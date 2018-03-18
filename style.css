@@ -124,6 +124,14 @@ section p:first-of-type {
     font-style: italic;
 }
 
+#note-collection .notes {
+    margin-top: 2rem;
+}
+
+#note-collection .notes li:not(:first-child) {
+    margin-top: 5px;
+}
+
 #inventory {
     position: absolute;
     left: 10px;

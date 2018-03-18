@@ -83,11 +83,17 @@
                 name: 'note',
                 id: 'note-1',
                 actions: {
-                    read: room => {
-                        room.game.text('This is a note. Most interesting. Indeed.')
+                    read: (room, note) => {
+                        room.game.text(`
+                            <p class="note-heading">${note.state.date}</p>
+                            <p>I've started feeling a bit dizzy lately. Using this device isn't supposed to feel like this.</p>
+                            <p>My boss ensured me that this is nothing harmful though.</p>
+                        `)
                     }
                 },
-                state: {}
+                state: {
+                    date: 'Wednesday, April 11th'
+                }
             }],
             title: 'The Hallway',
             description: `<p>Kevin's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
@@ -211,15 +217,17 @@
                 name: 'note',
                 id: 'note-2',
                 actions: {
-                    read: room => {
+                    read: (room, note) => {
                         room.game.text(`
-                            <p class="note-heading">Thursday April 14th</p>
+                            <p class="note-heading">${note.state.date}</p>
                             <p>My headaches are still getting worse. Even worse, my colleagues just keep saying that everything will be fine eventually, that this is just a transitional phase.</p>
                             <p>I don't know anymore.</p>
                         `)
                     }
                 },
-                state: {}
+                state: {
+                    date: 'Friday, April 20th'
+                }
             }],
             description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway. There's also a computer to your <b>west</b>.</p>
             <p>If you continue past the desk and go <b>south</b>, you will get to the bedroom. Or go <b>east</b> to get back to the center of the living room</p>`

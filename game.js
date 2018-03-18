@@ -28,6 +28,10 @@ class Game {
         // Store latest commands for quick re-use
         this.commandHistory = ['']
         this.currentCommand = 0
+
+        // To allow greater creative freedom, different sections of the game can use custom parsing.
+        // This allows new types of user input that are not possible with the general parser.
+        this.customParser = null
     }
 
     start () {
@@ -177,6 +181,10 @@ class Game {
         this.ui.userInput.placeholder = 'What do you want to do?'
     }
 
+    setPlaceholder (text) {
+        this.ui.userInput.placeholder = text
+    }
+
     // Show main game text. Used for story and main gameplay.
     text (text) {
         this.ui.gameText.innerHTML = text
@@ -243,10 +251,16 @@ class Game {
         if (split.length === 1) {
             // First part of a command => autocomplete against actions
             return this.dictionary.allCommands
+        }
+        // Second part of a command => autocomplete against objects
+        // NOTE: This might not work well for actions that need multiple words
+        // The problem would arise because of hard coded indices.
+        // A possible solution could be to replace `split[0]` with a variable `action`.
+
+        if (split[0] === 'read' && !this.player.currentRoom.items.some(i => i.id.startsWith('note'))) {
+            // Match against keywords such as `notes`. These are used for special interactions.
+            return [ ...this.dictionary.keywords ]
         } else {
-            // Second part of a command => autocomplete against objects
-            // NOTE: This might not work well for actions that need multiple words,
-            // or items that need multiple words for that part either.
             const getName = i => i.name
             return [
                 ...this.player.inventory.map(getName),
@@ -256,20 +270,28 @@ class Game {
     }
 
     handleEnterKey (event) {
-        // Press enter to get out of menus quickly.
-        if (event.target.value === '') {
-            if (this.visibleSection === this.ui.mainMenu) {
-                this.start()
-            } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
-                this.done()
-            }
+        // Custom parsers allow greater creative freedom and increase game modularity.
+        // This allows new types of user input that are not possible with the general parser.
+        if (typeof this.customParser === 'function') {
+            this.customParser(this, event.target.value)
         } else {
-            this.onInput(event.target.value)
-            event.target.value = ''
+            // Press enter to get out of menus quickly.
+            if (event.target.value === '') {
+                if (this.visibleSection === this.ui.mainMenu) {
+                    this.start()
+                } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
+                    this.done()
+                }
+            } else {
+                this.onInput(event.target.value)
+                event.target.value = ''
+            }
         }
     }
 
     bindUI () {
+        let enterKeyIsDown = false
+
         window.addEventListener('keydown', event => {
             // Type anywhere on the page to type in the text input.
             const enterOrTabPressed = [13, 9].includes(event.keyCode)
@@ -283,6 +305,9 @@ class Game {
         this.ui.userInput.addEventListener('keydown', event => {
             switch (event.keyCode) {
                 case 13:
+                    // Only allow enter to be pressed once at a time.
+                    if (enterKeyIsDown) return
+                    enterKeyIsDown = true
                     this.handleEnterKey(event)
                     break
 
@@ -304,6 +329,10 @@ class Game {
                     break
             }
         })
+
+        this.ui.userInput.addEventListener('keyup', event => {
+            if (event.keyCode === 13) enterKeyIsDown = false
+        })
         this.ui.userInput.focus()
     }
 
@@ -317,7 +346,8 @@ class Game {
             titleText: document.querySelector('#title-text'),
             help: document.querySelector('#help'),
             inventory: document.querySelector('#inventory'),
-            mainMenu: document.querySelector('#main-menu')
+            mainMenu: document.querySelector('#main-menu'),
+            noteCollection: document.querySelector('#note-collection')
         }
     }
 }

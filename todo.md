@@ -120,70 +120,31 @@
 
 
 
+- Show `notes` in UI somewhere
+    - Perhaps something like "2 notes found" in it's own UI component
 
 
 
 
-
-
+---
 # Bugs
 
 
 
 
+---
 # In progress
 - Add new rooms according to the updated apartment structure.
 
 
 
-- Add note collection and improve how notes work.
-    - When taking notes, add them to the collection, instead of inventory
-        - Maybe show another message to highlight that this isn't added to the inventory, but another place: "Added a new note to your collection."
-
-    - The notes left behind by the friend could be diary entries
-    - *TODO*: Add support for multiple notes.
-    - State a date, but no year, to leave that up for interpretation by the player.
-    - Should these be added to some kind of collection that remains with the player through the game?
-        - In that case, don't add them to the inventory.
-        - Also don't allow them to be dropped
-        - Store them in `player.collection.notes` or just `player.notes`
-            - *TODO*: Figure out a convenient way for the player to read them
-                - Maybe through "read notes"
-                    - Once that command is submitted, the player will see a list of all notes.
-                        - Show note number and its date
-                    - To view individual notes, enter the number of the note
-                        - E.g. "1" + [Enter] which shows note number 1.
-                    - Then press enter to get back to the list again.
-                - and enter again to get back to the current room.
-
-
-## To implement note collection
-1. When interacting with a note (take, read) for the first time, add it to `player.notes`, instead of inventory. `player.notes` remain the whole session: notes don't need to be dropped.
-
-2. Show message: "You found a new note. Use `read notes` to view your collection."
-
-3. Add command `read notes`. `notes` need to be some kind of keyword
-    - Set the title to `Note Collection`
-    - This command shows a list of notes:
-        - Note #1 - April 12th
-        - Note #6 - May 1st
-
-4.  In this list, enter the number of the note you want to read and press enter to view it.
-    - This requires some kind of flag to trigger another parser than the regular one - this feature could also be useful in other contexts.
-        - This temporary parser could offer greater freedom in game mechanics and allow different rooms to have their unique features.
-        - Maybe `game.temporaryCommandParser` could be set to a function at those times when it's needed. In the regular parser, wrap everything in a conditional. Use the temporary parser if its set.
-        When the section is completed, unset the temporary parser again.
-        - This way, entire custom sections could easily be added onto the core game engine.
-        - Maybe add this code to another file than the main one to organize the project better.
-    - Use regular `note.actions.read()` to show contents
-
-5. Press enter to get back to the `read notes` menu
-6. Press enter again to return to the current room.
 
 
 
 
 
+
+---
 # To think about
 - *Should players be limited from going back to the start rooms?*
     - Probably not, as it's hard to know what rooms can be returned to and which that can't.
@@ -286,14 +247,19 @@
         - *Interesting idea, but will require some work to implement.*
         - Easier, to just let the player imagine how the environment look like.
 
-- Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
-    - *Or just don't use that many items in the game - Only use those that add value to the gameplay experience.*
+- Replace all note dates with actual dates, cross checked with a calendar
+    - Ensure date formatting is correct: E.g. `Thursday, May 12th`
 
 - Add about section to my samuelplumppu.se:
     - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
 
     This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
     - *Create the game first*
+
+
+- Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
+    - *Or just don't use that many items in the game - Only use those that add value to the gameplay experience.*
+
 
 
 
@@ -320,6 +286,54 @@
 
 
 # Done
+- Add note collection and improve how notes work.
+    - When taking notes, add them to the collection, instead of inventory
+        - Maybe show another message to highlight that this isn't added to the inventory, but another place: "Added a new note to your collection."
+
+    - The notes left behind by the friend could be diary entries
+    - *TODO*: Add support for multiple notes.
+    - State a date, but no year, to leave that up for interpretation by the player.
+    - Should these be added to some kind of collection that remains with the player through the game?
+        - In that case, don't add them to the inventory.
+        - Also don't allow them to be dropped
+        - Store them in `player.collection.notes` or just `player.notes`
+            - *TODO*: Figure out a convenient way for the player to read them
+                - Maybe through "read notes"
+                    - Once that command is submitted, the player will see a list of all notes.
+                        - Show note number and its date
+                    - To view individual notes, enter the number of the note
+                        - E.g. "1" + [Enter] which shows note number 1.
+                    - Then press enter to get back to the list again.
+                - and enter again to get back to the current room.
+
+
+- **To implement note collection:**
+1. When interacting with a note (take, read) for the first time, add it to `player.notes`, instead of inventory. `player.notes` remain the whole session: notes don't need to be dropped.
+    - Maybe only add the note if it's explicitly taken - this way, the player can make a choice to keep notes for later, or just read them and continue.
+        - They might need to go back to notes in the future, which is why they should take notes they find with them.
+
+2. Show message: "You found a new note. Use `read notes` to view your collection."
+
+3. Add command `read notes`. `notes` need to be some kind of keyword
+    - Set the title to `Note Collection`
+    - This command shows a list of notes:
+        - Note #1 - April 12th
+        - Note #6 - May 1st
+
+4.  In this list, enter the number of the note you want to read and press enter to view it.
+    - This requires some kind of flag to trigger another parser than the regular one - this feature could also be useful in other contexts.
+        - This temporary parser could offer greater freedom in game mechanics and allow different rooms to have their unique features.
+        - Maybe `game.temporaryCommandParser` could be set to a function at those times when it's needed. In the regular parser, wrap everything in a conditional. Use the temporary parser if its set.
+        When the section is completed, unset the temporary parser again.
+        - This way, entire custom sections could easily be added onto the core game engine.
+        - Maybe add this code to another file than the main one to organize the project better.
+    - Use regular `note.actions.read()` to show contents
+
+5. Press enter to get back to the `read notes` menu
+6. Press enter again to return to the current room.
+
+- Add support for autocompletion of keywords like `notes`. Add their own section to the dictionary.
+
 - How should room state be handled?
     - Some rooms may need to print different information at the first visit than when they are re-visited.
         - For this, maybe use `room.visited` to alter description and other things.

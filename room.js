@@ -49,8 +49,10 @@ class Room {
         this.game.itemText(itemText)
     }
 
-    hasItem (object) {
-        return this.items.some(i => i.name === object)
+    hasItem (search) {
+        return Object.keys(search).some(prop => (
+            this.items.some(i => i[prop] === search[prop])
+        ))
     }
 
     removeItem (object) {
