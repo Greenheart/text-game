@@ -1,9 +1,9 @@
 # The Responsible
 > An interactive story written by Samuel & Joel Plumppu
 
-In a time of great technological advances, life is less about knowing the answers, but more about asking the right questions.
+Life is less about knowing the answers, but more about asking the right questions. This is especially true in a time of great technological advances.
 
-This is a story to make you think. See beyond the words and look at the meaning of the bigger picture. With some patience, you might be surprised of what you'll find ahead.
+This is a story to give you something to reflect upon. See beyond the illusion and look at the meaning. With some patience, you might be surprised of what you'll find ahead.
 
 ---
 
