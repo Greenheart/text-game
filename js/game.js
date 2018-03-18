@@ -275,8 +275,8 @@ class Game {
         if (typeof this.customParser === 'function') {
             this.customParser(this, event.target.value)
         } else {
-            // Press enter to get out of menus quickly.
             if (event.target.value === '') {
+                // Press enter to get out of menus quickly.
                 if (this.visibleSection === this.ui.mainMenu) {
                     this.start()
                 } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
@@ -303,27 +303,27 @@ class Game {
         })
 
         this.ui.userInput.addEventListener('keydown', event => {
-            switch (event.keyCode) {
-                case 13:
+            switch (event.key) {
+                case 'Enter':
                     // Only allow enter to be pressed once at a time.
                     if (enterKeyIsDown) return
                     enterKeyIsDown = true
                     this.handleEnterKey(event)
                     break
 
-                case 9:
+                case 'Tab':
                     event.preventDefault()
                     if (event.target.value && this.visibleSection !== this.ui.help) {
                         this.autocomplete(event.target.value)
                     }
                     break
 
-                case 38:
+                case 'ArrowUp':
                     event.preventDefault()
                     this.scrollCommandHistory('up')
                     break
 
-                case 40:
+                case 'ArrowDown':
                     event.preventDefault()
                     this.scrollCommandHistory('down')
                     break

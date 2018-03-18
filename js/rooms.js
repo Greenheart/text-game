@@ -1,5 +1,31 @@
 (() => {
+    /*
+        templateRoom: {
+            name: '',                                   // Internal name
+            connections: {},                            // Connections to other rooms. Key: `direction`, Value: `room.name`
+            items: [],                                  // Array of item objects
+            title: '',
+            description: `<p></p>`,                     // Text to show in the room.
+                                                        // Can be both string (static) or callback function (dynamic)
+                                                        // Function approach is useful for changing text based on state.
+            state: {},                                  // Object with custom data related to the room.
+            playerCanLeave: (room, direction) => true   // Callback function to determine if the player
+        }
+
+        itemTemplate: {
+            name: '',
+            id: '',
+            movable: bool,      // Can the item be picked up? Default: true
+            actions: {},        // Object with all actions that this item can be used for.
+                                // Key: name of the action. Value: Callback function.
+                                // Define custom logic here. See examples in other items.
+            state: {}           // Object with custom data related to the item.
+        }
+
+    */
+
     const start = {
+        title: 'The Beginning',
         name: 'start',
         connections: {
             'north': 'apartment.outside'
@@ -8,17 +34,16 @@
             You're on your way to your best friend Kevin's place. He tried calling you three times earlier today and eventually left a message.<br>
         </p>
         <p><i>"I can't believe this is happening... I have something important to tell you. Could you come over?"</i></p>
-        <p>So here you are on the street, leading <b>north</b> to your his apartment.</p>`,
-        title: 'The Beginning'
+        <p>So here you are on the street, leading <b>north</b> to your his apartment.</p>`
     }
 
     const apartment = {
         outside: {
+            title: 'The Stairwell',
             name: 'apartment.outside',
             connections: {
                 'north': 'apartment.hallway'
             },
-            title: 'The Stairwell',
             items: [{
                 name: 'doorbell',
                 id: 'doorbell',
@@ -74,6 +99,7 @@
             <p>Gosh, it's already been three months since he moved in, even though it feels like yesterday. It was also somewhere around that time that he started his new job.</p>`
         },
         hallway: {
+            title: 'The Hallway',
             name: 'apartment.hallway',
             connections: {
                 'east': 'apartment.bathRoom',
@@ -95,32 +121,32 @@
                     date: 'Wednesday, April 11th'
                 }
             }],
-            title: 'The Hallway',
             description: `<p>Kevin's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
             There are two doorways: One leading to the <b>north</b> and another to the <b>east</b>.</p>`
         },
         bathRoom: {
+            title: 'The Bathroom',
             name: 'apartment.bathRoom',
             connections: {
                 'west': 'apartment.hallway',
                 'east': 'apartment.bathRoom.shower'
             },
-            title: 'The Bathroom',
             description: `<p>In contrast to the hallway, the bathroom is quite large and open. The mix of light colors give you an easing feeling. However, there's just something that's off.</p>
             <p>There seems to be something stained on the glass surface of the shower cabinet.</p>
             <p>Go <b>east</b> to check the shower more closely. The hallway is to the <b>west</b>.</p>`
         },
         shower: {
+            title: 'The Shower',
             name: 'apartment.bathRoom.shower',
             connections: {
                 'west': 'apartment.bathRoom'
             },
-            title: 'The Shower',
             description: `<p>There is blood stained on the glass doors.</p>
             <p>After a closer look, you even notice there's a blood trail on the floor, leading all the way back to the hallway door in the <b>west</b>.</p>
             <p><i>Wonder if this is what Kevin wanted to talk about.</i></p>`
         },
         kitchen: {
+            title: 'The Kitchen',
             name: 'apartment.kitchen',
             connections: {
                 'west': 'apartment.livingRoom',
@@ -128,29 +154,29 @@
                 'east': 'apartment.kitchen.table'
             },
             items: [],
-            title: 'The Kitchen',
             description: `<p>The first thing that hits you is the smell. It's most definitely coming from the mountains of unwashed dishes.</p>
             <p>To your <b>north</b>, the fridge's door is full of notes. They seem to be similar to the one from the hallway.</p>
             <p>There's a kitchen table to the <b>east</b>. The living room is to the <b>west</b>.</p>`
         },
         fridge: {
+            title: 'Fridge Door',
             name: 'apartment.kitchen.fridge',
             connections: {
                 'south': 'apartment.kitchen'
             },
-            title: 'Fridge Door',
             description: `<p>Some interesting notes. Go <b>south</b> to get to the kitchen entrance.</p>`
         },
         table: {
+            title: 'Kitchen Table',
             name: 'apartment.kitchen.table',
             connections: {
                 'west': 'apartment.kitchen'
             },
-            title: 'Kitchen Table',
             description: `<p>The table has two small piles of paper. The first has letters and magazines and the second has some notes.</p>
             <p>Go <b>west</b> to get back to the kitchen entrance.</p>`
         },
         livingRoom: {
+            title: 'The Living Room',
             name: 'apartment.livingRoom',
             connections: {
                 'south': 'apartment.hallway',
@@ -158,12 +184,12 @@
                 'east': 'apartment.kitchen',
                 'north': 'apartment.livingRoom.sofa'
             },
-            title: 'The Living Room',
             description: `<p>Big and open, this room is the center of the apartment. The late afternoon sun shines through the windows, warming your feet.</p>
             <p>Right in front of you, to the <b>north</b>, is a sofa and TV with all kinds of game consoles.
             You can also go <b>west</b> to the workspace, <b>east</b> to the kitchen, or <b>south</b> to the hallway.</p>`
         },
         sofa: {
+            title: 'In the sofa in front of the TV',
             name: 'apartment.livingRoom.sofa',
             connections: {
                 'south': 'apartment.livingRoom'
@@ -177,7 +203,6 @@
             <p>You notice that one of the newest media devices is connected to the TV. That couldn't have been cheap.<p>
             <p>Sitting in the comfortable sofa, you wonder when Kevin will come home. It's starting to get late. Maybe you can do something while waiting.</p>
             <p>The center of the living room is to your <b>south</b></p>`,
-            title: 'In the sofa in front of the TV',
             items: [{
                 name: 'photo frame',
                 id: 'photo-frame',
@@ -207,12 +232,12 @@
             }]
         },
         desk: {
+            title: 'The Desk',
             name: 'apartment.livingRoom.desk',
             connections: {
                 'east': 'apartment.livingRoom',
                 'west': 'apartment.livingRoom.computer'
             },
-            title: 'The Desk',
             items: [{
                 name: 'note',
                 id: 'note-2',
@@ -235,6 +260,7 @@
             // For now though, just use normal directions to navigate between the computer and the room itself.
         },
         computer: {
+            title: 'On the Computer',
             name: 'apartment.livingRoom.computer',
             connections: {
                 'east': 'apartment.livingRoom.desk'
@@ -250,7 +276,6 @@
                 },
                 movable: false
             }],
-            title: 'On the Computer',
             // `item.useDefaultDisplay` - if item.useDefaultDisplay !== false:
             // IDEA: Make it possible for items to explicitly tell the room to not use the standard showItems().
             // This would allow more customizable description of the items - especially useful for the computer items which essentially represent actions.
@@ -259,18 +284,6 @@
             <p>Go <b>east</b> to get back to the desk.</p>`
         }
     }
-
-    /*
-        templateRoom: {
-            name: '',
-            connections: {},
-            items: [],
-            title: '',
-            description: `<p></p>`,
-            state: {},
-            playerCanLeave: () => true
-        }
-    */
 
     window.rooms = [
         start,

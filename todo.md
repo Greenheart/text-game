@@ -124,6 +124,12 @@
     - Perhaps something like "2 notes found" in it's own UI component
 
 
+- Split rooms into separate files
+    - Add folder `/js/rooms` for all rooms and items
+    - Add folder for each environment
+        - Add each `room` in a separate file: E.g. `/js/rooms/apartment/outside.js`
+        - The room file holds all content for that room:
+            - Room data + item data
 
 
 ---
