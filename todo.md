@@ -123,7 +123,11 @@
 - Show `notes` in UI somewhere
     - Perhaps something like "2 notes found" in it's own UI component
 
-
+- Refactor:
+    - Add `Game.setVisibleSection()`
+        - hide current visible section
+        - set to new one
+        - show new section
 
 
 

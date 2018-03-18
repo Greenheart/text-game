@@ -24,19 +24,20 @@ class Player {
                 this.game.status(playerCanLeave)
             }
         } else {
-            this.game.status(`You can't go there.`)
+            this.game.status(`I can't go there.`)
         }
     }
 
     go (input, split) {
         // This command allows players who prefer to type `go [direction]` instead of just `[direction]`
         // The thought is to give players options, without breaking the gameplay.
-        this.move(split[1])
+        const direction = split[1]
+        this.move(direction)
     }
 
     take (input, split) {
         if (split.length < 2) {
-            this.game.status('What do you want to take up? Usage: <span class="code dark-bg">take [object]</span>.')
+            this.game.status('What do you want to pick up? Usage: <span class="code dark-bg">take [object]</span>.')
             return
         }
 
@@ -52,13 +53,13 @@ class Player {
             this.game.status(`There's no ${object} to pick up.`)
         }
 
-        this.displayInventory()
+        this.showInventory()
     }
 
     takeItem (item) {
         if (item && item.movable) {
             if (item.id.startsWith('note')) {
-                this.addNewNote(item)
+                this.addNote(item)
             } else {
                 this.inventory.push(item)
                 this.game.status(`Picked up ${item.name}.`)
@@ -68,13 +69,12 @@ class Player {
             if (item.actions) {
                 if (item.actions.read && !item.state.hasBeenRead) {
                     this.readItem(item)
-                    item.state.hasBeenRead = true
                 }
             }
 
             this.currentRoom.showItems()
         } else {
-            this.game.status(`You can't take that.`)
+            this.game.status(`I can't pick that up.`)
         }
     }
 
@@ -94,7 +94,7 @@ class Player {
             this.game.status(`You don't have any ${object} in your inventory.`)
         }
 
-        this.displayInventory()
+        this.showInventory()
         this.currentRoom.show()
     }
 
@@ -108,18 +108,14 @@ class Player {
         const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
         if (item) {
             if (item.actions.use) {
-                this.useItem(item)
+                this.currentRoom.game.itemText('')
+                item.actions.use(this.currentRoom, item)
             } else {
                 this.game.status(`The ${object} can't be used.`)
             }
         } else {
             this.game.status(`There is no ${object} to use.`)
         }
-    }
-
-    useItem (item) {
-        this.currentRoom.game.itemText('')
-        item.actions.use(this.currentRoom, item)
     }
 
     check (input, split) {
@@ -132,18 +128,14 @@ class Player {
         const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
         if (item) {
             if (item.actions.check) {
-                this.checkItem(item)
+                this.currentRoom.game.itemText('')
+                item.actions.check(this.currentRoom)
             } else {
                 this.game.status(`The ${object} can't be checked.`)
             }
         } else {
             this.game.status(`There is no ${object} to check.`)
         }
-    }
-
-    checkItem (item) {
-        this.currentRoom.game.itemText('')
-        item.actions.check(this.currentRoom)
     }
 
     read (input, split) {
@@ -171,22 +163,25 @@ class Player {
 
     readItem (item, returnToNoteCollection = false) {
         this.game.title(`Note #${item.id.split('-')[1]}`)
-        if (this.currentRoom.hasItem({ id: item.id }) && item.id.startsWith('note')) {
-            if (!item.state.hasBeenRead) item.state.hasBeenRead = true
-            this.takeItem(item)
-        }
+        const currentRoomHasNote = this.currentRoom.hasItem({ id: item.id }) && item.id.startsWith('note')
+        if (currentRoomHasNote) this.takeItem(item)
+        if (!item.state.hasBeenRead) item.state.hasBeenRead = true
+
         this.activeItem = item
         this.game.itemText('')
         item.actions.read(this.currentRoom, item)
 
         if (returnToNoteCollection) {
-            this.game.setPlaceholder('Press enter to see all notes...')
+            // This occurs when a note was read from the collection
+            this.game.status('Enter a note number...')
+            this.game.setPlaceholder('... or press enter to see all notes')
         } else {
+            // The note was read from a room.
             this.game.useContinuePlaceholder()
         }
     }
 
-    addNewNote (note) {
+    addNote (note) {
         this.notes.push(note)
         const ascendingById = (a, b) => Number(a.id.split('-')[1]) - Number(b.id.split('-')[1])
         this.notes.sort(ascendingById)
@@ -230,19 +225,16 @@ class Player {
         return this.inventory.some(item => item.name === object)
     }
 
-    displayInventory () {
+    showInventory () {
         const hasItems = this.inventory.length
-
         if (hasItems) {
-            const items = this.game.ui.inventory.querySelector('.items')
-            items.innerHTML = ''
+            const list = this.game.ui.inventory.querySelector('.items')
+            let listContent
 
             for (const item of this.inventory) {
-                const li = document.createElement('li')
-                li.innerText = item.name
-
-                items.appendChild(li)
+                listContent += `<li>${item.name}</li>`
             }
+            list.innerHTML = listContent
         }
 
         Helpers[hasItems ? 'show' : 'hide'](this.game.ui.inventory)

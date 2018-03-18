@@ -10,7 +10,7 @@ class Game {
             this.rooms[room.name] = new Room(room, this)
         }
 
-        // Connect rooms to eachother.
+        // Connect rooms to each other.
         for (const roomName of Object.keys(this.rooms)) {
             const room = this.rooms[roomName]
 
@@ -26,6 +26,7 @@ class Game {
         this.gameStarted = false
 
         // Store latest commands for quick re-use
+        // Always keep empty string to allow users to effectively clear their input
         this.commandHistory = ['']
         this.currentCommand = 0
 
@@ -49,6 +50,8 @@ class Game {
         this.status('')
         const input = rawInput.trimLeft().trimRight().toLowerCase()
 
+        // Check that this.player.name is set instead of this.gameStarted === true
+        // to allow parsing of special commands (like `help`) while in the main menu.
         if (this.player.name) {
             this.parseCommand(input)
             this.updateCommandHistory(input)
@@ -71,8 +74,11 @@ class Game {
             } else if (this.isDirectionAlias(input)) {
                 this.player.move(this.dictionary.directionAliases[input])
             } else if (split.length && this.isAction(split[0])) {
+                // Was an valid action entered?
+                // NOTE: This will not work with multiple-word actions (because of `split[0]`)
                 this.performAction(input, split)
             } else if (this.isSpecialCommand(input)) {
+                // Special commands include `help`
                 this.specialCommand(input)
             } else {
                 this.status(`I didn't understand that.`)
@@ -82,7 +88,6 @@ class Game {
                 this.specialCommand(input)
             }
         }
-
     }
 
     isDirection (input) {
@@ -94,6 +99,9 @@ class Game {
     }
 
     isAction (input) {
+        // IDEA: By using `startsWith()` instead of a regular comparsion,
+        // actions with multiple words should be handled as well.
+        // return this.dictionary.actions.some(a => a.startsWith(input))
         return this.dictionary.actions.includes(input)
     }
 
@@ -112,11 +120,7 @@ class Game {
 
     performAction (input, split) {
         const action = split[0]
-        if (this.player[action]) {
-            this.player[action](input, split)
-        } else {
-            this.status(`I didn't understand that.`)
-        }
+        this.player[action](input, split)
     }
 
     specialCommand (command) {
@@ -148,14 +152,14 @@ class Game {
         }
     }
 
-    showMainMenu (replaceDefault) {
-        if (replaceDefault) {
+    showMainMenu (replaceDefaultContent) {
+        if (replaceDefaultContent) {
             Helpers.show(this.ui.mainMenu.querySelector('.content'))
             Helpers.hide(this.ui.mainMenu.querySelector('.creators'))
         }
         this.visibleSection = this.ui.mainMenu
         Helpers.show(this.visibleSection)
-        this.useStartPlaceholder()
+        this.setPlaceholder('Press enter to start the game')
     }
 
     help () {
@@ -171,10 +175,6 @@ class Game {
 
     useContinuePlaceholder () {
         this.ui.userInput.placeholder = 'Press enter to continue...'
-    }
-
-    useStartPlaceholder () {
-        this.ui.userInput.placeholder = 'Press enter to start the game'
     }
 
     useNormalPlaceholder () {

@@ -5,7 +5,7 @@ class Room {
         this.title = room.title
         this.items = (room.items || []).map(i => {
             // Default: all items are movable. Only those that explicitly say `false` can't be moved.
-            if (i.movable === undefined) i.movable = true
+            if (i.movable !== false) i.movable = true
             return i
         })
         this.visited = this.name === 'start' ? true : false
@@ -50,8 +50,10 @@ class Room {
     }
 
     hasItem (search) {
-        return Object.keys(search).some(prop => (
-            this.items.some(i => i[prop] === search[prop])
+        // Search: Object with { key: value } that we search for in an item.
+        // NOTE: Only compares value types such as strings or numbers at this time.
+        return Object.keys(search).some(key => (
+            this.items.some(i => i[key] === search[key])
         ))
     }
 
