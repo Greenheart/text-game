@@ -229,7 +229,7 @@ class Player {
         const hasItems = this.inventory.length
         if (hasItems) {
             const list = this.game.ui.inventory.querySelector('.items')
-            let listContent
+            let listContent = ''
 
             for (const item of this.inventory) {
                 listContent += `<li>${item.name}</li>`

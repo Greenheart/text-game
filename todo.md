@@ -165,8 +165,6 @@
 
 ---
 # Ideas
-- Maybe use a dark background and light text to be easier on the eyes.
-
 - Which is it? "game consoles" or "gaming consoles"
 
 - Strange phrasing in beginning of the "In the sofa in front of the TV."
@@ -194,6 +192,9 @@
         - Fade out unavailable directions.
 
 - Add new commands to the help section as the player progress through the world, instead of adding everything at once.
+
+- Maybe use a dark background and light text to be easier on the eyes.
+    - Or add a dark theme that users can toggle.
 
 - Maybe add a slight delay - or a typing effect, adding character by character to the screen as new information is available.
     - This would reduce instant reactions and make the game feel more relaxed
@@ -309,6 +310,8 @@
 
 
 # Done
+- When taking a note and then taking the photo frame, there's an undefined item in the inventory.
+
 - Clarify note collection:
     - Add example: `E.g. "1"`
 
