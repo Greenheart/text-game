@@ -166,8 +166,7 @@
 ---
 # Ideas
 - Maybe use a dark background and light text to be easier on the eyes.
-- Clarify note collection:
-    - Add example: `E.g. "1"`
+
 - Which is it? "game consoles" or "gaming consoles"
 
 - Strange phrasing in beginning of the "In the sofa in front of the TV."
@@ -310,6 +309,9 @@
 
 
 # Done
+- Clarify note collection:
+    - Add example: `E.g. "1"`
+
 - Split rooms into separate files
     - Add folder `/js/rooms` for all rooms and items
     - Add folder for each environment
