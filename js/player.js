@@ -190,8 +190,9 @@ class Player {
     }
 
     showNoteCount () {
-        Helpers.show(this.game.ui.noteCount)
         this.game.ui.noteCount.querySelector('.count').innerText = this.notes.length
+        Helpers.show(this.game.ui.leftSidebar)
+        Helpers.show(this.game.ui.noteCount)
     }
 
     showNotes () {
@@ -243,6 +244,13 @@ class Player {
             list.innerHTML = listContent
         }
 
-        Helpers[hasItems ? 'show' : 'hide'](this.game.ui.inventory)
+        const action = hasItems ? 'show' : 'hide'
+        Helpers[action](this.game.ui.inventory)
+
+        if (this.game.ui.noteCount.classList.contains('hidden')) {
+            // As long as the note count is hidden,
+            // show and hide the whole sidebar along with the inventory.
+            Helpers[action](this.game.ui.leftSidebar)
+        }
     }
 }

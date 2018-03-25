@@ -118,11 +118,6 @@
     - about the company and what they do
         - might imply that the friend is not himself.
 
-- Refactor:
-    - Add `Game.setVisibleSection()`
-        - hide current visible section
-        - set to new one
-        - show new section
 
 
 
@@ -250,6 +245,13 @@
 - When autocompleting objects without having any search term, cycle through all available objects one by one, one for each consecutive tab press.
     - *This needs some work, but could be a nice feature* to quickly enter objects in rooms.
     - At the same time, this takes away from the experience of finding objects that are part of puzzles and similar.
+
+- Refactor:
+    - Add `Game.setVisibleSection()`
+        - hide current visible section
+        - set to new one
+        - show new section
+    - *This could simplify the codebase quite a bit, but is a low prio for now.*
 
 - Background images related to each room
     - If well selected from unsplash and similar, it will improve immersion and help tell the story.
