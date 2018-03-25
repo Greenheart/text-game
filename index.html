@@ -21,6 +21,7 @@
                         <p>To learn about available actions, type <b>help</b> at any time.</p>
                     </div>
                 </section>
+
                 <section id="help" class="hidden">
                     <p>
                         Play this game by thinking about the current state of the game and choosing how you want to react.
@@ -52,19 +53,29 @@
                         </tr>
                     </table>
                 </section>
-                <aside id="inventory" class="hidden unselectable">
-                    <h2>Inventory</h2>
-                    <hr>
-                    <ul class="items"></ul>
+
+                <aside class="left">
+                    <section id="inventory" class="hidden unselectable">
+                        <h2>Inventory</h2>
+                        <hr>
+                        <ul class="items"></ul>
+                        <hr>
+                    </section>
+                    <section id="note-count" class="hidden unselectable">
+                        Notes found: <span class="count"></span>
+                    </section>
                 </aside>
+
                 <section id="note-collection" class="hidden">
                     <p>These are some of Kevins' notes that you've found. Enter a note's number (E.g. <span class="code dark-bg">1</span>) to read it. Press <b>enter</b> to return to the game.</p>
                     <ul class="notes"></ul>
                 </section>
+
                 <section class="game-content hidden">
                     <div id="game-text"></div>
                     <div id="item-text"></div>
                 </section>
+
                 <footer class="center unselectable">
                     <p id="status-text"></p>
                     <input type="text" id="user-input" autocomplete="off" spellcheck="false" tabindex="0">

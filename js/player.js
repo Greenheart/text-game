@@ -186,6 +186,12 @@ class Player {
         const ascendingById = (a, b) => Number(a.id.split('-')[1]) - Number(b.id.split('-')[1])
         this.notes.sort(ascendingById)
         this.game.status('You found a new note. Use <span class="code dark-bg">read notes</span> to see your collection.')
+        this.showNoteCount()
+    }
+
+    showNoteCount () {
+        Helpers.show(this.game.ui.noteCount)
+        this.game.ui.noteCount.querySelector('.count').innerText = this.notes.length
     }
 
     showNotes () {

@@ -132,20 +132,35 @@ section p:first-of-type {
     margin-top: 5px;
 }
 
-#inventory {
+aside.left {
     position: absolute;
     left: 10px;
     bottom: 10px;
     width: 14vw;
     min-width: 200px;
     border: 2px solid darkgray;
-    padding: 10px 20px;
-    font-size: 16px;
     background: white;
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+}
+
+aside.left section {
+    margin: 5px;
+}
+
+#inventory {
+    font-size: 16px;
 }
 
 #inventory hr {
     box-shadow: 1px 1px rgba(70, 70, 70, 0.1);
+}
+
+#inventory hr:last-of-type {
+    margin-bottom: 0;
 }
 
 #inventory h2 {
@@ -156,6 +171,15 @@ section p:first-of-type {
 
 #inventory ul {
     list-style-type: square;
+}
+
+#note-count {
+    text-align: center;
+    font-size: 14px;
+}
+
+#note-count .count {
+    font-weight: 600;
 }
 
 footer {

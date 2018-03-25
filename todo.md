@@ -118,11 +118,6 @@
     - about the company and what they do
         - might imply that the friend is not himself.
 
-
-
-- Show `notes` in UI somewhere
-    - Perhaps something like "2 notes found" in it's own UI component
-
 - Refactor:
     - Add `Game.setVisibleSection()`
         - hide current visible section
@@ -302,6 +297,10 @@
 
 
 # Done
+- Show `notes` in UI somewhere
+    - Perhaps something like "2 notes found" in it's own UI component
+    - Show with background, below the inventory in bottom left corner.
+
 - Update sentence in "on the computer":
     - "So careful with security (...), yet leaving this detail unchecked."
 

@@ -347,7 +347,8 @@ class Game {
             help: document.querySelector('#help'),
             inventory: document.querySelector('#inventory'),
             mainMenu: document.querySelector('#main-menu'),
-            noteCollection: document.querySelector('#note-collection')
+            noteCollection: document.querySelector('#note-collection'),
+            noteCount: document.querySelector('#note-count')
         }
     }
 }
