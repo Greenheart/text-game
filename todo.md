@@ -165,18 +165,10 @@
 
 ---
 # Ideas
-- Which is it? "game consoles" or "gaming consoles"
-
 - Strange phrasing in beginning of the "In the sofa in front of the TV."
 
 - Add help section to right side of UI to make commands available
     - Or add a message in top right corner: "Stuck? Type `help`."
-
-- Update sentence in "on the computer":
-    - "So careful with security (...), yet leaving this detail unchecked."
-
-- Do you write "hehe" in text?
-
 
 - Basic map in the bottom right corner
     - Show squares to represent rooms.
@@ -310,6 +302,11 @@
 
 
 # Done
+- Update sentence in "on the computer":
+    - "So careful with security (...), yet leaving this detail unchecked."
+
+- Do you write "hehe" in text?
+
 - When taking a note and then taking the photo frame, there's an undefined item in the inventory.
 
 - Clarify note collection:
