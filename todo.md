@@ -127,6 +127,8 @@
 - Autocomplete not working for multiple words
     - "use photo " -> Press tab (autocomplete) -> "use photo photo frame"
 
+- Remove 'destroy' action keyword. Add it back if needed in the future.
+
 
 
 ---
@@ -299,6 +301,8 @@
 
 
 # Done
+- Clarify "You can't drop message" for notes.
+
 - Show `notes` in UI somewhere
     - Perhaps something like "2 notes found" in it's own UI component
     - Show with background, below the inventory in bottom left corner.
