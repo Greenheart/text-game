@@ -127,7 +127,7 @@
 - Autocomplete not working for multiple words
     - "use photo " -> Press tab (autocomplete) -> "use photo photo frame"
 
-- Remove 'destroy' action keyword. Add it back if needed in the future.
+
 
 
 
@@ -301,6 +301,8 @@
 
 
 # Done
+- Remove 'destroy' action keyword. Add it back if needed in the future.
+
 - Clarify "You can't drop message" for notes.
 
 - Show `notes` in UI somewhere

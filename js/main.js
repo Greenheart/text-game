@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', event => {
         actions: [
             'take',
             'drop',
-            'destroy',
             'read',
             'use',
             'check',
