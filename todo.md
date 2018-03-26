@@ -102,6 +102,10 @@
 
 - add apartment.livingRoom.computer
     - Maybe add it as an item with special methods
+        - This would be possible now thanks to the `CustomParser` feature.
+        - And this would make a much cleaner transition than "west" or "east"... :P
+        - Different actions would simply be implemented into the custom parser.
+            - If that file grow large, it could be split into several sub modules.
     - Maybe add it as it's own room, with items that represent different interactions the player can make with the computer. This solution allows reuse of the existing structure while giving pretty good creative freedom.
 - add bedroom
 - add bedroom.window
@@ -116,6 +120,7 @@
 
 - Add a poster somewhere in the Apartment
     - about the company and what they do
+    - also marketing poster for the new wearable device.
         - might imply that the friend is not himself.
 
 

@@ -80,10 +80,13 @@ This is an exploration of interactive storytelling. Of how to make characters an
     - make player go there and watch TV
 
 - Player watches the news, where they discuss something that reveals a clue.
+    - Perhaps this clue is that they discuss "this new cool device", that broke sales records for wearable tech. "Everyone seems to have bought one."
 - TV reveals clues
     - Make player go to the computer
         - computer has no password - because the friend has bad memory so he don't want to risk losing his data.
-    - Search for information related to the
+            - reveal this through a note next to the computer.
+                - "Aaargh! My memory is failing me again. This was the last time in signed in with a password. I can't risk losing access to my own computer. That'd be kind of ridiculous."
+    - Search for information related to what's seen on the TV.
 
 - When tasks are completed, the phone rings
     - Make some kind of decision at this point, which affects the future of the game.
@@ -93,14 +96,16 @@ This is an exploration of interactive storytelling. Of how to make characters an
 - Notes revealing back story
 - Some important objects to see/pick up?
     - A company poster/brochure
+        - gives details about the wearable device and how it's marketed.
     - A TV time table with some TV-shows circled in
         - "Who even keeps these things these days? There's an app for that. In the TV itself."
         - This implies that the friend has memory problems, and need to use various things to help him in his everyday life.
     - Blood stain
         - Don't tell the player at this point, but it's coming from the friend who's getting negative side effects because of the device he's testing for work.
+            - This needs to be clarified along the story.
     - Digital photo frame
         - Reveal memories, discuss backstory for those players that are interested.
-        - This also implies that the friend has memory problems. He tries to remember old times through the few photos he actually kept, but still has trouble seeing anything more except the images themselves.
+        - This also implies that the friend has memory problems. He tries to remember old times through the few photos he actually kept, but still has trouble seeing much more than the images themselves.
 
 #### Actions
 - Answer the phone in the friend's apartment.
@@ -109,7 +114,13 @@ This is an exploration of interactive storytelling. Of how to make characters an
 - Use tasks in this environment to teach the basics of the game.
     - Make the player comfortable.
 1. "Find out what has happened in the apartment. Where's your friend?"
-2. Watch TV while waiting for the friend
+2. Watch TV while waiting for the friend.
+3. Search for information on the computer.
+4. Answer the phone
+    - This could be some kind of interrupting event, that allows the player to either answer their mobile phone, or to not answer and keep moving around in the apartment.
+        - if they answer, they go along with the story.
+        - if not, they can walk around for a while longer? Then get asked to leave through the hallway?
+            - Perhaps don't offer this choice - maybe just use a single outcome, where the player can make a minor choice like how they speak to the person in the phone call. This would be easier to implement as it limits the branching necessary.
 
 
 ---
