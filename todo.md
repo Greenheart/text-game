@@ -79,8 +79,6 @@
 
     - These could be introduced in the beginning, or as tips later during the game. But at the very least, they should be mentioned so those who want to learn more can read about it before they start playing.
 
-- Update `help` with new commands.
-
 - Tasks
     - Add UI component to show tasks
     - A room shows a thought bubble (representing the player's own thoughts) "This chest is locked. I wonder if there's a key somewhere..."
@@ -269,6 +267,8 @@
         - set to new one
         - show new section
     - *This could simplify the codebase quite a bit, but is a low prio for now.*
+
+- Update `help` with new actions. *Do it again in the future.*
 
 - Background images related to each room
     - If well selected from unsplash and similar, it will improve immersion and help tell the story.
