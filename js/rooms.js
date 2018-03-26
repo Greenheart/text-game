@@ -2,8 +2,8 @@ window.rooms = []
 
 /*
     Rooms structure:
-        - A folder for each environment, containing a file for every room.
-        - Rooms and all their related data (state, items) is stored in one place.
+        - A folder for each environment, containing one file for every room.
+        - Rooms store all their related data (state, items) in a single file, making it easy to get an overview.
 */
 
 
@@ -12,7 +12,7 @@ const templateRoom = {
     connections: {},                            // Connections to other rooms. Key: `direction`, Value: `room.name`
     items: [],                                  // Array of item objects
     title: '',
-    description: `<p></p>`,                     // Text to show in the room.
+    description: `<p></p>`,                     // Text to show in the room (formatted as HTML).
                                                 // Can be both string (static) or callback function (dynamic)
                                                 // Function approach is useful for changing text based on state.
     state: {},                                  // Object with custom data related to the room.
