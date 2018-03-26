@@ -81,10 +81,6 @@
 
 - Update `help` with new commands.
 
-- Add `inspect [object]` command - "Take a moment to determine how you can interact with an object. Very useful if you don't know what to do."
-    - Useful to help the player when they are stuck.
-    - *Though, this situation should hopefully be avoided - by giving the players clear ideas of what to do, through tasks or through the room descriptions.*
-
 - Tasks
     - Add UI component to show tasks
     - A room shows a thought bubble (representing the player's own thoughts) "This chest is locked. I wonder if there's a key somewhere..."
@@ -124,6 +120,7 @@
         - might imply that the friend is not himself.
 
 
+- Clarify usage of "Commands" and "Actions". Perhaps call everything for actions, to be more user friendly. Commands sound more complicated, and might steal attention from the core experience.
 
 
 ---
@@ -132,7 +129,9 @@
 - Autocomplete not working for multiple words
     - "use photo " -> Press tab (autocomplete) -> "use photo photo frame"
 
-
+- Help section is not responsive.
+    - It could shrink responsively to be about 2-300 px narrower on smaller screens, without causing major problems with the layout.
+    - The white container div needs to shrink together with the help table though. Possibly make the white background take full width when help section is visible, and it's a small screen.
 
 
 
@@ -306,6 +305,10 @@
 
 
 # Done
+- Add `inspect [object]` command - "Take a moment to determine how you can interact with an object. Very useful if you don't know what to do."
+    - Useful to help the player when they are stuck.
+    - *Though, this situation should hopefully be avoided - by giving the players clear ideas of what to do, through tasks or through the room descriptions.*
+
 - Remove 'destroy' action keyword. Add it back if needed in the future.
 
 - Clarify "You can't drop message" for notes.

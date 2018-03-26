@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', event => {
             'help'
         ],
         actions: [
+            'inspect',
             'take',
             'drop',
             'read',

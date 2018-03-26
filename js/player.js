@@ -9,6 +9,33 @@ class Player {
         this.activeItem = null
     }
 
+    inspect (input, split) {
+        if (split.length < 2) {
+            this.game.status('What do you want to inspect? Usage: <span class="code dark-bg">inspect [object]</span>.')
+            return
+        }
+
+        const object = this.getItemName(split)
+        const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
+        if (item) {
+            // list all actions for the item.
+            // allow player to press enter to get back to the room.
+            // disable other actions - perhaps by setting this.activeItem to the item.
+            this.game.title('Inspecting ' + item.name)
+            this.game.text(`<p>Available actions:</p>
+                <ul>
+                    ${Object.keys(item.actions).map(action => `<li>${action}</li>`).join('')}
+                </ul>
+            `)
+            this.game.status(`Usage: <span class="code dark-bg">command [object]</span>`)
+            this.activeItem = item
+            this.game.itemText('')
+            this.game.useContinuePlaceholder()
+        } else {
+            this.game.status(`There's no ${object} to inspect.`)
+        }
+    }
+
     move (direction) {
         // Move in chosen direction if there's a room there.
         if (this.currentRoom.connections[direction]) {
