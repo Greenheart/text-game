@@ -58,6 +58,9 @@ To make the gameplay more convenient, there are features like a *command history
 
 This is an exploration of interactive storytelling. Of how to make characters and environments feel more alive through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination.
 
+- A random sentence that could fit into an introduction:
+    - Play this game by thinking about the current state of the game and choosing how you want to react. Then type your action into the text input.
+
 ---
 
 ### Start
