@@ -38,19 +38,31 @@ const CustomParsers = {
             game.hideHelp()
         } else {
             const visible = game.ui.helpPages.find(p => !p.classList.contains('hidden'))
+            const isInRange = n => n > 0 && n <= game.ui.helpPages.length
 
-            // Try to show the help requested help page.
-            const requested = game.ui.helpPages.find(p => p.dataset.pageNumber === input)
-            if (requested) {
-                Helpers.hide(visible)
-                Helpers.show(requested)
-                const pageNumber = requested.dataset.pageNumber
-                game.title(`Help (Page ${pageNumber}/${game.ui.helpPages.length})`)
-            } else {
-                // Maybe show "That's not a help page"
-                // Or just keep showing the instruction- status message.
+            // Try to show the requested help page.
+            let newPage = game.ui.helpPages.find(p => p.dataset.pageNumber === input)
+            if (!newPage) {
+                // If not found, input might be a command to see next or prev page.
+                let newPageNumber
+                const current = Number(visible.dataset.pageNumber)
+                if ('next'.startsWith(input)) {
+                    // This check supports multiple inputs: `n`, `next`.
+                    newPageNumber = isInRange(current + 1) ? current + 1 : 1
+                } else if ('previous'.startsWith(input)) {
+                    // This check supports multiple inputs: `p`, `prev` and `previous`
+                    newPageNumber = isInRange(current - 1) ? current - 1 : game.ui.helpPages.length
+                }
+                // For other inputs: Just keep showing how the help pages are used.
+
+                newPage = game.ui.helpPages.find(p => Number(p.dataset.pageNumber) === newPageNumber)
             }
 
+            if (newPage) {
+                Helpers.hide(visible)
+                Helpers.show(newPage)
+                game.title(`Help (Page ${newPage.dataset.pageNumber}/${game.ui.helpPages.length})`)
+            }
             game.ui.userInput.value = ''
         }
     }

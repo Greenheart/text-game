@@ -299,6 +299,10 @@
 - Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
     - *Or just don't use that many items in the game - Only use those that add value to the gameplay experience.*
 
+- Refactor: Add helper method `Game.setCustomParser(customParser)`
+    - This will not only set game.customParser, but also bind `this` to the game instance. This would remove need for the `game` parameter in all parsers, and increase consistency with other parts of the codebase.
+    - *Just not sure if this change brings any real improvement though. `game` might be just as good.*
+
 
 
 
