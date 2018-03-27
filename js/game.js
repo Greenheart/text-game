@@ -169,9 +169,12 @@ class Game {
         Helpers.hide(this.visibleSection)
         this.visibleSection = this.ui.help
         this.customParser = CustomParsers.help
-        this.title('Help')
-        this.useContinuePlaceholder()
+
+        this.status(`Enter a page number (E.g. <span class="code dark-bg">2</span>) or <span class="code dark-bg">n</span> for next page, <span class="code dark-bg">p</span> for previous`)
+        this.setPlaceholder('... or press enter to get back')
         Helpers.show(this.ui.help)
+
+        // Add wide class to better use screen real estate.
         this.ui.mainContainer.classList.add('wide')
 
         // Set help title to show the page number of the current help page.
@@ -191,6 +194,7 @@ class Game {
             this.showMainMenu()
         }
 
+        this.status('')
         this.ui.mainContainer.classList.remove('wide')
         this.customParser = null
     }
