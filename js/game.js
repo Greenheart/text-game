@@ -168,9 +168,25 @@ class Game {
         }
         Helpers.hide(this.visibleSection)
         this.visibleSection = this.ui.help
+        this.customParser = CustomParsers.help
         this.title('Help')
         this.useContinuePlaceholder()
         Helpers.show(this.ui.help)
+    }
+
+    hideHelp () {
+        Helpers.hide(this.ui.help)
+        if (this.gameStarted) {
+            this.visibleSection = this.ui.gameContent
+            Helpers.show(this.visibleSection)
+            this.useNormalPlaceholder()
+            this.player.currentRoom.show()
+        } else {
+            this.title('')
+            this.showMainMenu()
+        }
+
+        this.customParser = null
     }
 
     useContinuePlaceholder () {

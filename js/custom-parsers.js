@@ -28,5 +28,15 @@ const CustomParsers = {
             }
             game.ui.userInput.value = ''
         }
+    },
+    help (game, rawInput) {
+        const input = Helpers.normalizeString(rawInput)
+
+        // TODO: Remove old help menu logic from other parts of the codebase.
+        if (input === '') {
+            game.hideHelp()
+        } else {
+            game.ui.userInput.value = ''
+        }
     }
 }

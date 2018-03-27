@@ -119,17 +119,6 @@
 
 
 
-- Make the help section scrollable if there are too many commands to show.
-    - Also look into moving the input field further down to a fixed footer, shown on top of any overflowing help-table content.
-- Or make it possible to navigate through different help `section`s one by one, applying the overflow: scroll idea from above.
-- Or *best of all*, make it possible to change help page by entering `[help page number]` and press enter.
-    - Show "Help - Page 1/3" in title
-    - This feels similar to how the user navigate in the `read notes`, and allows us to reuse an already known pattern.
-    - Also consider adding `n`, `p` and `next` and `prev` to navigate between pages, for those who want to navigate that way.
-    - Show instructions in the status message - and in the placeholder.
-        - Status: Enter a help page number to view it. Use `n` or `p` to view the next/previous page.
-        - Placeholder: Press enter to return to the game.
-
 
 
 ---
@@ -149,7 +138,26 @@
 - Add new rooms according to the updated apartment structure.
 
 
+- Make the help section scrollable if there are too many commands to show.
+    - Also look into moving the input field further down to a fixed footer, shown on top of any overflowing help-table content.
+- Or make it possible to navigate through different help `section`s one by one, applying the overflow: scroll idea from above.
+- Or *best of all*, make it possible to change help page by entering `[help page number]` and press enter.
+    - Show "Help - Page 1/3" in title
+    - This feels similar to how the user navigate in the `read notes`, and allows us to reuse an already known pattern.
+    - Also consider adding `n`, `p` and `next` and `prev` to navigate between pages, for those who want to navigate that way.
+    - Show instructions in the status message - and in the placeholder.
+        - Status: Enter a help page number to view it. Use `n` or `p` to view the next/previous page.
+        - Placeholder: Press enter to return to the game.
 
+    - When help is active, use a custom parser.
+        - if input is a number that match a help page number - show it
+        - if input is `n` or `p` or `next` or `prev`, show the next or previous help page. If at end and showing next, show start. If at start and going backwards, show end.
+        - if input is blank, return to game (or main menu)
+        - else show instructions
+    - track current visible help page by selecting it:
+        - `document.querySelector('#help > section:not(.hidden)')`
+        - Keep `data-page-number` containing an integer for each help page.
+            - Use this to decide which page to view next.
 
 
 
