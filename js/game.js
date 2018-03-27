@@ -39,7 +39,7 @@ class Game {
         this.status('')
         this.gameStarted = true
         this.useNormalPlaceholder()
-        document.querySelector('footer').classList.remove('center')
+        document.querySelector('.main-footer').classList.remove('center')
         Helpers.hide(this.ui.mainMenu)
         Helpers.show(this.ui.gameContent)
         this.visibleSection = this.ui.gameContent
@@ -160,12 +160,10 @@ class Game {
         this.visibleSection = this.ui.mainMenu
         Helpers.show(this.visibleSection)
         this.setPlaceholder('Press enter to start the game')
+        document.querySelector('.main-footer').classList.add('center')
     }
 
     help () {
-        if (!this.gameStarted) {
-            document.querySelector('footer').classList.remove('center')
-        }
         Helpers.hide(this.visibleSection)
         this.visibleSection = this.ui.help
         this.customParser = CustomParsers.help
@@ -174,8 +172,9 @@ class Game {
         this.setPlaceholder('... or press enter to get back')
         Helpers.show(this.ui.help)
 
-        // Add wide class to better use screen real estate.
+        // Toggle classes to better use screen real estate.
         this.ui.mainContainer.classList.add('wide')
+        document.querySelector('.main-footer').classList.remove('center')
 
         // Set help title to show the page number of the current help page.
         const visible = this.ui.helpPages.find(p => !p.classList.contains('hidden'))

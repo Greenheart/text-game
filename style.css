@@ -193,7 +193,7 @@ ul {
     font-weight: 600;
 }
 
-footer.center {
+.main-footer {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -202,7 +202,7 @@ footer.center {
     font-size: 16px;
 }
 
-footer.center {
+.main-footer.center {
     bottom: 30vh;
 }
 
@@ -294,7 +294,7 @@ b {
 }
 
 @media screen and (min-height: 700px) {
-    footer {
+    .main-footer {
         bottom: 20vh;
     }
 }
