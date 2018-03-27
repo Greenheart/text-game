@@ -4,5 +4,8 @@ const Helpers = {
     },
     show (element) {
         element.classList.remove('hidden')
+    },
+    normalizeString (s) {
+        return s.trimLeft().trimRight().toLowerCase()
     }
 }

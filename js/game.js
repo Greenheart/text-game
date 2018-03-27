@@ -48,7 +48,7 @@ class Game {
 
     onInput (rawInput) {
         this.status('')
-        const input = rawInput.trimLeft().trimRight().toLowerCase()
+        const input = Helpers.normalizeString(rawInput)
 
         // Check that this.player.name is set instead of this.gameStarted === true
         // to allow parsing of special commands (like `help`) while in the main menu.

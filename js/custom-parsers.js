@@ -3,7 +3,7 @@
 // flexibility and modularity of the codebase.
 const CustomParsers = {
     notes (game, rawInput) {
-        const input = rawInput.trimLeft().trimRight().toLowerCase()
+        const input = Helpers.normalizeString(rawInput)
         game.status('')
 
         if (input === '') {
