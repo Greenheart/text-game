@@ -60,7 +60,11 @@ class Game {
                 this.status(`You can't use a command as your username.`)
             } else {
                 this.player.name = rawInput.trimLeft().trimRight()
-                this.showMainMenu(true)
+                this.showMainMenu()
+
+                // First time main menu is shown, replace some of it's content.
+                Helpers.show(this.ui.mainMenu.querySelector('.content'))
+                Helpers.hide(this.ui.mainMenu.querySelector('.creators'))
             }
         }
     }
@@ -152,11 +156,7 @@ class Game {
         }
     }
 
-    showMainMenu (replaceDefaultContent) {
-        if (replaceDefaultContent) {
-            Helpers.show(this.ui.mainMenu.querySelector('.content'))
-            Helpers.hide(this.ui.mainMenu.querySelector('.creators'))
-        }
+    showMainMenu () {
         this.visibleSection = this.ui.mainMenu
         Helpers.show(this.visibleSection)
         this.setPlaceholder('Press enter to start the game')
