@@ -229,6 +229,10 @@ b {
     font-size: 1.1em;
 }
 
+#help b {
+    font-size: 1em;
+}
+
 .hidden {
     display: none !important;
 }
