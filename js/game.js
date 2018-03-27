@@ -172,6 +172,10 @@ class Game {
         this.title('Help')
         this.useContinuePlaceholder()
         Helpers.show(this.ui.help)
+
+        // Set help title to show the page number of the current help page.
+        const visible = this.ui.helpPages.find(p => !p.classList.contains('hidden'))
+        this.title(`Help (Page ${visible.dataset.pageNumber}/${this.ui.helpPages.length})`)
     }
 
     hideHelp () {
@@ -365,7 +369,8 @@ class Game {
             mainMenu: document.querySelector('#main-menu'),
             noteCollection: document.querySelector('#note-collection'),
             noteCount: document.querySelector('#note-count'),
-            leftSidebar: document.querySelector('aside.left')
+            leftSidebar: document.querySelector('aside.left'),
+            helpPages: Array.from(document.querySelectorAll('#help > section'))
         }
     }
 }

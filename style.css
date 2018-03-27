@@ -37,12 +37,8 @@ main {
     max-width: 700px;
 }
 
-#help header {
+#help header:not(:first-child) {
     margin-top: 25px;
-}
-
-#help section:not(:first-of-type) {
-    margin-top: 50px;
 }
 
 #help h2 {

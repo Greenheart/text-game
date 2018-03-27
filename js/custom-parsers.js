@@ -17,6 +17,7 @@ const CustomParsers = {
                 game.player.hideNotes()
             }
         } else {
+            // Try to show the requested note.
             const note = game.player.notes.find(n => n.id === `note-${input}`)
             if (note) {
                 Helpers.hide(game.visibleSection)
@@ -36,6 +37,20 @@ const CustomParsers = {
         if (input === '') {
             game.hideHelp()
         } else {
+            const visible = game.ui.helpPages.find(p => !p.classList.contains('hidden'))
+
+            // Try to show the help requested help page.
+            const requested = game.ui.helpPages.find(p => p.dataset.pageNumber === input)
+            if (requested) {
+                Helpers.hide(visible)
+                Helpers.show(requested)
+                const pageNumber = requested.dataset.pageNumber
+                game.title(`Help (Page ${pageNumber}/${game.ui.helpPages.length})`)
+            } else {
+                // Maybe show "That's not a help page"
+                // Or just keep showing the instruction- status message.
+            }
+
             game.ui.userInput.value = ''
         }
     }
