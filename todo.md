@@ -367,13 +367,13 @@
         - Maybe show another message to highlight that this isn't added to the inventory, but another place: "Added a new note to your collection."
 
     - The notes left behind by the friend could be diary entries
-    - *TODO*: Add support for multiple notes.
+    - Add support for multiple notes.
     - State a date, but no year, to leave that up for interpretation by the player.
     - Should these be added to some kind of collection that remains with the player through the game?
         - In that case, don't add them to the inventory.
         - Also don't allow them to be dropped
         - Store them in `player.collection.notes` or just `player.notes`
-            - *TODO*: Figure out a convenient way for the player to read them
+            - Figure out a convenient way for the player to read them
                 - Maybe through "read notes"
                     - Once that command is submitted, the player will see a list of all notes.
                         - Show note number and its date

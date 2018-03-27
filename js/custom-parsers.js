@@ -12,7 +12,8 @@ const CustomParsers = {
                 game.visibleSection = game.ui.noteCollection
                 Helpers.show(game.visibleSection)
                 game.title('Note Collection')
-                game.setPlaceholder(`Enter a note number`)
+                game.status('Enter a note number...')
+                game.setPlaceholder('... or press enter to get back')
             } else if (game.visibleSection === game.ui.noteCollection) {
                 game.player.hideNotes()
             }

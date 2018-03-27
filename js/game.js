@@ -302,7 +302,7 @@ class Game {
             this.customParser(this, event.target.value)
         } else {
             if (event.target.value === '') {
-                // Press enter to get out of menus quickly.
+                // Press enter to get out of menus quickly. This behavior is also used in custom parsers.
                 if (this.visibleSection === this.ui.mainMenu) {
                     this.start()
                 } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {

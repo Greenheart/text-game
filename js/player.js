@@ -230,7 +230,8 @@ class Player {
                             .join('')
 
         this.game.title('Note Collection')
-        this.game.setPlaceholder(`Enter a note number`)
+        this.game.status('Enter a note number...')
+        this.game.setPlaceholder('... or press enter to get back')
         this.game.customParser = CustomParsers.notes
 
         Helpers.hide(this.game.visibleSection)
