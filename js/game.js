@@ -238,20 +238,23 @@ class Game {
         this.currentCommand = 0
     }
 
-    autocomplete (input) {
-        const split = input.split(/\s+/)
-        const lastPart = split[split.length - 1]
+    autocomplete (rawInput) {
+        const split = Helpers.normalizeString(rawInput).split(/\s+/)
         const completions = this.getCommandCompletions(split)
 
-        let match = completions.find(c => c.startsWith(lastPart))
+        // Thanks to this ternary, this also handles multiple word objects or commands like `photo frame`.
+        const search = split.length > 2 ? split.slice(1).join(' ') : split[split.length - 1]
+
+        let match = completions.find(c => c.startsWith(search))
         if (match) {
             // Add extra space after the completion if it's a command that need more input.
             // The space doesn't make sense for other completions.
             if (match !== 'help' && !this.dictionary.directions.includes(match) && completions === this.dictionary.allCommands) {
                 match += ' '
             }
-            split[split.length - 1] = match
-            this.ui.userInput.value = split.join(' ')
+
+            // Reformat the input differently depending on if the match is multiple words or not.
+            this.ui.userInput.value = split.length > 1 ? `${split[0]} ${match}` : match
         }
     }
 

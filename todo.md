@@ -124,8 +124,7 @@
 ---
 # Bugs
 
-- Autocomplete not working for multiple words
-    - "use photo " -> Press tab (autocomplete) -> "use photo photo frame"
+
 
 
 
@@ -134,6 +133,8 @@
 ---
 # In progress
 - Add new rooms according to the updated apartment structure.
+
+
 
 
 
@@ -261,11 +262,11 @@
 - Replace all note dates with actual dates, cross checked with a calendar
     - Ensure date formatting is correct: E.g. `Thursday, May 12th`
 
-- Add about section to my samuelplumppu.se:
+- Add about section to samuelplumppu.se:
     - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
 
     This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
-    - *Create the game first*
+    - *Create the game first :P *
 
 - Consider using JS modules to separate scripts in a safe way.
     - *Modules are not commonly supported.*
@@ -303,6 +304,9 @@
 
 
 # Done
+- Autocomplete not working for multiple words
+    - "use photo " -> Press tab (autocomplete) -> "use photo photo frame"
+
 - Refactor:
     - Add `Game.setVisibleSection()`
         - hide current visible section
