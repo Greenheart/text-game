@@ -72,7 +72,10 @@ class Game {
     parseCommand (input) {
         const split = input.split(/\s+/)
 
-        if (this.gameStarted && this.visibleSection !== this.ui.help) {
+        if (this.isSpecialCommand(input)) {
+            // Special commands include `help`
+            this.specialCommand(input)
+        } else if (this.gameStarted) {
             if (this.isDirection(input)) {
                 this.player.move(input)
             } else if (this.isDirectionAlias(input)) {
@@ -81,15 +84,8 @@ class Game {
                 // Was an valid action entered?
                 // NOTE: This will not work with multiple-word actions (because of `split[0]`)
                 this.performAction(input, split)
-            } else if (this.isSpecialCommand(input)) {
-                // Special commands include `help`
-                this.specialCommand(input)
             } else {
                 this.status(`I didn't understand that.`)
-            }
-        } else {
-            if (this.isSpecialCommand(input)) {
-                this.specialCommand(input)
             }
         }
     }
@@ -128,32 +124,15 @@ class Game {
     }
 
     specialCommand (command) {
+        // Used for commands in this.dictionary.special
         this[command]()
     }
 
-    done () {
-        if (this.visibleSection === this.ui.help) {
-            Helpers.hide(this.ui.help)
-            this.title('')
-            if (this.gameStarted) {
-                this.visibleSection = this.ui.gameContent
-                Helpers.show(this.visibleSection)
-            } else {
-                this.showMainMenu()
-                document.querySelector('footer').classList.add('center')
-            }
-        }
-
-        if (this.gameStarted) {
-            if (this.player.activeItem) {
-                this.player.activeItem = null
-            }
-
-            this.title(this.player.currentRoom.title)
-            this.status('')
-            this.useNormalPlaceholder()
-            this.player.currentRoom.show()
-        }
+    returnToGame () {
+        this.player.activeItem = null
+        this.status('')
+        this.useNormalPlaceholder()
+        this.player.currentRoom.show()
     }
 
     showMainMenu () {
@@ -304,8 +283,8 @@ class Game {
                 // Press enter to get out of menus quickly. This behavior is also used in custom parsers.
                 if (this.visibleSection === this.ui.mainMenu) {
                     this.start()
-                } else if (this.player.activeItem !== null || this.visibleSection === this.ui.help) {
-                    this.done()
+                } else if (this.player.activeItem !== null) {
+                    this.returnToGame()
                 }
             } else {
                 this.onInput(event.target.value)
