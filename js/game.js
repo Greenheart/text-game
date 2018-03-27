@@ -172,6 +172,7 @@ class Game {
         this.title('Help')
         this.useContinuePlaceholder()
         Helpers.show(this.ui.help)
+        this.ui.mainContainer.classList.add('wide')
 
         // Set help title to show the page number of the current help page.
         const visible = this.ui.helpPages.find(p => !p.classList.contains('hidden'))
@@ -190,6 +191,7 @@ class Game {
             this.showMainMenu()
         }
 
+        this.ui.mainContainer.classList.remove('wide')
         this.customParser = null
     }
 
@@ -370,7 +372,8 @@ class Game {
             noteCollection: document.querySelector('#note-collection'),
             noteCount: document.querySelector('#note-count'),
             leftSidebar: document.querySelector('aside.left'),
-            helpPages: Array.from(document.querySelectorAll('#help > section'))
+            helpPages: Array.from(document.querySelectorAll('#help > section')),
+            mainContainer: document.querySelector('main > .container')
         }
     }
 }

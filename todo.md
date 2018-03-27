@@ -127,9 +127,7 @@
 - Autocomplete not working for multiple words
     - "use photo " -> Press tab (autocomplete) -> "use photo photo frame"
 
-- Help section is not responsive.
-    - It could shrink responsively to be about 2-300 px narrower on smaller screens, without causing major problems with the layout.
-    - The white container div needs to shrink together with the help table though. Possibly make the white background take full width when help section is visible, and it's a small screen.
+
 
 
 
@@ -327,6 +325,10 @@
 
 
 # Done
+- Help section is not responsive.
+    - It could shrink responsively to be about 2-300 px narrower on smaller screens, without causing major problems with the layout.
+    - The white container div needs to shrink together with the help table though. Possibly make the white background take full width when help section is visible, and it's a small screen.
+
 - Add `inspect [object]` command - "Take a moment to determine how you can interact with an object. Very useful if you don't know what to do."
     - Useful to help the player when they are stuck.
     - *Though, this situation should hopefully be avoided - by giving the players clear ideas of what to do, through tasks or through the room descriptions.*
