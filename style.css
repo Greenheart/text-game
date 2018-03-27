@@ -91,6 +91,10 @@ span.code {
     margin: 0;
 }
 
+#help footer {
+    margin-top: 50px;
+}
+
 span.code.dark-bg {
     background: #ececec;
 }
@@ -189,7 +193,7 @@ ul {
     font-weight: 600;
 }
 
-footer {
+footer.center {
     display: flex;
     flex-direction: column;
     position: fixed;
