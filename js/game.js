@@ -21,7 +21,7 @@ class Game {
             }
         }
         this.player = new Player(this)
-        this.visibleSection = null
+        this.visibleSection = this.ui.mainMenu
         this.status('Enter your name')
         this.gameStarted = false
 
@@ -40,9 +40,7 @@ class Game {
         this.gameStarted = true
         this.useNormalPlaceholder()
         document.querySelector('.main-footer').classList.remove('center')
-        Helpers.hide(this.ui.mainMenu)
-        Helpers.show(this.ui.gameContent)
-        this.visibleSection = this.ui.gameContent
+        this.showSection(this.ui.gameContent)
         this.player.currentRoom.show()
     }
 
@@ -136,24 +134,21 @@ class Game {
     }
 
     showMainMenu () {
-        this.visibleSection = this.ui.mainMenu
-        Helpers.show(this.visibleSection)
+        this.showSection(this.ui.mainMenu)
         this.setPlaceholder('Press enter to start the game')
         document.querySelector('.main-footer').classList.add('center')
     }
 
     help () {
-        Helpers.hide(this.visibleSection)
-        this.visibleSection = this.ui.help
         this.customParser = CustomParsers.help
-
         this.status(`Enter a page number (E.g. <span class="code dark-bg">2</span>) or <span class="code dark-bg">n</span> for next page, <span class="code dark-bg">p</span> for previous`)
         this.setPlaceholder('... or press enter to get back')
-        Helpers.show(this.ui.help)
 
         // Toggle classes to better use screen real estate.
         this.ui.mainContainer.classList.add('wide')
         document.querySelector('.main-footer').classList.remove('center')
+
+        this.showSection(this.ui.help)
 
         // Set help title to show the page number of the current help page.
         const visible = this.ui.helpPages.find(p => !p.classList.contains('hidden'))
@@ -161,10 +156,8 @@ class Game {
     }
 
     hideHelp () {
-        Helpers.hide(this.ui.help)
         if (this.gameStarted) {
-            this.visibleSection = this.ui.gameContent
-            Helpers.show(this.visibleSection)
+            this.showSection(this.ui.gameContent)
             this.useNormalPlaceholder()
             this.player.currentRoom.show()
         } else {
@@ -175,6 +168,17 @@ class Game {
         this.status('')
         this.ui.mainContainer.classList.remove('wide')
         this.customParser = null
+    }
+
+    showSection (gameSection) {
+        // Replace currently visible section with another one.
+        Helpers.hide(this.visibleSection)
+        this.visibleSection = gameSection
+        Helpers.show(this.visibleSection)
+    }
+
+    isVisible (gameSection) {
+        return gameSection === this.visibleSection
     }
 
     useContinuePlaceholder () {
@@ -281,7 +285,7 @@ class Game {
         } else {
             if (event.target.value === '') {
                 // Press enter to get out of menus quickly. This behavior is also used in custom parsers.
-                if (this.visibleSection === this.ui.mainMenu) {
+                if (this.isVisible(this.ui.mainMenu)) {
                     this.start()
                 } else if (this.player.activeItem !== null) {
                     this.returnToGame()
@@ -317,7 +321,7 @@ class Game {
 
                 case 'Tab':
                     event.preventDefault()
-                    if (event.target.value && this.visibleSection !== this.ui.help) {
+                    if (event.target.value && !this.isVisible(this.ui.help)) {
                         this.autocomplete(event.target.value)
                     }
                     break

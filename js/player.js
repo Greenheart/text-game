@@ -233,18 +233,13 @@ class Player {
         this.game.status('Enter a note number...')
         this.game.setPlaceholder('... or press enter to get back')
         this.game.customParser = CustomParsers.notes
-
-        Helpers.hide(this.game.visibleSection)
-        this.game.visibleSection = this.game.ui.noteCollection
         this.game.ui.noteCollection.querySelector('ul').innerHTML = noteList
-        Helpers.show(this.game.visibleSection)
+        this.game.showSection(this.game.ui.noteCollection)
     }
 
     hideNotes () {
         this.game.customParser = null
-        Helpers.hide(this.game.visibleSection)
-        this.game.visibleSection = this.game.ui.gameContent
-        Helpers.show(this.game.visibleSection)
+        this.game.showSection(this.game.ui.gameContent)
         this.game.useNormalPlaceholder()
         this.currentRoom.show()
     }

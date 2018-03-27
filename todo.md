@@ -155,6 +155,8 @@
 
 ---
 # Ideas
+- Allow `read notes` to trigger even if user types `read note`, to decrease possible typos and thereby improve player experience.
+
 - Strange phrasing in beginning of the "In the sofa in front of the TV."
 
 - Add help section to right side of UI to make commands available
@@ -246,13 +248,6 @@
     - *This needs some work, but could be a nice feature* to quickly enter objects in rooms.
     - At the same time, this takes away from the experience of finding objects that are part of puzzles and similar.
 
-- Refactor:
-    - Add `Game.setVisibleSection()`
-        - hide current visible section
-        - set to new one
-        - show new section
-    - *This could simplify the codebase quite a bit, but is a low prio for now.*
-
 - Update `help` with new actions. *Do it again in the future.*
 
 - Background images related to each room
@@ -308,6 +303,14 @@
 
 
 # Done
+- Refactor:
+    - Add `Game.setVisibleSection()`
+        - hide current visible section
+        - set to new one
+        - show new section
+
+    - Add `Game.isVisible(gameSection)` to increase readability around the codebase.
+
 - Improve help section
     - Make it possible to change help page by entering `[help page number]` and press enter.
     - Show "Help - Page 1/3" in title

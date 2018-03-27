@@ -7,23 +7,19 @@ const CustomParsers = {
         game.status('')
 
         if (input === '') {
-            if (game.visibleSection === game.ui.gameContent) {
-                Helpers.hide(game.visibleSection)
-                game.visibleSection = game.ui.noteCollection
-                Helpers.show(game.visibleSection)
+            if (game.isVisible(game.ui.gameContent)) {
+                game.showSection(game.ui.noteCollection)
                 game.title('Note Collection')
                 game.status('Enter a note number...')
                 game.setPlaceholder('... or press enter to get back')
-            } else if (game.visibleSection === game.ui.noteCollection) {
+            } else if (game.isVisible(game.ui.noteCollection)) {
                 game.player.hideNotes()
             }
         } else {
             // Try to show the requested note.
             const note = game.player.notes.find(n => n.id === `note-${input}`)
             if (note) {
-                Helpers.hide(game.visibleSection)
-                game.visibleSection = game.ui.gameContent
-                Helpers.show(game.visibleSection)
+                game.showSection(game.ui.gameContent)
                 game.player.readItem(note, true)
             } else {
                 game.status(`You haven't found that note yet.`)
