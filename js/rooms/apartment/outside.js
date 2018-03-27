@@ -9,7 +9,7 @@ window.rooms.push({
         id: 'doorbell',
         movable: false,
         actions: {
-            use: (room, item) => {
+            use (room, item) {
                 switch (item.state.used) {
                     case 0:
                         room.game.addText('<p>The doorbell rings but nothing happens.</p>')
@@ -31,12 +31,12 @@ window.rooms.push({
         movable: false,
         actions: {
             // NOTE: Not ideal to duplicate actions, but until a better solution is found, this allows for fast content creation :D
-            check: room => {
+            check (room) {
                 room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                 <p>Go <b>north</b> to enter.</p>`)
                 room.state.doorhandleChecked = true
             },
-            use: room => {
+            use (room) {
                 room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                 <p>Go <b>north</b> to enter.</p>`)
                 room.state.doorhandleChecked = true
@@ -46,7 +46,7 @@ window.rooms.push({
     state: {
         doorhandleChecked: false
     },
-    playerCanLeave: (room, direction) => {
+    playerCanLeave (room, direction) {
         if (direction === 'north') {
             if (room.state.doorhandleChecked) {
                 return true

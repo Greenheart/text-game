@@ -9,7 +9,7 @@ window.rooms.push({
         name: 'browser',
         id: 'browser',
         actions: {
-            use: room => {
+            use (room) {
                 // room.game.text('Very nice browser. Indeed.')
             }
         },

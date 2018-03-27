@@ -2,7 +2,7 @@
 // Separating these custom parsing rules from the main parser increase both
 // flexibility and modularity of the codebase.
 const CustomParsers = {
-    notes: (game, rawInput) => {
+    notes (game, rawInput) {
         const input = rawInput.trimLeft().trimRight().toLowerCase()
         game.status('')
 

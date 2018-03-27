@@ -9,7 +9,7 @@ window.rooms.push({
         name: 'note',
         id: 'note-1',
         actions: {
-            read: (room, note) => {
+            read (room, note) {
                 room.game.text(`
                     <p class="note-heading">${note.state.date}</p>
                     <p>I've started feeling a bit dizzy lately. Using this device isn't supposed to feel like this.</p>

@@ -17,7 +17,7 @@ window.rooms.push({
         name: 'photo frame',
         id: 'photo-frame',
         actions: {
-            use: (room, item) => {
+            use (room, item) {
                 /* TODO: add support for viewing multiple photos.
                     - Either use `next` and `previous` or `prev` to navigate
                     - Or `use [photo frame]` multiple times, each showing new photos.

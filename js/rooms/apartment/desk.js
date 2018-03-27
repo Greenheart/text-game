@@ -9,7 +9,7 @@ window.rooms.push({
         name: 'note',
         id: 'note-2',
         actions: {
-            read: (room, note) => {
+            read (room, note) {
                 room.game.text(`
                     <p class="note-heading">${note.state.date}</p>
                     <p>My headaches are still getting worse. Even worse, my colleagues just keep saying that everything will be fine eventually, that this is just a transitional phase.</p>
