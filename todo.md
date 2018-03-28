@@ -127,7 +127,9 @@
 ---
 # Bugs
 
-
+- `player.activeItem` need to prevent the player from taking actions in the current room.
+    - The question is where to put a check for this.
+        - A possible candidate is `onInput`, wrapping the contents of the `if player.name` block. However, this might disable other commands so it has to be tested properly.
 
 
 
