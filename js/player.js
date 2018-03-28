@@ -278,4 +278,7 @@ class Player {
             Helpers[action](this.game.ui.leftSidebar)
         }
     }
+
+
+    // TODO: Rename showInventory() to updateUI()
 }

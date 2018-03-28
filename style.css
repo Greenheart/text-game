@@ -145,39 +145,43 @@ section p:first-of-type {
 
 aside.left {
     position: absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 0;
+    bottom: 0;
     width: 14vw;
     min-width: 200px;
-    border: 2px solid darkgray;
-    background: white;
-    padding: 5px 15px;
     display: flex;
+    height: 100vh;
+    padding: 10px 0 10px 10px;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    /* TODO: Investigate why align-items: space-between is invalid */
     align-items: space-between;
 }
 
 aside.left section {
-    margin: 5px;
-}
-
-#inventory {
+    margin: 5px 0;
     font-size: 16px;
+    padding: 5px 15px;
 }
 
-#inventory hr {
-    box-shadow: 1px 1px rgba(70, 70, 70, 0.1);
-}
-
-#inventory hr:last-of-type {
-    margin-bottom: 0;
-}
-
-#inventory h2 {
+aside.left h2 {
     text-align: center;
     margin: 0;
     font-size: 18px;
+}
+
+aside.left section hr, {
+    box-shadow: 1px 1px rgba(70, 70, 70, 0.1);
+}
+
+aside.left section hr:not(:first-of-type) {
+    margin-bottom: 0;
+}
+
+aside.left > div {
+    /* TODO: Find a nice border (improve UI design in general) */
+    border: 1px solid #dcdcdc;
+    background: white;
 }
 
 ul {
