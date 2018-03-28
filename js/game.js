@@ -348,6 +348,7 @@ class Game {
     }
 
     static getDOMReferences () {
+        const leftSidebar = document.querySelector('aside.left')
         return {
             userInput: document.querySelector('#user-input'),
             gameContent: document.querySelector('.game-content'),
@@ -356,13 +357,16 @@ class Game {
             statusText: document.querySelector('#status-text'),
             titleText: document.querySelector('#title-text'),
             help: document.querySelector('#help'),
-            inventory: document.querySelector('#inventory'),
             mainMenu: document.querySelector('#main-menu'),
             noteCollection: document.querySelector('#note-collection'),
-            noteCount: document.querySelector('#note-count'),
-            leftSidebar: document.querySelector('aside.left'),
             helpPages: Array.from(document.querySelectorAll('#help > section')),
-            mainContainer: document.querySelector('main > .container')
+            mainContainer: document.querySelector('main > .container'),
+            leftSidebar,
+            sidebarTop: leftSidebar.querySelector('.top'),
+            tasks: document.querySelector('#tasks'),
+            sidebarBottom: leftSidebar.querySelector('.bottom'),
+            inventory: document.querySelector('#inventory'),
+            noteCount: document.querySelector('#note-count')
         }
     }
 }
