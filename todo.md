@@ -79,17 +79,6 @@
 
     - These could be introduced in the beginning, or as tips later during the game. But at the very least, they should be mentioned so those who want to learn more can read about it before they start playing.
 
-- Tasks
-    - Add UI component to show tasks
-    - A room shows a thought bubble (representing the player's own thoughts) "This chest is locked. I wonder if there's a key somewhere..."
-    - This could give the player clues to help them progress.
-    - Timed tasks (complete X before a certain in game date/time)
-    - Think about when and how to check for task updates
-        - Probably around the time that the player inventory is displayed.
-
-    - Introduce the first task once the player opens the door.
-        - Add the task to the task UI component.
-        - "Find out if your friend is at home. Why is the door open?"
 
 
 
@@ -117,8 +106,22 @@
     - also marketing poster for the new wearable device.
         - might imply that the friend is not himself.
 
+- Fix game credits - show everyone involved rather than individual names.
+    - Update readme, main menu text and HTML meta information.
 
 
+- Dicuss and implement `GameEvent`s
+    - Used to handle specific logic that don't happen in a specific room, or by specific actions, but happen because of some other condition.
+        - For example the player have visited all required rooms, interacted with some object - or maybe the game state (like in game time and date) says the event should happen.
+    - The game has all registered events centrally, enabling it to continually check if any `GameEvent` should be triggered.
+    - Each `GameEvent` is a separate object, containing:
+        - `condition()`: callback deciding if it's time to trigger the event.
+        - `start()`:
+            - Callback starting the event, and performing all main tasks of the event.
+            - Maybe set a custom parser, move the player to a specific location or similar.
+            -
+        - `end()`:
+            - **Optional** callback for cleaning up state up once the event is finished and return to the game.
 
 
 ---
@@ -135,7 +138,25 @@
 - Add new rooms according to the updated apartment structure.
 
 
+- **Tasks**
+    - Add UI component to show tasks
+    - A room shows a thought bubble (representing the player's own thoughts) *"This chest is locked. I wonder if there's a key somewhere..."*
+        - This "thought bubble" could just be *italics text for an initial version.*
+    - Tasks give the player clues to help them progress.
+        - Completing tasks also rewards them, making them feel more engaged with the story since they see that they've accomplished something.
+    - Timed tasks (complete X before a certain in game date/time)
+        - *Possible future feature, low prio initially.*
+    - Think about when and how to check for task updates
+        - Probably around the time that the player inventory is displayed.
+        - This could also be handled by callback functions in rooms.
+        - Or, *probably best of all*, the game has some registered `GameEvent`s that are checked regularly to see if the player has made sufficient progress.
+    - Register tasks centrally in the game to allow other components to interact with tasks.
+        - Probably store tasks in another file though: `tasks.js`
 
+
+    - Introduce the first task once the player opens the apartment door.
+        - Show the player's active tasks in the task UI component.
+        - "Find out if your friend is at home. Why did he leave the door open?"
 
 
 
