@@ -152,12 +152,22 @@
         - Or, *probably best of all*, the game has some registered `GameEvent`s that are checked regularly to see if the player has made sufficient progress.
     - Register tasks centrally in the game to allow other components to interact with tasks.
         - Probably store tasks in another file though: `tasks.js`
+    - When the player gets a new task, use the lookup `game.tasks` to find the one and add it to `player.tasks`.
+        - Both active and *inactive tasks are kept for now* to allow for example statistics to be shown in the future.
+        - Keeping inactive tasks would also allow us to track *how well* the player completed them, or to *track their decisions that may affect further story/gameplay*. Feels like a good place to store this information.
 
 
-    - Introduce the first task once the player opens the apartment door.
-        - Show the player's active tasks in the task UI component.
-        - "Find out if your friend is at home. Why did he leave the door open?"
-
+#### To implement tasks:
+1. Show Tasks UI component
+2. Add initial task directly to `game.tasks`
+    - Each task has some properties like `isActive`, `title` and `description`
+3. Introduce the first task once the player opens the apartment door (right before they enter the hallway).
+    - "Find out if your friend is at home. Why did he leave the door open?"
+4. Add `game.player.showTasks()`.
+    - This shows the player's *active* tasks in the task UI component.
+5. Add some way to check if the task is completed
+    - In this basic example, it could be to visit all rooms of the apartment: `rooms[apartment].every(r => r.visited)`
+    - For this, discuss and implement a basic version of `GameEvents`. Search this document to see further ideas.
 
 
 
@@ -283,10 +293,12 @@
 - Replace all note dates with actual dates, cross checked with a calendar
     - Ensure date formatting is correct: E.g. `Thursday, May 12th`
 
-- Add about section to samuelplumppu.se:
+- Write something about the project on samuelplumppu.se:
     - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
 
-    This is an exploration of interactive storytelling. How to make characters and environments feel more alive mainly through text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
+    This is an exploration of interactive storytelling. How to make characters and environments feel more alive using text. Instead of fancy graphics, this game uses one of the best renderers there are; the human imagination."
+    - Since this game is built from the ground up, it's both a game engine and a game. Several parts of this project could theoretically be reused for another text game with a completely different story and setting. This was not intentional during development, but rather a consequence of how the (at the time) most sane design choices ended up creating a project that is kind of modular, where the content itself can be replaced.
+    - Another fun part of this project is that we tracked ideas, planning and progress in Git, making it easy to see how we thought at a given time.
     - *Create the game first :P *
 
 - Consider using JS modules to separate scripts in a safe way.
