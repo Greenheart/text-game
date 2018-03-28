@@ -36,5 +36,5 @@ document.addEventListener('DOMContentLoaded', event => {
         ...dictionary.special
     ]
 
-    const game = new Game(window.rooms, dictionary)
+    const game = new Game(window.rooms, dictionary, window.tasks)
 })

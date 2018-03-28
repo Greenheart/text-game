@@ -211,6 +211,12 @@ class Player {
         }
     }
 
+    giveNewTask (task) {
+        task.active = true
+        this.tasks.push(task)
+        this.updateUI()
+    }
+
     addNote (note) {
         this.notes.push(note)
         const ascendingById = (a, b) => Number(a.id.split('-')[1]) - Number(b.id.split('-')[1])

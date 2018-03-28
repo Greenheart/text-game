@@ -1,6 +1,7 @@
 class Game {
-    constructor (rooms, dictionary) {
+    constructor (rooms, dictionary, tasks) {
         this.dictionary = dictionary
+        this.tasks = tasks
         this.ui = Game.getDOMReferences()
         this.bindUI()
 

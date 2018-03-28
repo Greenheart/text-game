@@ -35,11 +35,13 @@ window.rooms.push({
                 room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                 <p>Go <b>north</b> to enter.</p>`)
                 room.state.doorhandleChecked = true
+                room.game.player.giveNewTask(room.game.tasks.find(t => t.id === 'anyone-home'))
             },
             use (room) {
                 room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                 <p>Go <b>north</b> to enter.</p>`)
                 room.state.doorhandleChecked = true
+                room.game.player.giveNewTask(room.game.tasks.find(t => t.id === 'anyone-home'))
             }
         }
     }],

@@ -155,17 +155,28 @@
     - When the player gets a new task, use the lookup `game.tasks` to find the one and add it to `player.tasks`.
         - Both active and *inactive tasks are kept for now* to allow for example statistics to be shown in the future.
         - Keeping inactive tasks would also allow us to track *how well* the player completed them, or to *track their decisions that may affect further story/gameplay*. Feels like a good place to store this information.
+    - *IDEA*: Possibly show a modal of some kind describing a new task when it's received? Or just populate game content.
+        - *This is a feature for a later time. The minimal approach should work fine for now.*
+    - Allow player to see details about a task
+        - Maybe by hovering the task title?
+            - Not touch-friendly
+        - Maybe add `tasks` command which will show details about the active tasks in the game content area. Maybe a similar approach to how both the help and notes are interacted with: `[task number]` or `next`/`prev`
+
+
+
+#### Completed
+1. Show Tasks UI component
+2. Add initial task directly to `game.tasks`
+- Each task has some properties like `active`, `title` and `description`
+3. Introduce the first task once the player opens the apartment door (right before they enter the hallway).
+    - "Find out if your friend is at home. Why did he leave the door open?"
+4. Add `game.player.updateTasks()`.
+- This shows the player's *active* tasks in the task UI component.
 
 
 #### To implement tasks:
-1. Show Tasks UI component
-2. Add initial task directly to `game.tasks`
-    - Each task has some properties like `isActive`, `title` and `description`
-3. Introduce the first task once the player opens the apartment door (right before they enter the hallway).
-    - "Find out if your friend is at home. Why did he leave the door open?"
-4. Add `game.player.showTasks()`.
-    - This shows the player's *active* tasks in the task UI component.
-5. Add some way to check if the task is completed
+5. Design UI to show tasks in a nice way.
+6. Add some way to check if the task is completed
     - In this basic example, it could be to visit all rooms of the apartment: `rooms[apartment].every(r => r.visited)`
     - For this, discuss and implement a basic version of `GameEvents`. Search this document to see further ideas.
 
