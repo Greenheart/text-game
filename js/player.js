@@ -25,10 +25,10 @@ class Player {
             this.game.title('Inspecting ' + item.name)
             this.game.text(`<p>Available actions:</p>
                 <ul>
-                    ${Object.keys(item.actions).map(action => `<li>${action}</li>`).join('')}
+                    ${Object.keys(item.actions).map(action => `<li><span class="code dark-bg">${action}</span></li>`).join('')}
                 </ul>
             `)
-            this.game.status(`Usage: <span class="code dark-bg">command [object]</span>`)
+            this.game.status(`Usage: <span class="code dark-bg">[action] [object]</span>`)
             this.activeItem = item
             this.game.itemText('')
             this.game.useContinuePlaceholder()
