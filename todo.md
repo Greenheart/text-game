@@ -172,10 +172,10 @@
     - "Find out if your friend is at home. Why did he leave the door open?"
 4. Add `game.player.updateTasks()`.
 - This shows the player's *active* tasks in the task UI component.
+5. Design UI to show tasks in a nice way.
 
 
 #### To implement tasks:
-5. Design UI to show tasks in a nice way.
 6. Add some way to check if the task is completed
     - In this basic example, it could be to visit all rooms of the apartment: `rooms[apartment].every(r => r.visited)`
     - For this, discuss and implement a basic version of `GameEvents`. Search this document to see further ideas.

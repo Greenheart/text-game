@@ -188,6 +188,15 @@ ul {
     list-style-type: square;
 }
 
+.task h3 {
+    font-size: 15px;
+    margin: 0;
+}
+
+.task small {
+    font-size: 13px;
+}
+
 #note-count {
     text-align: center;
     font-size: 14px;

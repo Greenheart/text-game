@@ -273,7 +273,14 @@ class Player {
     }
 
     updateTasks () {
-        // TODO: filter out active tasks and show them
+        // Show active tasks.
+        const display = t => `
+            <div class="task">
+                <h3>${t.title}</h3>
+                <small>${t.description}</small>
+            </div>`
+        const content = this.tasks.filter(t => t.active).map(display).join('<hr>')
+        this.game.ui.tasks.querySelector('.task-list').innerHTML = content
     }
 
     updateUI () {
@@ -288,10 +295,10 @@ class Player {
         const hasNotes = Boolean(this.notes.length)
 
         const sections = [{
-            element: this.game.ui.leftSidebar.querySelector('.top'),
+            element: this.game.ui.sidebarTop,
             condition: hasTasks
         }, {
-            element: this.game.ui.leftSidebar.querySelector('.bottom'),
+            element: this.game.ui.sidebarBottom,
             condition: hasItems || hasNotes
         }]
 
@@ -309,6 +316,7 @@ class Player {
             section: 'bottom'
         }]
 
+        // Toggle visibility of all sidebar components and sections
         for (const c of components) {
             const method = c.condition ? 'show' : 'hide'
             Helpers[method](c.element)
