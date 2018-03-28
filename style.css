@@ -245,16 +245,20 @@ b {
     display: none !important;
 }
 
+.unselectable {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.no-border {
+    border: 0 !important;
+}
+
 .bounce {
     animation-name: bounce;
     animation-duration: 2s;
-}
-
-.unselectable {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 @keyframes bounce {

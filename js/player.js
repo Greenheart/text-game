@@ -2,6 +2,7 @@ class Player {
     constructor (game) {
         this.inventory = []
         this.notes = []
+        this.tasks = []
         this.game = game
         this.currentRoom = this.game.rooms['start']
         this.name = ''
@@ -80,7 +81,7 @@ class Player {
             this.game.status(`There's no ${object} to pick up.`)
         }
 
-        this.showInventory()
+        this.updateUI()
     }
 
     takeItem (item) {
@@ -123,7 +124,7 @@ class Player {
             this.game.status(`You don't have any ${object} in your inventory.`)
         }
 
-        this.showInventory()
+        this.updateUI()
         this.currentRoom.show()
     }
 
@@ -215,13 +216,11 @@ class Player {
         const ascendingById = (a, b) => Number(a.id.split('-')[1]) - Number(b.id.split('-')[1])
         this.notes.sort(ascendingById)
         this.game.status('You found a new note. Use <span class="code dark-bg">read notes</span> to see your collection.')
-        this.showNoteCount()
+        this.updateUI()
     }
 
-    showNoteCount () {
+    updateNoteCount () {
         this.game.ui.noteCount.querySelector('.count').innerText = this.notes.length
-        Helpers.show(this.game.ui.leftSidebar)
-        Helpers.show(this.game.ui.noteCount)
     }
 
     showNotes () {
@@ -257,28 +256,61 @@ class Player {
         return this.inventory.some(item => item.name === object)
     }
 
-    showInventory () {
-        const hasItems = this.inventory.length
-        if (hasItems) {
-            const list = this.game.ui.inventory.querySelector('.items')
-            let listContent = ''
+    updateInventory () {
+        const list = this.game.ui.inventory.querySelector('.items')
+        let listContent = ''
 
-            for (const item of this.inventory) {
-                listContent += `<li>${item.name}</li>`
-            }
-            list.innerHTML = listContent
+        for (const item of this.inventory) {
+            listContent += `<li>${item.name}</li>`
         }
-
-        const action = hasItems ? 'show' : 'hide'
-        Helpers[action](this.game.ui.inventory)
-
-        if (this.game.ui.noteCount.classList.contains('hidden')) {
-            // As long as the note count is hidden,
-            // show and hide the whole sidebar along with the inventory.
-            Helpers[action](this.game.ui.leftSidebar)
-        }
+        list.innerHTML = listContent
     }
 
+    updateTasks () {
+        // TODO: filter out active tasks and show them
+    }
 
-    // TODO: Rename showInventory() to updateUI()
+    updateUI () {
+        // Always update content
+        this.updateInventory()
+        this.updateNoteCount()
+        this.updateTasks()
+
+        // Determine which components that should be shown.
+        const hasTasks = Boolean(this.tasks.length)
+        const hasItems = Boolean(this.inventory.length)
+        const hasNotes = Boolean(this.notes.length)
+
+        const sections = [{
+            element: this.game.ui.leftSidebar.querySelector('.top'),
+            condition: hasTasks
+        }, {
+            element: this.game.ui.leftSidebar.querySelector('.bottom'),
+            condition: hasItems || hasNotes
+        }]
+
+        const components = [{
+            condition: hasTasks,
+            element: this.game.ui.tasks,
+            section: 'top'
+        }, {
+            condition: hasItems,
+            element: this.game.ui.inventory,
+            section: 'bottom'
+        }, {
+            condition: hasNotes,
+            element: this.game.ui.noteCount,
+            section: 'bottom'
+        }]
+
+        for (const c of components) {
+            const method = c.condition ? 'show' : 'hide'
+            Helpers[method](c.element)
+        }
+
+        for (const s of sections) {
+            const method = s.condition ? 'remove' : 'add'
+            s.element.classList[method]('no-border')
+        }
+    }
 }
