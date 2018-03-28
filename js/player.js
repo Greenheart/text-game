@@ -263,13 +263,10 @@ class Player {
     }
 
     updateInventory () {
-        const list = this.game.ui.inventory.querySelector('.items')
-        let listContent = ''
-
-        for (const item of this.inventory) {
-            listContent += `<li>${item.name}</li>`
-        }
-        list.innerHTML = listContent
+        // Show all items from your inventory.
+        const display = i => `<li>${i.name}</li>`
+        const content = this.inventory.map(display).join('')
+        this.game.ui.inventory.querySelector('.items').innerHTML = content
     }
 
     updateTasks () {
