@@ -52,8 +52,10 @@ class Game {
         // Check that this.player.name is set instead of this.gameStarted === true
         // to allow parsing of special commands (like `help`) while in the main menu.
         if (this.player.name) {
-            this.parseCommand(input)
-            this.updateCommandHistory(input)
+            if (this.player.activeItem === null) {
+                this.parseCommand(input)
+                this.updateCommandHistory(input)
+            }
         } else {
             if (this.isCommand(input)) {
                 this.status(`You can't use a command as your username.`)

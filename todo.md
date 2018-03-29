@@ -127,9 +127,9 @@
 ---
 # Bugs
 
-- `player.activeItem` need to prevent the player from taking actions in the current room.
-    - The question is where to put a check for this.
-        - A possible candidate is `onInput`, wrapping the contents of the `if player.name` block. However, this might disable other commands so it has to be tested properly.
+- Status message from `inspect [object]` shouldn't be cleared.
+    - this.game.status('What do you want to inspect? Usage: <span class="code dark-bg">inspect [object]</span>.')
+    - Maybe just an if statement around the clearing in `game.onInput()`?
 
 
 
@@ -350,6 +350,10 @@
 
 
 # Done
+- `player.activeItem` need to prevent the player from taking actions in the current room.
+    - The question is where to put a check for this.
+        - A possible candidate is `onInput`, wrapping the contents of the `if player.name` block. However, this might disable other commands so it has to be tested properly.
+
 - Autocomplete not working for multiple words
     - "use photo " -> Press tab (autocomplete) -> "use photo photo frame"
 
