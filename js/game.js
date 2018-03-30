@@ -46,28 +46,11 @@ class Game {
     }
 
     onInput (rawInput) {
-        const notUsingItem = this.player.activeItem === null
-        if (notUsingItem) this.status('')
-        const input = Helpers.normalizeString(rawInput)
-
-        // Check that this.player.name is set instead of this.gameStarted === true
-        // to allow parsing of special commands (like `help`) while in the main menu.
-        if (this.player.name) {
-            if (notUsingItem) {
-                this.parseCommand(input)
-                this.updateCommandHistory(input)
-            }
-        } else {
-            if (this.isCommand(input)) {
-                this.status(`You can't use a command as your username.`)
-            } else {
-                this.player.name = rawInput.trimLeft().trimRight()
-                this.showMainMenu()
-
-                // First time main menu is shown, replace some of it's content.
-                Helpers.show(this.ui.mainMenu.querySelector('.content'))
-                Helpers.hide(this.ui.mainMenu.querySelector('.creators'))
-            }
+        if (this.player.activeItem === null) {
+            const input = Helpers.normalizeString(rawInput)
+            this.status('')
+            this.parseCommand(input)
+            this.updateCommandHistory(input)
         }
     }
 
@@ -284,11 +267,27 @@ class Game {
         }
     }
 
+    setUsername (rawInput) {
+        if (this.isCommand(Helpers.normalizeString(rawInput))) {
+            this.status(`You can't use a command as your username.`)
+        } else if (rawInput.length) {
+            this.player.name = rawInput.trimLeft().trimRight()
+            this.showMainMenu()
+
+            // First time main menu is shown, replace some of it's content.
+            Helpers.show(this.ui.mainMenu.querySelector('.content'))
+            Helpers.hide(this.ui.mainMenu.querySelector('.creators'))
+        }
+    }
+
     handleEnterKey (event) {
         // Custom parsers allow greater creative freedom and increase game modularity.
         // This allows new types of user input that are not possible with the general parser.
         if (typeof this.customParser === 'function') {
             this.customParser(this, event.target.value)
+        } else if (this.player.name === '') {
+            this.setUsername(event.target.value)
+            event.target.value = ''
         } else {
             if (event.target.value === '') {
                 // Press enter to get out of menus quickly. This behavior is also used in custom parsers.

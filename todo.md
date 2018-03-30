@@ -124,6 +124,10 @@
             - **Optional** callback for cleaning up state up once the event is finished and return to the game.
 
 
+- Improve `inspect [object]`
+    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
+        - Disabling all forms of text input except the enter key would solve this.
+
 
 ---
 # Bugs
@@ -137,13 +141,6 @@
 # In progress
 - Add new rooms according to the updated apartment structure.
 
-
-
-- Improve `inspect [object]`
-    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
-
-    - Improve styling for `inspect` list items.
-    - List actions such as `take` if the item is movable.
 
 
 
@@ -362,6 +359,9 @@
 
 
 # Done
+- Improve styling for `inspect` list items.
+- List actions such as `take` if the item is movable.
+
 - Status message from `inspect [object]` shouldn't be cleared.
 
 - `player.activeItem` need to prevent the player from taking actions in the current room.
