@@ -20,12 +20,13 @@ class Player {
         const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
         if (item) {
             // list all actions for the item.
-            // allow player to press enter to get back to the room.
-            // disable other actions - perhaps by setting this.activeItem to the item.
             this.game.title('Inspecting ' + item.name)
+            const actions = Object.keys(item.actions)
+            // Include relevant action if the item is movable.
+            if (item.movable) actions.push(this.hasItem(item.name) ? 'drop' : 'take')
             this.game.text(`<p>Available actions:</p>
                 <ul>
-                    ${Object.keys(item.actions).map(action => `<li><span class="code dark-bg">${action}</span></li>`).join('')}
+                    ${actions.map(action => `<li><span class="code dark-bg">${action}</span></li>`).join('')}
                 </ul>
             `)
             this.game.status(`Usage: <span class="code dark-bg">[action] [object]</span>`)

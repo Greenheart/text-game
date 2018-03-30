@@ -123,14 +123,12 @@
         - `end()`:
             - **Optional** callback for cleaning up state up once the event is finished and return to the game.
 
-- Improve `inspect [object]`
-    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
-    - List actions such as `take` if the item is movable.
 
 
 ---
 # Bugs
 
+- It's shouldn't be possible to start the game without choosing a username.
 
 
 
@@ -163,6 +161,16 @@
         - Maybe by hovering the task title?
             - Not touch-friendly
         - Maybe add `tasks` command which will show details about the active tasks in the game content area. Maybe a similar approach to how both the help and notes are interacted with: `[task number]` or `next`/`prev`
+
+
+
+- Improve `inspect [object]`
+    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
+    - Improve styling for `inspect` list items.
+
+    - List actions such as `take` if the item is movable.
+
+
 
 
 
