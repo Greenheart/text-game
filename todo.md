@@ -123,13 +123,13 @@
         - `end()`:
             - **Optional** callback for cleaning up state up once the event is finished and return to the game.
 
+- Improve `inspect [object]`
+    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
+    - List actions such as `take` if the item is movable.
+
 
 ---
 # Bugs
-
-- Status message from `inspect [object]` shouldn't be cleared.
-    - this.game.status('What do you want to inspect? Usage: <span class="code dark-bg">inspect [object]</span>.')
-    - Maybe just an if statement around the clearing in `game.onInput()`?
 
 
 
@@ -350,6 +350,8 @@
 
 
 # Done
+- Status message from `inspect [object]` shouldn't be cleared.
+
 - `player.activeItem` need to prevent the player from taking actions in the current room.
     - The question is where to put a check for this.
         - A possible candidate is `onInput`, wrapping the contents of the `if player.name` block. However, this might disable other commands so it has to be tested properly.

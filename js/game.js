@@ -46,13 +46,14 @@ class Game {
     }
 
     onInput (rawInput) {
-        this.status('')
+        const notUsingItem = this.player.activeItem === null
+        if (notUsingItem) this.status('')
         const input = Helpers.normalizeString(rawInput)
 
         // Check that this.player.name is set instead of this.gameStarted === true
         // to allow parsing of special commands (like `help`) while in the main menu.
         if (this.player.name) {
-            if (this.player.activeItem === null) {
+            if (notUsingItem) {
                 this.parseCommand(input)
                 this.updateCommandHistory(input)
             }
