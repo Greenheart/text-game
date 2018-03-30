@@ -138,6 +138,18 @@
 - Add new rooms according to the updated apartment structure.
 
 
+
+- Improve `inspect [object]`
+    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
+
+    - Improve styling for `inspect` list items.
+    - List actions such as `take` if the item is movable.
+
+
+
+
+
+
 - **Tasks**
     - Add UI component to show tasks
     - A room shows a thought bubble (representing the player's own thoughts) *"This chest is locked. I wonder if there's a key somewhere..."*
@@ -161,17 +173,6 @@
         - Maybe by hovering the task title?
             - Not touch-friendly
         - Maybe add `tasks` command which will show details about the active tasks in the game content area. Maybe a similar approach to how both the help and notes are interacted with: `[task number]` or `next`/`prev`
-
-
-
-- Improve `inspect [object]`
-    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
-    - Improve styling for `inspect` list items.
-
-    - List actions such as `take` if the item is movable.
-
-
-
 
 
 #### Completed
@@ -208,6 +209,9 @@
 
 ---
 # Ideas
+- Make it possible to disable all text input when "Press enter to continue..." is the only available action.
+    - Maybe this could help clarify that there are times where no other actions than an Enter press makes sense - like in menus.
+
 - Allow `read notes` to trigger even if user types `read note`, to decrease possible typos and thereby improve player experience.
 
 - Strange phrasing in beginning of the "In the sofa in front of the TV."

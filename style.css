@@ -129,6 +129,10 @@ section p:first-of-type {
     width: 100%;
 }
 
+.game-content li:not(:first-of-type) {
+    margin-top: 6px;
+}
+
 #game-text .note-heading {
     font-size: 15px;
     border-bottom: 1px solid black;
