@@ -119,7 +119,6 @@
         - `start()`:
             - Callback starting the event, and performing all main tasks of the event.
             - Maybe set a custom parser, move the player to a specific location or similar.
-            -
         - `end()`:
             - **Optional** callback for cleaning up state up once the event is finished and return to the game.
 
@@ -131,8 +130,7 @@
 
 ---
 # Bugs
-
-- It's shouldn't be possible to start the game without choosing a username.
+- After using `read notes` for the first time, the player can't use further commands without pressing enter once first. This could be caused by `player.activeItem` not being cleared properly when the `read notes` view is closed.
 
 
 
@@ -144,32 +142,6 @@
 
 
 
-
-
-
-- **Tasks**
-    - Add UI component to show tasks
-    - A room shows a thought bubble (representing the player's own thoughts) *"This chest is locked. I wonder if there's a key somewhere..."*
-        - This "thought bubble" could just be *italics text for an initial version.*
-    - Tasks give the player clues to help them progress.
-        - Completing tasks also rewards them, making them feel more engaged with the story since they see that they've accomplished something.
-    - Timed tasks (complete X before a certain in game date/time)
-        - *Possible future feature, low prio initially.*
-    - Think about when and how to check for task updates
-        - Probably around the time that the player inventory is displayed.
-        - This could also be handled by callback functions in rooms.
-        - Or, *probably best of all*, the game has some registered `GameEvent`s that are checked regularly to see if the player has made sufficient progress.
-    - Register tasks centrally in the game to allow other components to interact with tasks.
-        - Probably store tasks in another file though: `tasks.js`
-    - When the player gets a new task, use the lookup `game.tasks` to find the one and add it to `player.tasks`.
-        - Both active and *inactive tasks are kept for now* to allow for example statistics to be shown in the future.
-        - Keeping inactive tasks would also allow us to track *how well* the player completed them, or to *track their decisions that may affect further story/gameplay*. Feels like a good place to store this information.
-    - *IDEA*: Possibly show a modal of some kind describing a new task when it's received? Or just populate game content.
-        - *This is a feature for a later time. The minimal approach should work fine for now.*
-    - Allow player to see details about a task
-        - Maybe by hovering the task title?
-            - Not touch-friendly
-        - Maybe add `tasks` command which will show details about the active tasks in the game content area. Maybe a similar approach to how both the help and notes are interacted with: `[task number]` or `next`/`prev`
 
 
 #### Completed
@@ -234,6 +206,10 @@
 - Maybe use a dark background and light text to be easier on the eyes.
     - Or add a dark theme that users can toggle.
 
+- **Tasks**
+    - Both active and *inactive tasks are kept for now* to allow for example statistics to be shown in the future.
+    - Keeping inactive tasks would also allow us to track *how well* the player completed them, or to *track their decisions that may affect further story/gameplay*. Feels like a good place to store this information.
+
 - Maybe add a slight delay - or a typing effect, adding character by character to the screen as new information is available.
     - This would reduce instant reactions and make the game feel more relaxed
     - Maybe this could also be achieved by adding slight delays (200-400 ms)
@@ -287,6 +263,17 @@
 
 ---
 # Low prio ideas
+- Possibly show a modal of some kind describing a new task when it's received? Or just populate game content.
+    - *This is a feature for a later time. The minimal approach should work fine for now.*
+
+- Allow player to see details about a task
+    - *Possible future feature*
+    - Maybe by hovering the task title? *(Not touch-friendly)*
+    - Maybe add `tasks` command which will show details about the active tasks in the game content area. Maybe a similar approach to how both the help and notes are interacted with: `[task number]` or `next`/`prev`
+
+- Timed tasks (complete X before a certain in game date/time)
+    - *Possible future feature, low prio initially.*
+
 - In the sofa, it could be possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
 
 - Make sure the game UI is responsive on smaller screen sizes.
@@ -359,6 +346,25 @@
 
 
 # Done
+- **Tasks**
+    - Add UI component to show tasks
+    - A room shows a thought bubble (representing the player's own thoughts) *"This chest is locked. I wonder if there's a key somewhere..."*
+        - This "thought bubble" could just be *italics text for an initial version.*
+    - Tasks give the player clues to help them progress.
+        - Completing tasks also rewards them, making them feel more engaged with the story since they see that they've accomplished something.
+    - Think about when and how to check for task updates
+        - Probably around the time that the player inventory is displayed.
+        - This could also be handled by callback functions in rooms.
+        - Or, *probably best of all*, the game has some registered `GameEvent`s that are checked regularly to see if the player has made sufficient progress.
+    - Register tasks centrally in the game to allow other components to interact with tasks.
+        - Probably store tasks in another file though: `tasks.js`
+    - When the player gets a new task, use the lookup `game.tasks` to find the one and add it to `player.tasks`.
+
+
+
+
+
+- It should not be possible to start the game without choosing a username.
 - Improve styling for `inspect` list items.
 - List actions such as `take` if the item is movable.
 
