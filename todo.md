@@ -126,6 +126,7 @@
 - Improve `inspect [object]`
     - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
         - Disabling all forms of text input except the enter key would solve this.
+    - Or get around this issue by allowing interactions with the `inspect`ed item, but nothing else?
 
 
 ---
