@@ -212,7 +212,8 @@ class Player {
         }
     }
 
-    giveNewTask (task) {
+    giveNewTask (taskId) {
+        const task = this.game.tasks.find(t => t.id === taskId)
         task.active = true
         this.tasks.push(task)
         this.updateUI()
