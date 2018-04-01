@@ -272,6 +272,7 @@ class Game {
             this.status(`You can't use a command as your username.`)
         } else if (rawInput.length) {
             this.player.name = rawInput.trimLeft().trimRight()
+            this.status('')
             this.showMainMenu()
 
             // First time main menu is shown, replace some of it's content.
