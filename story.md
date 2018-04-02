@@ -101,7 +101,7 @@ This is an exploration of interactive storytelling. Of how to make characters an
     - A company poster/brochure
         - gives details about the wearable device and how it's marketed.
     - A TV time table with some TV-shows circled in
-        - "Who even keeps these things these days? There's an app for that. In the TV itself."
+        - "Who even keeps these anymore? There's an app for that - In the TV itself."
         - This implies that the friend has memory problems, and need to use various things to help him in his everyday life.
     - Blood stain
         - Don't tell the player at this point, but it's coming from the friend who's getting negative side effects because of the device he's testing for work.

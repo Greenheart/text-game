@@ -91,11 +91,6 @@
             - If that file grow large, it could be split into several sub modules.
     - Maybe add it as it's own room, with items that represent different interactions the player can make with the computer. This solution allows reuse of the existing structure while giving pretty good creative freedom.
 
-- Kitchen
-    - TV time table on the fridge door
-        - might imply that the friend is not himself.
-        - might also give a clue that the TV is important for the story.
-
 - Fix game credits - show everyone involved rather than individual names.
     - Update readme, main menu text and HTML meta information.
 
@@ -122,7 +117,7 @@
 
 ---
 # In progress
-- Add new rooms according to the updated apartment structure.
+
 
 
 
@@ -331,6 +326,13 @@
 
 
 # Done
+- Kitchen
+    - TV time table on the fridge door
+        - might imply that the friend is not himself.
+        - might also give a clue that the TV is important for the story.
+
+- Add new rooms according to the updated apartment structure.
+
 - Prevent other actions than 'north' or 'n' when player has checked the doorhandle in `apartment.outside`
 
 - Possible to start the same task multiple times by typing `use doorhandle` repeatedly. Add a check in `player.giveNewTask()` to fix.

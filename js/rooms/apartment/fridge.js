@@ -4,5 +4,20 @@ window.rooms.push({
     connections: {
         'south': 'apartment.kitchen'
     },
-    description: `<p>Some interesting notes. Go <b>south</b> to get to the kitchen entrance.</p>`
+    items: [{
+        name: 'TV timetable',
+        id: 'tv-timetable',
+        actions: {
+            read (room, item) {
+                room.game.title('TV Timetable')
+                room.game.text(`
+                    <p>The timetable is hanging on the right side of the fridge door, listing TV programs for the coming week. A few of them are circled in.</p>
+                    <p><i>Who even keeps these anymore? There's an app for this - in the TV itself.</i></p>
+                `)
+            }
+        },
+        movable: false
+    }],
+    // TODO: Add 1 or 2 notes here. Also consider addding a picture of some kind.
+    description: `<p>The fridge door is filled with various Some interesting notes. Go <b>south</b> to get to the kitchen entrance.</p>`
 })
