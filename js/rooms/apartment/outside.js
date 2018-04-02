@@ -49,7 +49,7 @@ window.rooms.push({
         doorhandleChecked: false
     },
     playerCanLeave (room, direction) {
-        if (direction === 'north') {
+        if ('north'.startsWith(direction)) {
             if (room.state.doorhandleChecked) {
                 return true
             } else {
