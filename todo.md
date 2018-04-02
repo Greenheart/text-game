@@ -122,7 +122,6 @@
 
 ---
 # Bugs
-- After using `read notes` for the first time, the player can't use further commands without pressing enter once first. This could be caused by `player.activeItem` not being cleared properly when the `read notes` view is closed.
 
 
 
@@ -337,6 +336,8 @@
 
 
 # Done
+- After using `read notes` for the first time, the player can't use further commands without pressing enter once first. This could be caused by `player.activeItem` not being cleared properly when the `read notes` view is closed.
+
 - Further improve autocompletions: Don't autocomplete `read` for items without a read action.
 
 - Some actions should not trigger autocompletions for items.
