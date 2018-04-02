@@ -329,6 +329,7 @@
 
 - Improve autocompletions:
     - For `take` and `drop`, don't suggest items with `item.movable === false`
+    - Not working for objects with uppercase names.
 
 - Ensure uppercase names work properly everywhere.
 

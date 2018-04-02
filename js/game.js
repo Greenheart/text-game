@@ -289,7 +289,7 @@ class Game {
             // Match against keywords such as `notes`. These are used for special interactions.
             return [ ...this.dictionary.keywords ]
         } else {
-            const getName = i => i.name
+            const getName = i => i.name.toLowerCase()
             const actionsTheItemHasToHave = ['use', 'check', 'read']
             const keepRelevant = source => {
                 // Depending on the source of items, only some completions will be relevant.
