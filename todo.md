@@ -108,10 +108,6 @@
             - **Optional** callback for cleaning up state up once the event is finished and return to the game.
 
 
-- Improve autocompletions:
-    - For `take` and `drop`, don't suggest items with `item.movable === false`
-
-- Ensure uppercase names work properly everywhere.
 
 ---
 # Bugs
@@ -330,6 +326,11 @@
 
 
 # Done
+- Improve autocompletions:
+    - For `take` and `drop`, don't suggest items with `item.movable === false`
+
+- Ensure uppercase names work properly everywhere.
+
 - Kitchen
     - TV time table on the fridge door
         - might imply that the friend is not himself.

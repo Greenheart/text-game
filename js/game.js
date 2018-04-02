@@ -298,12 +298,14 @@ class Game {
                 if (source === 'inventory') {
                     return item => {
                         if (action === 'take') return false
+                        if (action === 'drop' && !item.movable) return false
                         if (actionsTheItemHasToHave.includes(action) && !item.actions[action]) return false
                         return true
                     }
                 } else if (source === 'room') {
                     return item => {
                         if (action === 'drop') return false
+                        if (action === 'take' && !item.movable) return false
                         if (actionsTheItemHasToHave.includes(action) && !item.actions[action]) return false
                         return true
                     }
