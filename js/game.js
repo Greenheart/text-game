@@ -62,6 +62,7 @@ class Game {
         } else if (['read', 'take'].includes(this.player.lastAction) && this.player.activeItem.id.startsWith('note')) {
             // Allow players to go directly to the notes view when a new note has been found.
             if (input.match(/read\s+notes/)) {
+                this.returnToGame()
                 this.handleInput(input)
             }
         } else if (this.player.activeItem.id === 'doorhandle') {
