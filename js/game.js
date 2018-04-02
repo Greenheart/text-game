@@ -54,7 +54,7 @@ class Game {
             this.handleInput(input)
         } else if (this.player.lastAction === 'inspect' && !input.startsWith('inspect')) {
             // Allow player to interact with the currently inspected item.
-            if (input.endsWith(this.player.activeItem.name)) {
+            if (input.endsWith(this.player.activeItem.name.toLowerCase())) {
                 // By using `returnToGame()`, we close the `inspect` view before executing the next action.
                 this.returnToGame()
                 this.handleInput(input)

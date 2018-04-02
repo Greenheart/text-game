@@ -112,12 +112,11 @@
 ---
 # Bugs
 
-- `read` not working when player is inspecting the tv timetable.
+
 
 
 ---
 # In progress
-
 
 
 
@@ -326,6 +325,8 @@
 
 
 # Done
+- `read` not working when player is inspecting the tv timetable.
+
 - Improve autocompletions:
     - For `take` and `drop`, don't suggest items with `item.movable === false`
 
