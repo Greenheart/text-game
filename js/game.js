@@ -266,6 +266,7 @@ class Game {
             return [ ...this.dictionary.keywords ]
         } else {
             const getName = i => i.name
+            const actionsTheItemHasToHave = ['use', 'check', 'read']
             const keepRelevant = source => {
                 // Depending on the source of items, only some completions will be relevant.
                 // For example, `take [item already in inventory]` doesn't make sense.
@@ -273,13 +274,13 @@ class Game {
                 if (source === 'inventory') {
                     return item => {
                         if (action === 'take') return false
-                        if (action === 'read' && !item.actions.read) return false
+                        if (actionsTheItemHasToHave.includes(action) && !item.actions[action]) return false
                         return true
                     }
                 } else if (source === 'room') {
                     return item => {
                         if (action === 'drop') return false
-                        if (action === 'read' && !item.actions.read) return false
+                        if (actionsTheItemHasToHave.includes(action) && !item.actions[action]) return false
                         return true
                     }
                 }
