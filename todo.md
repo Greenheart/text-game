@@ -118,7 +118,6 @@
 ---
 # Bugs
 
-- Possible to start the same task multiple times by typing `use doorhandle` repeatedly. Add a check in `player.giveNewTask()` to fix.
 
 
 ---
@@ -332,6 +331,8 @@
 
 
 # Done
+- Possible to start the same task multiple times by typing `use doorhandle` repeatedly. Add a check in `player.giveNewTask()` to fix.
+
 - Improve `inspect [object]`
     - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
         - Disabling all forms of text input except the enter key would solve this.

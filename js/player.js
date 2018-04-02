@@ -224,10 +224,13 @@ class Player {
     }
 
     giveNewTask (taskId) {
-        const task = this.game.tasks.find(t => t.id === taskId)
-        task.active = true
-        this.tasks.push(task)
-        this.updateUI()
+        if (!this.tasks.some(t => t.id === taskId)) {
+            // Prevent duplicate tasks.
+            const task = this.game.tasks.find(t => t.id === taskId)
+            task.active = true
+            this.tasks.push(task)
+            this.updateUI()
+        }
     }
 
     addNote (note) {
