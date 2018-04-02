@@ -250,23 +250,41 @@ class Game {
             // First part of a command => autocomplete against actions
             return this.dictionary.allCommands
         }
-        // Second part of a command => autocomplete against objects
-        // NOTE: This might not work well for actions that need multiple words
-        // The problem would arise because of hard coded indices.
-        // A possible solution could be to replace `split[0]` with a variable `action`.
+        // Evetything else: Second part of a command => autocomplete against objects
         const noItemMatch = !(
             this.player.inventory.some(i => i.name.startsWith(split[1])) ||
             this.player.currentRoom.items.some(i => i.name.startsWith(split[1]))
         )
 
-        if (split[0] === 'read' && noItemMatch) {
+        // NOTE: This might not work well for actions that need multiple words
+        // The problem would arise because of hard coded indices (split[0]).
+        // A possible solution could be to improve how `action` is determined.
+        const action = split[0]
+
+        if (action === 'read' && noItemMatch) {
             // Match against keywords such as `notes`. These are used for special interactions.
             return [ ...this.dictionary.keywords ]
         } else {
             const getName = i => i.name
+            const keepRelevant = source => {
+                // Depending on the source of items, only some completions will be relevant.
+                // For example, `take [item already in inventory]` doesn't make sense.
+                // These filter functions only keep relevant completions.
+                if (source === 'inventory') {
+                    return item => {
+                        if (action === 'take') return false
+                        return true
+                    }
+                } else if (source === 'room') {
+                    return item => {
+                        if (action === 'drop') return false
+                        return true
+                    }
+                }
+            }
             return [
-                ...this.player.inventory.map(getName),
-                ...this.player.currentRoom.items.map(getName)
+                ...this.player.inventory.filter(keepRelevant('inventory')).map(getName),
+                ...this.player.currentRoom.items.filter(keepRelevant('room')).map(getName)
             ]
         }
     }

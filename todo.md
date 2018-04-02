@@ -337,6 +337,9 @@
 
 
 # Done
+- Some actions should not trigger autocompletions for items.
+    - for example if player has poster in inventory and tries to autocomplete `take p` (to take the `photo frame`), `poster` should not be a given completion.
+
 - Autocomplete not working for `read poster` but it is for `take poster`. Check other completions for other `read` targets too.
 
 - Add a poster somewhere in the Apartment
