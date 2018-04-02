@@ -254,8 +254,12 @@ class Game {
         // NOTE: This might not work well for actions that need multiple words
         // The problem would arise because of hard coded indices.
         // A possible solution could be to replace `split[0]` with a variable `action`.
+        const noItemMatch = !(
+            this.player.inventory.some(i => i.name.startsWith(split[1])) ||
+            this.player.currentRoom.items.some(i => i.name.startsWith(split[1]))
+        )
 
-        if (split[0] === 'read' && !this.player.currentRoom.items.some(i => i.id.startsWith('note'))) {
+        if (split[0] === 'read' && noItemMatch) {
             // Match against keywords such as `notes`. These are used for special interactions.
             return [ ...this.dictionary.keywords ]
         } else {

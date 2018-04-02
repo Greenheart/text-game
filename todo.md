@@ -124,8 +124,6 @@
 # Bugs
 - After using `read notes` for the first time, the player can't use further commands without pressing enter once first. This could be caused by `player.activeItem` not being cleared properly when the `read notes` view is closed.
 
-- Autocomplete not working for `read poster` but it is for `take poster`. Check other completions for other `read` targets too.
-
 
 
 ---
@@ -339,6 +337,8 @@
 
 
 # Done
+- Autocomplete not working for `read poster` but it is for `take poster`. Check other completions for other `read` targets too.
+
 - Add a poster somewhere in the Apartment
     - about the company and what they do
     - also marketing poster for the new wearable device.
