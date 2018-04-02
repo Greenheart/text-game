@@ -20,7 +20,7 @@ const CustomParsers = {
             const note = game.player.notes.find(n => n.id === `note-${input}`)
             if (note) {
                 game.showSection(game.ui.gameContent)
-                game.player.readItem(note, true)
+                game.player.readNote(note, true)
             } else {
                 game.status(`You haven't found that note yet.`)
             }

@@ -139,6 +139,11 @@ section p:first-of-type {
     font-style: italic;
 }
 
+#game-text .poster-heading {
+    font-size: 20px;
+    font-weight: 600;
+}
+
 #note-collection .notes {
     margin-top: 2rem;
 }

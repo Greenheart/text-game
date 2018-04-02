@@ -192,14 +192,23 @@ class Player {
         }
     }
 
-    readItem (item, returnToNoteCollection = false) {
+    readItem (item) {
+        if (!item.state.hasBeenRead) item.state.hasBeenRead = true
+        this.activeItem = item
+        this.game.itemText('')
+
+        if (item.id.startsWith('note')) {
+            this.readNote(item)
+        } else {
+            item.actions.read(this.currentRoom, item)
+            this.game.useContinuePlaceholder()
+        }
+    }
+
+    readNote (item, returnToNoteCollection = false) {
         this.game.title(`Note #${item.id.split('-')[1]}`)
         const currentRoomHasNote = this.currentRoom.hasItem({ id: item.id }) && item.id.startsWith('note')
         if (currentRoomHasNote) this.takeItem(item)
-        if (!item.state.hasBeenRead) item.state.hasBeenRead = true
-
-        this.activeItem = item
-        this.game.itemText('')
         item.actions.read(this.currentRoom, item)
 
         if (returnToNoteCollection) {

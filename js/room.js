@@ -6,7 +6,11 @@ class Room {
         this.items = (room.items || []).map(i => {
             // Default: all items are movable. Only those that explicitly say `false` can't be moved.
             if (i.movable !== false) i.movable = true
+            // Ensure all items have state at runtime.
+            if (!i.state) i.state = {}
             return i
+            // NOTE: If Item related logic is to be refactored to a separate class and file,
+            // This mapper function should be part of the constructor.
         })
         this.visited = this.name === 'start' ? true : false
         // Initially, connections are just a map of directions and corresponding room names.

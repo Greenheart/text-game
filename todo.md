@@ -90,21 +90,11 @@
         - Different actions would simply be implemented into the custom parser.
             - If that file grow large, it could be split into several sub modules.
     - Maybe add it as it's own room, with items that represent different interactions the player can make with the computer. This solution allows reuse of the existing structure while giving pretty good creative freedom.
-- add bedroom
-- add bedroom.window
-- add bedroom.wardrobe
-    - Standing open, looks like someone searched through it in a hurry.
-
 
 - Kitchen
     - TV time table on the fridge door
         - might imply that the friend is not himself.
         - might also give a clue that the TV is important for the story.
-
-- Add a poster somewhere in the Apartment
-    - about the company and what they do
-    - also marketing poster for the new wearable device.
-        - might imply that the friend is not himself.
 
 - Fix game credits - show everyone involved rather than individual names.
     - Update readme, main menu text and HTML meta information.
@@ -126,6 +116,7 @@
 - Improve `inspect [object]`
     - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
         - Disabling all forms of text input except the enter key would solve this.
+        - *In any case, it might be worth* to disable text input when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set.  
     - Or get around this issue by allowing interactions with the `inspect`ed item, but nothing else?
 
 
@@ -133,6 +124,7 @@
 # Bugs
 - After using `read notes` for the first time, the player can't use further commands without pressing enter once first. This could be caused by `player.activeItem` not being cleared properly when the `read notes` view is closed.
 
+- Autocomplete not working for `read poster` but it is for `take poster`. Check other completions for other `read` targets too.
 
 
 
@@ -347,6 +339,16 @@
 
 
 # Done
+- Add a poster somewhere in the Apartment
+    - about the company and what they do
+    - also marketing poster for the new wearable device.
+        - might imply that the friend is not himself.
+
+- add bedroom
+- add bedroom.window
+- add bedroom.wardrobe
+    - Standing open, looks like someone searched through it in a hurry.
+
 - **Tasks**
     - Add UI component to show tasks
     - A room shows a thought bubble (representing the player's own thoughts) *"This chest is locked. I wonder if there's a key somewhere..."*
@@ -360,10 +362,6 @@
     - Register tasks centrally in the game to allow other components to interact with tasks.
         - Probably store tasks in another file though: `tasks.js`
     - When the player gets a new task, use the lookup `game.tasks` to find the one and add it to `player.tasks`.
-
-
-
-
 
 - It should not be possible to start the game without choosing a username.
 - Improve styling for `inspect` list items.
