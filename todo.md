@@ -337,6 +337,8 @@
 
 
 # Done
+- Further improve autocompletions: Don't autocomplete `read` for items without a read action.
+
 - Some actions should not trigger autocompletions for items.
     - for example if player has poster in inventory and tries to autocomplete `take p` (to take the `photo frame`), `poster` should not be a given completion.
 

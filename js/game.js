@@ -273,11 +273,13 @@ class Game {
                 if (source === 'inventory') {
                     return item => {
                         if (action === 'take') return false
+                        if (action === 'read' && !item.actions.read) return false
                         return true
                     }
                 } else if (source === 'room') {
                     return item => {
                         if (action === 'drop') return false
+                        if (action === 'read' && !item.actions.read) return false
                         return true
                     }
                 }

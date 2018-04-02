@@ -6,8 +6,11 @@ class Room {
         this.items = (room.items || []).map(i => {
             // Default: all items are movable. Only those that explicitly say `false` can't be moved.
             if (i.movable !== false) i.movable = true
-            // Ensure all items have state at runtime.
+            // Ensure all items look the same during runtime.
+            // This allow item configs to focus on what's interesting: custom data.
+            // This initializer sets the standard shape of items.
             if (!i.state) i.state = {}
+            if (!i.actions) i.actions = {}
             return i
             // NOTE: If Item related logic is to be refactored to a separate class and file,
             // This mapper function should be part of the constructor.
