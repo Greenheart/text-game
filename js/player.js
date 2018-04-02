@@ -118,8 +118,8 @@ class Player {
         const item = this.inventory.find(item => item.name === object)
         if (item) {
             this.currentRoom.items.push(item)
-            if (this.activeItem.id === item.id) this.activeItem = null
             this.inventory = this.inventory.filter(item => item.name !== object)
+            if (this.activeItem && this.activeItem.id === item.id) this.activeItem = null
             this.game.status(`${object} dropped.`)
         } else if (object.startsWith('note')) {
             this.game.status(`Notes in your collection can't be dropped.`)
