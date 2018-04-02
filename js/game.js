@@ -275,8 +275,8 @@ class Game {
         }
         // Evetything else: Second part of a command => autocomplete against objects
         const noItemMatch = !(
-            this.player.inventory.some(i => i.name.startsWith(split[1])) ||
-            this.player.currentRoom.items.some(i => i.name.startsWith(split[1]))
+            this.player.inventory.some(i => i.name.toLowerCase().startsWith(split[1])) ||
+            this.player.currentRoom.items.some(i => i.name.toLowerCase().startsWith(split[1]))
         )
 
         // NOTE: This might not work well for actions that need multiple words

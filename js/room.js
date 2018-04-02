@@ -60,11 +60,14 @@ class Room {
         // Search: Object with { key: value } that we search for in an item.
         // NOTE: Only compares value types such as strings or numbers at this time.
         return Object.keys(search).some(key => (
-            this.items.some(i => i[key] === search[key])
+            this.items.some(item => {
+                if (key === 'name') return Helpers.itemHasName(search[key])(item)
+                return item[key] === search[key]
+            })
         ))
     }
 
     removeItem (object) {
-        this.items = this.items.filter(i => i.name !== object)
+        this.items = this.items.filter(i => i.name.toLowerCase() !== object)
     }
 }

@@ -18,7 +18,7 @@ class Player {
         }
 
         const object = this.getItemName(split)
-        const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
+        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             // list all actions for the item.
             this.game.title('Inspecting ' + item.name)
@@ -75,7 +75,7 @@ class Player {
         const objectIsInRoom = this.currentRoom.hasItem({ name: object })
         if (objectIsInRoom) {
             this.takeItem(
-                this.currentRoom.items.find(i => i.name === object)
+                this.currentRoom.items.find(Helpers.itemHasName(object))
             )
         } else if (!objectIsInRoom && this.hasItem(object)) {
             this.game.status(`The ${object} is already in your inventory.`)
@@ -115,11 +115,11 @@ class Player {
         }
 
         const object = this.getItemName(split)
-        const item = this.inventory.find(item => item.name === object)
+        const item = this.inventory.find(Helpers.itemHasName(object))
         if (item) {
             this.currentRoom.items.push(item)
-            this.inventory = this.inventory.filter(item => item.name !== object)
             if (this.activeItem && this.activeItem.id === item.id) this.activeItem = null
+            this.inventory = this.inventory.filter(i => i.name.toLowerCase() === object)
             this.game.status(`${object} dropped.`)
         } else if (object.startsWith('note')) {
             this.game.status(`Notes in your collection can't be dropped.`)
@@ -138,7 +138,7 @@ class Player {
         }
 
         const object = this.getItemName(split)
-        const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
+        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             if (item.actions.use) {
                 this.currentRoom.game.itemText('')
@@ -158,7 +158,7 @@ class Player {
         }
 
         const object = this.getItemName(split)
-        const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
+        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             if (item.actions.check) {
                 this.currentRoom.game.itemText('')
@@ -181,7 +181,7 @@ class Player {
         if (object === 'notes') {
             this.showNotes()
         } else {
-            const item = this.inventory.find(item => item.name === object) || this.currentRoom.items.find(item => item.name === object)
+            const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
             if (item) {
                 if (item.actions.read) {
                     this.readItem(item)
@@ -275,7 +275,7 @@ class Player {
     }
 
     hasItem (object) {
-        return this.inventory.some(item => item.name === object)
+        return this.inventory.some(Helpers.itemHasName(object))
     }
 
     updateInventory () {

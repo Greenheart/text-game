@@ -108,11 +108,15 @@
             - **Optional** callback for cleaning up state up once the event is finished and return to the game.
 
 
+- Improve autocompletions:
+    - For `take` and `drop`, don't suggest items with `item.movable === false`
 
+- Ensure uppercase names work properly everywhere.
 
 ---
 # Bugs
 
+- `read` not working when player is inspecting the tv timetable.
 
 
 ---
@@ -310,9 +314,9 @@
 - AQW
     - > Worldmap> Throne Of Darkness> Scarletta, Tower of mirrors.
         - This world area is a great example of how the different rooms can contain different tasks or secrets that will unveil later on in the game. The player will progress and understand that certain items that wasn't relevant for them at the time will become relevant in the future. In this way you can create great story elements and simple tasks that can seem like an endless puzzle for the player but in reality it's quite simple to pump out tons of different tasks and things the player can interact with.
-        TLDR; each room may contain several things to interact with, but only a handful are useful for the player at the moment, but later on in some rooms later a task may require the player to combine items from previous rooms.
+        - TLDR; each room may contain several things to interact with, but only a handful are useful for the player at the moment, but later on in some rooms later a task may require the player to combine items from previous rooms.
 - Simon Stålenhag - Flodskörden
-    - Different environements.
+    - Different environments.
     - Jumps in Time.
     - Seemingly irrelevant details that add to the story.
 - Zork
