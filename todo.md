@@ -113,22 +113,17 @@
             - **Optional** callback for cleaning up state up once the event is finished and return to the game.
 
 
-- Improve `inspect [object]`
-    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
-        - Disabling all forms of text input except the enter key would solve this.
-        - *In any case, it might be worth* to disable text input when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set.  
-    - Or get around this issue by allowing interactions with the `inspect`ed item, but nothing else?
 
 
 ---
 # Bugs
 
+- Possible to start the same task multiple times by typing `use doorhandle` repeatedly. Add a check in `player.giveNewTask()` to fix.
 
 
 ---
 # In progress
 - Add new rooms according to the updated apartment structure.
-
 
 
 
@@ -168,7 +163,8 @@
 
 ---
 # Ideas
-- Make it possible to disable all text input when "Press enter to continue..." is the only available action.
+- Make it possible to disable all text input when "Press enter to continue..." is the only available action. Only the enter key should work.
+    - This could be enabled when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set
     - Maybe this could help clarify that there are times where no other actions than an Enter press makes sense - like in menus.
 
 - Allow `read notes` to trigger even if user types `read note`, to decrease possible typos and thereby improve player experience.
@@ -336,6 +332,11 @@
 
 
 # Done
+- Improve `inspect [object]`
+    - Clarify status message to not confuse players that they can interact with the object from that view, but have to press enter first.
+        - Disabling all forms of text input except the enter key would solve this.
+    - Or get around this issue by allowing interactions with the `inspect`ed item, but nothing else?
+
 - After using `read notes` for the first time, the player can't use further commands without pressing enter once first. This could be caused by `player.activeItem` not being cleared properly when the `read notes` view is closed.
 
 - Further improve autocompletions: Don't autocomplete `read` for items without a read action.

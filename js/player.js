@@ -8,6 +8,7 @@ class Player {
         this.name = ''
         this.moves = 0
         this.activeItem = null
+        this.lastAction = ''
     }
 
     inspect (input, split) {
