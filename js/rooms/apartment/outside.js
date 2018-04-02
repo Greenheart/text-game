@@ -31,16 +31,18 @@ window.rooms.push({
         movable: false,
         actions: {
             // NOTE: Not ideal to duplicate actions, but until a better solution is found, this allows for fast content creation :D
-            check (room) {
+            check (room, item) {
                 room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                 <p>Go <b>north</b> to enter.</p>`)
                 room.state.doorhandleChecked = true
+                room.game.player.activeItem = item
                 room.game.player.giveNewTask('anyone-home')
             },
-            use (room) {
+            use (room, item) {
                 room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                 <p>Go <b>north</b> to enter.</p>`)
                 room.state.doorhandleChecked = true
+                room.game.player.activeItem = item
                 room.game.player.giveNewTask('anyone-home')
             }
         }
@@ -51,6 +53,7 @@ window.rooms.push({
     playerCanLeave (room, direction) {
         if ('north'.startsWith(direction)) {
             if (room.state.doorhandleChecked) {
+                room.game.player.activeItem = null
                 return true
             } else {
                 return 'The door is not open.'

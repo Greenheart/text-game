@@ -46,27 +46,34 @@ class Game {
     }
 
     onInput (rawInput) {
+        // IDEA: This method could be cleaned up by refactoring special cases below as `CustomParser`s.
         const input = Helpers.normalizeString(rawInput)
         if (this.player.activeItem === null) {
             // Default: Only allow new actions to be taken when no item is active.
             this.status('')
-            this.parseCommand(input)
-            this.updateCommandHistory(input)
+            this.handleInput(input)
         } else if (this.player.lastAction === 'inspect' && !input.startsWith('inspect')) {
             // Allow player to interact with the currently inspected item.
             if (input.endsWith(this.player.activeItem.name)) {
                 // By using `returnToGame()`, we close the `inspect` view before executing the next action.
                 this.returnToGame()
-                this.parseCommand(input)
-                this.updateCommandHistory(input)
+                this.handleInput(input)
             }
         } else if (['read', 'take'].includes(this.player.lastAction) && this.player.activeItem.id.startsWith('note')) {
             // Allow players to go directly to the notes view when a new note has been found.
             if (input.match(/read\s+notes/)) {
-                this.parseCommand(input)
-                this.updateCommandHistory(input)
+                this.handleInput(input)
+            }
+        } else if (this.player.activeItem.id === 'doorhandle') {
+            if ('north'.startsWith(input)) {
+                this.handleInput(input)
             }
         }
+    }
+
+    handleInput (input) {
+        this.parseCommand(input)
+        this.updateCommandHistory(input)
     }
 
     parseCommand (input) {

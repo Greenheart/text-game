@@ -331,6 +331,8 @@
 
 
 # Done
+- Prevent other actions than 'north' or 'n' when player has checked the doorhandle in `apartment.outside`
+
 - Possible to start the same task multiple times by typing `use doorhandle` repeatedly. Add a check in `player.giveNewTask()` to fix.
 
 - Improve `inspect [object]`

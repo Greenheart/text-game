@@ -162,7 +162,7 @@ class Player {
         if (item) {
             if (item.actions.check) {
                 this.currentRoom.game.itemText('')
-                item.actions.check(this.currentRoom)
+                item.actions.check(this.currentRoom, item)
             } else {
                 this.game.status(`The ${object} can't be checked.`)
             }
