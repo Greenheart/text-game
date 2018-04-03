@@ -21,6 +21,7 @@ window.rooms.push({
                 /* TODO: add support for viewing multiple photos.
                     - Either use `next` and `previous` or `prev` to navigate
                     - Or `use [photo frame]` multiple times, each showing new photos.
+                    - This would use a `CustomParser`
                 */
                 room.game.text(`Very nice photos indeed.`)
                 room.game.player.activeItem = item
