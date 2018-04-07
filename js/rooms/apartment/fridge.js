@@ -19,5 +19,5 @@ window.rooms.push({
         movable: false
     }],
     // TODO: Add 1 or 2 notes here. Also consider addding a picture of some kind.
-    description: `<p>The fridge door is filled with various Some interesting notes. Go <b>south</b> to get to the kitchen entrance.</p>`
+    description: `<p>The fridge door is filled with various notes. Go <b>south</b> to get to the kitchen entrance.</p>`
 })

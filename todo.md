@@ -151,6 +151,9 @@
 - Maybe the game doesn't need to be that open after all. It might fit better with the theme (and be easier to develop). A game where the story is more linear, but offer small variations that add replayability and time for exploration, is likely a better approach than a massive open world game with separate story lines and player choices.
     - Maybe it can be a mystery game even though it's linear? Indeed it can!
 
+- *Should autocomplete only work for valid completions?*
+    - For example, autocompleting a object name for an action it can't be used for takes away from the player's freedom to try different thoughts.
+    - This might cause players to experience the game as more linear than it is.
 
 
 
