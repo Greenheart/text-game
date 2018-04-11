@@ -16,7 +16,7 @@ const templateRoom = {
                                                 // Can be both string (static) or callback function (dynamic)
                                                 // Function approach is useful for changing text based on state.
     state: {},                                  // Object with custom data related to the room.
-    playerCanLeave: (room, direction) => true   // Callback function to determine if the player
+    playerCanLeave: (room, direction) => true   // Callback function to determine if the player can leave in some direction.
 }
 
 const itemTemplate = {
