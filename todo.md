@@ -328,6 +328,8 @@
 
 
 # Done
+- Clear itemText when showing a note directly from a room.
+
 - `read` not working when player is inspecting the tv timetable.
 
 - Improve autocompletions:
