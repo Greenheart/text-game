@@ -81,15 +81,9 @@
 
 
 
-
-
-- add apartment.livingRoom.computer
-    - Maybe add it as an item with special methods
-        - This would be possible now thanks to the `CustomParser` feature.
-        - And this would make a much cleaner transition than "west" or "east"... :P
-        - Different actions would simply be implemented into the custom parser.
-            - If that file grow large, it could be split into several sub modules.
-    - Maybe add it as it's own room, with items that represent different interactions the player can make with the computer. This solution allows reuse of the existing structure while giving pretty good creative freedom.
+- Fix autocomplete for `CustomParsers`
+    - Maybe each `CustomParser` can supply their own commandCompletions, but still use the regular code?
+    - This way, players could get the same experience in the whole game, even in custom sections or in the help menu.
 
 - Fix game credits - show everyone involved rather than individual names.
     - Update readme, main menu text and HTML meta information.
@@ -118,6 +112,33 @@
 ---
 # In progress
 
+
+#### Idea
+- add apartment.livingRoom.computer
+    - Maybe add it as an item with special methods
+        - This would be possible now thanks to the `CustomParser` feature.
+        - And this would make a much cleaner transition than "west" or "east"... :P
+        - Different actions would simply be implemented into the custom parser.
+            - If that file grow large, it could be split into several sub modules.
+    - Maybe add it as it's own room, with items that represent different interactions the player can make with the computer. This solution allows reuse of the existing structure while giving pretty good creative freedom.
+
+
+#### Done
+- Use a `CustomParser` to handle computer-logic.
+- Add entrypoint
+    - Could this maybe be inside the item's specific logic?
+    - This way, this edge case wouldn't pollute the main game logic.
+- Make it possible to use the browser
+- Make it possible to press enter to leave the browser
+
+
+#### To implement computer
+- Make it possible to get back to the game world by pressing return multiple times, like in the note collection.
+
+
+#### Future
+- Remove `/rooms/computer.js` and move logic and content to another place. Either `/items/computer.js` or maybe into the `CustomParser` itself?
+- Add `room.playerCanInteract()` to limit players from interacting with objects unless they meet some condition. See `room.playerCanLeave()` for inspiration.
 
 
 

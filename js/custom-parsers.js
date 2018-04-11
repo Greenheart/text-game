@@ -61,5 +61,38 @@ const CustomParsers = {
             }
             game.ui.userInput.value = ''
         }
+    },
+    computer (game, rawInput) {
+        // IDEA: The computer might be better suited to implement using a room
+        // It's really just the entrypoint "use computer" instead of "go direction" or just "direction"
+        // that needs to be changed.
+        // By using a room, we'll get a lot of logic for free.
+
+        const input = Helpers.normalizeString(rawInput)
+        const computer = game.player.currentRoom.items.find(i => i.id === 'computer')
+        const view = computer.state.view
+
+        if (input === '') {
+            if (view === 'browser') {
+                computer.state.view = 'main'
+                game.title('The Computer')
+                game.text(`<p>As the computer starts, you realize that Kevin has no password. So careful with security in every way, yet leaving this detail unchecked.</p>
+                <p><i>Just imagine what a burglar, casually walking into his unlocked apartment could do...</i></p>`)
+                game.itemText(`There is a <i>browser</i> here.`)
+            } else if (view === 'main') {
+                game.player.activeItem = null
+                game.player.currentRoom.show()
+                game.status('')
+                game.customParser = null
+            }
+        } else {
+            if (computer.state.view === 'main' && input.match(/use\s+browser/)) {
+                computer.state.view = 'browser'
+                game.title('The Web Browser')
+                game.text('Nice browser!')
+                game.itemText('')
+            }
+            game.ui.userInput.value = ''
+        }
     }
 }
