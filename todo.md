@@ -88,6 +88,8 @@
 - Fix game credits - show everyone involved rather than individual names.
     - Update readme, main menu text and HTML meta information.
 
+- Update `room.name` to `room.id` to increase naming consistency.
+
 
 
 ---
@@ -112,13 +114,11 @@
 4. Add `game.player.updateTasks()`.
     - This shows the player's *active* tasks in the task UI component.
 5. Design UI to show tasks in a nice way.
+6. Add some way to check if the task is completed
+- In this basic example, it could be to visit all rooms of the apartment: `rooms[apartment].every(r => r.visited)`
 
 
 #### To implement tasks:
-6. Add some way to check if the task is completed
-    - In this basic example, it could be to visit all rooms of the apartment: `rooms[apartment].every(r => r.visited)`
-
-
 - Dicuss and implement `GameEvent`s
     - Used to handle specific logic that don't happen in a specific room, or by specific actions, but happen because of some other condition.
         - For example the player have visited all required rooms, interacted with some object - or maybe the game state (like in game time and date) says the event should happen.

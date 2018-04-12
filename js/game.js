@@ -1,9 +1,14 @@
 class Game {
     constructor (rooms, dictionary, tasks) {
         this.dictionary = dictionary
-        this.tasks = tasks
         this.ui = Game.getDOMReferences()
         this.bindUI()
+
+        // Prepare all tasks of the game.
+        this.tasks = []
+        for (const task of tasks) {
+            this.tasks[task.id] = new Task(task, this)
+        }
 
         // Create all rooms of the game.
         this.rooms = {}

@@ -230,9 +230,9 @@ class Player {
     }
 
     giveNewTask (taskId) {
+        // Prevent duplicate tasks.
         if (!this.tasks.some(t => t.id === taskId)) {
-            // Prevent duplicate tasks.
-            const task = this.game.tasks.find(t => t.id === taskId)
+            const task = this.game.tasks[taskId]
             task.active = true
             this.tasks.push(task)
             this.updateUI()
