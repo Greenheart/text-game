@@ -42,13 +42,10 @@ class Player {
     move (direction) {
         // Move in chosen direction if there's a room there.
         if (this.currentRoom.connections[direction]) {
-            // Room.playerCanLeave should return true if a player can leave, otherwise a string with the reason.
+            // Room.playerCanLeave() should return true if a player can leave, otherwise a string with the reason.
             const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(this.currentRoom, direction) : true
             if (playerCanLeave === true) {
-                this.currentRoom = this.currentRoom.connections[direction]
-                ++this.moves
-                this.currentRoom.show()
-                this.currentRoom.visited = true
+                this.moveTo(this.currentRoom.connections[direction])
             } else {
                 // Show the reason why player can't leave.
                 this.game.status(playerCanLeave)
@@ -56,6 +53,13 @@ class Player {
         } else {
             this.game.status(`I can't go there.`)
         }
+    }
+
+    moveTo (room) {
+        this.currentRoom = room
+        ++this.moves
+        this.currentRoom.show()
+        this.currentRoom.visited = true
     }
 
     go (input, split) {
