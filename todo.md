@@ -79,7 +79,7 @@
 
     - These could be introduced in the beginning, or as tips later during the game. But at the very least, they should be mentioned so those who want to learn more can read about it before they start playing.
 
-
+- Add new direction to `help`: `back` with alias `b`.
 
 - Fix autocomplete for `CustomParsers`
     - Maybe each `CustomParser` can supply their own commandCompletions, but still use the regular code?
@@ -112,33 +112,6 @@
 ---
 # In progress
 
-
-#### Idea
-- add apartment.livingRoom.computer
-    - Maybe add it as an item with special methods
-        - This would be possible now thanks to the `CustomParser` feature.
-        - And this would make a much cleaner transition than "west" or "east"... :P
-        - Different actions would simply be implemented into the custom parser.
-            - If that file grow large, it could be split into several sub modules.
-    - Maybe add it as it's own room, with items that represent different interactions the player can make with the computer. This solution allows reuse of the existing structure while giving pretty good creative freedom.
-
-
-#### Done
-- Use a `CustomParser` to handle computer-logic.
-- Add entrypoint
-    - Could this maybe be inside the item's specific logic?
-    - This way, this edge case wouldn't pollute the main game logic.
-- Make it possible to use the browser
-- Make it possible to press enter to leave the browser
-
-
-#### To implement computer
-- Make it possible to get back to the game world by pressing return multiple times, like in the note collection.
-
-
-#### Future
-- Remove `/rooms/computer.js` and move logic and content to another place. Either `/items/computer.js` or maybe into the `CustomParser` itself?
-- Add `room.playerCanInteract()` to limit players from interacting with objects unless they meet some condition. See `room.playerCanLeave()` for inspiration.
 
 
 
@@ -180,6 +153,9 @@
 
 ---
 # Ideas
+- Add `room.playerCanInteract()` to limit players from interacting with objects unless they meet some condition. See `room.playerCanLeave()` for inspiration.
+    - Also document in `rooms.js` docstrings.
+
 - Make it possible to disable all text input when "Press enter to continue..." is the only available action. Only the enter key should work.
     - This could be enabled when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set
     - Maybe this could help clarify that there are times where no other actions than an Enter press makes sense - like in menus.
@@ -266,12 +242,17 @@
 
 ---
 # Low prio ideas
+- Consider moving items into separate file(s) to separate them from specific rooms.
+    - This would allow multiple instances of items to exist in the same/ multiple rooms without duplicating code.
+    -
+
 - Possibly show a modal of some kind describing a new task when it's received? Or just populate game content.
     - *This is a feature for a later time. The minimal approach should work fine for now.*
 
 - Allow player to see details about a task
     - *Possible future feature*
     - Maybe by hovering the task title? *(Not touch-friendly)*
+    - Maybe clicking the task?
     - Maybe add `tasks` command which will show details about the active tasks in the game content area. Maybe a similar approach to how both the help and notes are interacted with: `[task number]` or `next`/`prev`
 
 - Timed tasks (complete X before a certain in game date/time)
@@ -349,6 +330,14 @@
 
 
 # Done
+- add apartment.livingRoom.computer
+    - Maybe add it as an item with special methods
+        - This would be possible now thanks to the `CustomParser` feature.
+        - And this would make a much cleaner transition than "west" or "east"... :P
+        - Different actions would simply be implemented into the custom parser.
+            - If that file grow large, it could be split into several sub modules.
+    - Maybe add it as it's own room, with items that represent different interactions the player can make with the computer. This solution allows reuse of the existing structure while giving pretty good creative freedom.
+
 - Clear itemText when showing a note directly from a room.
 
 - `read` not working when player is inspecting the tv timetable.

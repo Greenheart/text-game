@@ -1,16 +1,18 @@
 window.rooms.push({
-    title: 'On the Computer',
+    title: 'The Computer',
     name: 'apartment.livingRoom.computer',
     connections: {
-        'east': 'apartment.livingRoom.desk'
+        'back': 'apartment.livingRoom.desk'
     },
     items: [{
         // TODO: Add the same feature here as for the sofa: Only allow to visit this room after the first task is completed.
         name: 'browser',
         id: 'browser',
         actions: {
-            use (room) {
-                // room.game.text('Very nice browser. Indeed.')
+            use (room, item) {
+                room.game.text('Very nice browser. Indeed.')
+                room.game.useContinuePlaceholder()
+                room.game.player.activeItem = item
             }
         },
         movable: false
@@ -20,5 +22,6 @@ window.rooms.push({
     // This would allow more customizable description of the items - especially useful for the computer items which essentially represent actions.
     description: `<p>As the computer starts, you realize that Kevin has no password. So careful with security in every way, yet leaving this detail unchecked.</p>
     <p><i>Just imagine what a burglar, casually walking into his unlocked apartment could do...</i></p>
-    <p>Go <b>east</b> to get back to the desk.</p>`
+    <p>Go <b>back</b> to return to the desk.</p>`
+    // IDEA: This would be a good place to use a dynamic description, to show something else once the first text has been read.
 })

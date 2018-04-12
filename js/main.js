@@ -16,13 +16,15 @@ document.addEventListener('DOMContentLoaded', event => {
             'north',
             'south',
             'east',
-            'west'
+            'west',
+            'back'
         ],
         directionAliases: {
             'n': 'north',
             's': 'south',
             'e': 'east',
-            'w': 'west'
+            'w': 'west',
+            'b': 'back'
         },
         keywords: [
             'notes'
