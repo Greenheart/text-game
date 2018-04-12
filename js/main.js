@@ -39,4 +39,17 @@ document.addEventListener('DOMContentLoaded', event => {
     ]
 
     const game = new Game(window.rooms, dictionary, window.tasks)
+    // TODO: Set DEBUG to false when a release version is ready.
+    window.DEBUG = true
+
+    if (window.DEBUG) {
+        // Expose game instance to aid debugging.
+        window._game = game
+
+        // Override default start location to easily test specific rooms.
+        game.player.currentRoom = game.rooms['apartment.livingRoom.desk']
+
+        game.player.name = 'Playtester'
+        game.start()
+    }
 })

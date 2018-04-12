@@ -343,6 +343,10 @@
 
 
 # Done
+- Add window.DEBUG options:
+    - Quickly start at a specific room, with a specific state.
+    - automatically set username and start the selected room.
+
 - add apartment.livingRoom.computer
     - Maybe add it as an item with special methods
         - This would be possible now thanks to the `CustomParser` feature.
@@ -568,9 +572,6 @@
 
 - On keydown event - always focus the input field
 
-- Add window.DEBUG options:
-    - Quickly start at a specific room, with a specific state.
-    - automatically set username and start the selected room.
 
 - Prevent movement and actions when user is in the help menu, when game.gameStarted === true.
 - Maybe even make the input uneditable - only accept enter.
