@@ -89,19 +89,6 @@
     - Update readme, main menu text and HTML meta information.
 
 
-- Dicuss and implement `GameEvent`s
-    - Used to handle specific logic that don't happen in a specific room, or by specific actions, but happen because of some other condition.
-        - For example the player have visited all required rooms, interacted with some object - or maybe the game state (like in game time and date) says the event should happen.
-    - The game has all registered events centrally, enabling it to continually check if any `GameEvent` should be triggered.
-    - Each `GameEvent` is a separate object, containing:
-        - `condition()`: callback deciding if it's time to trigger the event.
-        - `start()`:
-            - Callback starting the event, and performing all main tasks of the event.
-            - Maybe set a custom parser, move the player to a specific location or similar.
-        - `end()`:
-            - **Optional** callback for cleaning up state up once the event is finished and return to the game.
-
-
 
 ---
 # Bugs
@@ -119,18 +106,40 @@
 #### Completed
 1. Show Tasks UI component
 2. Add initial task directly to `game.tasks`
-- Each task has some properties like `active`, `title` and `description`
+    - Each task has some properties like `active`, `title` and `description`
 3. Introduce the first task once the player opens the apartment door (right before they enter the hallway).
     - "Find out if your friend is at home. Why did he leave the door open?"
 4. Add `game.player.updateTasks()`.
-- This shows the player's *active* tasks in the task UI component.
+    - This shows the player's *active* tasks in the task UI component.
 5. Design UI to show tasks in a nice way.
 
 
 #### To implement tasks:
 6. Add some way to check if the task is completed
     - In this basic example, it could be to visit all rooms of the apartment: `rooms[apartment].every(r => r.visited)`
-    - For this, discuss and implement a basic version of `GameEvents`. Search this document to see further ideas.
+
+
+- Dicuss and implement `GameEvent`s
+    - Used to handle specific logic that don't happen in a specific room, or by specific actions, but happen because of some other condition.
+        - For example the player have visited all required rooms, interacted with some object - or maybe the game state (like in game time and date) says the event should happen.
+    - The game has all registered events centrally, enabling it to continually check if any `GameEvent` should be triggered.
+    - `game.updateGameEvents()` - Checks if some new event should trigger.
+    - Possible places to check and trigger events:
+        - `player.move()` - Will be enough for
+        - `player.updateUI()` - Will capture all cases if it's called in `player.move()` as well.
+
+7. Implement basic version of `GameEvent`s:
+    - Each `GameEvent` is a separate object, containing:
+    - `condition()`: callback deciding if it's time to trigger the event.
+    - `start()`:
+        - Callback starting the event, and performing all main tasks of the event.
+        - Maybe set a custom parser, move the player to a specific location or similar.
+    - `end()`:
+        - **Optional** callback for cleaning up state up once the event is finished and return to the game.
+
+8. Add example `GameEvent`: Triggered when all rooms of the apartment have been visited.
+    - Check for updates when the player moves to a new room: in `player.moveTo(room)`
+    - Example condition: `rooms[apartment].every(r => r.visited)`
 
 
 
@@ -153,6 +162,10 @@
 
 ---
 # Ideas
+- Maybe describe the condition for completing a task in the task details
+    - E.g. "2/9 rooms visited."
+    - *Could clarify what players need to do - or ruin the experience of exploring the game world, by telling them exactly what to do.*
+
 - Add `room.playerCanInteract()` to limit players from interacting with objects unless they meet some condition. See `room.playerCanLeave()` for inspiration.
     - Also document in `rooms.js` docstrings.
 
