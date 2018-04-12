@@ -292,8 +292,10 @@ class Player {
     }
 
     updateTasks () {
-        for (const task of this.tasks) {
-            console.log(task.isCompleted(this.game, task))
+        for (const task of this.tasks.filter(t => t.active)) {
+            if (window.DEBUG) {
+                console.log(task.id + ':', task.isCompleted(this.game))
+            }
             if (task.isCompleted(this.game)) {
                 task.onCompletion(this.game, task)
             }
