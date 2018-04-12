@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', event => {
         game.player.currentRoom = game.rooms['apartment.livingRoom.desk']
 
         game.player.name = 'Playtester'
+        game.player.giveNewTask('anyone-home')
         game.start()
     }
 })
