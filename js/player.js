@@ -60,6 +60,7 @@ class Player {
         ++this.moves
         this.currentRoom.show()
         this.currentRoom.visited = true
+        this.updateTasks()
     }
 
     go (input, split) {
@@ -291,6 +292,16 @@ class Player {
     }
 
     updateTasks () {
+        for (const task of this.tasks) {
+            console.log(task.isCompleted(this.game, task))
+            if (task.isCompleted(this.game)) {
+                task.onCompletion(this.game, task)
+            }
+        }
+        this.showTasks()
+    }
+
+    showTasks () {
         // Show active tasks.
         const display = t => `
             <div class="task">
