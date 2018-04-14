@@ -343,6 +343,8 @@
 
 
 # Done
+- When the player have no current `active` tasks, the UI component should be hidden.
+
 - Add a checkmark next to the task header.
 - Add styling for completed tasks: green text.
 

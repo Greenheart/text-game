@@ -230,17 +230,6 @@ class Player {
         }
     }
 
-    giveNewTask (taskId) {
-        // Prevent duplicate tasks.
-        if (!this.tasks.some(t => t.id === taskId)) {
-            const task = this.game.tasks[taskId]
-            task.active = true
-            this.tasks.push(task)
-            this.updateUI()
-            this.game.status('<span class="green-highlight">New task recieved!<span>')
-        }
-    }
-
     addNote (note) {
         this.notes.push(note)
         const ascendingById = (a, b) => Number(a.id.split('-')[1]) - Number(b.id.split('-')[1])
@@ -293,6 +282,17 @@ class Player {
         this.game.ui.inventory.querySelector('.items').innerHTML = content
     }
 
+    giveNewTask (taskId) {
+        // Prevent duplicate tasks.
+        if (!this.tasks.some(t => t.id === taskId)) {
+            const task = this.game.tasks[taskId]
+            task.active = true
+            this.tasks.push(task)
+            this.updateUI()
+            this.game.status('<span class="green-highlight">New task recieved!<span>')
+        }
+    }
+
     updateTasks () {
         for (const task of this.tasks.filter(t => t.active)) {
             if (window.DEBUG) {
@@ -323,20 +323,20 @@ class Player {
         this.updateTasks()
 
         // Determine which components that should be shown.
-        const hasTasks = Boolean(this.tasks.length)
+        const hasActiveTasks = Boolean(this.tasks.filter(t => t.active).length)
         const hasItems = Boolean(this.inventory.length)
         const hasNotes = Boolean(this.notes.length)
 
         const sections = [{
             element: this.game.ui.sidebarTop,
-            condition: hasTasks
+            condition: hasActiveTasks
         }, {
             element: this.game.ui.sidebarBottom,
             condition: hasItems || hasNotes
         }]
 
         const components = [{
-            condition: hasTasks,
+            condition: hasActiveTasks,
             element: this.game.ui.tasks,
             section: 'top'
         }, {
