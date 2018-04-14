@@ -199,8 +199,17 @@ ul {
     margin: 0;
 }
 
+.task h3::before {
+    content: '✓';
+    margin-right: 5px;
+}
+
 .task small {
     font-size: 13px;
+}
+
+.task.completed {
+    color: green;
 }
 
 #note-count {

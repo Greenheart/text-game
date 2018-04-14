@@ -306,7 +306,7 @@ class Player {
     showTasks () {
         // Show active tasks.
         const display = t => `
-            <div class="task">
+            <div class="task${t.completed ? ' completed' : ''}">
                 <h3>${t.title}</h3>
                 <small>${t.description}</small>
             </div>`

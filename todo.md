@@ -343,6 +343,9 @@
 
 
 # Done
+- Add a checkmark next to the task header.
+- Add styling for completed tasks: green text.
+
 - Add window.DEBUG options:
     - Quickly start at a specific room, with a specific state.
     - automatically set username and start the selected room.
