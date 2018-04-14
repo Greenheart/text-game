@@ -59,6 +59,7 @@ class Player {
         this.currentRoom = room
         ++this.moves
         this.currentRoom.show()
+        this.game.status('')
         this.currentRoom.visited = true
         this.updateTasks()
     }
@@ -236,6 +237,7 @@ class Player {
             task.active = true
             this.tasks.push(task)
             this.updateUI()
+            this.game.status('<span class="green-highlight">New task recieved!<span>')
         }
     }
 
@@ -297,7 +299,7 @@ class Player {
                 console.log(task.id + ':', task.isCompleted(this.game))
             }
             if (!task.completed && task.isCompleted(this.game)) {
-                task.onCompletion(this.game, task)
+                task.complete()
             }
         }
         this.showTasks()
