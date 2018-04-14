@@ -9,7 +9,6 @@ class Game {
         this.rooms = Room.initializeRooms(this, rooms)
         this.player = new Player(this)
         this.visibleSection = this.ui.mainMenu
-        this.status('Enter your name')
         this.gameStarted = false
         this.activeEvent = null
 
