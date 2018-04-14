@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', event => {
 
     const game = new Game(window.rooms, dictionary, window.tasks, window.gameEvents)
     // TODO: Set DEBUG to false when a release version is ready.
-    window.DEBUG = true
+    window.DEBUG = false
 
     if (window.DEBUG) {
         // Expose game instance to aid debugging.
