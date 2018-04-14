@@ -296,7 +296,7 @@ class Player {
             if (window.DEBUG) {
                 console.log(task.id + ':', task.isCompleted(this.game))
             }
-            if (task.isCompleted(this.game)) {
+            if (!task.completed && task.isCompleted(this.game)) {
                 task.onCompletion(this.game, task)
             }
         }
