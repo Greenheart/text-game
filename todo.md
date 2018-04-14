@@ -343,6 +343,9 @@
 
 
 # Done
+- Items are not properly dropped from the inventory
+    - At least it's not updated in the UI
+
 - When the player have no current `active` tasks, the UI component should be hidden.
 
 - Add a checkmark next to the task header.
