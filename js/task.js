@@ -13,4 +13,13 @@ class Task {
         this.completed = false
         this.active = false
     }
+
+    static initializeTasks (game, taskConfigs) {
+        // Prepare all tasks of the game.
+        const tasks = {}
+        for (const task of taskConfigs) {
+            tasks[task.id] = new Task(task, game)
+        }
+        return tasks
+    }
 }

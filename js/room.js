@@ -23,6 +23,26 @@ class Room {
         this.playerCanLeave = room.playerCanLeave
     }
 
+    static initializeRooms (game, roomConfigs) {
+        // Create all rooms of the game.
+        const rooms = {}
+        for (const room of roomConfigs) {
+            rooms[room.name] = new Room(room, game)
+        }
+
+        // Connect rooms to each other.
+        for (const roomName of Object.keys(rooms)) {
+            const room = rooms[roomName]
+
+            // Replace each room name with a reference to the actual room.
+            for (const direction of Object.keys(room.connections)) {
+                const name = room.connections[direction]
+                room.connections[direction] = rooms[name]
+            }
+        }
+        return rooms
+    }
+
     show () {
         this.game.title(this.title)
         this.game.text(typeof this.description === 'function' ? this.description(this) : this.description)

@@ -4,28 +4,8 @@ class Game {
         this.ui = Game.getDOMReferences()
         this.bindUI()
 
-        // Prepare all tasks of the game.
-        this.tasks = []
-        for (const task of tasks) {
-            this.tasks[task.id] = new Task(task, this)
-        }
-
-        // Create all rooms of the game.
-        this.rooms = {}
-        for (const room of rooms) {
-            this.rooms[room.name] = new Room(room, this)
-        }
-
-        // Connect rooms to each other.
-        for (const roomName of Object.keys(this.rooms)) {
-            const room = this.rooms[roomName]
-
-            // Replace each room name with a reference to the actual room.
-            for (const direction of Object.keys(room.connections)) {
-                const name = room.connections[direction]
-                room.connections[direction] = this.rooms[name]
-            }
-        }
+        this.tasks = Task.initializeTasks(this, tasks)
+        this.rooms = Room.initializeRooms(this, rooms)
         this.player = new Player(this)
         this.visibleSection = this.ui.mainMenu
         this.status('Enter your name')
