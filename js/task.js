@@ -28,8 +28,9 @@ class Task {
         // Set a flag in `game.status` and conditionally update the status message
         // Or, use another location for showing sticky status messages.
         // Or just force the player to view the task before they can continue - use `Press enter to continue...`
-        this.game.status(`<span class="green-highlight">Task completed! Enter <span class="code dark-bg">task</span> to continue.</span>`)
-        console.log('Task completed!', this.id)
-        this.onCompletion(this.game, this)
+        this.game.status(`<span class="green-highlight">Task completed!</span>`)
+        this.game.setPlaceholder('Press enter to see details...')
+        this.completed = true
+        this.onCompletion(this)
     }
 }

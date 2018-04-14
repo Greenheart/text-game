@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', event => {
         ...dictionary.special
     ]
 
-    const game = new Game(window.rooms, dictionary, window.tasks)
+    const game = new Game(window.rooms, dictionary, window.tasks, window.gameEvents)
     // TODO: Set DEBUG to false when a release version is ready.
     window.DEBUG = true
 

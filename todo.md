@@ -88,8 +88,9 @@
 - Fix game credits - show everyone involved rather than individual names.
     - Update readme, main menu text and HTML meta information.
 
-- Update `room.name` to `room.id` to increase naming consistency.
-
+- Add `room.playerCanInteract()` to limit players from interacting with objects unless they meet some condition. See `room.playerCanLeave()` for inspiration.
+    - Also document in `rooms.js` docstrings or in the `Room` class.
+    - This could be used to limit interactions with `TV` in `apartment.livingRoom.sofa` or `computer` in `apartment.livingRoom.desk`.
 
 
 ---
@@ -105,41 +106,8 @@
 
 
 
-#### Completed
-1. Show Tasks UI component
-2. Add initial task directly to `game.tasks`
-    - Each task has some properties like `active`, `title` and `description`
-3. Introduce the first task once the player opens the apartment door (right before they enter the hallway).
-    - "Find out if your friend is at home. Why did he leave the door open?"
-4. Add `game.player.updateTasks()`.
-    - This shows the player's *active* tasks in the task UI component.
-5. Design UI to show tasks in a nice way.
-6. Add some way to check if the task is completed
-- In this basic example, it could be to visit all rooms of the apartment: `rooms[apartment].every(r => r.visited)`
 
 
-#### To implement tasks:
-- Dicuss and implement `GameEvent`s
-    - Used to handle specific logic that don't happen in a specific room, or by specific actions, but happen because of some other condition.
-        - For example the player have visited all required rooms, interacted with some object - or maybe the game state (like in game time and date) says the event should happen.
-    - The game has all registered events centrally, enabling it to continually check if any `GameEvent` should be triggered.
-    - `game.updateGameEvents()` - Checks if some new event should trigger.
-    - Possible places to check and trigger events:
-        - `player.move()` - Will be enough for
-        - `player.updateUI()` - Will capture all cases if it's called in `player.move()` as well.
-
-7. Implement basic version of `GameEvent`s:
-    - Each `GameEvent` is a separate object, containing:
-    - `condition()`: callback deciding if it's time to trigger the event.
-    - `start()`:
-        - Callback starting the event, and performing all main tasks of the event.
-        - Maybe set a custom parser, move the player to a specific location or similar.
-    - `end()`:
-        - **Optional** callback for cleaning up state up once the event is finished and return to the game.
-
-8. Add example `GameEvent`: Triggered when all rooms of the apartment have been visited.
-    - Check for updates when the player moves to a new room: in `player.moveTo(room)`
-    - Example condition: `rooms[apartment].every(r => r.visited)`
 
 
 
@@ -162,12 +130,33 @@
 
 ---
 # Ideas
+- Refactor the doorhandle in apartment.outside to use a `GameEvent`
+    - Tell the user to `Press enter to continue` instead of `go north to enter`.
+    - Make sure players can't get back to `apartment.outside` and only are allowed to enter the apartment. This way, they don't see the text shown in the event twice.
+
+- Show summary of each chapter at the end of it.
+    - notes found, clues found etc.
+    - Summarize key points of the story
+        - "I went to X and did Y"
+            - Allow the player to follow along with the story´, by telling it to them, from the perspective of the main character.
+    - *This could also be handled through* `GameEvent`s
+
+- Create save points, each time a chapter is completed (like the apartment)
+    - Maybe even display "Chapter 1: The Apartment", big text covering the whole screen and slowly fading out over 2-4 seconds, showing the `ui.gameContent`.
+
+- Play a sound effect to notify the user when a task is completed
+
+- Change background music / ambient sounds for different environments.
+
+- Background music ideas:
+    - Use private demo tracks from https://soundcloud.com/greenheartmusic "Whatever Demo1" and "Deep ID 1 Demo2". Almost complete background tracks, just need some finishing touches.
+        - For "Whatever Demo1", add a third chorus in the end and some outro and finish mixing.
+        - For "Deep ID 1 Demo2", add background chords/harmonies to the chorus and finish mixing.
+    - Other tracks might also be suitable.
+
 - Maybe describe the condition for completing a task in the task details
     - E.g. "2/9 rooms visited."
     - *Could clarify what players need to do - or ruin the experience of exploring the game world, by telling them exactly what to do.*
-
-- Add `room.playerCanInteract()` to limit players from interacting with objects unless they meet some condition. See `room.playerCanLeave()` for inspiration.
-    - Also document in `rooms.js` docstrings.
 
 - Make it possible to disable all text input when "Press enter to continue..." is the only available action. Only the enter key should work.
     - This could be enabled when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set
@@ -255,9 +244,14 @@
 
 ---
 # Low prio ideas
+- Update `room.name` to `room.id` to increase naming consistency.
+
 - Consider moving items into separate file(s) to separate them from specific rooms.
     - This would allow multiple instances of items to exist in the same/ multiple rooms without duplicating code.
-    -
+    - Instead of adding hard coded item objects, add string `id`s that some kind of `initializeItems()` method could use to find the actual item instances.
+
+- Create a `Item` class and move item-related logic there.
+    - Items could be instances of the class, based on configuration objects like `room`s or `task`s.
 
 - Possibly show a modal of some kind describing a new task when it's received? Or just populate game content.
     - *This is a feature for a later time. The minimal approach should work fine for now.*
@@ -343,6 +337,36 @@
 
 
 # Done
+- **Implement a basic version of tasks**
+1. Show Tasks UI component
+2. Add initial task directly to `game.tasks`
+    - Each task has some properties like `active`, `title` and `description`
+3. Introduce the first task once the player opens the apartment door (right before they enter the hallway).
+    - "Find out if your friend is at home. Why did he leave the door open?"
+4. Add `game.player.updateTasks()`.
+    - This shows the player's *active* tasks in the task UI component.
+5. Design UI to show tasks in a nice way.
+6. Add some way to check if the task is completed
+- In this basic example, it could be to visit all rooms of the apartment: `rooms[apartment].every(r => r.visited)`
+7. Implement basic version of `GameEvent`s:
+    - Each `GameEvent` is a separate object, containing:
+    - `onStart()`:
+        - Callback starting the event, and performing all main tasks of the event.
+        - Maybe set a custom parser, move the player to a specific location or similar.
+    - `onEnd()`:
+        - **Optional** callback for cleaning up state up once the event is finished and return to the game.
+8. Add example `GameEvent`: Triggered when all rooms of the apartment have been visited.
+
+
+- Dicuss and implement `GameEvent`s
+    - Used to handle specific logic that don't happen in a specific room, or by specific actions, but happen because of some other condition.
+        - For example the player have visited all required rooms, interacted with some object - or maybe the game state (like in game time and date) says the event should happen.
+    - The game has all registered events centrally, enabling it to continually check if any `GameEvent` should be triggered.
+    - `game.updateGameEvents()` - Checks if some new event should trigger.
+    - Possible places to check and trigger events:
+        - `player.move()` - Will be enough for
+        - `player.updateUI()` - Will capture all cases if it's called in `player.move()` as well.
+
 - Items are not properly dropped from the inventory
     - At least it's not updated in the UI
 

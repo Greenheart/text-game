@@ -14,15 +14,7 @@ window.tasks = [{
                 .map(name => game.rooms[name])
                 .every(room => room.visited)
     },
-    onCompletion (game, task) {
-        console.log('You completed your task!', task.id)
-
-        // TODO: Trigger a GameEvent to tell the user that they've completed their task.
-        // TODO: Figure out a good way to show this to the user.
-            // Probably not immediately when they visit the last room they need.
-            // Probably let them read the room, but maybe "Press enter to see more about your task..."
-            // Or just let it pop up immediately/ or even after a few seconds.
-        task.completed = true
-        task.active = false
+    onCompletion (task) {
+        task.game.triggerEvent('anyone-home-completed')
     }
 }]

@@ -1,15 +1,17 @@
 class Game {
-    constructor (rooms, dictionary, tasks) {
+    constructor (rooms, dictionary, tasks, events) {
         this.dictionary = dictionary
         this.ui = Game.getDOMReferences()
         this.bindUI()
 
+        this.events = GameEvent.initializeEvents(this, events)
         this.tasks = Task.initializeTasks(this, tasks)
         this.rooms = Room.initializeRooms(this, rooms)
         this.player = new Player(this)
         this.visibleSection = this.ui.mainMenu
         this.status('Enter your name')
         this.gameStarted = false
+        this.activeEvent = null
 
         // Store latest commands for quick re-use
         // Always keep empty string to allow users to effectively clear their input
@@ -28,6 +30,11 @@ class Game {
         document.querySelector('.main-footer').classList.remove('center')
         this.showSection(this.ui.gameContent)
         this.player.currentRoom.show()
+    }
+
+    triggerEvent (id) {
+        // Start a `GameEvent`.
+        this.events[id].start()
     }
 
     onInput (rawInput) {
@@ -324,6 +331,15 @@ class Game {
             this.customParser(this, event.target.value)
         } else if (this.player.name === '') {
             this.setUsername(event.target.value)
+            event.target.value = ''
+        } else if (this.activeEvent !== null) {
+            if (event.target.value === '') {
+                if (!this.activeEvent.shown) {
+                    this.activeEvent.show()
+                } else {
+                    this.activeEvent.end()
+                }
+            }
             event.target.value = ''
         } else {
             if (event.target.value === '') {
