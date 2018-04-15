@@ -33,6 +33,6 @@ window.rooms.push({
         },
         movable: false
     }],
-    description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway. There's also a computer to your <b>west</b>.</p>
+    description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway.</p>
     <p>If you continue past the desk and go <b>south</b>, you will get to the bedroom. Or go <b>east</b> to get back to the center of the living room.</p>`
 })
