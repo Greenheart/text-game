@@ -20,7 +20,10 @@ class Room {
         this.connections = room.connections || {}
         this.description = room.description
         this.state = room.state
+
+        // Optional callbacks, used to limit how and when players are allowed to leave, or interact with objects.
         this.playerCanLeave = room.playerCanLeave
+        this.playerCanInteract = room.playerCanInteract
     }
 
     static initializeRooms (game, roomConfigs) {

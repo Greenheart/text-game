@@ -5,7 +5,6 @@ window.rooms.push({
         'back': 'apartment.livingRoom.desk'
     },
     items: [{
-        // TODO: Add the same feature here as for the sofa: Only allow to visit this room after the first task is completed.
         name: 'browser',
         id: 'browser',
         actions: {

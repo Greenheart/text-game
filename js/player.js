@@ -28,37 +28,54 @@ class Player {
         }
         const action = split[0]
         this.lastAction = action
-
-        let object = ''
-        let direction = ''
-
-        if (action === 'go') {
-            direction = split[1]
-        } else {
-            object = this.getItemName(split)
-
-            // IDEA: Limit player interactions with objects (items), by allowing objects to provide a callback function
-            // if (this.canInteract(object)) {
-            //     this[action](input, split)
-            // }
+        const args = {
+            object: '',
+            direction: ''
         }
 
 
-        this[action]({ object, direction })
+        if (action === 'go') {
+            args.direction = split[1]
+        } else {
+            args.object = this.getItemName(split)
+            const { item, itemSource } = this.findItem(args.object)
+            args.item = item
+            args.itemSource = itemSource
+
+            if (!this.canInteract(item, itemSource)) return
+        }
+        this[action](args)
     }
 
-    canInteract (object) {
+    findItem (object) {
+        const sources = [{
+            itemSource: 'room',
+            items: this.currentRoom.items
+        }, {
+            itemSource: 'inventory',
+            items: this.inventory
+        }]
+
+        for (const source of sources) {
+            const item = source.items.find(Helpers.itemHasName(object))
+            if (item) return { item, itemSource: source.itemSource }
+        }
+        return { item: null, itemSource: null }
+    }
+
+    canInteract (item, itemSource) {
+        // IDEA: Let callback functions make use of itemSource, to know if item was found in inventory or room.
         let playerCanInteract = true
-        // IDEA: Might not want to only check interactions with items in the current room.
-        // This check could be useful for other items too.
-        if (this.currentRoom.hasItem({ name: object.name })) {
+        if (item) {
             // Room.playerCanInteract() should return true if a player can interact with an object, otherwise a string with the reason.
-            playerCanInteract = this.currentRoom.playerCanInteract ? this.currentRoom.playerCanInteract(this.currentRoom, object) : true
+            playerCanInteract = this.currentRoom.playerCanInteract ? this.currentRoom.playerCanInteract(this.currentRoom, item, itemSource) : true
             if (playerCanInteract !== true) {
                 // Show the reason why player can't interact.
                 this.game.status(playerCanInteract)
             }
         }
+
+        // If no item, let the default error handling kick in.
         return playerCanInteract === true
     }
 
