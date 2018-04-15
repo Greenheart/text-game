@@ -88,9 +88,7 @@
 - Fix game credits - show everyone involved rather than individual names.
     - Update readme, main menu text and HTML meta information.
 
-- Add `room.playerCanInteract()` to limit players from interacting with objects unless they meet some condition. See `room.playerCanLeave()` for inspiration.
-    - Also document in `rooms.js` docstrings or in the `Room` class.
-    - This could be used to limit interactions with `TV` in `apartment.livingRoom.sofa` or `computer` in `apartment.livingRoom.desk`.
+
 
 
 ---
@@ -102,8 +100,9 @@
 ---
 # In progress
 
-
-
+- Add `room.playerCanInteract()` to limit players from interacting with objects unless they meet some condition. See `room.playerCanLeave()` for inspiration.
+    - Also document in `rooms.js` docstrings or in the `Room` class.
+    - This could be used to limit interactions with `TV` in `apartment.livingRoom.sofa` or `computer` in `apartment.livingRoom.desk`.
 
 
 
@@ -337,6 +336,10 @@
 
 
 # Done
+- Refactor player actions to improve how they are parsed.
+    - This removes some duplicate code, while also preparing for new features, planned for the future.
+
+
 - **Implement a basic version of tasks**
 1. Show Tasks UI component
 2. Add initial task directly to `game.tasks`

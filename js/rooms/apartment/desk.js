@@ -33,6 +33,13 @@ window.rooms.push({
         },
         movable: false
     }],
+    playerCanInteract (room, item) {
+        // TODO: Use the watch TV task. Or just ensure player have watched TV and seen the news.
+        if (game.tasks['anyone-home'].completed) {
+            return true
+        }
+        return 'See if your friend is at home first.'
+    },
     description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway.</p>
     <p>If you continue past the desk and go <b>south</b>, you will get to the bedroom. Or go <b>east</b> to get back to the center of the living room.</p>`
 })

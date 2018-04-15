@@ -80,9 +80,9 @@ class Game {
             } else if (this.isDirectionAlias(input)) {
                 this.player.move(this.dictionary.directionAliases[input])
             } else if (split.length && this.isAction(split[0])) {
-                // Was an valid action entered?
+                // This case represents a valid action
                 // NOTE: This will not work with multiple-word actions (because of `split[0]`)
-                this.performAction(input, split)
+                this.player.parseAction(input, split)
             } else {
                 this.status(`I didn't understand that.`)
             }
@@ -115,12 +115,6 @@ class Game {
             this.isSpecialCommand(input) ||
             this.isDirectionAlias(input)
         )
-    }
-
-    performAction (input, split) {
-        const action = split[0]
-        this.player.lastAction = action
-        this.player[action](input, split)
     }
 
     specialCommand (command) {

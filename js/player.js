@@ -11,13 +11,58 @@ class Player {
         this.lastAction = ''
     }
 
-    inspect (input, split) {
-        if (split.length < 2) {
-            this.game.status('What do you want to inspect? Usage: <span class="code dark-bg">inspect [object]</span>.')
-            return
+    parseAction (input, split) {
+        const noObjectMessage = {
+            inspect: 'What do you want to inspect? Usage: <span class="code dark-bg">inspect [object]</span>.',
+            take: 'What do you want to pick up? Usage: <span class="code dark-bg">take [object]</span>.',
+            drop: 'What do you want to drop? Usage: <span class="code dark-bg">drop [object]</span>.',
+            use: 'What do you want to use? Usage: <span class="code dark-bg">use [object]</span>.',
+            check: 'What do you want to check? Usage: <span class="code dark-bg">check [object]</span>.',
+            read: 'What do you want to read? Usage: <span class="code dark-bg">read [object]</span>.'
         }
 
-        const object = this.getItemName(split)
+        // Handle incomplete arguments, if only action is passed.
+        if (split.length < 2) {
+            this.game.status(noObjectMessage[action])
+            return
+        }
+        const action = split[0]
+        this.lastAction = action
+
+        let object = ''
+        let direction = ''
+
+        if (action === 'go') {
+            direction = split[1]
+        } else {
+            object = this.getItemName(split)
+
+            // IDEA: Limit player interactions with objects (items), by allowing objects to provide a callback function
+            // if (this.canInteract(object)) {
+            //     this[action](input, split)
+            // }
+        }
+
+
+        this[action]({ object, direction })
+    }
+
+    canInteract (object) {
+        let playerCanInteract = true
+        // IDEA: Might not want to only check interactions with items in the current room.
+        // This check could be useful for other items too.
+        if (this.currentRoom.hasItem({ name: object.name })) {
+            // Room.playerCanInteract() should return true if a player can interact with an object, otherwise a string with the reason.
+            playerCanInteract = this.currentRoom.playerCanInteract ? this.currentRoom.playerCanInteract(this.currentRoom, object) : true
+            if (playerCanInteract !== true) {
+                // Show the reason why player can't interact.
+                this.game.status(playerCanInteract)
+            }
+        }
+        return playerCanInteract === true
+    }
+
+    inspect ({ object }) {
         const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             // list all actions for the item.
@@ -64,20 +109,15 @@ class Player {
         this.updateTasks()
     }
 
-    go (input, split) {
+    go ({ direction }) {
         // This command allows players who prefer to type `go [direction]` instead of just `[direction]`
         // The thought is to give players options, without breaking the gameplay.
-        const direction = split[1]
         this.move(direction)
     }
 
-    take (input, split) {
-        if (split.length < 2) {
-            this.game.status('What do you want to pick up? Usage: <span class="code dark-bg">take [object]</span>.')
-            return
-        }
-
-        const object = this.getItemName(split)
+    take ({ object }) {
+        // IDEA: replace objectIsInRoom check with objectSource parameter sent from `parseAction()`
+        // This data is all that's missing to allow `parseAction()` to pass along the item as well.
         const objectIsInRoom = this.currentRoom.hasItem({ name: object })
         if (objectIsInRoom) {
             this.takeItem(
@@ -115,13 +155,7 @@ class Player {
         }
     }
 
-    drop (input, split) {
-        if (split.length < 2) {
-            this.game.status('What do you want to drop? Usage: <span class="code dark-bg">drop [object]</span>.')
-            return
-        }
-
-        const object = this.getItemName(split)
+    drop ({ object }) {
         const item = this.inventory.find(Helpers.itemHasName(object))
         if (item) {
             this.currentRoom.items.push(item)
@@ -138,13 +172,7 @@ class Player {
         this.currentRoom.show()
     }
 
-    use (input, split) {
-        if (split.length < 2) {
-            this.game.status('What do you want to use? Usage: <span class="code dark-bg">use [object]</span>.')
-            return
-        }
-
-        const object = this.getItemName(split)
+    use ({ object }) {
         const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             if (item.actions.use) {
@@ -158,13 +186,7 @@ class Player {
         }
     }
 
-    check (input, split) {
-        if (split.length < 2) {
-            this.game.status('What do you want to check? Usage: <span class="code dark-bg">check [object]</span>.')
-            return
-        }
-
-        const object = this.getItemName(split)
+    check ({ object }) {
         const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             if (item.actions.check) {
@@ -178,23 +200,19 @@ class Player {
         }
     }
 
-    read (input, split) {
-        if (split.length < 2) {
-            this.game.status('What do you want to read? Usage: <span class="code dark-bg">read [object]</span>.')
-            return
-        }
-
-        const object = this.getItemName(split)
-        if (object === 'notes') {
-            this.showNotes()
+    read ({ object }) {
+        // Start by trying to read any item in the room or inventory.
+        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
+        if (item) {
+            if (item.actions.read) {
+                this.readItem(item)
+            } else {
+                this.game.status(`The ${object} can't be read.`)
+            }
         } else {
-            const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
-            if (item) {
-                if (item.actions.read) {
-                    this.readItem(item)
-                } else {
-                    this.game.status(`The ${object} can't be read.`)
-                }
+            // If no readable items present, and user meant to type `notes`, automatically show notes for them.
+            if (object.startsWith('note')) {
+                this.showNotes()
             } else {
                 this.game.status(`There's no ${object} to read.`)
             }
