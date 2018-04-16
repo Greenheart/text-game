@@ -40,9 +40,6 @@ window.rooms.push({
                 room.game.useContinuePlaceholder()
             }
         },
-        state: {
-            read: false
-        },
         movable: false
     }],
     description (room) {
