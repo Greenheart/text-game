@@ -3,18 +3,21 @@ class Room {
         this.game = game
         this.name = room.name
         this.title = room.title
-        this.items = (room.items || []).map(i => {
+
+        function initializeItems (i) {
             // Default: all items are movable. Only those that explicitly say `false` can't be moved.
             if (i.movable !== false) i.movable = true
-            // Ensure all items look the same during runtime.
-            // This allow item configs to focus on what's interesting: custom data.
-            // This initializer sets the standard shape of items.
+            // This initializer sets the standard shape of items,
+            // to allow item configs to focus on what's interesting: custom data.
             if (!i.state) i.state = {}
             if (!i.actions) i.actions = {}
             return i
             // NOTE: If Item related logic is to be refactored to a separate class and file,
-            // This mapper function should be part of the constructor.
-        })
+            // This mapper function should be part of the constructor - or maybe even similar to Room.initializeRooms().
+        }
+
+        this.items = (room.items || []).map(initializeItems)
+        this.hiddenItems = (room.hiddenItems || []).map(initializeItems)
         this.visited = this.name === 'start' ? true : false
         // Initially, connections are just a map of directions and corresponding room names.
         this.connections = room.connections || {}
@@ -48,6 +51,7 @@ class Room {
 
     show () {
         this.game.title(this.title)
+        // Use dynamic description if the room has one.
         this.game.text(typeof this.description === 'function' ? this.description(this) : this.description)
         this.showItems()
     }
@@ -90,7 +94,31 @@ class Room {
         ))
     }
 
-    removeItem (object) {
-        this.items = this.items.filter(i => i.name.toLowerCase() !== object)
+    removeItem (object, itemSource = 'items') {
+        this[itemSource] = this[itemSource].filter(i => i.name.toLowerCase() !== object)
+    }
+
+    makeItemVisible (object) {
+        const item = this.hiddenItems.find(i => i.name === object)
+        if (item && !this.items.includes(item)) {
+            this.items.push(item)
+            this.removeItem(object, 'hiddenItems')
+
+            // Use the regular `show()` here instead of `showItems()`
+            // since some items are shown only in the room description.
+            this.show()
+        }
+    }
+
+    hideItem (object) {
+        const item = this.items.find(i => i.name === object)
+        if (item && !this.hiddenItems.includes(item)) {
+            this.hiddenItems.push(item)
+            this.removeItem(object)
+
+            // Use the regular `show()` here instead of `showItems()`
+            // since some items are shown only in the room description.
+            this.show()
+        }
     }
 }
