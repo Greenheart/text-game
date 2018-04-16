@@ -81,17 +81,53 @@
 
     - These could be introduced in the beginning, or as tips later during the game. But at the very least, they should be mentioned so those who want to learn more can read about it before they start playing.
 
+- Ending
+	- One 2x good - you save both your friend and the world.
+	- One 1x good where you get to choose which one to save - your friend or the world.
+	- One 2x bad where you fail both saving your friend and the world.
+
+- The company's motives:
+	- They are basically trying so hard to "do the right thing" that they just end up doing bad things, while striving for their "good cause".
+	- Like Facebook, they say they want to "connect people"
+
+- Kevin signed a contract that he can't get out of.
+	- Either you, as the player help him, or you try save the world, or you try to do both!
+	- Because of the memory issues, he might not even remember the contract.
+
+- In his notes, he explain how he at first was excited about the work. But at a later time, he lost that enthusiasm.
+
+- Kevin witnessed another employee who had gone through the whole process - and he was scared.
+	- The results on the weren't favorable.
+	- Before he lost his mind, he choose to contact someone.
+		- Maybe they get involved in the story and play a part.
+	- The company might have picked up on this, trying to reach out to Kevin.
+
 - Add new direction to `help`: `back` with alias `b`.
 
 - Fix autocomplete for `CustomParsers`
-    - Maybe each `CustomParser` can supply their own commandCompletions, but still use the regular code?
+    - Maybe each `CustomParser` can supply their own command completions, but still use the regular code?
     - This way, players could get the same experience in the whole game, even in custom sections or in the help menu.
 
-- Fix game credits - show everyone involved rather than individual names.
-    - Update readme, main menu text and HTML meta information.
+- Add content to the computer
+    - Browser has multiple tabs open, which the player can read through.
+    	- One of them ties to the story
+    - Email client is open in the background.
+        - A new email has been received.
+            - Possibly an email part of a conversation of seveal ones.
+            - Perhaps email giving further details about how Kevin is handling the situation at his work? Maybe he tried to contact someone about what was happening and got a reply? Or maybe they've been in contact for a while?
+        - Email client could be visible to the player when they've completed the task to search for some information in the web browser.
+            - Maybe the completion of the task triggers a GameEvent that in turn makes a notification pop up on the computer, giving the user a choice to go to the email client.
 
-
-
+- Add TV
+	- Maybe three different channels to choose from.
+		- One is a movie
+            - If player chooses to watch it, time will pass.
+            - *In a future version of the game, time could be a precious resource that will depend on the player's actions. But not for a basic version.*
+        - Another one is some random TV show.
+		- And finally, we have the news, which give a clue about the story.
+            - Possible the only way to get on and get to the next task?
+                - The player sees something interesting and wants to know more
+                - So the task tells them to go to the computer to look for more information.
 
 ---
 # Bugs
@@ -124,6 +160,10 @@
 
 ---
 # Ideas
+Time jump - Kevin hasn't come home yet
+	- Allow player to watch TV, which makes time pass.
+	- Make items available after the time jump that weren't available at first.
+
 - Add `help` section start page, like `read notes` has.
     - Basically use the same code, but display a help page instead of a note.
     - This will give users a overview of what's available, and help them navigate.
@@ -175,8 +215,11 @@
     -Simplified idea (to save dev time):
         - Could be shaped as a compass (circle)
         - Show current room short name/title in the center.
-        - Highlight available directions to move in.
-        - Fade out unavailable directions.
+        - Show environment title, e.g. "The Apartment" as a header at the top of this component.
+        - Highlight available directions to move in:
+            - green: available directions
+            - yellow: where you came from (if available)
+        - Fade out/hide unavailable directions.
 
 - Add new commands to the help section as the player progress through the world, instead of adding everything at once.
 
@@ -240,6 +283,11 @@
 
 ---
 # Low prio ideas
+- `back` command. Quickly get back to where you came from (not just in the computer room, but anywhere it's possible to move around).
+	- Only remembers the latest direction - or multiple steps?
+
+- User types action => objects become clickable => When objects are clicked, they get typed into the text input field.
+
 - Update `room.name` to `room.id` to increase naming consistency.
 
 - Consider moving items into separate file(s) to separate them from specific rooms.
@@ -288,6 +336,11 @@
 
 - Replace all note dates with actual dates, cross checked with a calendar
     - Ensure date formatting is correct: E.g. `Thursday, May 12th`
+
+- Fix game credits - show everyone involved rather than individual names.
+    - Add people to the thanks section of the readme
+    	- Thanks for help testing and giving feedback.
+    - Update main menu text and HTML meta information. Also look over GitHub page.
 
 - Write something about the project on samuelplumppu.se:
     - "At one point, I wanted to be a author. At another, I wanted to be a developer. So I figured, why not just do both?
