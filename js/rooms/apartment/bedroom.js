@@ -23,6 +23,6 @@ window.rooms.push({
         }
     }],
     description: `<p>Kevin's bedroom is quite a mess. Clothes, books and various things are scattered across the room.
-    Sure, he never was an organized person, but this looks more like someone searched for something.</p>
+    Sure, he never was an organized person, but this is just too much to be done only by himself.</p>
     <p>The wardrobe along the <b>south</b> wall has its doors wide open. To the <b>west</b>, several notes are attached to the inside of the window. Go <b>north</b> to return to the desk.</p>`
 })
