@@ -65,6 +65,8 @@
     - Or perhaps use a custom `.tutorial` section that is shown on key points of the gameplay. This way, messages could stick around without interfering with features used for the gameplay.
 
 - Also make users aware of the convenience features that are available:
+    - "Here are some convenient features to improve your experience playing this game:"
+    - End with "You can read more in the `help` section." at the bottom.
     1. Press tab to autocomplete a command or an object.
         - This is surprisingly accurate and saves a lot of typing.
         - With this, it doesn't have to be as tedious to play a text game - now we can actually focus on one of the genre's great strengths: expressiveness and creative freedom.
@@ -100,7 +102,7 @@
 ---
 # In progress
 
-
+- Improve wardrobe by adding items that provide details and backstory.
 
 
 
@@ -125,6 +127,10 @@
 
 ---
 # Ideas
+- Add `help` section start page, like `read notes` has.
+    - Basically use the same code, but display a help page instead of a note.
+    - This will give users a overview of what's available, and help them navigate.
+
 - Refactor the doorhandle in apartment.outside to use a `GameEvent`
     - Tell the user to `Press enter to continue` instead of `go north to enter`.
     - Make sure players can't get back to `apartment.outside` and only are allowed to enter the apartment. This way, they don't see the text shown in the event twice.
