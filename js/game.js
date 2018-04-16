@@ -275,30 +275,9 @@ class Game {
             return [ ...this.dictionary.keywords ]
         } else {
             const getName = i => i.name.toLowerCase()
-            const actionsTheItemHasToHave = ['use', 'check', 'read']
-            const keepRelevant = source => {
-                // Depending on the source of items, only some completions will be relevant.
-                // For example, `take [item already in inventory]` doesn't make sense.
-                // These filter functions only keep relevant completions.
-                if (source === 'inventory') {
-                    return item => {
-                        if (action === 'take') return false
-                        if (action === 'drop' && !item.movable) return false
-                        if (actionsTheItemHasToHave.includes(action) && !item.actions[action]) return false
-                        return true
-                    }
-                } else if (source === 'room') {
-                    return item => {
-                        if (action === 'drop') return false
-                        if (action === 'take' && !item.movable) return false
-                        if (actionsTheItemHasToHave.includes(action) && !item.actions[action]) return false
-                        return true
-                    }
-                }
-            }
             return [
-                ...this.player.inventory.filter(keepRelevant('inventory')).map(getName),
-                ...this.player.currentRoom.items.filter(keepRelevant('room')).map(getName)
+                ...this.player.inventory.map(getName),
+                ...this.player.currentRoom.items.map(getName)
             ]
         }
     }
