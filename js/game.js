@@ -76,9 +76,9 @@ class Game {
             this.specialCommand(input)
         } else if (this.gameStarted) {
             if (this.isDirection(input)) {
-                this.player.move(input)
+                this.player.moveInDirection(input)
             } else if (this.isDirectionAlias(input)) {
-                this.player.move(this.dictionary.directionAliases[input])
+                this.player.moveInDirection(this.dictionary.directionAliases[input])
             } else if (split.length && this.isAction(split[0])) {
                 // This case represents a valid action
                 // NOTE: This will not work with multiple-word actions (because of `split[0]`)

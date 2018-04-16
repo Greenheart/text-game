@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', event => {
             'read',
             'use',
             'check',
-            'go'
+            'go',
+            'move'
         ],
         directions: [
             'north',
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', event => {
 
     const game = new Game(window.rooms, dictionary, window.tasks, window.gameEvents)
     // TODO: Set DEBUG to false when a release version is ready.
-    window.DEBUG = false
+    window.DEBUG = true
 
     if (window.DEBUG) {
         // Expose game instance to aid debugging.

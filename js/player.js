@@ -101,7 +101,18 @@ class Player {
         }
     }
 
-    move (direction) {
+    move ({ object }) {
+        const item = this.currentRoom.items.find(Helpers.itemHasName(object))
+        if (item && item.actions && item.actions.move) {
+            // Let the item's callback handle what should happen.
+            item.actions.move(this.currentRoom, item)
+        } else {
+            // NOTE: This terminology might get confusing - or it might not.
+            this.game.status(`There's no ${object} to move.`)
+        }
+    }
+
+    moveInDirection (direction) {
         // Move in chosen direction if there's a room there.
         if (this.currentRoom.connections[direction]) {
             // Room.playerCanLeave() should return true if a player can leave, otherwise a string with the reason.
@@ -129,7 +140,7 @@ class Player {
     go ({ direction }) {
         // This command allows players who prefer to type `go [direction]` instead of just `[direction]`
         // The thought is to give players options, without breaking the gameplay.
-        this.move(direction)
+        this.moveInDirection(direction)
     }
 
     take ({ object }) {
