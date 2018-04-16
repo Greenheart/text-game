@@ -42,7 +42,7 @@ class Player {
             args.item = item
             args.itemSource = itemSource
 
-            if (!this.canInteract(item, itemSource)) return
+            if (!this.canInteract({ item, itemSource, action })) return
         }
         this[action](args)
     }
@@ -63,12 +63,12 @@ class Player {
         return { item: null, itemSource: null }
     }
 
-    canInteract (item, itemSource) {
+    canInteract ({ item, itemSource, action }) {
         // IDEA: Let callback functions make use of itemSource, to know if item was found in inventory or room.
         let playerCanInteract = true
         if (item) {
             // Room.playerCanInteract() should return true if a player can interact with an object, otherwise a string with the reason.
-            playerCanInteract = this.currentRoom.playerCanInteract ? this.currentRoom.playerCanInteract(this.currentRoom, item, itemSource) : true
+            playerCanInteract = this.currentRoom.playerCanInteract ? this.currentRoom.playerCanInteract({ room: this.currentRoom, item, itemSource, action }) : true
             if (playerCanInteract !== true) {
                 // Show the reason why player can't interact.
                 this.game.status(playerCanInteract)
