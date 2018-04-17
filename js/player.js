@@ -97,6 +97,7 @@ class Player {
             if (item.actions && item.actions.view) {
                 // Let the item's callback handle what should happen.
                 item.actions.view(this.currentRoom, item)
+                item.state.seenByPlayer = true
             } else {
                 this.game.status(`I can't view that.`)
             }
@@ -177,7 +178,7 @@ class Player {
             }
             this.currentRoom.removeItem(item.name)
 
-            if (item.actions && item.actions.read && !item.state.hasBeenRead) {
+            if (item.actions.read && !item.state.seenByPlayer) {
                 this.readItem(item)
             } else {
                 // Only show rooms when we're not reading an item.
@@ -253,7 +254,7 @@ class Player {
     }
 
     readItem (item) {
-        if (!item.state.hasBeenRead) item.state.hasBeenRead = true
+        item.state.seenByPlayer = true
         this.activeItem = item
         this.game.itemText('')
 
