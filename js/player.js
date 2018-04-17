@@ -74,7 +74,7 @@ class Player {
         if (item) {
             // list all actions for the item.
             this.game.title('Inspecting ' + item.name)
-            const actions = Object.keys(item.actions)
+            const actions = Object.keys(item.actions).filter(Helpers.keepUnique)
             // Include relevant action if the item is movable.
             if (item.movable) actions.push(this.hasItem(item.name) ? 'drop' : 'take')
             this.game.text(`<p>Available actions:</p>

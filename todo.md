@@ -150,9 +150,6 @@
 - `take jacket` in wardrobe might make sense to not prevent gameplay for the player.
     - Just prevent the `move()` action from happening in another room than the wardrobe - by adding an if statement.
 
-- Inspecting the white box displays `take` twice, as it's also a callback in `item.actions`.
-    - Prevent duplicate action names.
-
 
 
 ---
@@ -406,6 +403,8 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Prevent duplicate action names in `inspect [object]`.
+
 - Improve white box text
     - "once inside here" -> "once inside this box"
 

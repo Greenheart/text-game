@@ -8,6 +8,9 @@ const Helpers = {
     normalizeString (s) {
         return s.trimLeft().trimRight().toLowerCase()
     },
+    keepUnique (value, i, array) {
+        return i === array.lastIndexOf(value)
+    },
     itemHasName (name) {
         // Use normalized name to allow uppercase letters.
         return item => item.name.toLowerCase() === name
