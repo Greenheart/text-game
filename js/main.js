@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', event => {
             'use',
             'check',
             'go',
-            'move'
+            'move',
+            'view'
         ],
         directions: [
             'north',

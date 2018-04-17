@@ -91,6 +91,20 @@ class Player {
         }
     }
 
+    view ({ object }) {
+        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
+        if (item) {
+            if (item.actions && item.actions.view) {
+                // Let the item's callback handle what should happen.
+                item.actions.view(this.currentRoom, item)
+            } else {
+                this.game.status(`I can't view that.`)
+            }
+        } else {
+            this.game.status(`There's no ${object} to view.`)
+        }
+    }
+
     move ({ object }) {
         const item = this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
@@ -101,7 +115,6 @@ class Player {
                 this.game.status(`I can't move that.`)
             }
         } else {
-            // NOTE: This terminology might get confusing - or it might not.
             this.game.status(`There's no ${object} to move.`)
         }
     }
