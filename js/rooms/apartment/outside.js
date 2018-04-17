@@ -15,7 +15,7 @@ window.rooms.push({
                         room.game.addText('<p>The doorbell rings but nothing happens.</p>')
                         break
                     case 1:
-                        room.game.addText('<p>Still no reaction.</p><p>Maybe <b>check</b> the doorhandle?</p>')
+                        room.game.addText('<p>Still no reaction.</p><p>Maybe <b>check</b> the <i>doorhandle</i>?</p>')
                         break
                 }
                 room.showItems()
