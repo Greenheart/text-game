@@ -12,27 +12,17 @@ class Player {
     }
 
     parseAction (input, split) {
-        const noObjectMessage = {
-            inspect: 'What do you want to inspect? Usage: <span class="code dark-bg">inspect [object]</span>.',
-            take: 'What do you want to pick up? Usage: <span class="code dark-bg">take [object]</span>.',
-            drop: 'What do you want to drop? Usage: <span class="code dark-bg">drop [object]</span>.',
-            use: 'What do you want to use? Usage: <span class="code dark-bg">use [object]</span>.',
-            check: 'What do you want to check? Usage: <span class="code dark-bg">check [object]</span>.',
-            read: 'What do you want to read? Usage: <span class="code dark-bg">read [object]</span>.'
-        }
-
+        const action = split[0]
         // Handle incomplete arguments, if only action is passed.
         if (split.length < 2) {
-            this.game.status(noObjectMessage[action])
+            this.game.status(Helpers.getNoObjectMessage(action))
             return
         }
-        const action = split[0]
         this.lastAction = action
         const args = {
             object: '',
             direction: ''
         }
-
 
         if (action === 'go') {
             args.direction = split[1]
