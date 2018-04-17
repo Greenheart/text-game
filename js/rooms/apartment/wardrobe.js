@@ -8,18 +8,21 @@ window.rooms.push({
         name: 'jacket',
         id: 'jacket',
         actions: {
-            move (room, item) {
-                room.state.jacketMoved = true
-                room.makeItemVisible('white box')
-                room.hideItem('jacket')
-                room.show()
+            move (room, item, hide = true) {
+                if (room.name === 'apartment.bedroom.wardrobe') {
+                    room.state.jacketMoved = true
+                    room.makeItemVisible('white box')
+                    if (hide) room.hideItem('jacket')
+                    room.show()
+                }
+            },
+            // Trigger the move action even if the user chooses to take the jacket.
+            take (room, item) {
+                if (room.name === 'apartment.bedroom.wardrobe') {
+                    item.actions.move(room, item, false)
+                }
             }
         },
-        // IDEA: Maaaybe rename `item.movable` to `item.collectible` or something similar.
-        // Since the adjective movable is related to the action `player.move(object)`, used in this room, it might be confusing.
-        // We could replace it with something like `item.collectible`.
-        // In that case, this property should keep the same functionality (Can the player pick up this object?), but shouldn't be related to if the item is movable.
-        movable: false,
         useCustomDescription: ['apartment.bedroom.wardrobe']
     }],
     hiddenItems: [{
@@ -46,11 +49,10 @@ window.rooms.push({
     description (room) {
         let dynamic = ''
 
-        if (!room.state.jacketMoved) {
+        if (room.hasItem({ name: 'jacket' }) && !room.state.jacketMoved) {
             dynamic = '<p>It seems like something is partially covered beneath a <i>jacket</i>.</p>'
         } else if (room.hasItem({ name: 'white box' })) {
-            // IDEA: (low prio) Maybe add this during a GameEvent to clarify what happens?
-            dynamic = `<p>Moving the jacket reveals a small <i>white box</i> that has been opened. There's something written on it.</p>`
+            dynamic = `<p>As you move the jacket, a small, opened <i>white box</i> is revealed. There's something written on it.</p>`
         }
 
         return `<p>The wardrobe is so full with clothes and other things that much are hanging out thorugh the doors.

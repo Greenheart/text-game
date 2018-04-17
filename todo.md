@@ -138,6 +138,8 @@
             - Each part focusing on it's own note.
             - *Should notes be movable? - should the player be able to pick them up?*
 
+- Update docstrings in rooms.js and similar files. Move documentation comments to related classes instead.
+
 ---
 # Bugs
 
@@ -146,10 +148,6 @@
 
 - Items also get shown when a GameEvent is triggered.
     - In `GameEvent.onStart()`, set `game.itemText('')` to prevent this.
-
-- `take jacket` in wardrobe might make sense to not prevent gameplay for the player.
-    - Just prevent the `move()` action from happening in another room than the wardrobe - by adding an if statement.
-
 
 
 ---
@@ -377,6 +375,9 @@ Time jump - Kevin hasn't come home yet
     - This will not only set game.customParser, but also bind `this` to the game instance. This would remove need for the `game` parameter in all parsers, and increase consistency with other parts of the codebase.
     - *Just not sure if this change brings any real improvement though. `game` might be just as good.*
 
+- Maybe rename `item.movable` to `item.collectible` or something similar.
+    - Since the adjective movable is related to the action `player.move()`, it might be confusing.
+    - *Naming issue*
 
 
 
@@ -403,6 +404,10 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- `take jacket` in wardrobe might make sense to not prevent gameplay for the player.
+    - Just prevent the `move()` action from happening in another room than the wardrobe
+
+
 - Prevent duplicate action names in `inspect [object]`.
 
 - Improve white box text

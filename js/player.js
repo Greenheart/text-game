@@ -107,6 +107,12 @@ class Player {
     }
 
     move ({ object }) {
+        // Prevent moving items in the inventory.
+        if (this.hasItem(object)) {
+            this.game.status(`I can only move things in the room.`)
+            return
+        }
+
         const item = this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             if (item.actions && item.actions.move) {
@@ -176,6 +182,10 @@ class Player {
                 this.inventory.push(item)
                 this.game.status(`Picked up ${item.name}.`)
             }
+
+            // Allow items to perfom some task when they are picked up.
+            if (item.actions.take) item.actions.take(this.currentRoom, item)
+
             this.currentRoom.removeItem(item.name)
 
             if (item.actions.read && !item.state.seenByPlayer) {
@@ -183,6 +193,8 @@ class Player {
             } else if (item.actions.view && !item.state.seenByPlayer) {
                 item.actions.view(this.currentRoom, item)
                 item.state.seenByPlayer = true
+            } else if (item.useCustomDescription.length) {
+                this.currentRoom.show()
             } else {
                 // Only show rooms when we're not reading an item.
                 this.currentRoom.showItems()
@@ -197,6 +209,10 @@ class Player {
         if (item) {
             this.currentRoom.items.push(item)
             if (this.activeItem && this.activeItem.id === item.id) this.activeItem = null
+
+            // Allow items to perfom some task when they are dropped.
+            if (item.actions.drop) item.actions.drop(this.currentRoom, item)
+
             this.inventory = this.inventory.filter(i => i.name.toLowerCase() !== object)
             this.game.status(`${object} dropped.`)
         } else if (object.startsWith('note')) {
