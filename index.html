@@ -7,6 +7,7 @@
         <meta name="application-name" content="The Responsible">
         <meta name="author" content="Samuel Plumppu, Joel Plumppu">
         <meta name="description" content="An interactive story written by Samuel & Joel Plumppu">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Slabo+27px" rel="stylesheet">
     </head>
     <body>
         <div class="background"></div>
@@ -114,10 +115,9 @@
                             <h2>Inventory</h2>
                             <hr>
                             <ul class="items"></ul>
-                            <hr>
                         </section>
                         <section id="note-count" class="hidden unselectable">
-                            Notes found: <span class="count"></span>
+                            <i>Notes found: <span class="count"></span></i>
                         </section>
                     </div>
                 </aside>
@@ -131,12 +131,11 @@
                     <div id="game-text"></div>
                     <div id="item-text"></div>
                 </section>
-
-                <footer class="main-footer center unselectable">
-                    <p id="status-text">Enter your name</p>
-                    <input type="text" id="user-input" autocomplete="off" spellcheck="false" tabindex="0">
-                </footer>
             </div>
+            <footer class="main-footer center unselectable">
+                <p id="status-text">Enter your name</p>
+                <input type="text" id="user-input" autocomplete="off" spellcheck="false" tabindex="0">
+            </footer>
         </main>
 
         <script src="js/helpers.js"></script>

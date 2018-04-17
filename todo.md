@@ -143,14 +143,22 @@
 ---
 # Bugs
 
-
+- Allow users to copy text
+    - In keydown event handler, don't focus text input if the ctrl-key is down.
+    - I think there's a event.ctrilKeyDown or something.
 
 
 ---
 # In progress
 
+- Find good fonts
+    - Fix italics fonts.
 
+- Revise font styles (text highlighting) for different kinds of information.
+    - Maybe show "check" as bold italics in 'outside.js'
 
+- Improve layout for main (currently height 95vh)
+- Improve padding-bottom for main-footer (could depend on the main section)
 
 
 
@@ -171,11 +179,6 @@
 
 ---
 # Ideas
-- Find good fonts
-
-- Revise font styles (text highlighting) for different kinds of information.
-    - Maybe show "check" as bold italics in 'outside.js'
-
 Time jump - Kevin hasn't come home yet
 	- Allow player to watch TV, which makes time pass.
 	- Make items available after the time jump that weren't available at first.

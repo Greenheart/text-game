@@ -22,8 +22,9 @@ main {
     height: 80vh;
     min-height: 400px;
     padding: 0 50px;
-    font-family: Consolas, monospace;
-    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
     display: flex;
     justify-content: center;
 }
@@ -73,22 +74,23 @@ main {
 
 #help td:first-child {
     background: white;
-    font-family: monospace;
+    font-family: 'Consolas', monospace;
     min-width: 190px;
 }
 
 #help td:last-child {
-    font-family: Verdana, Geneva, sans-serif;
     letter-spacing: .2px;
     font-size: 15px;
 }
 
 #help pre,
 span.code {
+    font-family: 'Consolas',  monospace;
     display: inline;
     background: white;
     padding: 0 3px;
     margin: 0;
+    font-style: normal;
 }
 
 #help footer {
@@ -103,7 +105,7 @@ span.code.dark-bg {
 #title-text,
 #main-menu h1 {
     text-align: center;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Slabo', serif;
     font-weight: 400;
     border-bottom: 2px dotted rgba(70, 70, 70, .1);
 }
@@ -115,23 +117,31 @@ span.code.dark-bg {
 
 #title-text {
     min-width: 300px;
-    font-size: 27px;
+    font-size: 32px;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 
 #title-text:empty {
     display: none;
 }
 
-section p:first-of-type {
-    margin-top: 0;
-}
 
 .game-content {
     width: 100%;
 }
 
+.game-content p {
+    margin: 14px 0;
+    line-height: 1.45;
+}
+
 .game-content li:not(:first-of-type) {
     margin-top: 6px;
+}
+
+section p:first-of-type {
+    margin-top: 0;
 }
 
 #game-text .note-heading {
@@ -167,9 +177,9 @@ aside.left {
 }
 
 aside.left section {
-    margin: 5px 0;
+    margin: 0;
     font-size: 16px;
-    padding: 5px 15px;
+    padding: 5px 10px;
 }
 
 aside.left h2 {
@@ -180,6 +190,7 @@ aside.left h2 {
 
 aside.left section hr {
     box-shadow: 1px 1px rgba(70, 70, 70, 0.1);
+    margin-top: 3px;
 }
 
 aside.left section hr:not(:first-of-type) {
@@ -195,6 +206,10 @@ ul {
     list-style-type: square;
 }
 
+ul.items {
+    margin-top: 10px;
+}
+
 .task h3 {
     font-size: 15px;
     margin: 0;
@@ -203,17 +218,31 @@ ul {
 .task h3::before {
     content: '✓';
     margin-right: 5px;
+    margin-left: 5px;
 }
 
-.task small {
+.task p {
+    margin-left: 8px;
     font-size: 13px;
+    line-height: 1.5;
 }
 
 .task.completed {
     color: green;
 }
 
+aside.left > .bottom {
+    border-top: 0;
+}
+
+#inventory {
+    min-height: 150px;
+    border-top: 1px solid #dcdcdc;
+}
+
 #note-count {
+    border-top: 1px solid #dcdcdc;
+    margin: 0;
     text-align: center;
     font-size: 14px;
 }
@@ -226,18 +255,29 @@ ul {
     display: flex;
     flex-direction: column;
     position: fixed;
-    bottom: 11vh;
-    width: 600px;
+    bottom: 0;
+    padding-bottom: 6vh;
+    width: 700px;
     font-size: 16px;
+    border-top: 1px solid #dcdcdc;
+    background: white;
 }
 
 .main-footer.center {
-    bottom: 30vh;
+    padding-bottom: 30vh;
+    border: 0;
 }
 
 #status-text {
     position: relative;
     text-align: center;
+    font-size: 15px;
+    font-style: italic;
+    margin: 15px 0;
+}
+
+#status-text:empty {
+    margin: 26px 0;
 }
 
 #status-text::first-letter {
@@ -249,7 +289,7 @@ ul {
     align-self: center;
     padding: 5px 8px;
     font-size: 16px;
-    font-family: monospace;
+    font-family: 'Consolas', monospace;
 }
 
 #user-input::placeholder {
@@ -259,7 +299,7 @@ ul {
 }
 
 b {
-    font-size: 1.1em;
+    font-style: italic;
 }
 
 #help b {

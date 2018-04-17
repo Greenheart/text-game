@@ -12,8 +12,7 @@ window.rooms.push({
             read (room, note) {
                 room.game.text(`
                     <p class="note-heading">${note.state.date}</p>
-                    <p>I've started feeling a bit dizzy lately. Using this device isn't supposed to feel like this.</p>
-                    <p>My boss ensured me that this is nothing harmful though.</p>
+                    <p>I've started feeling a bit dizzy lately. Using this device isn't supposed to feel like this. My boss ensured me that this is nothing harmful though.</p>
                 `)
             }
         },
@@ -22,5 +21,5 @@ window.rooms.push({
         }
     }],
     description: `<p>Kevin's hallway is rather small. Barely enough space for two people because of all clothes and shoes.
-    There are two doorways: One leading to the <b>north</b> and another to the <b>east</b>.</p>`
+    There are two doorways: one leading to the <b>north</b> and another to the <b>east</b>.</p>`
 })

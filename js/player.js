@@ -393,7 +393,7 @@ class Player {
         const display = t => `
             <div class="task${t.completed ? ' completed' : ''}">
                 <h3>${t.title}</h3>
-                <small>${t.description}</small>
+                <p>${t.description}</p>
             </div>`
         const content = this.tasks.filter(t => t.active).map(display).join('<hr>')
         this.game.ui.tasks.querySelector('.task-list').innerHTML = content
