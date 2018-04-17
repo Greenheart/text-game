@@ -14,15 +14,13 @@ window.rooms.push({
                 room.hideItem('jacket')
                 room.show()
             }
-            // TODO: Add support for `item.useCustomDescription = [room.name]`
-            // `room.name` indicates where the item shouldn't be shown with the regular method.
-            // In other rooms, the regular method will be used.`
         },
         // IDEA: Maaaybe rename `item.movable` to `item.collectible` or something similar.
         // Since the adjective movable is related to the action `player.move(object)`, used in this room, it might be confusing.
         // We could replace it with something like `item.collectible`.
         // In that case, this property should keep the same functionality (Can the player pick up this object?), but shouldn't be related to if the item is movable.
-        movable: false
+        movable: false,
+        useCustomDescription: ['apartment.bedroom.wardrobe']
     }],
     hiddenItems: [{
         // The white box is the packaging for the device that the company is testing.
@@ -40,7 +38,8 @@ window.rooms.push({
                 room.game.useContinuePlaceholder()
             }
         },
-        movable: false
+        movable: false,
+        useCustomDescription: ['apartment.bedroom.wardrobe']
     }],
     description (room) {
         let dynamic

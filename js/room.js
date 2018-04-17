@@ -11,6 +11,10 @@ class Room {
             // to allow item configs to focus on what's interesting: custom data.
             if (!i.state) i.state = {}
             if (!i.actions) i.actions = {}
+
+            // Adding a room name to this array indicates that the item is shown to the player in another way.
+            // For example, this could mean the item is shown in the description in the room, instead of the normal item text.
+            if (!i.useCustomDescription) i.useCustomDescription = []
             return i
             // NOTE: If Item related logic is to be refactored to a separate class and file,
             // This mapper function should be part of the constructor - or maybe even similar to Room.initializeRooms().
@@ -60,23 +64,30 @@ class Room {
         // NOTE: Maaaaaaybe fix the correct form of "a/an". Maybe not!
         // Also think about singular/plural.
         let itemText = ''
+        // Filter out items that are shown in a custom way.
+        const items = this.items.filter(i => {
+            // Default case: Show items in their own section.
+            if (i.useCustomDescription.length === 0) return true
+            // Else, Show items in their own section - unless the current room is marked.
+            return !i.useCustomDescription.includes(this.name)
+        })
 
-        if (this.items.length) {
+        if (items.length) {
             itemText += 'There is '
 
-            if (this.items.length === 1) {
-                itemText += `a <i>${this.items[0].name}</i> here.`
+            if (items.length === 1) {
+                itemText += `a <i>${items[0].name}</i> here.`
             } else {
-                itemText = this.items.reduce((items, item, i) => {
+                itemText = items.reduce((text, item, i) => {
                     const name = `<i>${item.name}</i>`
                     if (i === 0) {
-                        items += `a ${name}`
-                    } else if (i < this.items.length - 1) {
-                        items += `, a ${name}`
+                        text += `a ${name}`
+                    } else if (i < items.length - 1) {
+                        text += `, a ${name}`
                     } else {
-                        items += ` and a ${name} here.`
+                        text += ` and a ${name} here.`
                     }
-                    return items
+                    return text
                 }, itemText)
             }
         }
