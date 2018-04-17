@@ -153,8 +153,6 @@
 - Inspecting the white box displays `take` twice, as it's also a callback in `item.actions`.
     - Prevent duplicate action names.
 
-- Improve white box text
-    - "... once inside here ..." -> "... once inside this box ..."
 
 
 ---
@@ -408,6 +406,9 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Improve white box text
+    - "once inside here" -> "once inside this box"
+
 - Add `view` action
     - "view photo frame" - trigger same action as for `take`
 

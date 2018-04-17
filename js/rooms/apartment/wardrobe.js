@@ -32,7 +32,7 @@ window.rooms.push({
                 room.game.title('The White Box')
                 room.game.text(`
                     <p>"[Y corp]: Device Prototype 0x137".</p>
-                    <p><i>Hmm... I wonder how the device once inside here is releated to my friend's work.</i></p>
+                    <p><i>Hmm... I wonder how the device once inside this box is releated to my friend's work.</i></p>
                 `)
                 room.game.player.activeItem = item
                 room.game.useContinuePlaceholder()
