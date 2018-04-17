@@ -36,18 +36,20 @@ window.rooms.push({
                 `)
                 room.game.player.activeItem = item
                 room.game.useContinuePlaceholder()
+            },
+            take (room, item) {
+                item.actions.read(room, item)
             }
         },
-        movable: false,
         useCustomDescription: ['apartment.bedroom.wardrobe']
     }],
     description (room) {
-        let dynamic
+        let dynamic = ''
 
         if (!room.state.jacketMoved) {
             dynamic = '<p>It seems like something is partially covered beneath a <i>jacket</i>.</p>'
-        } else {
-            // IDEA: Maybe add this during a GameEvent to clarify what happens?
+        } else if (room.hasItem({ name: 'white box' })) {
+            // IDEA: (low prio) Maybe add this during a GameEvent to clarify what happens?
             dynamic = `<p>Moving the jacket reveals a small <i>white box</i> that has been opened. There's something written on it.</p>`
         }
 
