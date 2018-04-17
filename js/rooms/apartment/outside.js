@@ -30,7 +30,6 @@ window.rooms.push({
         id: 'doorhandle',
         movable: false,
         actions: {
-            // NOTE: Not ideal to duplicate actions, but until a better solution is found, this allows for fast content creation :D
             check (room, item) {
                 room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
                 <p>Go <b>north</b> to enter.</p>`)
@@ -39,11 +38,7 @@ window.rooms.push({
                 room.game.player.giveNewTask('anyone-home')
             },
             use (room, item) {
-                room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
-                <p>Go <b>north</b> to enter.</p>`)
-                room.state.doorhandleChecked = true
-                room.game.player.activeItem = item
-                room.game.player.giveNewTask('anyone-home')
+                item.actions.check(room, item)
             }
         }
     }],
