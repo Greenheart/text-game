@@ -129,6 +129,15 @@
                 - The player sees something interesting and wants to know more
                 - So the task tells them to go to the computer to look for more information.
 
+- Improve apartment.bedroom.window
+    - Add notes that give story details for the curious player.
+    - *Discuss how to add several notes in one place*
+        - Either a GameEvent, that players read through note by note.
+        - Or let notes be identified by `first note`, `second note` etc.
+        - Or Skip the note part, adding a `noteboard` item, where reading it will be done in multiple parts.
+            - Each part focusing on it's own note.
+            - *Should notes be movable? - should the player be able to pick them up?*
+
 ---
 # Bugs
 
