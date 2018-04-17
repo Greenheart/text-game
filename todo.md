@@ -395,6 +395,9 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Reading the poster and then picking it up doesn't update room.showItems()
+    - See what happens when the poster is read.
+
 - *Should autocomplete only work for valid completions?*
 - For example, autocompleting a object name for an action it can't be used for takes away from the player's freedom to try different thoughts.
 - This might cause players to experience the game as more linear than it is.

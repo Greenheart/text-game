@@ -164,10 +164,8 @@ class Player {
             }
             this.currentRoom.removeItem(item.name)
 
-            if (item.actions && item.actions.read) {
-                if (!item.state.hasBeenRead) {
-                    this.readItem(item)
-                }
+            if (item.actions && item.actions.read && !item.state.hasBeenRead) {
+                this.readItem(item)
             } else {
                 // Only show rooms when we're not reading an item.
                 this.currentRoom.showItems()
