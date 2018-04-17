@@ -343,12 +343,17 @@ class Player {
         }
     }
 
+    hasCompletedTask (taskId) {
+        const task = this.tasks.find(t => t.id === taskId)
+        return task.isCompleted()
+    }
+
     updateTasks () {
         for (const task of this.tasks.filter(t => t.active)) {
             if (window.DEBUG) {
-                console.log(task.id + ':', task.isCompleted(this.game))
+                console.log(task.id + ':', task.isCompleted())
             }
-            if (!task.completed && task.isCompleted(this.game)) {
+            if (!task.completed && task.isCompleted()) {
                 task.complete()
             }
         }

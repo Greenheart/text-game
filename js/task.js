@@ -6,8 +6,10 @@ class Task {
         this.description = task.description
 
         // Required methods to handle the lifecycle of the task.
-        this.isCompleted = task.isCompleted
-        this.onCompletion = task.onCompletion
+        // Bind them to automatically provide required parameters when they are called.
+        // This simplifies usage of these methods for content creators.
+        this.isCompleted = task.isCompleted.bind(null, game)
+        this.onCompletion = task.onCompletion.bind(null, this)
 
         // Default state
         this.completed = false
@@ -31,6 +33,6 @@ class Task {
         this.game.status(`<span class="green-highlight">Task completed!</span>`)
         this.game.setPlaceholder('Press enter to see details...')
         this.completed = true
-        this.onCompletion(this)
+        this.onCompletion()
     }
 }
