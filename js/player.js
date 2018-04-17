@@ -335,7 +335,7 @@ class Player {
 
     hasCompletedTask (taskId) {
         const task = this.tasks.find(t => t.id === taskId)
-        return task.isCompleted()
+        return task && task.completed
     }
 
     updateTasks () {

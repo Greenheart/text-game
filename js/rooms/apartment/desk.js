@@ -34,13 +34,10 @@ window.rooms.push({
         movable: false
     }],
     playerCanInteract (room, { item }) {
-        if (item.name === 'computer') {
-            // TODO: Check for the watch TV task. Player need to see the news on TV before using the computer.
-            if (!room.game.tasks['anyone-home'].completed) {
-                return 'I should probably see if Kevin is at home first.'
-            }
+        if (item.name === 'computer' && !room.game.player.hasCompletedTask('anyone-home')) {
+            // TODO: Check for the watch TV task instead. Player need to see the news on TV before using the computer.
+            return 'I should probably see if Kevin is at home first.'
         }
-        // Allow other interactions.
         return true
     },
     description: `<p>The desk is filled with various notes. One of them catches your eye because it looks similar to the one in the hallway.</p>
