@@ -1,5 +1,5 @@
 window.rooms.push({
-    title: 'In the sofa in front of the TV',
+    title: 'In the sofa, in front of the TV',
     name: 'apartment.livingRoom.sofa',
     connections: {
         'south': 'apartment.livingRoom'
@@ -18,12 +18,12 @@ window.rooms.push({
         id: 'photo-frame',
         actions: {
             use (room, item) {
-                /* TODO: add support for viewing multiple photos.
-                    - Either use `next` and `previous` or `prev` to navigate
-                    - Or `use [photo frame]` multiple times, each showing new photos.
-                    - This would use a `CustomParser`
-                */
-                room.game.text(`Very nice photos indeed.`)
+                room.game.title('The Photo Frame')
+                room.game.text(`
+                    <p>You remember this photo. It's from one of your and Kevin's adventures a couple of years ago.</p>
+                    <p><i>Ah... The feeling of exploring new places, of being so small compared to the vast nature.</i></p>
+                    <p><i>Sure, your work takes a lot of time these days. But why aren't we doing these things anymore? Seriously Kevin, what have you gotten yourself into?</i></p>
+                `)
                 room.game.player.activeItem = item
                 room.game.useContinuePlaceholder()
             }
