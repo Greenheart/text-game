@@ -14,6 +14,9 @@ window.rooms.push({
                     <p>The timetable is hanging on the right side of the fridge door, listing TV programs for the coming week. A few of them are circled in.</p>
                     <p><i>Who even keeps these anymore? There's an app for this - in the TV itself.</i></p>
                 `)
+            },
+            view (room, item) {
+                item.actions.read(room, item)
             }
         },
         movable: false

@@ -37,8 +37,6 @@ window.rooms.push({
                     <p>"[Y corp]: Device Prototype 0x137".</p>
                     <p><i>Hmm... I wonder how the device once inside this box is releated to my friend's work.</i></p>
                 `)
-                room.game.player.activeItem = item
-                room.game.useContinuePlaceholder()
             },
             view (room, item) {
                 item.actions.read(room, item)

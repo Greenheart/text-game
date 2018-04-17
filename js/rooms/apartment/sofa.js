@@ -24,8 +24,6 @@ window.rooms.push({
                     <p><i>Ah... The feeling of exploring new places, of being so small compared to the vast nature.</i></p>
                     <p><i>Sure, your work takes a lot of time these days. But why aren't we doing these things anymore? Seriously Kevin, what have you gotten yourself into?</i></p>
                 `)
-                room.game.player.activeItem = item
-                room.game.useContinuePlaceholder()
             }
         }
         // TODO: make it possible to watch tv.

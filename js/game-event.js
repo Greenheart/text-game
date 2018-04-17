@@ -34,6 +34,7 @@ class GameEvent {
     show () {
         this.game.title(this.title)
         this.game.text(this.description)
+        this.game.itemText('')
         this.shown = true
         this.game.useContinuePlaceholder()
     }

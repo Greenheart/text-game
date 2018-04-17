@@ -143,11 +143,7 @@
 ---
 # Bugs
 
-- Items are shown from the room when reading a note for the first time (and picking it up).
-    - Maybe only show items of the room if not `player.activeItem` is set?
 
-- Items also get shown when a GameEvent is triggered.
-    - In `GameEvent.onStart()`, set `game.itemText('')` to prevent this.
 
 
 ---
@@ -404,6 +400,12 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Items are shown from the room when reading a note for the first time (and picking it up).
+    - Maybe only show items of the room if not `player.activeItem` is set?
+
+- Items also get shown when a GameEvent is triggered.
+    - In `GameEvent.onStart()`, set `game.itemText('')` to prevent this.
+
 - `take jacket` in wardrobe might make sense to not prevent gameplay for the player.
     - Just prevent the `move()` action from happening in another room than the wardrobe
 

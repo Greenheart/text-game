@@ -95,15 +95,23 @@ class Player {
         const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             if (item.actions && item.actions.view) {
-                // Let the item's callback handle what should happen.
-                item.actions.view(this.currentRoom, item)
-                item.state.seenByPlayer = true
+                this.viewItem(item)
             } else {
                 this.game.status(`I can't view that.`)
             }
         } else {
             this.game.status(`There's no ${object} to view.`)
         }
+    }
+
+    viewItem (item) {
+        item.state.seenByPlayer = true
+        this.activeItem = item
+        this.game.itemText('')
+        this.game.useContinuePlaceholder()
+
+        // Let the item's callback handle what should happen.
+        item.actions.view(this.currentRoom, item)
     }
 
     move ({ object }) {
@@ -191,8 +199,7 @@ class Player {
             if (item.actions.read && !item.state.seenByPlayer) {
                 this.readItem(item)
             } else if (item.actions.view && !item.state.seenByPlayer) {
-                item.actions.view(this.currentRoom, item)
-                item.state.seenByPlayer = true
+                this.viewItem(item)
             } else if (item.useCustomDescription.length) {
                 this.currentRoom.show()
             } else {
