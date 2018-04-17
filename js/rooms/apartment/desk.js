@@ -33,7 +33,7 @@ window.rooms.push({
         },
         movable: false
     }],
-    playerCanInteract ({ room, item }) {
+    playerCanInteract (room, { item }) {
         if (item.name === 'computer') {
             // TODO: Check for the watch TV task. Player need to see the news on TV before using the computer.
             if (!room.game.tasks['anyone-home'].completed) {

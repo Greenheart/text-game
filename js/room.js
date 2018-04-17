@@ -29,8 +29,10 @@ class Room {
         this.state = room.state
 
         // Optional callbacks, used to limit how and when players are allowed to leave, or interact with objects.
-        this.playerCanLeave = room.playerCanLeave
-        this.playerCanInteract = room.playerCanInteract
+        // Bind them to automatically provide required parameters when they are called.
+        // This simplifies usage of these methods for content creators.
+        if (room.playerCanLeave) this.playerCanLeave = room.playerCanLeave.bind(null, this)
+        if (room.playerCanInteract) this.playerCanInteract = room.playerCanInteract.bind(null, this)
     }
 
     static initializeRooms (game, roomConfigs) {

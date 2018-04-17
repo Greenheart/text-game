@@ -68,7 +68,7 @@ class Player {
         let playerCanInteract = true
         if (item) {
             // Room.playerCanInteract() should return true if a player can interact with an object, otherwise a string with the reason.
-            playerCanInteract = this.currentRoom.playerCanInteract ? this.currentRoom.playerCanInteract({ room: this.currentRoom, item, itemSource, action }) : true
+            playerCanInteract = this.currentRoom.playerCanInteract ? this.currentRoom.playerCanInteract({ item, itemSource, action }) : true
             if (playerCanInteract !== true) {
                 // Show the reason why player can't interact.
                 this.game.status(playerCanInteract)
@@ -120,7 +120,7 @@ class Player {
         // Move in chosen direction if there's a room there.
         if (this.currentRoom.connections[direction]) {
             // Room.playerCanLeave() should return true if a player can leave, otherwise a string with the reason.
-            const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(this.currentRoom, direction) : true
+            const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(direction) : true
             if (playerCanLeave === true) {
                 this.moveTo(this.currentRoom.connections[direction])
             } else {
