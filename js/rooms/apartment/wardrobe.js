@@ -36,6 +36,9 @@ window.rooms.push({
                 `)
                 room.game.player.activeItem = item
                 room.game.useContinuePlaceholder()
+            },
+            view (room, item) {
+                item.actions.read(room, item)
             }
         },
         useCustomDescription: ['apartment.bedroom.wardrobe']
