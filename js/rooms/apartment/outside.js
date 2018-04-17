@@ -1,9 +1,6 @@
 window.rooms.push({
     title: 'The Stairwell',
     name: 'apartment.outside',
-    connections: {
-        'north': 'apartment.hallway'
-    },
     items: [{
         name: 'doorbell',
         id: 'doorbell',
@@ -31,30 +28,13 @@ window.rooms.push({
         movable: false,
         actions: {
             check (room, item) {
-                room.game.text(`<p>Strange. It's not like your friend to leave the door unlocked.</p>
-                <p>Go <b>north</b> to enter.</p>`)
-                room.state.doorhandleChecked = true
-                room.game.player.activeItem = item
-                room.game.player.giveNewTask('anyone-home')
+                room.game.triggerEvent('enter-apartment')
             },
             use (room, item) {
                 item.actions.check(room, item)
             }
         }
     }],
-    state: {
-        doorhandleChecked: false
-    },
-    playerCanLeave (room, direction) {
-        if ('north'.startsWith(direction)) {
-            if (room.state.doorhandleChecked) {
-                room.game.player.activeItem = null
-                return true
-            } else {
-                return 'The door is not open.'
-            }
-        }
-    },
     description: `<p>You're standing outside Kevin's door. He lives on the fifth floor in a pretty new house.</p>
     <p>Gosh, it's already been three months since he moved in, even though it feels like yesterday. It was also somewhere around that time that he started his new job.</p>`
 })

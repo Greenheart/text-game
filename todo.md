@@ -171,6 +171,11 @@
 
 ---
 # Ideas
+- Find good fonts
+
+- Revise font styles (text highlighting) for different kinds of information.
+    - Maybe show "check" as bold italics in 'outside.js'
+
 Time jump - Kevin hasn't come home yet
 	- Allow player to watch TV, which makes time pass.
 	- Make items available after the time jump that weren't available at first.
@@ -178,10 +183,6 @@ Time jump - Kevin hasn't come home yet
 - Add `help` section start page, like `read notes` has.
     - Basically use the same code, but display a help page instead of a note.
     - This will give users a overview of what's available, and help them navigate.
-
-- Refactor the doorhandle in apartment.outside to use a `GameEvent`
-    - Tell the user to `Press enter to continue` instead of `go north to enter`.
-    - Make sure players can't get back to `apartment.outside` and only are allowed to enter the apartment. This way, they don't see the text shown in the event twice.
 
 - Show summary of each chapter at the end of it.
     - notes found, clues found etc.
@@ -400,6 +401,10 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Refactor the doorhandle in apartment.outside to use a `GameEvent`
+    - Tell the user to `Press enter to continue` instead of `go north to enter`.
+    - Make sure players can't get back to `apartment.outside` and only are allowed to enter the apartment. This way, they don't see the text shown in the event twice.
+
 - Items are shown from the room when reading a note for the first time (and picking it up).
     - Maybe only show items of the room if not `player.activeItem` is set?
 
