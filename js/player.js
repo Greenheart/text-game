@@ -180,6 +180,9 @@ class Player {
 
             if (item.actions.read && !item.state.seenByPlayer) {
                 this.readItem(item)
+            } else if (item.actions.view && !item.state.seenByPlayer) {
+                item.actions.view(this.currentRoom, item)
+                item.state.seenByPlayer = true
             } else {
                 // Only show rooms when we're not reading an item.
                 this.currentRoom.showItems()

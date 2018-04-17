@@ -17,7 +17,10 @@ window.rooms.push({
         name: 'photo frame',
         id: 'photo-frame',
         actions: {
-            use (room, item) {
+            take (room, item) {
+                item.actions.view(room, item)
+            },
+            view (room, item) {
                 room.game.title('The Photo Frame')
                 room.game.text(`
                     <p>You remember this photo. It's from one of your and Kevin's adventures a couple of years ago.</p>

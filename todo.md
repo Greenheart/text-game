@@ -408,6 +408,9 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Add `view` action
+    - "view photo frame" - trigger same action as for `take`
+
 - Reading the poster and then picking it up doesn't update room.showItems()
     - See what happens when the poster is read.
 
