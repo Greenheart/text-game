@@ -17,9 +17,6 @@ window.rooms.push({
         name: 'photo frame',
         id: 'photo-frame',
         actions: {
-            take (room, item) {
-                item.actions.view(room, item)
-            },
             view (room, item) {
                 room.game.title('The Photo Frame')
                 room.game.text(`
