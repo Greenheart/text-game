@@ -334,7 +334,8 @@ class Game {
             const enterOrTabPressed = [13, 9].includes(event.keyCode)
             if (enterOrTabPressed) event.preventDefault()
 
-            if (document.activeElement !== this.ui.userInput || enterOrTabPressed) {
+            // Don't focus when CTRL is pressed to allow common browser keyboard shortcuts like copy.
+            if (!event.ctrlKey && (document.activeElement !== this.ui.userInput || enterOrTabPressed)) {
                 this.ui.userInput.focus()
             }
         })

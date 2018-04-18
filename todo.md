@@ -140,18 +140,6 @@
 
 - Update docstrings in rooms.js and similar files. Move documentation comments to related classes instead.
 
----
-# Bugs
-
-- Allow users to copy text
-    - In keydown event handler, don't focus text input if the ctrl-key is down.
-    - I think there's a event.ctrilKeyDown or something.
-
-
-
----
-# In progress
-
 - Find good fonts
     - Fix italics fonts.
 
@@ -160,6 +148,18 @@
 
 - Improve layout for main (currently height 95vh)
 - Improve padding-bottom for main-footer (could depend on the main section)
+
+
+---
+# Bugs
+
+
+
+
+---
+# In progress
+
+
 
 
 
@@ -405,6 +405,9 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Allow player to copy text
+    - In keydown event handler, don't focus text input if the ctrl-key is down.
+
 - Show read action in inspect
     - white box in the wardrobe
     - poster in living room.
