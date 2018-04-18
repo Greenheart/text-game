@@ -72,11 +72,13 @@ class Player {
     inspect ({ object }) {
         const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
-            // list all actions for the item.
+            // List all actions related to the item.
             this.game.title('Inspecting ' + item.name)
-            const actions = Object.keys(item.actions).filter(Helpers.keepUnique)
-            // Include relevant action if the item is movable.
-            if (item.movable) actions.push(this.hasItem(item.name) ? 'drop' : 'take')
+            const actions = Object.keys(item.actions)
+            // Include relevant action if the item is movable. But avoid duplicate action names.
+            if (!actions.some(a => ['take', 'drop'].includes(a)) && item.movable) {
+                actions.push(this.hasItem(item.name) ? 'drop' : 'take')
+            }
             this.game.text(`<p>Available actions:</p>
                 <ul>
                     ${actions.map(action => `<li><span class="code dark-bg">${action}</span></li>`).join('')}

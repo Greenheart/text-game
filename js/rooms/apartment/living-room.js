@@ -19,6 +19,9 @@ window.rooms.push({
                     <p>Imagine the possibilities of accessing information instantaneously. Imagine having your friends with you at all times. Imagine never having to bring another computing device.</p>
                     <p>[Y corp] - <i>connect your future!</i></p>
                 `)
+            },
+            view (room, item) {
+                item.actions.read(room)
             }
         }
     }],

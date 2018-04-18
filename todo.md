@@ -148,6 +148,7 @@
     - I think there's a event.ctrilKeyDown or something.
 
 
+
 ---
 # In progress
 
@@ -404,6 +405,10 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Show read action in inspect
+    - white box in the wardrobe
+    - poster in living room.
+
 - Refactor the doorhandle in apartment.outside to use a `GameEvent`
     - Tell the user to `Press enter to continue` instead of `go north to enter`.
     - Make sure players can't get back to `apartment.outside` and only are allowed to enter the apartment. This way, they don't see the text shown in the event twice.

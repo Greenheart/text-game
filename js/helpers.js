@@ -9,7 +9,7 @@ const Helpers = {
         return s.trimLeft().trimRight().toLowerCase()
     },
     keepUnique (value, i, array) {
-        return i !== array.lastIndexOf(value)
+        return i === array.indexOf(value)
     },
     itemHasName (name) {
         // Use normalized name to allow uppercase letters.
