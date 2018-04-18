@@ -77,9 +77,7 @@ class Player {
         return playerCanInteract === true
     }
 
-    inspect ({ object }) {
-        // TODO: Refactor to make use of the item and itemSource supplied by the parseAction() mtehod.
-        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
+    inspect ({ object, item }) {
         if (item) {
             // List all actions related to the item.
             this.game.title('Inspecting ' + item.name)
@@ -102,8 +100,7 @@ class Player {
         }
     }
 
-    view ({ object, action }) {
-        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
+    view ({ object, item, action }) {
         if (item) {
             if (item.actions && item.actions[action]) {
                 this.viewItem(item)
@@ -131,15 +128,14 @@ class Player {
         this.view(args)
     }
 
-    move ({ object }) {
+    move ({ object, item, itemSource }) {
         // Prevent moving items in the inventory.
         if (this.hasItem(object)) {
             this.game.status(`I can only move things in the room.`)
             return
         }
 
-        const item = this.currentRoom.items.find(Helpers.itemHasName(object))
-        if (item) {
+        if (item && itemSource === 'room') {
             if (item.actions && item.actions.move) {
                 // Let the item's callback handle what should happen.
                 item.actions.move(this.currentRoom, item)
@@ -182,21 +178,18 @@ class Player {
         this.moveInDirection(direction)
     }
 
-    take ({ object }) {
-        // IDEA: replace objectIsInRoom check with objectSource parameter sent from `parseAction()`
-        // This data is all that's missing to allow `parseAction()` to pass along the item as well.
-        const objectIsInRoom = this.currentRoom.hasItem({ name: object })
-        if (objectIsInRoom) {
-            this.takeItem(
-                this.currentRoom.items.find(Helpers.itemHasName(object))
-            )
-        } else if (!objectIsInRoom && this.hasItem(object)) {
-            this.game.status(`The ${object} is already in your inventory.`)
-        } else {
-            this.game.status(`There's no ${object} to pick up.`)
-        }
+    take ({ object, item, itemSource }) {
+        if (item) {
+            if (itemSource === 'room') {
+                this.takeItem(item)
+            } else if (itemSource === 'inventory') {
+                this.game.status(`The ${object} is already in your inventory.`)
+            } else {
+                this.game.status(`There's no ${object} to pick up.`)
+            }
 
-        this.updateUI()
+            this.updateUI()
+        }
     }
 
     takeItem (item) {
@@ -228,9 +221,8 @@ class Player {
         }
     }
 
-    drop ({ object }) {
-        const item = this.inventory.find(Helpers.itemHasName(object))
-        if (item) {
+    drop ({ object, item, itemSource }) {
+        if (item && itemSource === 'inventory') {
             this.currentRoom.items.push(item)
             if (this.activeItem && this.activeItem.id === item.id) this.activeItem = null
 
@@ -249,8 +241,7 @@ class Player {
         this.currentRoom.show()
     }
 
-    use ({ object }) {
-        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
+    use ({ object, item }) {
         if (item) {
             if (item.actions.use) {
                 this.currentRoom.game.itemText('')
@@ -263,8 +254,7 @@ class Player {
         }
     }
 
-    check ({ object }) {
-        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
+    check ({ object, item }) {
         if (item) {
             if (item.actions.check) {
                 this.currentRoom.game.itemText('')
@@ -277,9 +267,7 @@ class Player {
         }
     }
 
-    read ({ object }) {
-        // Start by trying to read any item in the room or inventory.
-        const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
+    read ({ object, item }) {
         if (item) {
             if (item.actions.read) {
                 this.readItem(item)
