@@ -4,5 +4,8 @@ window.rooms.push({
     connections: {
         'back': 'apartment.livingRoom.sofa'
     },
-    description: `You're watching TV.`
+    description: `
+        <p>You're watching TV.</p>
+        <p>Go <b>back</b> to return to the sofa.</p>
+    `
 })

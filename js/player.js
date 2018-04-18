@@ -35,7 +35,14 @@ class Player {
 
             if (!this.canInteract({ item, itemSource, action })) return
         }
-        this[action](args)
+
+        // Allow items to override the default behavior and only run their custom logic.
+        const skipDefaultAction = args.item && args.item.skipDefaultAction.includes(action) && args.item.actions[action]
+        if (skipDefaultAction) {
+            args.item.actions[action](this.currentRoom, args.item)
+        } else {
+            this[action](args)
+        }
     }
 
     findItem (object) {
@@ -119,7 +126,8 @@ class Player {
     }
 
     watch (args) {
-        // Currently, this is just an alias for view.
+        // Currently, this is just used as an alias for view.
+        // Items that allow this interaction has to specify both actions though.
         this.view(args)
     }
 

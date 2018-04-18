@@ -9,8 +9,7 @@ window.rooms.push({
     // Then add additional description to the livingRoom (or wherever the player currently is)
         // "Maybe I could check relax in the sofa while I wait." This gives incitement to visit the sofa once it's unlocked.
     description: `<p>All the devices and consoles of different shapes and colors tell about his technology interest.
-    Some are even partially disassembeled, or have custom hardware modifications.</p>
-    <p>You notice that one of the newest media devices is connected to the TV. That couldn't have been cheap.<p>
+    Some are even partially disassembeled, or have custom hardware modifications. You also notice that one of the newest media devices is connected to the TV. That couldn't have been cheap.<p>
     <p>Sitting in the comfortable sofa, you wonder when Kevin will come home. It's starting to get late. Maybe you can do something while waiting.</p>
     <p>The center of the living room is to your <b>south</b></p>`,
     items: [{
@@ -54,6 +53,7 @@ window.rooms.push({
                 item.actions.watch(room, item)
             },
         },
-        movable: false
+        movable: false,
+        skipDefaultAction: ['watch', 'use', 'view']
     }]
 })

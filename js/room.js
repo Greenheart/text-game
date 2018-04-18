@@ -5,6 +5,9 @@ class Room {
         this.title = room.title
 
         function initializeItems (i) {
+            // NOTE: If Item related logic is to be refactored to a separate class and file,
+            // This mapper function should be part of the constructor - or maybe even similar to Room.initializeRooms().
+
             // Default: all items are movable. Only those that explicitly say `false` can't be moved.
             if (i.movable !== false) i.movable = true
             // This initializer sets the standard shape of items,
@@ -15,9 +18,12 @@ class Room {
             // Adding a room name to this array indicates that the item is shown to the player in another way.
             // For example, this could mean the item is shown in the description in the room, instead of the normal item text.
             if (!i.useCustomDescription) i.useCustomDescription = []
+
+            // Actions (like 'use', 'read') added to this array disable default interactions for that action.
+            // This allows items to take full control over what happens, and most importantly,
+            // allows the same action e.g. 'view' to behave differently for different items.
+            if (!i.skipDefaultAction) i.skipDefaultAction = []
             return i
-            // NOTE: If Item related logic is to be refactored to a separate class and file,
-            // This mapper function should be part of the constructor - or maybe even similar to Room.initializeRooms().
         }
 
         this.items = (room.items || []).map(initializeItems)
