@@ -21,7 +21,8 @@ class Player {
         this.lastAction = action
         const args = {
             object: '',
-            direction: ''
+            direction: '',
+            action
         }
 
         if (action === 'go') {
@@ -70,6 +71,7 @@ class Player {
     }
 
     inspect ({ object }) {
+        // TODO: Refactor to make use of the item and itemSource supplied by the parseAction() mtehod.
         const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
             // List all actions related to the item.
@@ -93,16 +95,16 @@ class Player {
         }
     }
 
-    view ({ object }) {
+    view ({ object, action }) {
         const item = this.inventory.find(Helpers.itemHasName(object)) || this.currentRoom.items.find(Helpers.itemHasName(object))
         if (item) {
-            if (item.actions && item.actions.view) {
+            if (item.actions && item.actions[action]) {
                 this.viewItem(item)
             } else {
-                this.game.status(`I can't view that.`)
+                this.game.status(`I can't ${action} that.`)
             }
         } else {
-            this.game.status(`There's no ${object} to view.`)
+            this.game.status(`There's no ${object} to ${action}.`)
         }
     }
 
@@ -114,6 +116,11 @@ class Player {
 
         // Let the item's callback handle what should happen.
         item.actions.view(this.currentRoom, item)
+    }
+
+    watch (args) {
+        // Currently, this is just an alias for view.
+        this.view(args)
     }
 
     move ({ object }) {

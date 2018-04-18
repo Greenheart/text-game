@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', event => {
             'check',
             'go',
             'move',
-            'view'
+            'view',
+            'watch'
         ],
         directions: [
             'north',
@@ -42,14 +43,14 @@ document.addEventListener('DOMContentLoaded', event => {
 
     const game = new Game(window.rooms, dictionary, window.tasks, window.gameEvents)
     // TODO: Set DEBUG to false when a release version is ready.
-    window.DEBUG = true
+    window.DEBUG = false
 
     if (window.DEBUG) {
         // Expose game instance to aid debugging.
         window._game = game
 
         // Override default start location to easily test specific rooms.
-        game.player.currentRoom = game.rooms['apartment.livingRoom.desk']
+        game.player.currentRoom = game.rooms['apartment.livingRoom.sofa']
 
         game.player.name = 'Playtester'
         game.player.giveNewTask('anyone-home')

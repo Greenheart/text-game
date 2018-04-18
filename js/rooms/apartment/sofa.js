@@ -38,5 +38,22 @@ window.rooms.push({
             // The papers reveal that some consoles was gifts from the company.
             // - "Weird. Why would a company give so many gifts to a single employee?"
             // These details add to the general idea that the friend got "unbelievable perks" to help him stay motivated (in the though testing he worked with).
+    }, {
+        name: 'TV',
+        id: 'tv',
+        actions: {
+            watch (room, item) {
+                room.game.player.moveTo(
+                    room.game.rooms['apartment.livingRoom.tv']
+                )
+            },
+            use (room, item) {
+                item.actions.watch(room, item)
+            },
+            view (room, item) {
+                item.actions.watch(room, item)
+            },
+        },
+        movable: false
     }]
 })

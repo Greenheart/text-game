@@ -118,17 +118,6 @@
         - Email client could be visible to the player when they've completed the task to search for some information in the web browser.
             - Maybe the completion of the task triggers a GameEvent that in turn makes a notification pop up on the computer, giving the user a choice to go to the email client.
 
-- Add TV
-	- Maybe three different channels to choose from.
-		- One is a movie
-            - If player chooses to watch it, time will pass.
-            - *In a future version of the game, time could be a precious resource that will depend on the player's actions. But not for a basic version.*
-        - Another one is some random TV show.
-		- And finally, we have the news, which give a clue about the story.
-            - Possible the only way to get on and get to the next task?
-                - The player sees something interesting and wants to know more
-                - So the task tells them to go to the computer to look for more information.
-
 - Improve apartment.bedroom.window
     - Add notes that give story details for the curious player.
     - *Discuss how to add several notes in one place*
@@ -150,6 +139,10 @@
 - Improve padding-bottom for main-footer (could depend on the main section)
 
 
+- Add option to items
+    - Allow them to skip the default action handler in `player[action]()` and skip straight to the custom callback defined by the item itself `item.actions[action]()`.
+    - Add this before `player[action]()` is called, after parsing.
+
 ---
 # Bugs
 
@@ -160,7 +153,16 @@
 # In progress
 
 
-
+- Add TV
+	- Maybe three different channels to choose from.
+		- One is a movie
+            - If player chooses to watch it, time will pass.
+            - *In a future version of the game, time could be a precious resource that will depend on the player's actions. But not for a basic version.*
+        - Another one is some random TV show.
+		- And finally, we have the news, which give a clue about the story.
+            - Possible the only way to get on and get to the next task?
+                - The player sees something interesting and wants to know more
+                - So the task tells them to go to the computer to look for more information.
 
 
 

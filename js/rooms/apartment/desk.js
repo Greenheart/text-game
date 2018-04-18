@@ -26,6 +26,9 @@ window.rooms.push({
         actions: {
             use (room) {
                 // IDEA: Only allow player to use the computer when they've watched TV.
+                // Or maybe even better, allow TV and computer to be used in any order,
+                // both giving additional content that deepen the story.
+                // In this case, the requirement should be that the player has completed task 'anyone-home'.
                 room.game.player.moveTo(
                     room.game.rooms['apartment.livingRoom.computer']
                 )
