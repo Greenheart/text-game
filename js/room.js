@@ -34,10 +34,11 @@ class Room {
         this.description = room.description
         this.state = room.state
 
-        // Optional callbacks, used to limit how and when players are allowed to leave, or interact with objects.
-        // Bind them to automatically provide required parameters when they are called.
+        // Optional callbacks, automatically bound provide required parameters when they are called.
         // This simplifies usage of these methods for content creators.
+        // When a player tries to leave the room.
         if (room.playerCanLeave) this.playerCanLeave = room.playerCanLeave.bind(null, this)
+        // When a player tries to interact with an item in the room.
         if (room.playerCanInteract) this.playerCanInteract = room.playerCanInteract.bind(null, this)
     }
 

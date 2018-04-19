@@ -62,7 +62,6 @@ class Player {
     }
 
     canInteract ({ item, itemSource, action }) {
-        // IDEA: Let callback functions make use of itemSource, to know if item was found in inventory or room.
         let playerCanInteract = true
         if (item) {
             // Room.playerCanInteract() should return true if a player can interact with an object, otherwise a string with the reason.

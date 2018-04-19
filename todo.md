@@ -139,10 +139,6 @@
 - Improve padding-bottom for main-footer (could depend on the main section)
 
 
-- Add option to items
-    - Allow them to skip the default action handler in `player[action]()` and skip straight to the custom callback defined by the item itself `item.actions[action]()`.
-    - Add this before `player[action]()` is called, after parsing.
-
 ---
 # Bugs
 
@@ -407,6 +403,10 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Add option to items
+    - Allow them to skip the default action handler in `player[action]()` and skip straight to the custom callback defined by the item itself `item.actions[action]()`.
+    - Add this before `player[action]()` is called, after parsing.
+
 - Allow player to copy text
     - In keydown event handler, don't focus text input if the ctrl-key is down.
 
