@@ -12,6 +12,8 @@ window.rooms.push({
         id: 'poster-1',
         actions: {
             read (room) {
+                // IDEA: Make it clear that this poster is inofficial, given to Kevin as part of his work.
+                // Maybe move it to the bedroom to make it less revealing.
                 room.game.title('[Y corp] Poster')
                 room.game.text(`
                     <p class="poster-heading">Be connected on a whole new level!</p>
