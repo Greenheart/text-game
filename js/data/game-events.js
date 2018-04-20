@@ -1,4 +1,15 @@
 window.gameEvents = [{
+    id: 'enter-apartment',
+    title: 'The door opens...',
+    description: `<p><i>Strange. It's not like Kevin to leave his door unlocked.</i></p>`,
+    onStart (event) {
+        event.show()
+    },
+    onEnd (event) {
+        event.game.player.moveTo(event.game.rooms['apartment.hallway'])
+        event.game.player.giveNewTask('anyone-home')
+    }
+}, {
     id: 'anyone-home-completed',
     title: 'Kevin is not at home',
     description: `
@@ -10,16 +21,5 @@ window.gameEvents = [{
         event.game.player.tasks.find(t => t.id === 'anyone-home').active = false
         // TODO: Give next task to player -> explore the apartment and watch TV.
         // event.game.player.giveNewTask()
-    }
-}, {
-    id: 'enter-apartment',
-    title: 'The door opens...',
-    description: `<p><i>Strange. It's not like Kevin to leave his door unlocked.</i></p>`,
-    onStart (event) {
-        event.show()
-    },
-    onEnd (event) {
-        event.game.player.moveTo(event.game.rooms['apartment.hallway'])
-        event.game.player.giveNewTask('anyone-home')
     }
 }]
