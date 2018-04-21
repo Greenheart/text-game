@@ -1,16 +1,18 @@
 class Game {
-    constructor (rooms, dictionary, tasks, events) {
+    constructor (rooms, dictionary, tasks, events, cutscenes) {
         this.dictionary = dictionary
         this.ui = Game.getDOMReferences()
         this.bindUI()
 
         this.events = GameEvent.initializeEvents(this, events)
+        this.cutscenes = Cutscene.initializeCutscenes(this, cutscenes)
         this.tasks = Task.initializeTasks(this, tasks)
         this.rooms = Room.initializeRooms(this, rooms)
         this.player = new Player(this)
         this.visibleSection = this.ui.mainMenu
         this.gameStarted = false
         this.activeEvent = null
+        this.activeCutscene = null
 
         // Store latest commands for quick re-use
         // Always keep empty string to allow users to effectively clear their input
@@ -34,6 +36,10 @@ class Game {
     triggerEvent (id) {
         // Start a `GameEvent`.
         this.events[id].start()
+    }
+
+    showCutscene (id) {
+        this.cutscenes[id].start()
     }
 
     onInput (rawInput) {
@@ -309,6 +315,11 @@ class Game {
                 } else {
                     this.activeEvent.end()
                 }
+            }
+            event.target.value = ''
+        } else if (this.activeCutscene !== null) {
+            if (event.target.value === '') {
+                this.activeCutscene.nextScene()
             }
             event.target.value = ''
         } else {

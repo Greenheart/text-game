@@ -42,9 +42,10 @@ window.rooms.push({
         id: 'tv',
         actions: {
             watch (room, item) {
-                room.game.player.moveTo(
-                    room.game.rooms['apartment.livingRoom.tv']
-                )
+                // room.game.player.moveTo(
+                //     room.game.rooms['apartment.livingRoom.tv']
+                // )
+                room.game.showCutscene('watch-news')
             },
             use (room, item) {
                 item.actions.watch(room, item)

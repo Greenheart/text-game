@@ -1,19 +1,17 @@
 window.rooms.push({
-    title: 'TV',
+    title: 'Watching TV',
     name: 'apartment.livingRoom.tv',
     connections: {
         'back': 'apartment.livingRoom.sofa'
     },
     description: `
-        <p>You're watching TV.</p>
+        <p>The TV starts just in time for the late afternoon <i>news</i>.</p>
         <p>Go <b>back</b> to return to the sofa.</p>
     `
 })
 
 
 /*
-
-
 Watch TV
 
 TODO:
@@ -25,7 +23,7 @@ The TV starts just in time for the news. You watch the intro and are just about 
 "And finally, tonight's in-depth story: [Y corp] unveils their plan to connect the world.
 Earlier today, [Y corp], known for their popular suite of web services provided free of charge, revealed their latest project."
 
-It was at their yearly tech conference [Y thou], that CEO Isaac Belmont announced the new [X product].
+It was at their yearly tech conference [Y thou], that the [Y corp] CEO Isaac Belmont announced the new [X product]. Let's watch the announcement:
 
 "Like many others, we aim to make the world a better place for all of humanity.
 To make it happen, we realized the world needs to be connected in a smarter way than we are today.
@@ -147,5 +145,13 @@ How did this happen? How can everyone go crazy just like that? What am I missing
 IDEA:
 - Player might be able to watch other channels in the future as well.
 - Not a priority though, as it doesn't add to the story.
+
+IDEA: Channels:
+    movie - watching it will make time pass.
+    random tv show / documentary - watching it will make time pass.
+    news - interesting for both story and Gameplay - give the player their next task.
+
+TODO:
+    Start with only adding the news channel, and make it turn on immedeately when the player starts watching tv.
 
 */

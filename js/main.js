@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', event => {
         ...dictionary.special
     ]
 
-    const game = new Game(window.rooms, dictionary, window.tasks, window.gameEvents)
+    const game = new Game(window.rooms, dictionary, window.tasks, window.gameEvents, window.cutscenes)
     // TODO: Set DEBUG to false when a release version is ready.
     window.DEBUG = false
 
@@ -55,5 +55,6 @@ document.addEventListener('DOMContentLoaded', event => {
         game.player.name = 'Playtester'
         game.player.giveNewTask('anyone-home')
         game.start()
+        game.onInput('watch tv')
     }
 })

@@ -101,8 +101,8 @@ class Player {
 
     view ({ object, item, action }) {
         if (item) {
-            if (item.actions && item.actions[action]) {
-                this.viewItem(item)
+            if (item.actions[action]) {
+                this.viewItem(item, action)
             } else {
                 this.game.status(`I can't ${action} that.`)
             }
@@ -111,14 +111,14 @@ class Player {
         }
     }
 
-    viewItem (item) {
+    viewItem (item, action = 'view') {
         item.state.seenByPlayer = true
         this.activeItem = item
         this.game.itemText('')
         this.game.useContinuePlaceholder()
 
         // Let the item's callback handle what should happen.
-        item.actions.view(this.currentRoom, item)
+        item.actions[action](this.currentRoom, item)
     }
 
     watch (args) {
