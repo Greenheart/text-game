@@ -178,6 +178,11 @@
 
 ---
 # Ideas
+- Database with multiple items and notes.
+    - Randomize items and notes - show different things on different play throughs.
+
+- Randomize dialogue
+
 Time jump - Kevin hasn't come home yet
 	- Allow player to watch TV, which makes time pass.
 	- Make items available after the time jump that weren't available at first.

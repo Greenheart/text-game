@@ -211,8 +211,8 @@ class Player {
                 this.viewItem(item)
             } else if (item.useCustomDescription.length) {
                 this.currentRoom.show()
-            } else {
-                // Only show rooms when we're not reading an item.
+            } else if (!['view', 'read', 'watch'].some(action => item.actions[action])) {
+                // Only show rooms when we're not reading or watching an object.
                 this.currentRoom.showItems()
             }
         } else {
