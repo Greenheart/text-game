@@ -27,10 +27,13 @@ window.cutscenes = [{
 
         <p>Let's connect your future - and bring the world together!"</p></i>`
     }, {
-        title: 'Back in the news studio...',
-        text: `<p>As the camera switches back, you start thinking...</p>
+        title: 'Back in the news studio',
+        text: `<p>As the camera switches back to show the news studio, you start thinking...</p>
 
-        <p>Wow... So this is what they've been so secretive about.</p>`
+        <i><p>Wow... So this is what they've been so secretive about.</p>
+        <p>This device has clearly done something to my friend.</p></i>
+
+        <p>There's an expert panel gathered in the studio, discussing the announcement. Maybe they know more.</p>`
     }]
 }]
 
