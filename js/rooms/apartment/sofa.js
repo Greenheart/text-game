@@ -25,9 +25,6 @@ window.rooms.push({
                 `)
             }
         }
-        // TODO: make it possible to watch tv.
-            // - Add item, watch action and set movable: false.
-            // - Add Player.watch() and maybe Player.watchItem()
 
         // IDEA: Maybe only allow watching the TV program when the first task is completed: finding out if the friend is at home or not.
         // For this, some kind of global task system is needed - it needs to keep track of global state that rooms can use to alter their descriptions conditionally
@@ -42,10 +39,7 @@ window.rooms.push({
         id: 'tv',
         actions: {
             watch (room, item) {
-                // room.game.player.moveTo(
-                //     room.game.rooms['apartment.livingRoom.tv']
-                // )
-                room.game.showCutscene('watch-news')
+                room.game.player.moveTo(room.game.rooms['apartment.livingRoom.tv'], false)
             },
             use (room, item) {
                 item.actions.watch(room, item)

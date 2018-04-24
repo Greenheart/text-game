@@ -162,14 +162,17 @@ class Player {
         }
     }
 
-    moveTo (room) {
+    moveTo (room, showNewRoom = true) {
         this.currentRoom = room
-        ++this.moves
-        this.currentRoom.show()
-        this.game.status('')
         this.currentRoom.visited = true
-        this.updateTasks()
         if (this.currentRoom.onEnter) this.currentRoom.onEnter()
+        this.moves++
+
+        if (showNewRoom) {
+            this.currentRoom.show()
+            this.game.status('')
+            this.updateTasks()
+        }
     }
 
     go ({ direction }) {
