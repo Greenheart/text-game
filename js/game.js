@@ -393,25 +393,33 @@ class Game {
     }
 
     static getDOMReferences () {
-        const leftSidebar = document.querySelector('aside.left')
+        const find = document.querySelector.bind(document)
+        const findAll = document.querySelectorAll.bind(document)
+        const leftSidebar = find('aside.left')
+        const minimap = find('#minimap')
         return {
-            userInput: document.querySelector('#user-input'),
-            gameContent: document.querySelector('.game-content'),
-            gameText: document.querySelector('#game-text'),
-            itemText: document.querySelector('#item-text'),
-            statusText: document.querySelector('#status-text'),
-            titleText: document.querySelector('#title-text'),
-            help: document.querySelector('#help'),
-            mainMenu: document.querySelector('#main-menu'),
-            noteCollection: document.querySelector('#note-collection'),
-            helpPages: Array.from(document.querySelectorAll('#help > section')),
-            mainContainer: document.querySelector('main > .container'),
+            userInput: find('#user-input'),
+            gameContent: find('.game-content'),
+            gameText: find('#game-text'),
+            itemText: find('#item-text'),
+            statusText: find('#status-text'),
+            titleText: find('#title-text'),
+            help: find('#help'),
+            mainMenu: find('#main-menu'),
+            noteCollection: find('#note-collection'),
+            helpPages: Array.from(findAll('#help > section')),
+            mainContainer: find('main > .container'),
             leftSidebar,
             sidebarTop: leftSidebar.querySelector('.top'),
-            tasks: document.querySelector('#tasks'),
+            tasks: find('#tasks'),
             sidebarBottom: leftSidebar.querySelector('.bottom'),
-            inventory: document.querySelector('#inventory'),
-            noteCount: document.querySelector('#note-count')
+            inventory: find('#inventory'),
+            noteCount: find('#note-count'),
+            minimap,
+            mapBorder: minimap.querySelector('.map'),
+            minimapDirections: minimap.querySelectorAll('.direction'),
+            mapCurrentEnvironment: minimap.querySelector('.current-environment'),
+            mapCurrentRoom: minimap.querySelector('.current-room')
         }
     }
 }

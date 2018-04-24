@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', event => {
         window._game = game
 
         // Override default start location to easily test specific rooms.
-        game.player.currentRoom = game.rooms['apartment.livingRoom.sofa']
+        game.player.currentRoom = game.rooms['apartment.livingRoom']
 
         game.player.name = 'Playtester'
         game.player.giveNewTask('anyone-home')

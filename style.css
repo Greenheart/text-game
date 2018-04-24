@@ -181,13 +181,16 @@ section p:first-of-type {
 #minimap h2 {
     max-width: 200px;
     margin-bottom: 15px;
+    text-transform: capitalize;
 }
 
+/* TODO: Prevent minimap from moving around as the border size is changed.
+Perhaps set a fixed size to the container and always center the .map in it.
+Or alter box-sizing to work better. */
+
 #minimap .map {
+    background: white;
     position: relative;
-    border-top: 2px solid orange;
-    border-left: 2px solid green;
-    border-bottom: 2px solid green;
     /* Use a linear gradient to fade out colors and only show partial borders around the 4 main directions */
     border-radius: 50%;
     width: 200px;

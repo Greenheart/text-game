@@ -172,6 +172,7 @@ class Player {
             this.currentRoom.show()
             this.game.status('')
             this.updateTasks()
+            this.updateMinimap()
         }
     }
 
@@ -408,10 +409,24 @@ class Player {
     }
 
     updateMinimap () {
-        // game minimap reference
-        // Update section name
-        // Update directions on minimap border - to begin with only the available directions.
-        // Update current room name
+        this.game.ui.mapCurrentEnvironment.innerHTML = this.currentRoom.name.split('.')[0]
+        this.game.ui.mapCurrentRoom.innerHTML = this.currentRoom.title
+
+        // Highlight directions on minimap border
+        for (const direction of this.game.ui.minimapDirections) {
+            // if available: green + border width 2px
+            // if direction player came from: orange + border width 2px
+            // else: border-width 0px
+            const hasConnection = Boolean(this.currentRoom.connections[direction.dataset.direction])
+            const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(direction) : true
+            const directionIsOpen = hasConnection && playerCanLeave === true
+
+            // IDEA: 1px solid #dcdcdc border could also work
+            const style = directionIsOpen ? '2px solid green' : '0px solid #dcdcdc'
+
+            const border = 'border' + direction.dataset.border
+            this.game.ui.mapBorder.style[border] = style
+        }
     }
 
     updateUI () {
