@@ -303,6 +303,8 @@ class Game {
     handleEnterKey (event) {
         // Custom parsers allow greater creative freedom and increase game modularity.
         // This allows new types of user input that are not possible with the general parser.
+
+        // The edge cases below could probably be implemented using customParsers to move logic out of the game class.
         if (typeof this.customParser === 'function') {
             this.customParser(this, event.target.value)
         } else if (this.player.name === '') {
@@ -318,8 +320,15 @@ class Game {
             }
             event.target.value = ''
         } else if (this.activeCutscene !== null) {
-            if (event.target.value === '') {
-                this.activeCutscene.nextScene()
+            const scene = this.activeCutscene
+            const input = Helpers.normalizeString(event.target.value)
+            if (scene.activeQuestion) {
+                const answer = scene.activeQuestion.validAnswers.find(a => a.startsWith(input))
+                if (event.target.value.length && answer) scene.answerQuestion(answer)
+            } else {
+                if (input === '') {
+                    scene.nextScene()
+                }
             }
             event.target.value = ''
         } else {

@@ -33,7 +33,23 @@ window.cutscenes = [{
         <i><p>Wow... So this is what they've been so secretive about.</p>
         <p>This device has clearly done something to my friend.</p></i>
 
-        <p>There's an expert panel gathered in the studio, discussing the announcement. Maybe they know more.</p>`
+        <p>There's an expert panel gathered in the studio, discussing the announcement. Maybe they know more.</p>`,
+        question: {
+            text: '<p><i>Hmm... Do I want to keep watching the news panel discussion?</i></p>',
+            answers: {
+                yes (cutscene) {
+                    // IDEA: Add some secret or detail that is important for the later stages of gameplay.
+                    // Perhaps something that the player needs to find if they want an ending where they save the world from [Y corp].
+
+                    // Continue the cutscene.
+                },
+                no (cutscene) {
+                    // IDEA: Prevent player from ever watching the panel discussion again.
+
+                    // End the cutscene.
+                }
+            }
+        }
     }]
 }]
 

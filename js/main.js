@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', event => {
         game.player.name = 'Playtester'
         game.player.giveNewTask('anyone-home')
         game.start()
-        game.onInput('watch tv')
+
+        // Automatically enter input when testing a specific room multiple times.
+        if (game.player.currentRoom.name === 'apartment.livingRoom.sofa') game.onInput('watch tv')
     }
 })
