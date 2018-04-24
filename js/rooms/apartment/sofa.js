@@ -1,5 +1,5 @@
 window.rooms.push({
-    title: 'In the sofa, in front of the TV',
+    title: 'The Sofa',
     name: 'apartment.livingRoom.sofa',
     connections: {
         'south': 'apartment.livingRoom'
