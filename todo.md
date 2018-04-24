@@ -149,6 +149,26 @@
 # In progress
 
 
+- Basic map in the bottom right corner
+    - Show squares to represent rooms.
+    - Show connections to other rooms
+    - Show the player
+    - This way, the basic directions
+    - Mini compass: show directions on each side of the map with an arrow. N, S, E, W
+
+    -Simplified idea (to save dev time):
+        - Could be shaped as a compass (circle)
+        - Show current room short name/title in the center.
+        - Show environment title, e.g. "The Apartment" as a header at the top of this component.
+        - Highlight available directions to move in:
+            - green: available directions
+            - yellow: where you came from (if available)
+        - Fade out/hide unavailable directions.
+
+
+
+
+
 - Add TV
 	- Maybe three different channels to choose from.
 		- One is a movie
@@ -223,22 +243,6 @@ Time jump - Kevin hasn't come home yet
 
 - Add help section to right side of UI to make commands available
     - Or add a message in top right corner: "Stuck? Type `help`."
-
-- Basic map in the bottom right corner
-    - Show squares to represent rooms.
-    - Show connections to other rooms
-    - Show the player
-    - This way, the basic directions
-    - Mini compass: show directions on each side of the map with an arrow. N, S, E, W
-
-    -Simplified idea (to save dev time):
-        - Could be shaped as a compass (circle)
-        - Show current room short name/title in the center.
-        - Show environment title, e.g. "The Apartment" as a header at the top of this component.
-        - Highlight available directions to move in:
-            - green: available directions
-            - yellow: where you came from (if available)
-        - Fade out/hide unavailable directions.
 
 - Add new commands to the help section as the player progress through the world, instead of adding everything at once.
 

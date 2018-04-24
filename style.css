@@ -163,9 +163,42 @@ section p:first-of-type {
     margin-top: 5px;
 }
 
-aside.left {
+#minimap {
+    margin-top: auto;
+    text-align: center;
+}
+
+#minimap .direction {
     position: absolute;
-    left: 0;
+    font-weight: 300;
+}
+
+#minimap .direction.north { top: 5px; }
+#minimap .direction.east { right: 5px; }
+#minimap .direction.south { bottom: 5px; }
+#minimap .direction.west { left: 5px; }
+
+#minimap h2 {
+    max-width: 200px;
+    margin-bottom: 15px;
+}
+
+#minimap .map {
+    position: relative;
+    border-top: 2px solid orange;
+    border-left: 2px solid green;
+    border-bottom: 2px solid green;
+    /* Use a linear gradient to fade out colors and only show partial borders around the 4 main directions */
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside {
+    position: absolute;
     bottom: 0;
     width: 14vw;
     min-width: 200px;
@@ -174,6 +207,14 @@ aside.left {
     padding: 10px 0 10px 10px;
     flex-direction: column;
     justify-content: space-between;
+}
+
+aside.right {
+    right: 0;
+}
+
+aside.left {
+    left: 0;
 }
 
 aside.left section {

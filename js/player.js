@@ -407,11 +407,19 @@ class Player {
         this.game.ui.tasks.querySelector('.task-list').innerHTML = content
     }
 
+    updateMinimap () {
+        // game minimap reference
+        // Update section name
+        // Update directions on minimap border - to begin with only the available directions.
+        // Update current room name
+    }
+
     updateUI () {
         // Always update content
         this.updateInventory()
         this.updateNoteCount()
         this.updateTasks()
+        this.updateMinimap()
 
         // Determine which components that should be shown.
         const hasActiveTasks = Boolean(this.tasks.filter(t => t.active).length)
