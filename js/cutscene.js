@@ -25,6 +25,7 @@ class Cutscene {
             this.game.text(scene.text)
             // Allow the title to updated for individual scenes. Keep previous if nothing new.
             if (scene.title) this.game.title(scene.title)
+            if (this.activeQuestion) this.activeQuestion = null
             if (scene.question) this.showQuestion(scene.question)
             this.currentScene++
         } else {

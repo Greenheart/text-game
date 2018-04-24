@@ -153,8 +153,4 @@ IDEA: Channels:
     movie - watching it will make time pass.
     random tv show / documentary - watching it will make time pass.
     news - interesting for both story and Gameplay - give the player their next task.
-
-TODO:
-    Start with only adding the news channel, and make it turn on immedeately when the player starts watching tv.
-
 */

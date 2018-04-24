@@ -40,16 +40,18 @@ window.cutscenes = [{
                 yes (cutscene) {
                     // IDEA: Add some secret or detail that is important for the later stages of gameplay.
                     // Perhaps something that the player needs to find if they want an ending where they save the world from [Y corp].
-
-                    // Continue the cutscene.
+                    cutscene.nextScene()
                 },
                 no (cutscene) {
                     // IDEA: Prevent player from ever watching the panel discussion again.
-
-                    // End the cutscene.
+                    cutscene.end()
                 }
             }
         }
+    }, {
+        title: 'Watching the panel discussion',
+        text: `<i><p>"[Y corp] claims that already more than 157,300 people have gotten chips implanted, in the first 8 hours after the announcement.</p>
+        <p>According to reports from major cities around the world, people are gathering in the streets and leaving their usual schedules to visit the [Y corp] events."</p></i>`
     }]
 }]
 

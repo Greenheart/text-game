@@ -325,10 +325,8 @@ class Game {
             if (scene.activeQuestion) {
                 const answer = scene.activeQuestion.validAnswers.find(a => a.startsWith(input))
                 if (event.target.value.length && answer) scene.answerQuestion(answer)
-            } else {
-                if (input === '') {
-                    scene.nextScene()
-                }
+            } else if (input === '') {
+                scene.nextScene()
             }
             event.target.value = ''
         } else {
