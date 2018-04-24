@@ -40,6 +40,8 @@ class Room {
         if (room.playerCanLeave) this.playerCanLeave = room.playerCanLeave.bind(null, this)
         // When a player tries to interact with an item in the room.
         if (room.playerCanInteract) this.playerCanInteract = room.playerCanInteract.bind(null, this)
+        // When a player enters the room.
+        if (room.onEnter) this.onEnter = room.onEnter.bind(null, this)
     }
 
     static initializeRooms (game, roomConfigs) {

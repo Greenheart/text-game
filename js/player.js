@@ -169,6 +169,7 @@ class Player {
         this.game.status('')
         this.currentRoom.visited = true
         this.updateTasks()
+        if (this.currentRoom.onEnter) this.currentRoom.onEnter()
     }
 
     go ({ direction }) {

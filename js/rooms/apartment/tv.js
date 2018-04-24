@@ -7,7 +7,10 @@ window.rooms.push({
     description: `
         <p>The TV starts just in time for the late afternoon <i>news</i>.</p>
         <p>Go <b>back</b> to return to the sofa.</p>
-    `
+    `,
+    onEnter (room) {
+        room.game.showCutscene('watch-news')
+    }
 })
 
 
