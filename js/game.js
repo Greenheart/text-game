@@ -31,7 +31,7 @@ class Game {
         document.querySelector('.main-footer').classList.remove('center')
         this.showSection(this.ui.gameContent)
         Helpers.show(this.ui.minimap)
-        this.player.updateUI()
+        this.player.updateMinimap()
         this.player.currentRoom.show()
     }
 
