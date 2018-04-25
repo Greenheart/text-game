@@ -421,11 +421,13 @@ class Player {
             const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(direction) : true
             const directionIsOpen = hasConnection && playerCanLeave === true
 
-            // IDEA: 1px solid #dcdcdc border could also work
-            const style = directionIsOpen ? '2px solid green' : '0px solid #dcdcdc'
 
-            const border = 'border' + direction.dataset.border
-            this.game.ui.mapBorder.style[border] = style
+            const border = directionIsOpen ? '2px solid green' : '0'
+            // Use negative margin to prevent the changing border width from moving the map around.
+            // Along with box-sizing: content-box, this ensures the element always take up the same space.
+            const margin = directionIsOpen ? '-2px' : '0'
+            this.game.ui.mapBorder.style['border' + direction.dataset.side] = border
+            this.game.ui.mapBorder.style['margin' + direction.dataset.side] = margin
         }
     }
 

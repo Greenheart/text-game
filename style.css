@@ -184,10 +184,6 @@ section p:first-of-type {
     text-transform: capitalize;
 }
 
-/* TODO: Prevent minimap from moving around as the border size is changed.
-Perhaps set a fixed size to the container and always center the .map in it.
-Or alter box-sizing to work better. */
-
 #minimap .map {
     background: white;
     position: relative;
@@ -199,6 +195,7 @@ Or alter box-sizing to work better. */
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+    box-sizing: content-box;
 }
 
 aside {
