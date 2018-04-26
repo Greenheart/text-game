@@ -49,7 +49,7 @@ class Game {
         const input = Helpers.normalizeString(rawInput)
         if (this.player.activeItem === null) {
             // Default: Only allow new actions to be taken when no item is active.
-            this.status('')
+            if (this.gameStarted) this.status('')
             this.handleInput(input)
         } else if (this.player.lastAction === 'inspect' && !input.startsWith('inspect')) {
             // Allow player to interact with the currently inspected item.
@@ -139,6 +139,7 @@ class Game {
 
     showMainMenu () {
         this.showSection(this.ui.mainMenu)
+        this.status('To learn about available actions, type <span class="code dark-bg">help</span> at any time.')
         this.setPlaceholder('Press enter to start the game')
         document.querySelector('.main-footer').classList.add('center')
     }
@@ -164,12 +165,12 @@ class Game {
             this.showSection(this.ui.gameContent)
             this.useNormalPlaceholder()
             this.player.currentRoom.show()
+            this.status('')
         } else {
             this.title('')
             this.showMainMenu()
         }
 
-        this.status('')
         this.ui.mainContainer.classList.remove('wide')
         this.customParser = null
     }
