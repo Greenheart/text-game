@@ -425,7 +425,7 @@ class Player {
             // if direction player came from: orange + border width 2px
             // else: border-width 0px
             const hasConnection = Boolean(this.currentRoom.connections[direction.dataset.direction])
-            const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(direction) : true
+            const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(direction.dataset.direction) : true
             const directionIsOpen = hasConnection && playerCanLeave === true
 
             if (direction.dataset.direction === this.wayBack) {

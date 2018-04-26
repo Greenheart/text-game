@@ -306,6 +306,9 @@ Time jump - Kevin hasn't come home yet
 
 ---
 # Low prio ideas
+- Ensure the bottom sections of left and right sidebars have the same min-height.
+    - Currently, minimap is taller than the noteCount + inventory components when all three are visible. *Possibly fix this to improve consistency and layout.*
+
 - `back` command. Quickly get back to where you came from (not just in the computer room, but anywhere it's possible to move around).
 	- Only remembers the latest direction - or multiple steps?
 
