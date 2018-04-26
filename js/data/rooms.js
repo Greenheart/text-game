@@ -8,8 +8,8 @@ window.rooms = []
 
 
 const templateRoom = {
-    name: '',                                   // Internal name
-    connections: {},                            // Connections to other rooms. Key: `direction`, Value: `room.name`
+    id: '',                                   // Internal name
+    connections: {},                            // Connections to other rooms. Key: `direction`, Value: `room.id`
     items: [],                                  // Array of item objects
     title: '',
     description: `<p></p>`,                     // Text to show in the room (formatted as HTML).

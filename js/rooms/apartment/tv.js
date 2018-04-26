@@ -1,6 +1,6 @@
 window.rooms.push({
     title: 'Watching TV',
-    name: 'apartment.livingRoom.tv',
+    id: 'apartment.livingRoom.tv',
     connections: {
         'back': 'apartment.livingRoom.sofa'
     },

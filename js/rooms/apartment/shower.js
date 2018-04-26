@@ -1,6 +1,6 @@
 window.rooms.push({
     title: 'The Shower',
-    name: 'apartment.bathroom.shower',
+    id: 'apartment.bathroom.shower',
     connections: {
         'west': 'apartment.bathroom'
     },

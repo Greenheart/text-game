@@ -9,7 +9,7 @@ window.tasks = [{
         return Object.keys(game.rooms)
                 .filter(name => (
                     name.startsWith('apartment') &&
-                    requiredRooms.some(roomName => name.endsWith(roomName))
+                    requiredRooms.some(roomId => name.endsWith(roomId))
                 ))
                 .map(name => game.rooms[name])
                 .every(room => room.visited)

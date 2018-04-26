@@ -1,6 +1,6 @@
 window.rooms.push({
     title: 'The Stairwell',
-    name: 'apartment.outside',
+    id: 'apartment.outside',
     items: [{
         name: 'doorbell',
         id: 'doorbell',

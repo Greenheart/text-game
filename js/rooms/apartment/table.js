@@ -1,6 +1,6 @@
 window.rooms.push({
     title: 'Kitchen Table',
-    name: 'apartment.kitchen.table',
+    id: 'apartment.kitchen.table',
     connections: {
         'west': 'apartment.kitchen'
     },

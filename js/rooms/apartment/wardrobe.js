@@ -1,6 +1,6 @@
 window.rooms.push({
     title: 'The Wardrobe',
-    name: 'apartment.bedroom.wardrobe',
+    id: 'apartment.bedroom.wardrobe',
     connections: {
         'north': 'apartment.bedroom'
     },
@@ -9,7 +9,7 @@ window.rooms.push({
         id: 'jacket',
         actions: {
             move (room, item, hide = true) {
-                if (room.name === 'apartment.bedroom.wardrobe') {
+                if (room.id === 'apartment.bedroom.wardrobe') {
                     room.state.jacketMoved = true
                     room.makeItemVisible('white box')
                     if (hide) room.hideItem('jacket')
@@ -18,7 +18,7 @@ window.rooms.push({
             },
             // Trigger the move action even if the user chooses to take the jacket.
             take (room, item) {
-                if (room.name === 'apartment.bedroom.wardrobe') {
+                if (room.id === 'apartment.bedroom.wardrobe') {
                     item.actions.move(room, item, false)
                 }
             }

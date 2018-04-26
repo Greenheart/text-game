@@ -1,6 +1,6 @@
 window.rooms.push({
     title: 'The Desk',
-    name: 'apartment.livingRoom.desk',
+    id: 'apartment.livingRoom.desk',
     connections: {
         'east': 'apartment.livingRoom',
         'south': 'apartment.bedroom'

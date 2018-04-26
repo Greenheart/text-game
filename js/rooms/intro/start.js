@@ -1,6 +1,6 @@
 window.rooms.push({
     title: 'The Beginning',
-    name: 'start',
+    id: 'start',
     connections: {
         'north': 'apartment.outside'
     },

@@ -1,6 +1,6 @@
 window.rooms.push({
     title: 'The Kitchen',
-    name: 'apartment.kitchen',
+    id: 'apartment.kitchen',
     connections: {
         'west': 'apartment.livingRoom',
         'north': 'apartment.kitchen.fridge',

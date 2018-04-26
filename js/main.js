@@ -57,6 +57,6 @@ document.addEventListener('DOMContentLoaded', event => {
         game.start()
 
         // Automatically enter input when testing a specific room multiple times.
-        if (game.player.currentRoom.name === 'apartment.livingRoom.sofa') game.onInput('watch tv')
+        if (game.player.currentRoom.id === 'apartment.livingRoom.sofa') game.onInput('watch tv')
     }
 })

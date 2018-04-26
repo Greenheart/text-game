@@ -314,8 +314,6 @@ Time jump - Kevin hasn't come home yet
 
 - User types action => objects become clickable => When objects are clicked, they get typed into the text input field.
 
-- Update `room.name` to `room.id` to increase naming consistency.
-
 - Consider moving items into separate file(s) to separate them from specific rooms.
     - This would allow multiple instances of items to exist in the same/ multiple rooms without duplicating code.
     - Instead of adding hard coded item objects, add string `id`s that some kind of `initializeItems()` method could use to find the actual item instances.
@@ -415,6 +413,8 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Update `room.name` to `room.id` to increase naming consistency.
+
 - Add option to items
     - Allow them to skip the default action handler in `player[action]()` and skip straight to the custom callback defined by the item itself `item.actions[action]()`.
     - Add this before `player[action]()` is called, after parsing.

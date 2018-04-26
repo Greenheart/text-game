@@ -1,7 +1,7 @@
 class Room {
     constructor (room, game) {
         this.game = game
-        this.name = room.name
+        this.id = room.id
         this.title = room.title
 
         function initializeItems (i) {
@@ -28,7 +28,7 @@ class Room {
 
         this.items = (room.items || []).map(initializeItems)
         this.hiddenItems = (room.hiddenItems || []).map(initializeItems)
-        this.visited = this.name === 'start' ? true : false
+        this.visited = this.id === 'start' ? true : false
         // Initially, connections are just a map of directions and corresponding room names.
         this.connections = room.connections || {}
         this.description = room.description
@@ -48,17 +48,17 @@ class Room {
         // Create all rooms of the game.
         const rooms = {}
         for (const room of roomConfigs) {
-            rooms[room.name] = new Room(room, game)
+            rooms[room.id] = new Room(room, game)
         }
 
         // Connect rooms to each other.
-        for (const roomName of Object.keys(rooms)) {
-            const room = rooms[roomName]
+        for (const roomId of Object.keys(rooms)) {
+            const room = rooms[roomId]
 
             // Replace each room name with a reference to the actual room.
             for (const direction of Object.keys(room.connections)) {
-                const name = room.connections[direction]
-                room.connections[direction] = rooms[name]
+                const id = room.connections[direction]
+                room.connections[direction] = rooms[id]
             }
         }
         return rooms
@@ -80,7 +80,7 @@ class Room {
             // Default case: Show items in their own section.
             if (i.useCustomDescription.length === 0) return true
             // Else, Show items in their own section - unless the current room is marked.
-            return !i.useCustomDescription.includes(this.name)
+            return !i.useCustomDescription.includes(this.id)
         })
 
         if (items.length) {
