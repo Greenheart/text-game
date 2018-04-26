@@ -22,6 +22,15 @@ const Helpers = {
 
         return `What do you want to ${displayText ? displayText : action}? Usage: <span class="code dark-bg">${action} [object]</span>.`
     },
+    getOppositeDirection (direction) {
+        const opposites = {
+            'north': 'south',
+            'east': 'west',
+            'south': 'north',
+            'west': 'east'
+        }
+        return opposites[direction] || ''
+    },
     removeTitlePrefix (title) {
         const prefixRemoved = title.match(/^The (.+)/)
         if (prefixRemoved) return prefixRemoved[1]

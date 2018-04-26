@@ -171,12 +171,17 @@ section p:first-of-type {
 #minimap .direction {
     position: absolute;
     font-weight: 300;
+    padding: 1px 5px;
 }
 
 #minimap .direction.north { top: 5px; }
 #minimap .direction.east { right: 5px; }
 #minimap .direction.south { bottom: 5px; }
 #minimap .direction.west { left: 5px; }
+
+#minimap .direction.way-back {
+    background: radial-gradient(rgba(255, 190, 0, .4), white);
+}
 
 #minimap h2 {
     max-width: 200px;
