@@ -21,5 +21,10 @@ const Helpers = {
         if (action === 'go') return `Where do you want to go? Usage: <span class="code dark-bg">go [direction]</span>.`
 
         return `What do you want to ${displayText ? displayText : action}? Usage: <span class="code dark-bg">${action} [object]</span>.`
+    },
+    removeTitlePrefix (title) {
+        const prefixRemoved = title.match(/^The (.+)/)
+        if (prefixRemoved) return prefixRemoved[1]
+        return title
     }
 }

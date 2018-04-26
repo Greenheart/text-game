@@ -410,7 +410,7 @@ class Player {
 
     updateMinimap () {
         this.game.ui.mapCurrentEnvironment.innerHTML = this.currentRoom.name.split('.')[0]
-        this.game.ui.mapCurrentRoom.innerHTML = this.currentRoom.title
+        this.game.ui.mapCurrentRoom.innerHTML = Helpers.removeTitlePrefix(this.currentRoom.title)
 
         // Highlight directions on minimap border
         for (const direction of this.game.ui.minimapDirections) {
