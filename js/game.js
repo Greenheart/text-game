@@ -299,7 +299,7 @@ class Game {
 
             // First time main menu is shown, replace some of it's content.
             Helpers.show(this.ui.mainMenu.querySelector('.content'))
-            Helpers.hide(this.ui.mainMenu.querySelector('.creators'))
+            Helpers.hide(this.ui.mainMenu.querySelector('.tagline'))
         }
     }
 

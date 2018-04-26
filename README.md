@@ -1,5 +1,5 @@
 # The Responsible
-> An interactive story written by Samuel & Joel Plumppu
+> An interactive story about the darker side of technology
 
 Life is less about knowing the answers, but more about asking the right questions. This is especially true in a time of great technological advances.
 
