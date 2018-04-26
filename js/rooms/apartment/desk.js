@@ -29,9 +29,7 @@ window.rooms.push({
                 // Or maybe even better, allow TV and computer to be used in any order,
                 // both giving additional content that deepen the story.
                 // In this case, the requirement should be that the player has completed task 'anyone-home'.
-                room.game.player.moveTo(
-                    room.game.rooms['apartment.livingRoom.computer'], { showRoom: true, clearWayBack: true }
-                )
+                room.game.player.moveTo({ roomId: 'apartment.livingRoom.computer' })
             }
         },
         movable: false

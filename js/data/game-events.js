@@ -6,7 +6,7 @@ window.gameEvents = [{
         event.show()
     },
     onEnd (event) {
-        event.game.player.moveTo(event.game.rooms['apartment.hallway'])
+        event.game.player.moveTo({ roomId: 'apartment.hallway' })
         event.game.player.giveNewTask('anyone-home')
     }
 }, {

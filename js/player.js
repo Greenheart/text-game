@@ -153,7 +153,7 @@ class Player {
             // Room.playerCanLeave() should return true if a player can leave, otherwise a string with the reason.
             const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(direction) : true
             if (playerCanLeave === true) {
-                this.moveTo(this.currentRoom.connections[direction])
+                this.moveTo({ room: this.currentRoom.connections[direction], clearWayBack: false })
 
                 // Add the way back to the previous room, if the room is connected.
                 // Since some rooms only offer one-way connections, `wayBack` only make sense in some cases.
@@ -169,13 +169,22 @@ class Player {
         }
     }
 
-    moveTo (room, options = { showRoom: true, clearWayBack: false }) {
+    moveTo({ room, roomId, showRoom = true, clearWayBack = true }) {
+        // Allow `room` reference to be reused, if passed.
+        // Otherwise, find the room with a given `roomId`.
+        // This gives both a clean API (send `roomId` to hide details of how to find the room)
+        // and optimimal performance (by reusing existing reference in some cases).
+        if (!room && roomId) {
+            room = this.game.rooms[roomId]
+        } else if (window.DEBUG) {
+            console.error('Either a roomId or a room reference has to be passed')
+        }
         this.currentRoom = room
         this.currentRoom.visited = true
         if (this.currentRoom.onEnter) this.currentRoom.onEnter()
         this.moves++
 
-        if (options.showRoom) {
+        if (showRoom) {
             this.currentRoom.show()
             this.game.status('')
             this.updateTasks()
@@ -183,7 +192,7 @@ class Player {
 
         // This option is useful when moving directly to a room that really is an extension to another room.
         // Clearing wayBack will show the user that they can't navigate back using the normal directions.
-        if (options.clearWayBack) this.wayBack = ''
+        if (clearWayBack) this.wayBack = ''
         this.updateMinimap()
     }
 
