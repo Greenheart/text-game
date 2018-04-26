@@ -1,5 +1,5 @@
 # The Responsible
-> An interactive story about the darker side of technology
+> An interactive story exploring the darker side of technological progress
 
 Life is less about knowing the answers, but more about asking the right questions. This is especially true in a time of great technological advances.
 
