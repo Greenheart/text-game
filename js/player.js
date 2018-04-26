@@ -153,13 +153,13 @@ class Player {
             // Room.playerCanLeave() should return true if a player can leave, otherwise a string with the reason.
             const playerCanLeave = this.currentRoom.playerCanLeave ? this.currentRoom.playerCanLeave(direction) : true
             if (playerCanLeave === true) {
+                this.moveTo(this.currentRoom.connections[direction])
+
                 // Add the way back to the previous room, if the room is connected.
                 // Since some rooms only offer one-way connections, `wayBack` only make sense in some cases.
                 const wayBack = Helpers.getOppositeDirection(direction)
-                if (this.currentRoom.connections[wayBack]) {
-                    this.wayBack = wayBack
-                }
-                this.moveTo(this.currentRoom.connections[direction])
+                this.wayBack = this.currentRoom.connections[wayBack] ? wayBack : ''
+                this.updateMinimap()
             } else {
                 // Show the reason why player can't leave.
                 this.game.status(playerCanLeave)
