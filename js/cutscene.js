@@ -42,7 +42,6 @@ class Cutscene {
     }
 
     answerQuestion (answer) {
-        console.log(answer)
         // A question in a scene can define callbacks for what should happen depending on different answers.
         // IDEA: Maybe add this to the player's choices, which could be used to alter gameplay and story in the future.
         if (this.activeQuestion && this.activeQuestion.answers[answer]) {

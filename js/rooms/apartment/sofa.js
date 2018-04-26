@@ -39,7 +39,9 @@ window.rooms.push({
         id: 'tv',
         actions: {
             watch (room, item) {
-                room.game.player.moveTo(room.game.rooms['apartment.livingRoom.tv'], false)
+                room.game.player.moveTo(
+                    room.game.rooms['apartment.livingRoom.tv'], { showRoom: false, clearWayBack: true }
+                )
             },
             use (room, item) {
                 item.actions.watch(room, item)

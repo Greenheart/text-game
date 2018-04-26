@@ -30,7 +30,7 @@ window.rooms.push({
                 // both giving additional content that deepen the story.
                 // In this case, the requirement should be that the player has completed task 'anyone-home'.
                 room.game.player.moveTo(
-                    room.game.rooms['apartment.livingRoom.computer']
+                    room.game.rooms['apartment.livingRoom.computer'], { showRoom: true, clearWayBack: true }
                 )
             }
         },

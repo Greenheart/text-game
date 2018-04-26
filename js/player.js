@@ -169,18 +169,22 @@ class Player {
         }
     }
 
-    moveTo (room, showNewRoom = true) {
+    moveTo (room, options = { showRoom: true, clearWayBack: false }) {
         this.currentRoom = room
         this.currentRoom.visited = true
         if (this.currentRoom.onEnter) this.currentRoom.onEnter()
         this.moves++
 
-        if (showNewRoom) {
+        if (options.showRoom) {
             this.currentRoom.show()
             this.game.status('')
             this.updateTasks()
-            this.updateMinimap()
         }
+
+        // This option is useful when moving directly to a room that really is an extension to another room.
+        // Clearing wayBack will show the user that they can't navigate back using the normal directions.
+        if (options.clearWayBack) this.wayBack = ''
+        this.updateMinimap()
     }
 
     go ({ direction }) {
