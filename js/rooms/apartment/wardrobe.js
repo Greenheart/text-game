@@ -53,7 +53,7 @@ window.rooms.push({
             dynamic = `<p>As you move the jacket, a small, opened <i>white box</i> is revealed. There's something written on it.</p>`
         }
 
-        return `<p>The wardrobe is so full with clothes and other things that much are hanging out thorugh the doors.
+        return `<p>The wardrobe is so full with clothes and other things that much are hanging out through the doors.
         Either Kevin was leaving in a hurry, or someone else have been here, searching for something.</p>
         ${dynamic} <p>The center of the bedroom is to your <b>north</b>.</p>`
     },
