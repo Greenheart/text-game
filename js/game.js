@@ -27,6 +27,7 @@ class Game {
     start () {
         this.status('')
         this.gameStarted = true
+        this.player.currentRoom.visited = true
         this.useNormalPlaceholder()
         document.querySelector('.main-footer').classList.remove('center')
         this.showSection(this.ui.gameContent)

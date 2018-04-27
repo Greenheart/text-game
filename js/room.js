@@ -3,6 +3,7 @@ class Room {
         this.game = game
         this.id = room.id
         this.title = room.title
+        this.visited = false
 
         // Items that can be found in the room. Contains both movable items that can be picked up as well as immobile objects.
         this.items = (room.items || []).map(item => new Item(game, item))
@@ -11,7 +12,6 @@ class Room {
         // Useful for rooms that need some interaction before showing all content.
         this.hiddenItems = (room.hiddenItems || []).map(item => new Item(game, item))
 
-        this.visited = this.id === 'start'
         // Initially, connections are just a map of directions and corresponding room ids.
         // Keys: `direction`, Values: `room.id`
         // When the game is started, the room ids are replaced with references to the actual rooms.
