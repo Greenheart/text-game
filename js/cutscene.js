@@ -25,7 +25,6 @@ class Cutscene {
             this.game.text(scene.text)
             // Allow the title to updated for individual scenes. Keep previous if nothing new.
             if (scene.title) this.game.title(scene.title)
-            if (this.activeQuestion) this.activeQuestion = null
             if (scene.question) this.showQuestion(scene.question)
             this.currentScene++
         } else {
@@ -46,6 +45,9 @@ class Cutscene {
         // IDEA: Maybe add this to the player's choices, which could be used to alter gameplay and story in the future.
         if (this.activeQuestion && this.activeQuestion.answers[answer]) {
             this.activeQuestion.answers[answer](this)
+            // Clear question once it's answered.
+            this.activeQuestion = null
+            this.game.status('')
         }
     }
 
