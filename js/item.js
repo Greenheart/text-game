@@ -4,14 +4,17 @@ class Item {
         this.id = itemConfig.id
         this.name = itemConfig.name
 
-        // Item state is custom variables used to track how the item is used. Useful to for example allow dynamic descriptions.
+        // Item state holds custom variables used to track how the item is used.
+        // Useful to for example allow dynamic descriptions or change the behavior of the item.
         this.state = itemConfig.state || {}
 
-        // Actions are callback functions with custom logic for when the player uses a certain interaction.
+        // Object with callback functions for all actions this item can be used for.
+        // Key: name of the action. Value: Callback function.
         // For example the 'use' action has a 'use()' callback.
+        // Callbacks hold custom logic for how player interactions work.
         this.actions = itemConfig.actions || {}
 
-        // Default: all items are movable. Only those that explicitly say `false` can't be moved.
+        // Can the item be picked up? Default: true. Only those that explicitly say `false` can't be moved.
         this.movable = itemConfig.movable !== false
 
         // Adding a room name to this array indicates that the item is shown to the player in another way.
@@ -19,7 +22,7 @@ class Item {
         this.useCustomDescription = itemConfig.useCustomDescription || []
 
         // Actions (like 'use', 'read') added to this array disable default interactions for that action.
-        // This allows items to take full control over what happens, and most importantly,
+        // This allows item action callbacks to take full control over what happens, and most importantly,
         // allows the same action e.g. 'view' to behave differently for different items.
         this.skipDefaultAction = itemConfig.skipDefaultAction || []
     }
