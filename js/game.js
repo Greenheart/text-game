@@ -45,6 +45,16 @@ class Game {
         this.cutscenes[id].start()
     }
 
+    showNotification (content, seconds = 10) {
+        const notification = document.createElement('div')
+        notification.innerHTML = content
+        this.ui.notifications.appendChild(notification)
+
+        window.setTimeout(() => {
+            this.ui.notifications.removeChild(notification)
+        }, seconds * 1000)
+    }
+
     onInput (rawInput) {
         // IDEA: This method could be cleaned up by refactoring special cases below as `CustomParser`s.
         const input = Helpers.normalizeString(rawInput)
@@ -419,7 +429,8 @@ class Game {
             mapBorder: minimap.querySelector('.map'),
             minimapDirections: minimap.querySelectorAll('.direction'),
             mapCurrentEnvironment: minimap.querySelector('.current-environment'),
-            mapCurrentRoom: minimap.querySelector('.current-room')
+            mapCurrentRoom: minimap.querySelector('.current-room'),
+            notifications: find('#notifications')
         }
     }
 }
