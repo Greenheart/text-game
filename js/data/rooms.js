@@ -6,19 +6,6 @@ window.rooms = []
         - Rooms store all their related data (state, items) in a single file, making it easy to get an overview.
 */
 
-
-const templateRoom = {
-    id: '',                                   // Internal name
-    connections: {},                            // Connections to other rooms. Key: `direction`, Value: `room.id`
-    items: [],                                  // Array of item objects
-    title: '',
-    description: `<p></p>`,                     // Text to show in the room (formatted as HTML).
-                                                // Can be both string (static) or callback function (dynamic)
-                                                // Function approach is useful for changing text based on state.
-    state: {},                                  // Object with custom data related to the room.
-    playerCanLeave: (room, direction) => true   // Callback function to determine if the player can leave in some direction.
-}
-
 const itemTemplate = {
     name: '',
     id: '',

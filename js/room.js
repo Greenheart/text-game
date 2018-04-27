@@ -3,22 +3,40 @@ class Room {
         this.game = game
         this.id = room.id
         this.title = room.title
+
+        // Items that can be found in the room. Contains both movable items that can be picked up as well as immobile objects.
         this.items = (room.items || []).map(item => new Item(game, item))
+
+        // Hidden items aren't visible from the start, but can be shown later.
+        // Useful for rooms that need some interaction before showing all content.
         this.hiddenItems = (room.hiddenItems || []).map(item => new Item(game, item))
 
         this.visited = this.id === 'start'
-        // Initially, connections are just a map of directions and corresponding room names.
+        // Initially, connections are just a map of directions and corresponding room ids.
+        // Keys: `direction`, Values: `room.id`
+        // When the game is started, the room ids are replaced with references to the actual rooms.
         this.connections = room.connections || {}
+
+        // A description of the room to show the player, formatted as HTML.
+        // Either as a static string, or as a function that can change the room description based on some game state.
         this.description = room.description
+
+        // Room state holds custom variables used to track how the item is used. Useful to for example allow dynamic descriptions.
         this.state = room.state || {}
 
-        // Optional callbacks, automatically bound provide required parameters when they are called.
-        // This simplifies usage of these methods for content creators.
-        // When a player tries to leave the room.
+        // Below are some optional callbacks, automatically bound to this room instance.
+        // This will automatically provide the required room parameter when they are called,
+        // making it easier for content creators to use them.
+
+        // Executed when a player tries to leave the room in a given direction.
+        // Should either return `true` or a string describing the reason the player can't leave.
         if (room.playerCanLeave) this.playerCanLeave = room.playerCanLeave.bind(null, this)
-        // When a player tries to interact with an item in the room.
+
+        // Executed when a player tries to interact with an item in the room.
+        // Should either return `true` or a string describing the reason the player can't interact.
         if (room.playerCanInteract) this.playerCanInteract = room.playerCanInteract.bind(null, this)
-        // When a player enters the room.
+
+        // Executed when the player enters a room. Useful to trigger game events.
         if (room.onEnter) this.onEnter = room.onEnter.bind(null, this)
     }
 
@@ -33,7 +51,7 @@ class Room {
         for (const roomId of Object.keys(rooms)) {
             const room = rooms[roomId]
 
-            // Replace each room name with a reference to the actual room.
+            // Replace each room id with a reference to the actual room.
             for (const direction of Object.keys(room.connections)) {
                 const id = room.connections[direction]
                 room.connections[direction] = rooms[id]
