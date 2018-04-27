@@ -43,7 +43,7 @@ window.cutscenes = [{
                     cutscene.nextScene()
                 },
                 no (cutscene) {
-                    // IDEA: Prevent player from ever watching the panel discussion again.
+                    // IDEA: Prevent player from ever watching the news or the panel discussion again. This applies to both of these alternatives.
                     cutscene.end()
                 }
             }
@@ -58,7 +58,7 @@ window.cutscenes = [{
 
 /*
 
-IDEA: Possibly add something about how well it's been tested.
+IDEA: Possibly add something about how well the device been tested to th eexpert panel discussion. One is critical but the others have good faith in [Y corp] (since they are paid to promote the product).
 
 NOTE: Let's connect YOUR future - or OUR future?
 

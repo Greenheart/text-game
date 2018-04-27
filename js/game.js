@@ -64,10 +64,6 @@ class Game {
                 this.returnToGame()
                 this.handleInput(input)
             }
-        } else if (this.player.activeItem.id === 'doorhandle') {
-            if ('north'.startsWith(input)) {
-                this.handleInput(input)
-            }
         }
     }
 

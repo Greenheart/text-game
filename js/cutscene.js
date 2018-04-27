@@ -51,7 +51,7 @@ class Cutscene {
 
     end () {
         this.currentScene = 0
-        this.game.activeCutscene = null // NOTE: Maybe move this into game.returnToGame()
+        this.game.activeCutscene = null
         this.game.returnToGame()
     }
 
