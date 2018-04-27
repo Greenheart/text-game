@@ -3,36 +3,14 @@ class Room {
         this.game = game
         this.id = room.id
         this.title = room.title
+        this.items = (room.items || []).map(item => new Item(game, item))
+        this.hiddenItems = (room.hiddenItems || []).map(item => new Item(game, item))
 
-        function initializeItems (i) {
-            // NOTE: If Item related logic is to be refactored to a separate class and file,
-            // This mapper function should be part of the constructor - or maybe even similar to Room.initializeRooms().
-
-            // Default: all items are movable. Only those that explicitly say `false` can't be moved.
-            if (i.movable !== false) i.movable = true
-            // This initializer sets the standard shape of items,
-            // to allow item configs to focus on what's interesting: custom data.
-            if (!i.state) i.state = {}
-            if (!i.actions) i.actions = {}
-
-            // Adding a room name to this array indicates that the item is shown to the player in another way.
-            // For example, this could mean the item is shown in the description in the room, instead of the normal item text.
-            if (!i.useCustomDescription) i.useCustomDescription = []
-
-            // Actions (like 'use', 'read') added to this array disable default interactions for that action.
-            // This allows items to take full control over what happens, and most importantly,
-            // allows the same action e.g. 'view' to behave differently for different items.
-            if (!i.skipDefaultAction) i.skipDefaultAction = []
-            return i
-        }
-
-        this.items = (room.items || []).map(initializeItems)
-        this.hiddenItems = (room.hiddenItems || []).map(initializeItems)
-        this.visited = this.id === 'start' ? true : false
+        this.visited = this.id === 'start'
         // Initially, connections are just a map of directions and corresponding room names.
         this.connections = room.connections || {}
         this.description = room.description
-        this.state = room.state
+        this.state = room.state || {}
 
         // Optional callbacks, automatically bound provide required parameters when they are called.
         // This simplifies usage of these methods for content creators.
