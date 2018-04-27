@@ -16,6 +16,9 @@ class GameEvent {
 
         // Flag used to determine if the event has been shown to the player.
         this.shown = false
+
+        // Flag used to automatically show the event when it's triggered.
+        this.showOnStart = event.showOnStart || false
     }
 
     static initializeEvents (game, eventConfigs) {
@@ -29,6 +32,7 @@ class GameEvent {
     start () {
         this.game.activeEvent = this
         if (typeof this.onStart === 'function') this.onStart(this)
+        if (this.showOnStart) this.show()
     }
 
     show () {

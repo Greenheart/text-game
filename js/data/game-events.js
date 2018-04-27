@@ -2,9 +2,7 @@ window.gameEvents = [{
     id: 'enter-apartment',
     title: 'The door opens...',
     description: `<p><i>Strange. It's not like Kevin to leave his door unlocked.</i></p>`,
-    onStart (event) {
-        event.show()
-    },
+    showOnStart: true,
     onEnd (event) {
         event.game.player.moveTo({ roomId: 'apartment.hallway' })
         event.game.player.giveNewTask('anyone-home')
