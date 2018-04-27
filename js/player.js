@@ -176,8 +176,7 @@ class Player {
         // and optimimal performance (by reusing existing reference in some cases).
         if (!room && roomId) {
             room = this.game.rooms[roomId]
-        } else if (window.DEBUG) {
-            // BUG: Edge case when going east from the desk. (room that doesn't exist.)
+        } else if (window.DEBUG && !room && !roomId) {
             console.error('Either a roomId or a room reference has to be passed')
         }
         this.currentRoom = room
