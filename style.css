@@ -181,7 +181,12 @@ section p:first-of-type {
 #minimap .direction {
     position: absolute;
     font-weight: 300;
-    padding: 1px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
 }
 
 #minimap .direction.north { top: 5px; }
@@ -190,9 +195,13 @@ section p:first-of-type {
 #minimap .direction.west { left: 5px; }
 
 #minimap .direction.way-back {
+    box-sizing: border-box;
     background: #6194df;
-    border-radius: 4px;
     color: white;
+}
+
+#minimap .direction.way-back:hover {
+    cursor: help;
 }
 
 #minimap h2 {

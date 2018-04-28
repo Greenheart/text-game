@@ -149,22 +149,6 @@
 # In progress
 
 
-- Basic map in the bottom right corner
-    - Show squares to represent rooms.
-    - Show connections to other rooms
-    - Show the player
-    - This way, the basic directions
-    - Mini compass: show directions on each side of the map with an arrow. N, S, E, W
-
-    -Simplified idea (to save dev time):
-        - Could be shaped as a compass (circle)
-        - Show current room short name/title in the center.
-        - Show environment title, e.g. "The Apartment" as a header at the top of this component.
-        - Highlight available directions to move in:
-            - green: available directions
-            - yellow: where you came from (if available)
-        - Fade out/hide unavailable directions.
-
 
 
 
@@ -413,6 +397,22 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Basic map in the bottom right corner
+    - Show squares to represent rooms.
+    - Show connections to other rooms
+    - Show the player
+    - This way, the basic directions
+    - Mini compass: show directions on each side of the map with an arrow. N, S, E, W
+
+    -Simplified idea (to save dev time):
+        - Could be shaped as a compass (circle)
+        - Show current room short name/title in the center.
+        - Show environment title, e.g. "The Apartment" as a header at the top of this component.
+        - Highlight available directions to move in:
+            - green: available directions
+            - yellow: where you came from (if available)
+        - Fade out/hide unavailable directions.
+
 - Update `room.name` to `room.id` to increase naming consistency.
 
 - Add option to items
