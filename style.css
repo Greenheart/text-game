@@ -167,6 +167,16 @@ section p:first-of-type {
     min-height: 75px;
     background: lightyellow;
     padding: 5px 10px;
+    transition: all 0.1s ease-in;
+}
+
+#notifications > div:hover {
+    /* Negative margin trick to increase size without breaking positioning. */
+    margin: -5px -10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, .05);
 }
 
 #notifications > div:not(:last-child) {
