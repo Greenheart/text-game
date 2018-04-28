@@ -32,11 +32,14 @@ window.rooms.push({
         id: 'white box',
         actions: {
             read (room, item) {
+                let text = '<p>"[Y corp]: Device Prototype 0x137".</p>'
+                if (room.game.player.notes.length) {
+                    // Only show story detail if it's relevant according to the player's actions so far.
+                    text += '<p><i>Hmm... I wonder if this could be for the device my friend mentioned in his notes.</i></p>'
+                }
+
                 room.game.title('The White Box')
-                room.game.text(`
-                    <p>"[Y corp]: Device Prototype 0x137".</p>
-                    <p><i>Hmm... I wonder if this could be for the device my friend mentioned in his notes.</i></p>
-                `)
+                room.game.text(text)
             },
             view (room, item) {
                 item.actions.read(room, item)

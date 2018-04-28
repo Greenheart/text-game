@@ -161,7 +161,7 @@
 
 - Improve phrasing in beginning of `sofa.js` description.
 
-- Only show the main character's reflections when reading the white box, if the player has picked up and read any notes. Check `player.notes.length`.
+
 
 ---
 # Bugs
@@ -171,10 +171,6 @@
 
 ---
 # In progress
-
-- Make it possible to disable all text input when "Press enter to continue..." is the only available action. Only the enter key should work.
-    - This could be enabled when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set
-    - Maybe this could help clarify that there are times where no other actions than an Enter press makes sense - like in menus.
 
 
 
@@ -249,6 +245,11 @@ Time jump - Kevin hasn't come home yet
 - Add `help` section start page, like `read notes` has.
     - Basically use the same code, but display a help page instead of a note.
     - This will give users a overview of what's available, and help them navigate.
+
+- Make it possible to disable all text input when "Press enter to continue..." is the only available action. Only the enter key should work.
+    - This could be enabled when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set
+    - Maybe this could help clarify that there are times where no other actions than an Enter press makes sense - like in menus.
+    - `game.ui.userInput.readOnly = true` is a viable solution, but can't be used in all cases.
 
 - Show summary of each chapter at the end of it.
     - notes found, clues found etc.
@@ -440,6 +441,8 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Only show the main character's reflections when reading the white box, if the player has picked up and read any notes. Check `player.notes.length`.
+
 - Create a `Item` class and move item-related logic there.
     - Items could be instances of the class, based on configuration objects like `room`s or `task`s.
 
