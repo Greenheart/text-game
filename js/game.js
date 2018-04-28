@@ -271,6 +271,11 @@ class Game {
     }
 
     getCommandCompletions (split) {
+        // Autocomplete answers to cutscene questions.
+        if (this.activeCutscene && this.activeCutscene.activeQuestion) {
+            return Object.keys(this.activeCutscene.activeQuestion.answers)
+        }
+
         if (split.length === 1) {
             // First part of a command => autocomplete against actions
             return this.dictionary.allCommands
