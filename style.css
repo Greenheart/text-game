@@ -190,7 +190,9 @@ section p:first-of-type {
 #minimap .direction.west { left: 5px; }
 
 #minimap .direction.way-back {
-    background: radial-gradient(rgba(255, 190, 0, .4), white);
+    background: #6194df;
+    border-radius: 4px;
+    color: white;
 }
 
 #minimap h2 {
