@@ -13,6 +13,7 @@ window.rooms.push({
         id: 'photo-frame',
         actions: {
             view (room, item) {
+                // IDEA: Make time pass when watching the photo frame. This could affect gameplay if time is limited and the player's actions matter.
                 room.game.title('The Photo Frame')
                 room.game.text(`
                     <p>You remember this photo. It's from one of your and Kevin's adventures a couple of years ago.</p>

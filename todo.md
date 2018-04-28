@@ -57,6 +57,7 @@
 - Weather changes through the story
     - Starts out with late afternoon sun. Continues with clouds as the evening comes closer. Wind starts blowing, light rain is coming. In the end the weather depends on the player's actions? If good ending: "Hey, the sun shines. It's a new day.". If bad: do something else.
 
+**Improve intro**
 - Show the player basic commands rather than telling them to read the `help` section the first they do.
     - "Generally speaking, commands follow the structure `[verb] [object]`."
 - Make them learn basic commands through the early game.
@@ -88,7 +89,7 @@
 
 - The company's motives:
 	- They are basically trying so hard to "do the right thing" that they just end up doing bad things, while striving for their "good cause".
-	- Like Facebook, they say they want to "connect people"
+	- Like Facebook, they say they want to "connect people", but in reality that's not the whole truth. There are also other motives, driven by power and profit.
 
 - Kevin signed a contract that he can't get out of.
 	- Either you, as the player help him, or you try save the world, or you try to do both!
@@ -127,8 +128,6 @@
             - Each part focusing on it's own note.
             - *Should notes be movable? - should the player be able to pick them up?*
 
-- Update docstrings in rooms.js and similar files. Move documentation comments to related classes instead.
-
 - Find good fonts
     - Fix italics fonts.
 
@@ -138,6 +137,31 @@
 - Improve layout for main (currently height 95vh)
 - Improve padding-bottom for main-footer (could depend on the main section)
 
+- Describe how the minimap works in the help section.
+	- Also describe colors.
+	- Blue dot: The direction you came from (if available).
+	- Green borer: A direction where you can go.
+	- The title above the minimap show the current game environment.
+	- The text in the middle show your location within that environment.
+
+- Notifications can give tips to the player
+- Notifications can have different icons and colors to help the player separate them visually.
+- Notifications can remain until they are clicked on.
+    - This requires a hover effect so the player know they can click them.
+    - Make the notification slightly bigger with a scale transformation.
+
+
+- Make it possible to go back south from `apartment.outside`.
+
+- Add the command `notes`, an alternative to `read notes`. This saves typing.
+
+- Problem: It's unclear how to proceed when a task is completed.
+	- Make it clearer that the player has to press enter to read the task completion note.
+    - Perhaps show the task completion text in a modal, fading out the current room in the background.
+
+- Improve phrasing in beginning of `sofa.js` description.
+
+- Only show the main character's reflections when reading the white box, if the player has picked up and read any notes. Check `player.notes.length`.
 
 ---
 # Bugs
@@ -148,7 +172,9 @@
 ---
 # In progress
 
-
+- Make it possible to disable all text input when "Press enter to continue..." is the only available action. Only the enter key should work.
+    - This could be enabled when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set
+    - Maybe this could help clarify that there are times where no other actions than an Enter press makes sense - like in menus.
 
 
 
@@ -182,10 +208,39 @@
 
 ---
 # Ideas
-- Database with multiple items and notes.
-    - Randomize items and notes - show different things on different play throughs.
+- Update UI design
+    - Use more interesting colors.
+	- Sticky note, yellow for inventory and bottom left panel
+	- Transparent gray background.
+	- Green, blue, brown shades as backgrounds of UI components.
 
-- Randomize dialogue
+- Show notifications when the player learns new actions:
+    - Example: "You've learned a new action: Use `take [object]` to pick something up."
+	- Also add a link to "Read more in the help section".
+
+- Color-code different types of text to separate different kinds of information.
+	- Either use black -> dark gray -> light gray
+	- Or other colors
+	- Or backgrounds around the text
+
+- Give players a new task to explore the apartment or watch TV, once they've completed the first one.
+
+- Make it possible to see completed tasks.
+	- Click a button to toggle between active and completed tasks. This will update the task list to show a longer, scrollable list with completed tasks instead of the active ones.
+	- The button could just be a text "Show completed" at the bottom of the task list.
+	- Click a completed task to view task details. This allows the player to see what their character concluded when the task was completed, which can be useful to remind themselves about details.
+
+- The story so far:
+	- Continually add new parts to the story, depending on what the player is doing.
+	- Add `story` command to view the story so far.
+		- This will show the story so far, told from the main character's perspective:
+		- "After getting a message from my friend Kevin, I went to his apartment. Then X. Then Y."
+	- When viewing the story so far multiple times, let the player easily see which parts are new by highlighting these parts in green. Also maybe make the older text have a slightly more gray text color. The new is green.
+
+- Database with multiple items and notes.
+    - Randomize items and notes - show different things on different playthroughs.
+
+- Randomize dialogue - add variations depending on player choices.
 
 Time jump - Kevin hasn't come home yet
 	- Allow player to watch TV, which makes time pass.
@@ -219,16 +274,16 @@ Time jump - Kevin hasn't come home yet
     - E.g. "2/9 rooms visited."
     - *Could clarify what players need to do - or ruin the experience of exploring the game world, by telling them exactly what to do.*
 
-- Make it possible to disable all text input when "Press enter to continue..." is the only available action. Only the enter key should work.
-    - This could be enabled when `useContinuePlaceholder()` is activated - or when `player.activeItem` is set
-    - Maybe this could help clarify that there are times where no other actions than an Enter press makes sense - like in menus.
-
-- Strange phrasing in beginning of the "In the sofa in front of the TV."
-
 - Add help section to right side of UI to make commands available
     - Or add a message in top right corner: "Stuck? Type `help`."
 
-- Add new commands to the help section as the player progress through the world, instead of adding everything at once.
+- Make notes appear in a different order, 3 - 5 - 1 - 2.
+    - This encourages players to find more notes to be able to understand the whole story.
+
+- Introduce actions/commands throughout the story - not all in the beginning.
+	- Actions are added to the help section when the player finds/learns them.
+		- Hide each `tr` by default and use a DOM-query to show the right row when the action is available.
+        - This need to happen when the player enters a new room with an item that has a new type of action.
 
 - Maybe use a dark background and light text to be easier on the eyes.
     - Or add a dark theme that users can toggle.
@@ -236,11 +291,6 @@ Time jump - Kevin hasn't come home yet
 - **Tasks**
     - Both active and *inactive tasks are kept for now* to allow for example statistics to be shown in the future.
     - Keeping inactive tasks would also allow us to track *how well* the player completed them, or to *track their decisions that may affect further story/gameplay*. Feels like a good place to store this information.
-
-- Maybe add a slight delay - or a typing effect, adding character by character to the screen as new information is available.
-    - This would reduce instant reactions and make the game feel more relaxed
-    - Maybe this could also be achieved by adding slight delays (200-400 ms)
-    - Another idea is to let rooms fade in and out over this transition time.
 
 - Make decisions in other ways than writing
     - (Clicking on buttons or graphics)
@@ -276,9 +326,6 @@ Time jump - Kevin hasn't come home yet
         - remove classes after a timeout
     - Maybe add a slight gray background that fades out over time.
 
-    - Animate the status message
-        - Make it bounce from side to side when a status message is shown.
-
 - Gameplay ideas:
     - The player gathers items, to craft tools, to solve puzzles/tasks.
     - The player is encouraged to explore and experiment.
@@ -290,6 +337,12 @@ Time jump - Kevin hasn't come home yet
 
 ---
 # Low prio ideas
+- Maybe add a slight delay - or a typing effect, adding character by character to the screen as new information is available.
+    - This would reduce instant reactions and make the game feel more relaxed
+    - Maybe this could also be achieved by adding slight delays (200-400 ms)
+    - Another idea is to let rooms fade in and out over this transition time.
+    - *Content is prioritized at this point.*
+
 - Ensure the bottom sections of left and right sidebars have the same min-height.
     - Currently, minimap is taller than the noteCount + inventory components when all three are visible. *Possibly fix this to improve consistency and layout.*
 
@@ -302,31 +355,21 @@ Time jump - Kevin hasn't come home yet
     - This would allow multiple instances of items to exist in the same/ multiple rooms without duplicating code.
     - Instead of adding hard coded item objects, add string `id`s that some kind of `initializeItems()` method could use to find the actual item instances.
 
-- Create a `Item` class and move item-related logic there.
-    - Items could be instances of the class, based on configuration objects like `room`s or `task`s.
-
 - Possibly show a modal of some kind describing a new task when it's received? Or just populate game content.
     - *This is a feature for a later time. The minimal approach should work fine for now.*
 
 - Allow player to see details about a task
     - *Possible future feature*
     - Maybe by hovering the task title? *(Not touch-friendly)*
-    - Maybe clicking the task?
+    - Maybe **clicking the task**? *This is probably a good solution.*
     - Maybe add `tasks` command which will show details about the active tasks in the game content area. Maybe a similar approach to how both the help and notes are interacted with: `[task number]` or `next`/`prev`
 
 - Timed tasks (complete X before a certain in game date/time)
     - *Possible future feature, low prio initially.*
 
-- In the sofa, it could be possible to sit down and look at a digital photo frame, which reveals details and backstory - but makes in game time pass (which could affect gameplay later)
-
 - Make sure the game UI is responsive on smaller screen sizes.
     - Focus down to small laptops
     - Also check high res viewports too.
-
-- Make sure fonts are consistent across browsers.
-- Look into using the Chrome monospace font (Consolas) as default game font.
-- Consolas seems to be preinstalled on both macOS and Windows, which will be the main platforms. Look into supplying it as a web font, to support Linux.
-- *Lower prio, as the main platforms macOS and Windows work decently. Focus on gameplay.*
 
 - When autocompleting objects without having any search term, cycle through all available objects one by one, one for each consecutive tab press.
     - *This needs some work, but could be a nice feature* to quickly enter objects in rooms.
@@ -359,7 +402,7 @@ Time jump - Kevin hasn't come home yet
     - *Create the game first :P *
 
 - Consider using JS modules to separate scripts in a safe way.
-    - *Modules are not commonly supported.*
+    - *Modules are commonly supported as of May 2018, but the rewrite is a low priority compared to creating game content.*
 
 - Items have a weight or space cost to store in inventory. This allows the player to only pick certain items.
     - *Or just don't use that many items in the game - Only use those that add value to the gameplay experience.*
@@ -397,6 +440,11 @@ Time jump - Kevin hasn't come home yet
 
 
 # Done
+- Create a `Item` class and move item-related logic there.
+    - Items could be instances of the class, based on configuration objects like `room`s or `task`s.
+
+- Update docstrings in rooms.js and similar files. Move documentation comments to related classes instead.
+
 - Basic map in the bottom right corner
     - Show squares to represent rooms.
     - Show connections to other rooms
@@ -864,6 +912,10 @@ Time jump - Kevin hasn't come home yet
 
 # Archived Ideas
 ## Either won't fix - or not suitable for the theme of this game
+- Animate the status message
+    - Make it bounce from side to side when a status message is shown.
+    - *Solved by using a distinct text style.*
+
 - Investigate how to avoid duplicate actions for items. Maybe add some way to specify which actions that can result in the same function being executed?
     - An array of acceptable action verbs for a given function
     - Or an object with the two properties: 1) the function to execute, and 2) the verbs to execute it for.
