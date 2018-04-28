@@ -216,7 +216,7 @@ section p:first-of-type {
 
 #minimap h2 {
     max-width: 200px;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
     text-transform: capitalize;
 }
 
@@ -314,10 +314,11 @@ ul.items {
 
 aside.left > .bottom {
     border-top: 0;
+    min-height: 251px;
 }
 
 #inventory {
-    min-height: 150px;
+    min-height: 219px;
     border-top: 1px solid #dcdcdc;
 }
 
