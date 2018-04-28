@@ -10,6 +10,13 @@ class Player {
         this.activeItem = null
         this.lastAction = ''
         this.wayBack = ''
+
+        // Store interactions that the player has performed.
+        // Used to for example change gameplay based on if the player has used a certain item.
+        this.interactions = {
+            start: {},
+            apartment: {}
+        }
     }
 
     parseAction (input, split) {

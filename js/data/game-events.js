@@ -19,5 +19,12 @@ window.gameEvents = [{
         event.game.player.tasks.find(t => t.id === 'anyone-home').active = false
         // TODO: Give next task to player -> explore the apartment and watch TV.
         // event.game.player.giveNewTask()
+        if (event.game.player.interactions.apartment.triedUsingComputer) {
+            event.game.showNotification('You can now use the computer.')
+        }
+
+        if (event.game.player.interactions.apartment.triedVisitingSofa) {
+            event.game.showNotification('You can now go to the sofa and watch TV.', 15)
+        }
     }
 }]

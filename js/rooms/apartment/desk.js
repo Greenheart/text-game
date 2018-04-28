@@ -35,9 +35,13 @@ window.rooms.push({
         movable: false
     }],
     playerCanInteract (room, { item }) {
-        if (item.name === 'computer' && !room.game.player.hasCompletedTask('anyone-home')) {
-            // TODO: Check for the watch TV task instead. Player need to see the news on TV before using the computer.
-            return 'I should probably see if Kevin is at home first.'
+        if (item.name === 'computer') {
+            room.game.player.interactions.apartment.triedUsingComputer = true
+
+            if (!room.game.player.hasCompletedTask('anyone-home')) {
+                // TODO: Check for the watch TV task instead. Player need to see the news on TV before using the computer.
+                return 'I should probably see if Kevin is at home first.'
+            }
         }
         return true
     },
