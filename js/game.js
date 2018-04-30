@@ -374,7 +374,7 @@ class Game {
         })
 
         this.ui.userInput.addEventListener('keydown', event => {
-            switch (event.key) {
+            switch (event.code) {
                 case 'Enter':
                     // Only allow enter to be pressed once at a time.
                     if (enterKeyIsDown) return
@@ -402,7 +402,7 @@ class Game {
         })
 
         this.ui.userInput.addEventListener('keyup', event => {
-            if (event.keyCode === 13) enterKeyIsDown = false
+            if (event.code === 'Enter') enterKeyIsDown = false
         })
         this.ui.userInput.focus()
     }
