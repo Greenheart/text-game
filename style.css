@@ -316,7 +316,7 @@ ul.items {
     color: green;
 }
 
-aside.left > .bottom {
+aside.left > .bottom:not(.no-border) {
     border-top: 0;
     min-height: 251px;
 }
