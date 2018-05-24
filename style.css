@@ -126,7 +126,6 @@ span.code.dark-bg {
     display: none;
 }
 
-
 .game-content {
     width: 100%;
 }
@@ -142,6 +141,11 @@ span.code.dark-bg {
 
 section p:first-of-type {
     margin-top: 0;
+}
+
+#item-text {
+    position: relative;
+    top: 2em;
 }
 
 #game-text .note-heading {
