@@ -98,6 +98,9 @@ class Game {
                 // This case represents a valid action
                 // NOTE: This will not work with multiple-word actions (because of `split[0]`)
                 this.player.parseAction(input, split)
+            } else if (this.player.currentRoom.hasItem({ name: input })) {
+                // If no valid action was given, but a valid item: Ask how the player want to interact.
+                this.status(`What do you want to do with <span class="code dark-bg">${input}</span>?`)
             } else {
                 this.status(`I didn't understand that.`)
             }
