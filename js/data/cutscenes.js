@@ -28,7 +28,7 @@ window.cutscenes = [{
         <p>Let's connect your future - and bring the world together!"</p></i>`
     }, {
         title: 'Back in the news studio',
-        text: `<p>As the camera switches back to show the news studio, you start thinking...</p>
+        text: `<p>As the show returns to the news studio, you start thinking...</p>
 
         <i><p>Wow... So this is what they've been so secretive about.</p>
         <p>This device has clearly done something to my friend.</p></i>
@@ -50,7 +50,7 @@ window.cutscenes = [{
         }
     }, {
         title: 'Watching the panel discussion',
-        text: `<i><p>"[Y corp] claims that already more than 157,300 people have gotten chips implanted, in the first 8 hours after the announcement.</p>
+        text: `<i><p>"[Y corp] claims that already more than 157 000 people have gotten chips implanted, in the first 8 hours after the announcement.</p>
         <p>According to reports from major cities around the world, people are gathering in the streets and leaving their usual schedules to visit the [Y corp] events."</p></i>`
     }]
 }]
